@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTC Indicator Suite - Elite Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #fafcff;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Blobs */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+
+        /* Dynamic Cards */
+        .dynamic-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #e2e8f0;
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 10;
+        }
+        .dynamic-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #3b82f6;
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.15);
+            background: #ffffff;
+        }
+
+        /* Gradient Text */
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #0284c7 0%, #3b82f6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Premium Buttons */
+        .btn-premium {
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px -3px rgba(37, 99, 235, 0.3);
+        }
+        .btn-premium:hover {
+            box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Copy Rows */
+        .crypto-row {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        .crypto-row:hover {
+            border-color: #93c5fd;
+            background: #f4fafe;
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body class="antialiased pb-20 relative">
+
+    <header class="relative w-full py-24 md:py-32 px-6 flex flex-col items-center justify-center text-center z-10">
+        <div class="absolute top-0 left-[-10%] w-[500px] h-[500px] bg-cyan-300/40 rounded-full mix-blend-multiply filter blur-[100px] animate-blob -z-10"></div>
+        <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-300/40 rounded-full mix-blend-multiply filter blur-[100px] animate-blob animation-delay-2000 -z-10"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-20">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-sm tracking-widest uppercase shadow-sm">
+                Professional Grade Precision
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-6 text-slate-900 leading-tight">
+                THE <span class="text-gradient-primary">RTC INDICATOR</span><br> SUITE
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-500 font-medium tracking-wide max-w-3xl mx-auto">
+                The Complete 4-Indicator Arsenal. Designed for ultimate market clarity.
+            </p>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto py-8 px-6 grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20">
+        <div class="dynamic-card p-8 flex items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center mr-6 border border-blue-100 group-hover:from-blue-500 group-hover:to-cyan-500 transition-all duration-300 shadow-sm flex-shrink-0">
+                <i class="fas fa-undo-alt text-blue-500 group-hover:text-white text-2xl transition-colors"></i>
+            </div>
+            <div>
+                <h3 class="text-2xl font-black text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">[Reversal Pro+]</h3>
+                <h4 class="text-md font-bold text-slate-600 mb-2">Real-Time CISD Alerts Only.</h4>
+                <p class="text-slate-500 font-medium leading-relaxed text-sm">Triggers only on valid CISD from key FVG or Swing points. Zero noise.</p>
+            </div>
+        </div>
+
+        <div class="dynamic-card p-8 flex items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center mr-6 border border-indigo-100 group-hover:from-indigo-500 group-hover:to-purple-500 transition-all duration-300 shadow-sm flex-shrink-0">
+                <i class="fas fa-chess-queen text-indigo-500 group-hover:text-white text-2xl transition-colors"></i>
+            </div>
+            <div>
+                <h3 class="text-2xl font-black text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">[PO3 Pro Suite]</h3>
+                <h4 class="text-md font-bold text-slate-600 mb-2">Advanced C2 Closure Features.</h4>
+                <p class="text-slate-500 font-medium leading-relaxed text-sm">Deep dive into market structure with specialized C2 tracking.</p>
+            </div>
+        </div>
+
+        <div class="dynamic-card p-8 flex items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-50 to-fuchsia-50 flex items-center justify-center mr-6 border border-purple-100 group-hover:from-purple-500 group-hover:to-fuchsia-500 transition-all duration-300 shadow-sm flex-shrink-0">
+                <i class="fas fa-chart-line text-purple-500 group-hover:text-white text-2xl transition-colors"></i>
+            </div>
+            <div>
+                <h3 class="text-2xl font-black text-slate-800 mb-2 group-hover:text-purple-600 transition-colors">[SMT Pro+]</h3>
+                <h4 class="text-md font-bold text-slate-600 mb-2">Real-Time SMT Detection.</h4>
+                <p class="text-slate-500 font-medium leading-relaxed text-sm">Instantly detects SMT conditions across correlated assets.</p>
+            </div>
+        </div>
+
+        <div class="dynamic-card p-8 flex items-start group">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-50 to-teal-50 flex items-center justify-center mr-6 border border-cyan-100 group-hover:from-cyan-500 group-hover:to-teal-500 transition-all duration-300 shadow-sm flex-shrink-0">
+                <i class="fas fa-map-marked-alt text-cyan-500 group-hover:text-white text-2xl transition-colors"></i>
+            </div>
+            <div>
+                <h3 class="text-2xl font-black text-slate-800 mb-2 group-hover:text-cyan-600 transition-colors">[POI Pro+]</h3>
+                <h4 class="text-md font-bold text-slate-600 mb-2">Total Swing & FVG Zone Alerts.</h4>
+                <p class="text-slate-500 font-medium leading-relaxed text-sm">Extensive alert matrix for every critical Point of Interest.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto py-20 px-6 relative z-20">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-slate-900 mb-3">Choose Your Premium Access</h2>
+            <p class="text-slate-500 text-lg font-medium">Secure automated delivery via Whop</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            <div class="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm relative hover:shadow-xl transition-shadow duration-300">
+                <div class="absolute top-6 right-6 bg-slate-100 text-slate-600 text-xs font-black px-3 py-1.5 rounded-full">0% OFF</div>
+                <h3 class="text-lg font-black text-slate-400 mb-4 uppercase tracking-wider">1 Month Starter</h3>
+                <div class="flex items-baseline mb-4">
+                    <span class="text-6xl font-black text-slate-900">$10</span>
+                </div>
+                <p class="text-slate-500 text-sm font-medium mb-8">Regular Price: $10/mo</p>
+                <a href="https://whop.com/rashik-trades-community/rtc-hero-membership/" target="_blank" class="w-full block bg-slate-900 hover:bg-slate-800 text-white font-bold text-center py-4 rounded-2xl transition-colors">Subscribe via Whop</a>
+            </div>
+
+            <div class="bg-white rounded-[2rem] p-10 relative transform md:-translate-y-6 z-10 border-2 border-blue-500 shadow-2xl shadow-blue-500/20">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-xs font-black px-6 py-2 rounded-full uppercase tracking-widest shadow-md">Most Popular</div>
+                <div class="absolute top-6 right-6 bg-green-100 text-green-700 text-xs font-black px-3 py-1.5 rounded-full">≈17% OFF</div>
+                <h3 class="text-lg font-black text-blue-600 mb-4 uppercase tracking-wider">6 Months Pro</h3>
+                <div class="flex items-baseline mb-2">
+                    <span class="text-7xl font-black text-slate-900">$50</span>
+                </div>
+                <p class="text-slate-500 text-sm font-medium mb-8"><span class="line-through">$60 value</span> ($10/mo) &bull; <span class="text-green-600 font-bold">Save $10</span></p>
+                <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy/" target="_blank" class="w-full block btn-premium font-bold text-center py-5 rounded-2xl text-lg tracking-wide">Subscribe via Whop</a>
+            </div>
+
+            <div class="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm relative hover:shadow-xl transition-shadow duration-300">
+                <div class="absolute top-6 right-6 bg-purple-100 text-purple-700 text-xs font-black px-3 py-1.5 rounded-full">≈17% OFF</div>
+                <h3 class="text-lg font-black text-slate-400 mb-4 uppercase tracking-wider">1 Year Elite</h3>
+                <div class="flex items-baseline mb-4">
+                    <span class="text-6xl font-black text-slate-900">$100</span>
+                </div>
+                <p class="text-slate-500 text-sm font-medium mb-8"><span class="line-through">$120 value</span> ($10/mo) &bull; <span class="text-purple-600 font-bold">Save $20</span></p>
+                <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy-a2/" target="_blank" class="w-full block bg-slate-900 hover:bg-slate-800 text-white font-bold text-center py-4 rounded-2xl transition-colors">Subscribe via Whop</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto py-12 px-6 relative z-20">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-black text-slate-900 mb-3">Alternative Payment Hub</h2>
+            <p class="text-slate-500 text-lg font-medium">Manual Crypto & Fiat Transfer Options</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8">
+            
+            <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
+                <h3 class="text-2xl font-black text-slate-800 mb-8 flex items-center border-b border-slate-100 pb-5">
+                    <i class="fa-brands fa-bitcoin text-orange-500 text-3xl mr-4"></i> Direct Crypto Transfer
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="crypto-row flex items-center justify-between p-5 rounded-2xl">
+                        <div class="flex items-center overflow-hidden">
+                            <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg?v=029" class="w-10 h-10 mr-5 flex-shrink-0 drop-shadow-sm" alt="Binance">
+                            <div>
+                                <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Binance Pay ID</p>
+                                <p class="text-lg font-mono text-slate-800 font-bold truncate" id="binance">133010319</p>
+                            </div>
+                        </div>
+                        <button onclick="copyText('binance')" class="text-slate-500 hover:text-blue-600 transition-all p-4 bg-slate-50 rounded-xl border border-slate-200 ml-4 flex-shrink-0 hover:bg-blue-50 shadow-sm"><i class="far fa-copy text-lg"></i></button>
+                    </div>
+
+                    <div class="crypto-row flex items-center justify-between p-5 rounded-2xl">
+                        <div class="flex items-center overflow-hidden">
+                            <div class="w-10 h-10 mr-5 flex-shrink-0 bg-slate-800 rounded-full flex items-center justify-center drop-shadow-sm"><i class="fas fa-exchange-alt text-white text-sm"></i></div>
+                            <div>
+                                <p class="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Bybit UID</p>
+                                <p class="text-lg font-mono text-slate-800 font-bold truncate" id="bybit">107261338</p>
+                            </div>
+                        </div>
+                        <button onclick="copyText('bybit')" class="text-slate-500 hover:text-blue-600 transition-all p-4 bg-slate-50 rounded-xl border border-slate-200 ml-4 flex-shrink-0 hover:bg-blue-50 shadow-sm"><i class="far fa-copy text-lg"></i></button>
+                    </div>
+
+                    <div class="crypto-row flex items-center justify-between p-5 rounded-2xl">
+                        <div class="flex items-center overflow-hidden">
+                            <img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=029" class="w-10 h-10 mr-5 flex-shrink-0 drop-shadow-sm" alt="USDT">
+                            <div>
+                                <p class="text-xs font-black text-green-600 uppercase tracking-widest mb-1">USDT (BEP-20 BSC)</p>
+                                <p class="text-base font-mono text-slate-800 font-bold truncate" id="usdt-bep20">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</p>
+                            </div>
+                        </div>
+                        <button onclick="copyText('usdt-bep20')" class="text-slate-500 hover:text-green-600 transition-all p-4 bg-slate-50 rounded-xl border border-slate-200 ml-4 flex-shrink-0 hover:bg-green-50 shadow-sm"><i class="far fa-copy text-lg"></i></button>
+                    </div>
+
+                    <div class="crypto-row flex items-center justify-between p-5 rounded-2xl">
+                        <div class="flex items-center overflow-hidden">
+                            <img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=029" class="w-10 h-10 mr-5 flex-shrink-0 drop-shadow-sm" alt="USDT">
+                            <div>
+                                <p class="text-xs font-black text-red-500 uppercase tracking-widest mb-1">USDT (TRC-20)</p>
+                                <p class="text-base font-mono text-slate-800 font-bold truncate" id="usdt-trc20">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</p>
+                            </div>
+                        </div>
+                        <button onclick="copyText('usdt-trc20')" class="text-slate-500 hover:text-red-500 transition-all p-4 bg-slate-50 rounded-xl border border-slate-200 ml-4 flex-shrink-0 hover:bg-red-50 shadow-sm"><i class="far fa-copy text-lg"></i></button>
+                    </div>
+
+                    <div class="crypto-row flex items-center justify-between p-5 rounded-2xl">
+                        <div class="flex items-center overflow-hidden">
+                            <div class="relative w-10 h-10 mr-5 flex-shrink-0 drop-shadow-sm">
+                                <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.svg?v=029" class="w-full h-full" alt="USDC">
+                                <img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=029" class="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full p-0.5" alt="SOL">
+                            </div>
+                            <div>
+                                <p class="text-xs font-black text-blue-600 uppercase tracking-widest mb-1">USDC (SOL)</p>
+                                <p class="text-base font-mono text-slate-800 font-bold truncate" id="usdc-sol">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</p>
+                            </div>
+                        </div>
+                        <button onclick="copyText('usdc-sol')" class="text-slate-500 hover:text-blue-600 transition-all p-4 bg-slate-50 rounded-xl border border-slate-200 ml-4 flex-shrink-0 hover:bg-blue-50 shadow-sm"><i class="far fa-copy text-lg"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-white to-blue-50 border border-blue-200 p-8 md:p-10 rounded-[2rem] shadow-lg relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-200/40 rounded-full blur-[80px] -z-10 group-hover:bg-blue-300/40 transition-colors"></div>
+                
+                <h3 class="text-2xl font-black text-slate-900 mb-4 flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3 text-blue-600"><i class="fas fa-university"></i></div>
+                    Fiat & Bank Transfer
+                </h3>
+                
+                <p class="text-slate-600 text-md leading-relaxed mb-6 font-medium">
+                    Prefer traditional banking? We support transfers via Wise, GBP (FPS), and EUR (SEPA).
+                </p>
+
+                <div class="flex items-center space-x-6 mb-8">
+                    <div class="flex flex-col items-center">
+                        <img src="https://wise.com/public-resources/assets/logos/wise/brand_logo.svg" alt="Wise" class="h-6 mb-1 opacity-90">
+                        <span class="text-[10px] text-slate-500 uppercase font-black tracking-widest">Wise</span>
+                    </div>
+                    <div class="h-8 w-px bg-slate-300"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-2xl text-slate-700"><i class="fas fa-sterling-sign"></i></span>
+                        <span class="text-[10px] text-slate-500 uppercase font-black tracking-widest mt-1">GBP</span>
+                    </div>
+                    <div class="flex flex-col items-center ml-2">
+                        <span class="text-2xl text-slate-700"><i class="fas fa-euro-sign"></i></span>
+                        <span class="text-[10px] text-slate-500 uppercase font-black tracking-widest mt-1">EUR</span>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-xl shadow-sm mb-6">
+                    <h4 class="text-red-700 font-black uppercase tracking-wider text-sm mb-3 flex items-center">
+                        <i class="fas fa-exclamation-triangle mr-2 text-lg"></i> CRITICAL SECURITY ALERT
+                    </h4>
+                    <p class="text-red-900 text-sm font-medium mb-3">
+                        Do <strong class="underline">NOT</strong> send money to anyone randomly messaging you. There are many fake profiles impersonating admins.
+                    </p>
+                    <div class="bg-white p-4 rounded-lg border border-red-100 text-sm text-slate-700 font-bold space-y-2">
+                        <p>1. Join the Official Discord Server.</p>
+                        <p>2. Go to the main official channels.</p>
+                        <p>3. Click ONLY on the official <strong>Admin Rashik's</strong> profile.</p>
+                        <p>4. Send a direct message confirming you want to pay via Bank/Wise to get the details.</p>
+                    </div>
+                </div>
+                
+                <a href="https://discord.com/invite/RashikTrades" target="_blank" class="flex items-center justify-center w-full md:w-auto md:inline-flex px-8 py-4 bg-[#5865F2] hover:bg-[#4752c4] text-white font-bold rounded-2xl transition-all shadow-lg shadow-[#5865F2]/30 hover:-translate-y-1 text-lg">
+                    <i class="fab fa-discord mr-3 text-2xl"></i> Join Server to Request Details
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto py-8 px-6 mb-12 space-y-8 relative z-20">
+        <div class="bg-white border-2 border-red-500 p-8 rounded-[2rem] shadow-xl shadow-red-500/10 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-3 h-full bg-red-600"></div>
+            <div class="relative z-10 pl-4">
+                <h3 class="text-red-700 font-black text-2xl mb-4 flex items-center uppercase tracking-wide">
+                    <i class="fas fa-shield-virus mr-4 text-3xl"></i> Strict AML Compliance
+                </h3>
+                <p class="text-slate-700 font-medium text-lg leading-relaxed">
+                    Payments from dark web sources, sanctioned entities, or illicit activities are <strong class="text-red-600">STRICTLY PROHIBITED</strong>. Our automated system utilizes <span class="font-bold border-b-2 border-red-300">Chainalysis Hash Filtering</span> to screen all incoming crypto transactions. Flagged funds will be permanently blocked, and access will be denied.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-white border-2 border-orange-500 p-8 rounded-[2rem] shadow-xl shadow-orange-500/10 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-3 h-full bg-orange-500"></div>
+            <div class="relative z-10 pl-4">
+                <h3 class="text-orange-700 font-black text-2xl mb-5 flex items-center uppercase tracking-wide">
+                    <i class="fas fa-lock mr-4 text-3xl"></i> Payment Security Alert
+                </h3>
+                <ul class="text-slate-700 font-medium text-lg space-y-4 list-none">
+                    <li class="flex items-start"><i class="fas fa-times-circle text-orange-500 mt-1 mr-4 text-xl flex-shrink-0"></i> <span>Payments made using <strong>stolen cards</strong> will lead to immediate account termination.</span></li>
+                    <li class="flex items-start"><i class="fas fa-times-circle text-orange-500 mt-1 mr-4 text-xl flex-shrink-0"></i> <span>Suspicious payment activities will be reported to authorities instantly.</span></li>
+                    <li class="flex items-start"><i class="fas fa-times-circle text-orange-500 mt-1 mr-4 text-xl flex-shrink-0"></i> <span>Chargeback attempts result in a <strong>permanent IP ban</strong> and community blacklist.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 text-white p-8 rounded-[2rem] text-center shadow-2xl mt-12">
+            <h3 class="font-black text-2xl mb-3 uppercase tracking-widest text-slate-100">Strict No Refund Policy</h3>
+            <p class="text-slate-400 text-base font-medium max-w-2xl mx-auto">Due to the digital nature of the RTC Indicator Suite, all sales are final. Once access is granted, we cannot offer refunds, exchanges, or cancellations under any circumstances.</p>
+        </div>
+    </section>
+
+    <footer class="text-center py-12 mt-10 bg-white border-t border-slate-100 relative z-20">
+        <div class="flex justify-center space-x-6 mb-8">
+            <a href="https://x.com/RashikTrades" target="_blank" class="w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-slate-900 hover:text-white transition-all shadow-sm border border-slate-200"><i class="fab fa-x-twitter text-2xl"></i></a>
+            <a href="https://discord.com/invite/RashikTrades" target="_blank" class="w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-[#5865F2] hover:text-white transition-all shadow-sm border border-slate-200"><i class="fab fa-discord text-2xl"></i></a>
+        </div>
+        <p class="text-slate-900 font-black text-xl mb-1 tracking-wide">@RashikTrades</p>
+        <p class="text-slate-500 font-medium text-sm">&copy; 2026 RashikTrades. All Rights Reserved.</p>
+    </footer>
+
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center bg-slate-900 text-white px-8 py-4 rounded-full font-bold shadow-2xl transform translate-y-32 opacity-0 transition-all duration-300 z-50">
+        <i class="fas fa-check-circle text-green-400 mr-3 text-xl"></i> Copied to Clipboard!
+    </div>
+
+    <script>
+        function copyText(elementId) {
+            var text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                var toast = document.getElementById('toast');
+                toast.classList.remove('translate-y-32', 'opacity-0');
+                setTimeout(function() {
+                    toast.classList.add('translate-y-32', 'opacity-0');
+                }, 2500);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
