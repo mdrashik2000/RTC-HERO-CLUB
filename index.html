@@ -3,525 +3,523 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RTC Indicator Suite - Professional Trading Edge</title>
+    <title>RTC Indicator Suite - Premium Trading Edge</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: #f4f7fb;
+            background-color: #f8fafc; /* Pure Apple/Stripe Light Background */
             color: #0f172a;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Ambient Background Blobs */
+        /* 1. Ultra-Soft Pastel Ambient Background for Light Glass Blur */
         @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
+            0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+            33% { transform: translate(40px, -60px) scale(1.1) rotate(10deg); }
+            66% { transform: translate(-30px, 40px) scale(0.9) rotate(-5deg); }
+            100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
         }
-        .animate-blob { animation: blob 8s infinite cubic-bezier(0.4, 0, 0.2, 1); }
-        .animation-delay-2000 { animation-delay: 2.5s; }
+        .blob-1 { animation: blob 15s infinite alternate ease-in-out; }
+        .blob-2 { animation: blob 18s infinite alternate-reverse ease-in-out; }
+        .blob-3 { animation: blob 12s infinite alternate ease-in-out; }
 
-        /* Shimmer Animation for Premium Cards */
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .animate-shimmer { animation: shimmer 2.5s infinite linear; }
-
-        /* Float Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-float { animation: float 4s ease-in-out infinite; }
-
-        /* Premium Glass Cards - Compact & Clean */
-        .glass-card {
-            background: #ffffff;
-            border: 1px solid #eef2f6;
+        /* 🔥 APPLE GRADE LIGHT FROSTED GLASS 🔥 */
+        .pure-glass-light {
+            background: rgba(255, 255, 255, 0.55); /* White tint for glass */
+            backdrop-filter: blur(28px); /* Heavy blur for crystal effect */
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 1); /* Highlights */
+            border-left: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 1.5rem;
-            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            z-index: 10;
         }
-        .glass-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.08);
-            border-color: #cbd5e1;
-        }
-
-        /* Scroll Reveal Animation */
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-up.active {
-            opacity: 1;
-            transform: translateY(0);
+        .pure-glass-light:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.85); /* Gets whiter on hover */
+            border-color: rgba(255, 255, 255, 1);
+            box-shadow: 0 20px 50px -10px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,1);
         }
 
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(135deg, #0284c7 0%, #3b82f6 50%, #6366f1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Inner Glass for Rows */
+        .inner-glass-light {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .inner-glass-light:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(147, 197, 253, 0.8); /* Blue tint on hover */
+            transform: translateX(6px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.12);
         }
 
-        /* Interactive Buttons */
-        .btn-press { transition: all 0.2s ease; }
-        .btn-press:active { transform: scale(0.95); }
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-fast { animation: float 4s ease-in-out infinite; }
+        
+        @keyframes gradient-xy {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .animate-gradient-xy { background-size: 200% 200%; animation: gradient-xy 4s ease infinite; }
 
-        /* Copy Rows - Hover Effect */
-        .crypto-row {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        .crypto-row:hover {
-            border-color: #93c5fd;
-            background: #eff6ff;
-            transform: translateX(4px);
-            box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.15);
-        }
+        /* Typography & Utilities */
+        .text-gradient { background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #9333ea 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-press { transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .btn-press:active { transform: scale(0.96); }
+        .crypto-text-safe { white-space: nowrap; letter-spacing: -0.02em; }
 
-        .crypto-text-safe {
-            white-space: nowrap;
-            letter-spacing: -0.03em;
-        }
+        /* Scroll Reveal */
+        .reveal-up { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-up.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="antialiased pb-20 relative">
+<body class="antialiased pb-10 relative">
 
-    <div class="fixed top-0 left-[-10%] w-[500px] h-[500px] bg-cyan-300/15 rounded-full mix-blend-multiply filter blur-[100px] animate-blob -z-10 pointer-events-none"></div>
-    <div class="fixed top-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-300/15 rounded-full mix-blend-multiply filter blur-[100px] animate-blob animation-delay-2000 -z-10 pointer-events-none"></div>
+    <div class="fixed top-[-5%] left-[-5%] w-[800px] h-[800px] bg-blue-300/25 rounded-full mix-blend-multiply filter blur-[120px] blob-1 -z-10 pointer-events-none"></div>
+    <div class="fixed top-[20%] right-[-5%] w-[700px] h-[700px] bg-purple-300/25 rounded-full mix-blend-multiply filter blur-[120px] blob-2 -z-10 pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] left-[20%] w-[900px] h-[900px] bg-cyan-300/25 rounded-full mix-blend-multiply filter blur-[140px] blob-3 -z-10 pointer-events-none"></div>
 
-    <header class="relative w-full pt-24 pb-16 px-6 flex flex-col items-center justify-center text-center z-10 reveal-up">
-        <div class="max-w-5xl mx-auto">
-            <div class="inline-block mb-4 px-5 py-2 rounded-full bg-white border border-blue-100 text-blue-600 font-extrabold text-xs tracking-widest uppercase shadow-sm animate-float">
-                <i class="fas fa-bolt text-yellow-500 mr-1"></i> Professional Grade Trading Edge
+    <header class="relative w-full pt-20 pb-16 px-6 flex flex-col items-center justify-center text-center z-10 reveal-up">
+        <div class="max-w-5xl mx-auto flex flex-col items-center">
+            
+            <div class="relative inline-flex group mb-14 animate-float">
+                <div class="absolute -inset-[2.5px] bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 rounded-full opacity-60 blur-[6px] group-hover:opacity-100 transition-opacity duration-500 animate-gradient-xy"></div>
+                <div class="absolute -inset-[1.5px] bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 rounded-full opacity-100 shadow-sm"></div>
+                
+                <div class="relative flex items-center px-8 py-3 bg-white/90 backdrop-blur-2xl rounded-full border border-white">
+                    <span class="text-[12px] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 uppercase tracking-[0.2em] mr-6">RTC Social Hub</span>
+                    <div class="flex items-center gap-5 border-l border-slate-200 pl-6">
+                        <a href="https://discord.com/invite/RashikTrades" target="_blank" class="text-slate-400 hover:text-[#5865F2] hover:drop-shadow-[0_4px_10px_rgba(88,101,242,0.3)] transition-all duration-300 hover:scale-125"><i class="fab fa-discord text-[1.2rem]"></i></a>
+                        <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="text-slate-400 hover:text-[#FF0000] hover:drop-shadow-[0_4px_10px_rgba(255,0,0,0.3)] transition-all duration-300 hover:scale-125"><i class="fab fa-youtube text-[1.2rem]"></i></a>
+                        <a href="https://twitter.com/rashiktrades" target="_blank" class="text-slate-400 hover:text-[#0f1419] hover:drop-shadow-[0_4px_10px_rgba(15,20,25,0.2)] transition-all duration-300 hover:scale-125"><i class="fab fa-x-twitter text-[1.2rem]"></i></a>
+                        <a href="https://t.me/RashikTradesCommunity" target="_blank" class="text-slate-400 hover:text-[#0088cc] hover:drop-shadow-[0_4px_10px_rgba(0,136,204,0.3)] transition-all duration-300 hover:scale-125"><i class="fab fa-telegram-plane text-[1.2rem]"></i></a>
+                        <a href="https://instagram.com/rashiktrades" target="_blank" class="text-slate-400 hover:text-[#E1306C] hover:drop-shadow-[0_4px_10px_rgba(225,48,108,0.3)] transition-all duration-300 hover:scale-125"><i class="fab fa-instagram text-[1.2rem]"></i></a>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 text-slate-900 leading-[1.1] transition-transform duration-500 hover:scale-[1.02]">
+
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 text-[#0f172a] leading-[1.05]">
                 THE <span class="text-gradient">RTC INDICATOR</span><br> SUITE
             </h1>
-            <p class="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto">
+            <p class="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
                 Stop guessing. Start executing. The complete 4-indicator arsenal designed for ultimate market clarity and precision.
             </p>
         </div>
     </header>
 
     <section class="max-w-6xl mx-auto py-8 px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 relative z-20">
-        <div class="glass-card p-6 flex items-start group reveal-up" style="transition-delay: 100ms;">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center mr-5 border border-blue-100 text-blue-500 group-hover:bg-blue-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-blue-500/30 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+        <div class="pure-glass-light p-8 flex items-start group reveal-up" style="transition-delay: 100ms;">
+            <div class="w-14 h-14 rounded-2xl bg-white border border-white flex items-center justify-center mr-6 text-blue-500 group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-blue-600 group-hover:text-white group-hover:shadow-[0_10px_20px_rgba(59,130,246,0.3)] transition-all duration-500 flex-shrink-0 animate-float-fast shadow-sm" style="animation-delay: 0s;">
                 <i class="fas fa-crosshairs text-xl"></i>
             </div>
             <div>
-                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-blue-600 transition-colors">[Reversal Pro+]</h3>
-                <p class="text-slate-500 text-sm font-medium">Pinpoint absolute market tops and bottoms. Triggers exclusively on valid CISD from high-probability FVG or Swing points. Zero chart noise.</p>
+                <h3 class="text-[1.3rem] font-bold text-[#0f172a] mb-1.5 group-hover:text-blue-600 transition-colors tracking-tight">[Reversal Pro+]</h3>
+                <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Pinpoint absolute market tops and bottoms. Triggers exclusively on valid CISD from high-probability FVG or Swing points.</p>
             </div>
         </div>
 
-        <div class="glass-card p-6 flex items-start group reveal-up" style="transition-delay: 200ms;">
-            <div class="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center mr-5 border border-indigo-100 text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-indigo-500/30 group-hover:rotate-6 group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+        <div class="pure-glass-light p-8 flex items-start group reveal-up" style="transition-delay: 200ms;">
+            <div class="w-14 h-14 rounded-2xl bg-white border border-white flex items-center justify-center mr-6 text-indigo-500 group-hover:bg-gradient-to-br group-hover:from-indigo-500 group-hover:to-indigo-600 group-hover:text-white group-hover:shadow-[0_10px_20px_rgba(99,102,241,0.3)] transition-all duration-500 flex-shrink-0 animate-float-fast shadow-sm" style="animation-delay: 1s;">
                 <i class="fas fa-chess-knight text-xl"></i>
             </div>
             <div>
-                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-indigo-600 transition-colors">[PO3 Pro Suite]</h3>
-                <p class="text-slate-500 text-sm font-medium">Master institutional order flow. Dive deep into complex market structures with advanced C2 closure tracking algorithms.</p>
+                <h3 class="text-[1.3rem] font-bold text-[#0f172a] mb-1.5 group-hover:text-indigo-600 transition-colors tracking-tight">[PO3 Pro Suite]</h3>
+                <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Master institutional order flow. Dive deep into complex market structures with advanced C2 closure tracking algorithms.</p>
             </div>
         </div>
 
-        <div class="glass-card p-6 flex items-start group reveal-up" style="transition-delay: 300ms;">
-            <div class="w-14 h-14 rounded-xl bg-purple-50 flex items-center justify-center mr-5 border border-purple-100 text-purple-500 group-hover:bg-purple-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-purple-500/30 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+        <div class="pure-glass-light p-8 flex items-start group reveal-up" style="transition-delay: 300ms;">
+            <div class="w-14 h-14 rounded-2xl bg-white border border-white flex items-center justify-center mr-6 text-purple-500 group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-purple-600 group-hover:text-white group-hover:shadow-[0_10px_20px_rgba(168,85,247,0.3)] transition-all duration-500 flex-shrink-0 animate-float-fast shadow-sm" style="animation-delay: 2s;">
                 <i class="fas fa-chart-line text-xl"></i>
             </div>
             <div>
-                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-purple-600 transition-colors">[SMT Pro+]</h3>
-                <p class="text-slate-500 text-sm font-medium">Exploit market inefficiencies. Instantly detects hidden SMT divergence conditions across highly correlated global assets.</p>
+                <h3 class="text-[1.3rem] font-bold text-[#0f172a] mb-1.5 group-hover:text-purple-600 transition-colors tracking-tight">[SMT Pro+]</h3>
+                <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Exploit market inefficiencies. Instantly detects hidden SMT divergence conditions across highly correlated global assets.</p>
             </div>
         </div>
 
-        <div class="glass-card p-6 flex items-start group reveal-up" style="transition-delay: 400ms;">
-            <div class="w-14 h-14 rounded-xl bg-cyan-50 flex items-center justify-center mr-5 border border-cyan-100 text-cyan-500 group-hover:bg-cyan-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-cyan-500/30 group-hover:rotate-6 group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+        <div class="pure-glass-light p-8 flex items-start group reveal-up" style="transition-delay: 400ms;">
+            <div class="w-14 h-14 rounded-2xl bg-white border border-white flex items-center justify-center mr-6 text-cyan-500 group-hover:bg-gradient-to-br group-hover:from-cyan-500 group-hover:to-cyan-600 group-hover:text-white group-hover:shadow-[0_10px_20px_rgba(6,182,212,0.3)] transition-all duration-500 flex-shrink-0 animate-float-fast shadow-sm" style="animation-delay: 3s;">
                 <i class="fas fa-map-marked-alt text-xl"></i>
             </div>
             <div>
-                <h3 class="text-xl font-bold text-slate-800 mb-1 group-hover:text-cyan-600 transition-colors">[POI Pro+]</h3>
-                <p class="text-slate-500 text-sm font-medium">Never miss a sniper entry. Extensive and automated alert matrix mapping every critical Point of Interest (POI) directly on your chart.</p>
+                <h3 class="text-[1.3rem] font-bold text-[#0f172a] mb-1.5 group-hover:text-cyan-600 transition-colors tracking-tight">[POI Pro+]</h3>
+                <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Never miss a sniper entry. Extensive and automated alert matrix mapping every critical Point of Interest (POI) directly on your chart.</p>
             </div>
         </div>
 
-        <div class="md:col-span-2 glass-card p-1 relative overflow-hidden group reveal-up border-2 border-indigo-400 hover:border-indigo-500 shadow-xl shadow-indigo-500/10" style="transition-delay: 500ms;">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full animate-shimmer z-0"></div>
+        <div class="md:col-span-2 relative overflow-hidden rounded-[1.5rem] p-[1.5px] group reveal-up" style="transition-delay: 500ms;">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-300 via-indigo-300 to-purple-300 animate-gradient-xy opacity-80 group-hover:opacity-100 transition-opacity duration-700"></div>
             
-            <div class="relative z-10 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-[1.2rem] p-6 flex flex-col sm:flex-row items-center text-center sm:text-left gap-6">
-                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/40 flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
-                    <i class="fas fa-gift text-white text-3xl animate-bounce"></i>
+            <div class="relative z-10 pure-glass-light !bg-white/80 !border-0 rounded-[1.4rem] p-8 flex flex-col sm:flex-row items-center text-center sm:text-left gap-8">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-[0_10px_30px_rgba(99,102,241,0.4)] flex-shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-6 border-2 border-white">
+                    <i class="fas fa-gift text-white text-3xl"></i>
                 </div>
                 <div>
-                    <div class="inline-block px-4 py-1.5 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-[11px] font-black rounded-full mb-3 uppercase tracking-widest shadow-md">
-                        <i class="fas fa-star mr-1 text-yellow-300"></i> Bonus
+                    <div class="inline-block px-4 py-1.5 bg-white text-indigo-600 text-[11px] font-black rounded-full mb-3 uppercase tracking-[0.15em] border border-white shadow-sm">
+                        <i class="fas fa-star mr-1 text-[#facc15]"></i> Bonus
                     </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-2">PO3 Pro Suite <span class="text-indigo-600">(Advanced Version)</span></h3>
-                    <p class="text-slate-600 font-medium">Purchase the RTC Indicator Suite today! As an exclusive benefit, the highly coveted <strong class="text-indigo-700">PO3 Pro Suite Advanced Edition</strong> is included completely FREE for all our premium members.</p>
+                    <h3 class="text-2xl font-black text-[#0f172a] mb-2 tracking-tight">PO3 Pro Suite <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 font-black text-xl">(Advanced Version)</span></h3>
+                    <p class="text-slate-600 font-medium leading-relaxed text-[15px]">Purchase the RTC Indicator Suite today! As an exclusive benefit, the highly coveted <strong class="text-[#0f172a]">PO3 Pro Suite Advanced Edition</strong> is included completely FREE.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="max-w-7xl mx-auto py-24 px-6 relative z-20 reveal-up">
+    <section class="max-w-6xl mx-auto pt-24 pb-16 px-4 sm:px-6 relative z-20 reveal-up">
         <div class="text-center mb-16">
-            <h2 class="text-5xl font-black text-slate-900 mb-4 tracking-tight">Claim Your Access</h2>
-            <p class="text-slate-500 text-xl font-medium max-w-2xl mx-auto">Includes instant access to the full suite + the exclusive bonus gift.</p>
+            <h2 class="text-4xl md:text-5xl font-black text-[#0f172a] mb-4 tracking-tight">Claim Your Access</h2>
+            <p class="text-slate-500 text-[16px] font-medium max-w-2xl mx-auto">Includes instant access to the full suite + the exclusive bonus gift.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch relative">
+        <div class="flex flex-col lg:flex-row justify-center items-center gap-8 pb-10">
             
-            <div class="relative z-10 group transition-all duration-500 hover:scale-[1.02] flex flex-col h-full">
-                <div class="absolute -inset-[2px] rounded-[2.5rem] bg-gradient-to-br from-blue-300 via-cyan-300 to-blue-400 opacity-0 blur-xl group-hover:opacity-60 transition-opacity duration-500 z-0"></div>
-                
-                <div class="relative z-10 h-full w-full rounded-[2.5rem] p-[2px] bg-gradient-to-b from-slate-200 to-slate-100 group-hover:from-blue-400 group-hover:to-cyan-400 transition-colors duration-500 shadow-xl shadow-slate-200/50 group-hover:shadow-blue-500/30 flex flex-col">
-                    <div class="relative h-full w-full bg-white/95 backdrop-blur-xl rounded-[2.4rem] p-10 flex flex-col items-center text-center">
-                        <div class="w-20 h-20 rounded-2xl bg-blue-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-rocket text-4xl text-blue-500"></i>
-                        </div>
-                        <h3 class="text-xl font-black uppercase tracking-widest text-slate-600 mb-3 group-hover:text-blue-600 transition-colors">1 Month Starter</h3>
-                        <div class="text-6xl font-black text-slate-900 mb-2">$10</div>
-                        <p class="text-slate-400 text-base font-semibold mb-10">Regular Price: $10/mo</p>
-                        <a href="https://whop.com/rashik-trades-community/rtc-hero-membership/" target="_blank" class="w-full mt-auto py-5 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-blue-600 hover:to-cyan-600 text-white font-bold text-lg rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl btn-press">Get Started</a>
+            <div class="w-full lg:w-1/3 relative group transition-all duration-500 hover:-translate-y-3 z-10 flex flex-col h-full">
+                <div class="pure-glass-light p-10 flex flex-col items-center text-center h-full">
+                    <div class="w-16 h-16 rounded-2xl bg-white border border-white flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 text-blue-500 group-hover:shadow-[0_10px_20px_rgba(59,130,246,0.2)] shadow-sm">
+                        <i class="fas fa-rocket text-2xl"></i>
                     </div>
+                    <h3 class="text-slate-500 font-black text-[12px] tracking-[0.2em] uppercase mb-4">1 Month Starter</h3>
+                    <div class="text-6xl font-black text-[#0f172a] mb-2 tracking-tighter">$10</div>
+                    <p class="text-slate-400 text-[13px] font-semibold mb-10">Regular Price: $10/mo</p>
+                    <a href="https://whop.com/rashik-trades-community/rtc-hero-membership/" target="_blank" class="w-full mt-auto py-4 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-[15px] shadow-lg transition-colors btn-press">Get Started</a>
                 </div>
             </div>
 
-            <div class="relative z-20 scale-105 md:-translate-y-4 group overflow-visible flex flex-col h-full">
-                <div class="absolute -inset-[2px] rounded-[2.5rem] bg-gradient-to-br from-blue-400 via-indigo-500 to-blue-600 opacity-40 blur-xl group-hover:opacity-70 transition-opacity duration-500 z-0"></div>
+            <div class="w-full lg:w-1/3 relative group transition-all duration-500 hover:-translate-y-4 z-30 lg:scale-105 flex flex-col h-full">
+                <div class="absolute -inset-[3px] rounded-[1.6rem] bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-400 animate-gradient-xy opacity-60 blur-[12px] group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute -inset-[2px] rounded-[1.6rem] bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-400 animate-gradient-xy shadow-lg"></div>
                 
-                <div class="relative z-10 h-full w-full rounded-[2.5rem] p-[2px] bg-gradient-to-br from-blue-400 via-indigo-500 to-blue-600 shadow-2xl shadow-blue-500/30 flex flex-col">
+                <div class="relative h-full bg-white/95 backdrop-blur-3xl rounded-[1.5rem] p-10 flex flex-col items-center text-center pt-14 border border-white shadow-[inset_0_1px_1px_rgba(255,255,255,1)]">
                     
-                    <div class="absolute -top-5 inset-x-0 mx-auto w-max z-30">
-                        <div class="bg-white rounded-full p-[3px] shadow-sm">
-                            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold px-8 py-2.5 rounded-full shadow-lg tracking-wider uppercase animate-pulse flex items-center justify-center">
-                                <i class="fas fa-crown text-yellow-300 mr-2"></i> Most Popular
+                    <div class="absolute -top-[18px] inset-x-0 mx-auto flex justify-center z-40">
+                        <div class="bg-white/90 backdrop-blur-md px-1.5 rounded-full border border-white shadow-sm">
+                            <div class="bg-[#818cf8] text-white text-[11px] font-black px-6 py-2 rounded-full uppercase tracking-[0.15em] flex items-center shadow-[0_4px_15px_rgba(129,140,248,0.4)]">
+                                <i class="fas fa-crown text-[#fde047] mr-2 text-[14px]"></i> Most Popular
                             </div>
                         </div>
                     </div>
 
-                    <div class="relative h-full w-full bg-white/95 backdrop-blur-xl rounded-[2.4rem] p-12 flex flex-col items-center text-center pt-14">
-                        <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-gem text-5xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-black uppercase tracking-widest text-blue-700 mb-3">6 Months Pro</h3>
-                        <div class="text-7xl font-black text-slate-900 mb-2">$50</div>
-                        <p class="text-green-600 text-lg font-bold mb-10 flex items-center justify-center">
-                            <i class="fas fa-check-circle mr-2"></i> Save $10 <span class="text-slate-400 font-medium line-through ml-2">($60 value)</span>
-                        </p>
-                        <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy/" target="_blank" class="w-full mt-auto py-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white font-black text-xl rounded-2xl shadow-lg shadow-blue-500/40 hover:shadow-blue-500/60 transition-all duration-300 hover:scale-[1.02] btn-press relative overflow-hidden">
-                            <span class="relative z-10">Secure Premium Access</span>
-                            <div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                        </a>
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#3b82f6] to-[#4f46e5] flex items-center justify-center mb-8 shadow-[0_15px_30px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform duration-500 group-hover:rotate-3 border-2 border-white/50 text-white">
+                        <i class="fas fa-gem text-3xl"></i>
                     </div>
+                    <h3 class="text-[#3b82f6] font-black text-[13px] tracking-[0.2em] uppercase mb-4">6 Months Pro</h3>
+                    <div class="text-7xl font-black text-[#0f172a] mb-3 tracking-tighter">$50</div>
+                    
+                    <div class="text-[#10b981] text-[14px] font-bold mb-10 flex items-center justify-center bg-emerald-50/80 px-5 py-2 rounded-full border border-emerald-100 shadow-sm">
+                        <i class="fas fa-check-circle mr-2"></i> Save $10 <span class="text-slate-400 font-medium line-through ml-2 text-[12px]">($60 value)</span>
+                    </div>
+
+                    <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy/" target="_blank" class="w-full mt-auto py-5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-[16px] shadow-[0_10px_25px_rgba(79,70,229,0.3)] transition-all duration-300 btn-press">
+                        Secure Premium Access
+                    </a>
                 </div>
             </div>
 
-            <div class="relative z-10 group transition-all duration-500 hover:scale-[1.02] flex flex-col h-full">
-                <div class="absolute -inset-[2px] rounded-[2.5rem] bg-gradient-to-br from-purple-300 via-fuchsia-300 to-purple-400 opacity-0 blur-xl group-hover:opacity-60 transition-opacity duration-500 z-0"></div>
-                
-                <div class="relative z-10 h-full w-full rounded-[2.5rem] p-[2px] bg-gradient-to-b from-slate-200 to-slate-100 group-hover:from-purple-400 group-hover:to-fuchsia-400 transition-colors duration-500 shadow-xl shadow-slate-200/50 group-hover:shadow-purple-500/30 flex flex-col">
-                    <div class="relative h-full w-full bg-white/95 backdrop-blur-xl rounded-[2.4rem] p-10 flex flex-col items-center text-center">
-                        <div class="w-20 h-20 rounded-2xl bg-purple-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fas fa-shield-alt text-4xl text-purple-500"></i>
-                        </div>
-                        <h3 class="text-xl font-black uppercase tracking-widest text-slate-600 mb-3 group-hover:text-purple-600 transition-colors">1 Year Elite</h3>
-                        <div class="text-6xl font-black text-slate-900 mb-2">$100</div>
-                        <p class="text-purple-600 text-base font-bold mb-10">
-                            Save $20 <span class="text-slate-400 font-medium line-through">($120 value)</span>
-                        </p>
-                        <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy-a2/" target="_blank" class="w-full mt-auto py-5 bg-gradient-to-r from-slate-800 to-slate-900 hover:from-purple-600 hover:to-fuchsia-600 text-white font-bold text-lg rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl btn-press">Claim Elite Tier</a>
+            <div class="w-full lg:w-1/3 relative group transition-all duration-500 hover:-translate-y-3 z-10 flex flex-col h-full">
+                <div class="pure-glass-light p-10 flex flex-col items-center text-center h-full">
+                    <div class="w-16 h-16 rounded-2xl bg-white border border-white flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 text-purple-500 group-hover:shadow-[0_10px_20px_rgba(168,85,247,0.2)] shadow-sm">
+                        <i class="fas fa-shield-alt text-2xl"></i>
                     </div>
+                    <h3 class="text-slate-500 font-black text-[12px] tracking-[0.2em] uppercase mb-4">1 Year Elite</h3>
+                    <div class="text-6xl font-black text-[#0f172a] mb-2 tracking-tighter">$100</div>
+                    <p class="text-purple-500 text-[14px] font-bold mb-10">
+                        Save $20 <span class="text-slate-400 font-medium line-through ml-1 text-[12px]">($120 value)</span>
+                    </p>
+                    <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy-a2/" target="_blank" class="w-full mt-auto py-4 rounded-xl bg-slate-900 hover:bg-purple-600 text-white font-bold text-[15px] shadow-lg transition-colors btn-press">Claim Elite Tier</a>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto py-12 px-4 sm:px-6 relative z-20 reveal-up">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-black text-slate-900 mb-3 tracking-tight">Alternative Payment Hub</h2>
-            <p class="text-slate-500 text-lg font-medium">Bypass automated systems with direct Crypto or Fiat transfers.</p>
+    <section class="max-w-6xl mx-auto py-10 px-4 sm:px-6 relative z-20 reveal-up">
+        <div class="text-center mb-14">
+            <h2 class="text-4xl font-black text-[#0f172a] mb-3 tracking-tight">Alternative Payment Hub</h2>
+            <p class="text-slate-500 text-[16px] font-medium">Bypass automated systems with direct Crypto or Fiat transfers.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             
-            <div class="glass-card p-6 md:p-8 border border-slate-100 shadow-sm flex flex-col h-full hover:shadow-orange-500/5 transition-shadow">
-                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center border-b border-slate-100 pb-4">
-                    <i class="fa-brands fa-bitcoin text-orange-500 mr-3 text-2xl"></i> Direct Crypto Transfer
+            <div class="pure-glass-light p-8 flex flex-col h-full">
+                <h3 class="text-xl font-bold text-[#0f172a] mb-6 flex items-center border-b border-slate-200/60 pb-5">
+                    <i class="fa-brands fa-bitcoin text-slate-400 mr-3 text-2xl animate-pulse"></i> Direct Crypto Transfer
                 </h3>
                 
                 <div class="flex flex-col flex-grow justify-between space-y-3">
-                    
-                    <div class="crypto-row flex items-center justify-between w-full p-3 px-3 sm:px-4 rounded-xl group/row gap-2">
+                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
                         <div class="flex items-center min-w-0 flex-1">
-                            <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg?v=029" class="w-8 h-8 mr-3 flex-shrink-0 group-hover/row:rotate-12 transition-transform" alt="Binance">
-                            <div class="flex flex-col overflow-hidden w-full">
+                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-[#F3BA2F] to-[#d49e1e] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] group-hover/row:scale-[1.05] transition-transform duration-300">
+                                <span class="text-white font-black text-[11px] tracking-[0.15em] uppercase">Binance</span>
+                            </div>
+                            <div class="flex flex-col overflow-hidden w-full ml-4">
                                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Binance Pay ID</p>
-                                <p class="crypto-text-safe text-[12px] sm:text-sm font-mono text-slate-800 font-bold mt-1" id="binance">133010319</p>
+                                <p class="crypto-text-safe text-[13px] sm:text-[14px] font-mono text-[#0f172a] font-bold mt-0.5" id="binance">133010319</p>
                             </div>
                         </div>
-                        <button onclick="copyText('binance')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-blue-600 bg-white border border-slate-200 hover:border-blue-300 rounded-xl shadow-sm btn-press transition-all group/btn"><i class="far fa-copy text-lg group-hover/btn:scale-110 transition-transform"></i></button>
+                        <button onclick="copyText('binance')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-[#F3BA2F] bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
                     </div>
 
-                    <div class="crypto-row flex items-center justify-between w-full p-3 px-3 sm:px-4 rounded-xl group/row gap-2">
+                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
                         <div class="flex items-center min-w-0 flex-1">
-                            <div class="w-8 h-8 mr-3 bg-slate-800 rounded-full flex items-center justify-center flex-shrink-0 group-hover/row:scale-110 transition-transform"><i class="fas fa-exchange-alt text-white text-xs"></i></div>
-                            <div class="flex flex-col overflow-hidden w-full">
+                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-slate-800 to-[#0a0a0a] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] group-hover/row:scale-[1.05] transition-transform duration-300">
+                                <span class="text-[#f7a600] font-black text-[11px] tracking-[0.15em] uppercase">Bybit</span>
+                            </div>
+                            <div class="flex flex-col overflow-hidden w-full ml-4">
                                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Bybit UID</p>
-                                <p class="crypto-text-safe text-[12px] sm:text-sm font-mono text-slate-800 font-bold mt-1" id="bybit">107261338</p>
+                                <p class="crypto-text-safe text-[13px] sm:text-[14px] font-mono text-[#0f172a] font-bold mt-0.5" id="bybit">107261338</p>
                             </div>
                         </div>
-                        <button onclick="copyText('bybit')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-blue-600 bg-white border border-slate-200 hover:border-blue-300 rounded-xl shadow-sm btn-press transition-all group/btn"><i class="far fa-copy text-lg group-hover/btn:scale-110 transition-transform"></i></button>
+                        <button onclick="copyText('bybit')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-800 bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
                     </div>
 
-                    <div class="crypto-row flex items-center justify-between w-full p-3 px-3 sm:px-4 rounded-xl group/row gap-2">
+                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
                         <div class="flex items-center min-w-0 flex-1 overflow-x-auto scrollbar-hide">
-                            <img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=029" class="w-8 h-8 mr-3 flex-shrink-0 group-hover/row:scale-110 transition-transform" alt="USDT">
-                            <div class="flex flex-col w-full">
-                                <p class="text-[10px] font-bold text-green-600 uppercase tracking-widest whitespace-nowrap">USDT (BEP-20 BSC)</p>
-                                <p class="crypto-text-safe text-[9.5px] min-[375px]:text-[10.5px] min-[400px]:text-[11px] sm:text-sm lg:text-[11px] xl:text-[13px] font-mono text-slate-800 font-bold mt-1" id="usdt-bep20">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</p>
+                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-[#26A17B] to-[#1a7358] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] group-hover/row:scale-[1.05] transition-transform duration-300">
+                                <span class="text-white font-black text-[11px] tracking-[0.15em] uppercase">USDT</span>
+                            </div>
+                            <div class="flex flex-col w-full ml-4">
+                                <p class="text-[10px] font-bold text-[#10b981] uppercase tracking-widest whitespace-nowrap">USDT (BEP-20 BSC)</p>
+                                <p class="crypto-text-safe text-[10.5px] sm:text-[13px] lg:text-[12px] xl:text-[13px] font-mono text-[#0f172a] font-bold mt-0.5" id="usdt-bep20">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</p>
                             </div>
                         </div>
-                        <button onclick="copyText('usdt-bep20')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-green-600 bg-white border border-slate-200 hover:border-green-300 rounded-xl shadow-sm btn-press transition-all group/btn ml-2"><i class="far fa-copy text-lg group-hover/btn:scale-110 transition-transform"></i></button>
+                        <button onclick="copyText('usdt-bep20')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-[#10b981] bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn ml-2"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
                     </div>
 
-                    <div class="crypto-row flex items-center justify-between w-full p-3 px-3 sm:px-4 rounded-xl group/row gap-2">
+                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
                         <div class="flex items-center min-w-0 flex-1 overflow-x-auto scrollbar-hide">
-                            <img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=029" class="w-8 h-8 mr-3 flex-shrink-0 group-hover/row:scale-110 transition-transform" alt="USDT">
-                            <div class="flex flex-col w-full">
-                                <p class="text-[10px] font-bold text-red-500 uppercase tracking-widest whitespace-nowrap">USDT (TRC-20)</p>
-                                <p class="crypto-text-safe text-[9.5px] min-[375px]:text-[10.5px] min-[400px]:text-[11px] sm:text-sm lg:text-[11px] xl:text-[13px] font-mono text-slate-800 font-bold mt-1" id="usdt-trc20">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</p>
+                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-[#26A17B] to-[#1a7358] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] group-hover/row:scale-[1.05] transition-transform duration-300">
+                                <span class="text-white font-black text-[11px] tracking-[0.15em] uppercase">USDT</span>
+                            </div>
+                            <div class="flex flex-col w-full ml-4">
+                                <p class="text-[10px] font-bold text-rose-500 uppercase tracking-widest whitespace-nowrap">USDT (TRC-20)</p>
+                                <p class="crypto-text-safe text-[10.5px] sm:text-[13px] lg:text-[12px] xl:text-[13px] font-mono text-[#0f172a] font-bold mt-0.5" id="usdt-trc20">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</p>
                             </div>
                         </div>
-                        <button onclick="copyText('usdt-trc20')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-red-500 bg-white border border-slate-200 hover:border-red-300 rounded-xl shadow-sm btn-press transition-all group/btn ml-2"><i class="far fa-copy text-lg group-hover/btn:scale-110 transition-transform"></i></button>
+                        <button onclick="copyText('usdt-trc20')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-rose-500 bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn ml-2"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
                     </div>
 
-                    <div class="crypto-row flex items-center justify-between w-full p-3 px-3 sm:px-4 rounded-xl group/row gap-2">
+                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
                         <div class="flex items-center min-w-0 flex-1 overflow-x-auto scrollbar-hide">
-                            <div class="relative w-8 h-8 mr-3 flex-shrink-0 group-hover/row:scale-110 transition-transform">
-                                <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.svg?v=029" class="w-full h-full" alt="USDC">
-                                <img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=029" class="absolute -bottom-1 -right-1 w-4 h-4 bg-white rounded-full p-[1px]" alt="SOL">
+                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-[#2775CA] to-[#19589e] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] group-hover/row:scale-[1.05] transition-transform duration-300">
+                                <span class="text-white font-black text-[11px] tracking-[0.15em] uppercase">USDC</span>
                             </div>
-                            <div class="flex flex-col w-full">
-                                <p class="text-[10px] font-bold text-blue-600 uppercase tracking-widest whitespace-nowrap">USDC (SOL)</p>
-                                <p class="crypto-text-safe text-[9.5px] min-[375px]:text-[10.5px] min-[400px]:text-[11px] sm:text-sm lg:text-[11px] xl:text-[13px] font-mono text-slate-800 font-bold mt-1" id="usdc-sol">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</p>
+                            <div class="flex flex-col w-full ml-4">
+                                <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest whitespace-nowrap">USDC (SOL)</p>
+                                <p class="crypto-text-safe text-[10.5px] sm:text-[13px] lg:text-[12px] xl:text-[13px] font-mono text-[#0f172a] font-bold mt-0.5" id="usdc-sol">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</p>
                             </div>
                         </div>
-                        <button onclick="copyText('usdc-sol')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-blue-600 bg-white border border-slate-200 hover:border-blue-300 rounded-xl shadow-sm btn-press transition-all group/btn ml-2"><i class="far fa-copy text-lg group-hover/btn:scale-110 transition-transform"></i></button>
+                        <button onclick="copyText('usdc-sol')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-blue-500 bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn ml-2"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
                     </div>
                 </div>
             </div>
 
-            <div class="glass-card p-6 md:p-8 flex flex-col h-full border border-slate-100 shadow-sm hover:shadow-blue-500/5 transition-shadow">
-                <div class="flex items-center mb-4">
-                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mr-3 text-blue-600"><i class="fas fa-university text-lg"></i></div>
-                    <h3 class="text-2xl font-black text-slate-900">Fiat & Bank Transfer</h3>
+            <div class="pure-glass-light p-8 flex flex-col h-full">
+                <div class="flex items-center mb-6 border-b border-slate-200/60 pb-5">
+                    <i class="fas fa-university mr-3 text-2xl text-slate-400"></i>
+                    <h3 class="text-xl font-bold text-[#0f172a]">Fiat & Bank Transfer</h3>
                 </div>
-                <p class="text-slate-600 text-sm font-medium mb-6">Prefer traditional banking? We securely support transfers via Wise, GBP (FPS), and EUR (SEPA).</p>
+                <p class="text-slate-500 text-[14px] font-medium mb-8 leading-relaxed">Prefer traditional banking? We securely support transfers via Wise, GBP (FPS), and EUR (SEPA).</p>
                 
-                <div class="flex items-center space-x-6 mb-6 bg-white border border-slate-200 rounded-xl p-3 w-fit shadow-sm cursor-default">
+                <div class="bg-white border border-slate-100 flex items-center justify-center space-x-6 mb-10 rounded-2xl p-5 w-fit shadow-sm cursor-default">
                     <div class="flex flex-col items-center">
-                        <img src="https://wise.com/public-resources/assets/logos/wise/brand_logo.svg" alt="Wise" class="h-5 mb-1">
-                        <span class="text-[9px] text-slate-400 font-bold tracking-wider">WISE</span>
+                        <img src="https://wise.com/public-resources/assets/logos/wise/brand_logo.svg" alt="Wise" class="h-5 mb-1.5 hover:scale-105 transition-transform">
+                        <span class="text-[9px] text-slate-400 font-black tracking-[0.2em]">WISE</span>
                     </div>
-                    <div class="h-8 w-px bg-slate-200"></div>
-                    <div class="flex flex-col items-center">
-                        <span class="text-xl font-bold text-slate-700 leading-none">£</span>
-                        <span class="text-[9px] text-slate-400 font-bold tracking-wider mt-1">GBP</span>
+                    <div class="h-10 w-px bg-slate-200"></div>
+                    <div class="flex flex-col items-center px-2">
+                        <span class="text-2xl font-black text-[#0f172a] leading-none">£</span>
+                        <span class="text-[9px] text-slate-400 font-black tracking-[0.2em] mt-1.5">GBP</span>
                     </div>
                     <div class="flex flex-col items-center ml-2">
-                        <span class="text-xl font-bold text-slate-700 leading-none">€</span>
-                        <span class="text-[9px] text-slate-400 font-bold tracking-wider mt-1">EUR</span>
+                        <span class="text-2xl font-black text-[#0f172a] leading-none">€</span>
+                        <span class="text-[9px] text-slate-400 font-black tracking-[0.2em] mt-1.5">EUR</span>
                     </div>
                 </div>
 
-                <div class="bg-slate-50/80 border border-slate-200 rounded-2xl p-5 mb-6 flex-grow transition-colors hover:bg-slate-50 shadow-sm">
-                    <h4 class="text-blue-700 font-black uppercase text-xs tracking-widest mb-4 flex items-center">
-                        <i class="fas fa-shield-check mr-2 text-base text-blue-500"></i> Secure Verification Steps
+                <div class="inner-glass-light rounded-2xl p-6 mb-8 flex-grow">
+                    <h4 class="text-slate-600 font-bold uppercase text-[11px] tracking-[0.15em] mb-5 flex items-center">
+                        <i class="fas fa-shield-check mr-2 text-[14px] text-indigo-400"></i> Verification Steps
                     </h4>
-                    <p class="text-slate-600 text-[13px] font-medium mb-4 leading-relaxed">To prevent impersonation, follow these exact steps to receive our bank details securely:</p>
-                    
-                    <div class="space-y-3">
+                    <div class="space-y-4">
                         <div class="flex items-start">
-                            <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mr-3 shadow-sm shadow-blue-500/30">1</div>
-                            <p class="text-[13px] text-slate-700 font-medium pt-0.5">Join the <strong class="text-slate-900">Official Discord Server</strong>.</p>
+                            <div class="w-5 h-5 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-[10px] font-black mr-3 shadow-sm">1</div>
+                            <p class="text-[13px] text-slate-500 font-medium pt-0.5">Join the <strong class="text-[#0f172a]">Official Discord Server</strong>.</p>
                         </div>
                         <div class="flex items-start">
-                            <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mr-3 shadow-sm shadow-blue-500/30">2</div>
-                            <p class="text-[13px] text-slate-700 font-medium pt-0.5">Navigate to the main official channels.</p>
+                            <div class="w-5 h-5 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-[10px] font-black mr-3 shadow-sm">2</div>
+                            <p class="text-[13px] text-slate-500 font-medium pt-0.5">Navigate to the main official channels.</p>
                         </div>
                         <div class="flex items-start">
-                            <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mr-3 shadow-sm shadow-blue-500/30">3</div>
-                            <p class="text-[13px] text-slate-700 font-medium pt-0.5">Click ONLY on the official <strong class="text-slate-900">Admin Rashik's</strong> profile.</p>
+                            <div class="w-5 h-5 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-[10px] font-black mr-3 shadow-sm">3</div>
+                            <p class="text-[13px] text-slate-500 font-medium pt-0.5">Click ONLY on the official <strong class="text-[#0f172a]">Admin Rashik's</strong> profile.</p>
                         </div>
                         <div class="flex items-start">
-                            <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mr-3 shadow-sm shadow-blue-500/30">4</div>
-                            <p class="text-[13px] text-slate-700 font-medium pt-0.5">Send a direct message requesting Bank/Wise details.</p>
+                            <div class="w-5 h-5 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-[10px] font-black mr-3 shadow-sm">4</div>
+                            <p class="text-[13px] text-slate-500 font-medium pt-0.5">Send a direct message requesting Bank/Wise details.</p>
                         </div>
                     </div>
                 </div>
                 
-                <a href="https://discord.com/invite/RashikTrades" target="_blank" class="w-full mt-auto py-3.5 bg-[#5865F2] hover:bg-[#4752c4] text-white font-bold rounded-xl btn-press flex items-center justify-center transition-all shadow-md hover:shadow-lg hover:shadow-[#5865F2]/40 text-sm group">
-                    <i class="fab fa-discord mr-2 text-lg group-hover:rotate-12 transition-transform"></i> Join Server to Request Details
+                <a href="https://discord.com/invite/RashikTrades" target="_blank" class="w-full mt-auto py-4 bg-[#5865F2] hover:bg-[#4752c4] text-white font-bold rounded-xl btn-press flex items-center justify-center transition-all shadow-[0_4px_15px_rgba(88,101,242,0.3)] hover:shadow-[0_8px_25px_rgba(88,101,242,0.4)] text-[15px] group">
+                    <i class="fab fa-discord mr-2 text-[18px] group-hover:rotate-12 transition-transform"></i> Request Details via Discord
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto py-12 px-4 sm:px-6 relative z-20 reveal-up">
-        <div class="text-center mb-10">
-            <div class="inline-block mb-3 px-4 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] tracking-widest uppercase shadow-sm">
-                Masterclass Series
-            </div>
-            <h2 class="text-4xl font-black text-slate-900 mb-2">Indicator Settings Breakdown</h2>
-            <p class="text-slate-500 text-lg font-medium">Watch these visual guides to master the RTC Suite.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-            <div class="glass-card p-5 flex flex-col hover:border-slate-300 transition-all h-full group">
-                <a href="https://youtu.be/uL51FufvU6Q" target="_blank" class="relative block rounded-[1rem] overflow-hidden mb-4 aspect-video shadow-sm bg-slate-900">
-                    <img src="https://img.youtube.com/vi/uL51FufvU6Q/maxresdefault.jpg?v=latest" alt="Part 1 Thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                        <div class="w-14 h-14 bg-red-600/90 backdrop-blur-sm rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-600 transition-all duration-300">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
-                    </div>
-                </a>
-                <div class="px-1 flex-grow">
-                    <span class="inline-block px-3 py-1 bg-[#eef2ff] text-[#3b82f6] text-[11px] font-black tracking-wide rounded-md mb-3">Part 1</span>
-                    <h3 class="text-[17px] font-black text-[#1e293b] mb-2 leading-snug group-hover:text-blue-600 transition-colors">Indicator Suite Breakdown</h3>
-                    <p class="text-[#64748b] text-[13px] font-medium leading-relaxed">Master the basic setup, features and precise configuration of the indicators.</p>
-                </div>
-            </div>
-
-            <div class="glass-card p-5 flex flex-col hover:border-slate-300 transition-all h-full group">
-                <a href="https://youtu.be/oyZyEIKUix4" target="_blank" class="relative block rounded-[1rem] overflow-hidden mb-4 aspect-video shadow-sm bg-slate-900">
-                    <img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg?v=latest" alt="Part 2 Thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                        <div class="w-14 h-14 bg-red-600/90 backdrop-blur-sm rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(220,38,38,0.5)] group-hover:scale-110 group-hover:bg-red-600 transition-all duration-300">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
-                    </div>
-                </a>
-                <div class="px-1 flex-grow">
-                    <span class="inline-block px-3 py-1 bg-[#eef2ff] text-[#3b82f6] text-[11px] font-black tracking-wide rounded-md mb-3">Part 2</span>
-                    <h3 class="text-[17px] font-black text-[#1e293b] mb-2 leading-snug group-hover:text-blue-600 transition-colors">Advanced Settings</h3>
-                    <p class="text-[#64748b] text-[13px] font-medium leading-relaxed">Deep dive into complex market structure and institutional entry models.</p>
-                </div>
-            </div>
-
-            <div class="bg-[#f8fafc] border-[2px] border-dashed border-[#cbd5e1] rounded-[1.5rem] p-5 flex flex-col items-center justify-center text-center h-full group hover:bg-slate-100 transition-colors">
-                <div class="w-14 h-14 bg-[#e2e8f0] rounded-full flex items-center justify-center mb-4 text-[#64748b] group-hover:text-blue-500 transition-colors">
-                    <i class="fas fa-hourglass-half text-xl animate-pulse"></i>
-                </div>
-                <span class="inline-block px-3 py-1 bg-[#e2e8f0] text-[#475569] text-[11px] font-black tracking-wide rounded-md mb-4 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors">Upcoming</span>
-                <h3 class="text-[19px] font-black text-[#334155] mb-2">Part 3: Coming Soon</h3>
-                <p class="text-[#64748b] text-[13px] font-medium px-4 leading-relaxed">More advanced breakdowns and live trade examples are on the way. Stay tuned!</p>
             </div>
         </div>
     </section>
 
     <section class="max-w-6xl mx-auto py-16 px-4 sm:px-6 relative z-20 reveal-up">
-        <div class="text-center mb-10">
-            <h2 class="text-4xl font-black text-slate-900 mb-2">Join The Community</h2>
-            <p class="text-slate-500 text-lg font-medium">Connect with elite traders directly across our platforms.</p>
+        <div class="text-center mb-12">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-500 font-bold text-[10px] tracking-[0.2em] uppercase shadow-sm">
+                Masterclass Series
+            </div>
+            <h2 class="text-4xl font-black text-[#0f172a] mb-3">Indicator Breakdown</h2>
+            <p class="text-slate-500 text-[16px] font-medium">Watch these visual guides to master the RTC Suite.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <div class="pure-glass-light p-6 flex flex-col h-full group">
+                <a href="https://youtu.be/uL51FufvU6Q" target="_blank" class="relative block rounded-[1.2rem] overflow-hidden mb-6 aspect-video bg-slate-900 border border-slate-200">
+                    <img src="https://img.youtube.com/vi/uL51FufvU6Q/maxresdefault.jpg?v=latest" alt="Part 1 Thumbnail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center">
+                        <div class="w-14 h-14 bg-white/90 backdrop-blur-md border border-white rounded-full flex items-center justify-center text-[#0f172a] shadow-[0_4px_15px_rgba(0,0,0,0.1)] group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-play text-xl ml-1"></i>
+                        </div>
+                    </div>
+                </a>
+                <div class="px-2 flex-grow">
+                    <span class="inline-block px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[10px] font-black tracking-widest uppercase rounded mb-4 shadow-sm">Part 1</span>
+                    <h3 class="text-[17px] font-bold text-[#0f172a] mb-2 leading-snug group-hover:text-blue-600 transition-colors">Indicator Suite Breakdown</h3>
+                    <p class="text-slate-500 text-[13px] font-medium leading-relaxed">Master the basic setup, features and precise configuration of the indicators.</p>
+                </div>
+            </div>
+
+            <div class="pure-glass-light p-6 flex flex-col h-full group">
+                <a href="https://youtu.be/oyZyEIKUix4" target="_blank" class="relative block rounded-[1.2rem] overflow-hidden mb-6 aspect-video bg-slate-900 border border-slate-200">
+                    <img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg?v=latest" alt="Part 2 Thumbnail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center">
+                        <div class="w-14 h-14 bg-white/90 backdrop-blur-md border border-white rounded-full flex items-center justify-center text-[#0f172a] shadow-[0_4px_15px_rgba(0,0,0,0.1)] group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-play text-xl ml-1"></i>
+                        </div>
+                    </div>
+                </a>
+                <div class="px-2 flex-grow">
+                    <span class="inline-block px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[10px] font-black tracking-widest uppercase rounded mb-4 shadow-sm">Part 2</span>
+                    <h3 class="text-[17px] font-bold text-[#0f172a] mb-2 leading-snug group-hover:text-blue-600 transition-colors">Advanced Settings</h3>
+                    <p class="text-slate-500 text-[13px] font-medium leading-relaxed">Deep dive into complex market structure and institutional entry models.</p>
+                </div>
+            </div>
+
+            <div class="inner-glass-light !border-[1.5px] border-dashed !border-slate-300 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center h-full group hover:!bg-white">
+                <div class="w-14 h-14 bg-white border border-slate-200 rounded-full flex items-center justify-center mb-6 text-slate-400 group-hover:text-blue-500 transition-colors shadow-sm">
+                    <i class="fas fa-hourglass-half text-xl animate-pulse"></i>
+                </div>
+                <span class="inline-block px-3 py-1 bg-white border border-slate-200 text-slate-500 text-[10px] font-black tracking-widest uppercase rounded mb-4 shadow-sm">Upcoming</span>
+                <h3 class="text-[17px] font-bold text-[#0f172a] mb-2">Part 3: Coming Soon</h3>
+                <p class="text-slate-500 text-[13px] font-medium px-4 leading-relaxed">More advanced breakdowns and live trade examples are on the way.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto py-16 px-4 sm:px-6 relative z-20 reveal-up">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-black text-[#0f172a] mb-2 tracking-tight">Join The Community</h2>
+            <p class="text-slate-500 text-[16px] font-medium">Connect with elite traders directly across our platforms.</p>
         </div>
 
         <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
-            <a href="https://discord.com/invite/RashikTrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm glass-card p-8 flex flex-col items-center text-center hover:border-[#5865F2]/40 hover:shadow-xl hover:shadow-[#5865F2]/10 h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-[#f0f2ff] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-300">
-                    <i class="fab fa-discord text-3xl text-[#5865F2] group-hover:animate-bounce"></i>
+            <a href="https://discord.com/invite/RashikTrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
+                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(88,101,242,0.2)] text-[#5865F2]">
+                    <i class="fab fa-discord text-3xl"></i>
                 </div>
-                <h3 class="text-xl font-black text-slate-900 mb-2">Discord</h3>
+                <h3 class="text-xl font-bold text-[#0f172a] mb-2">Discord</h3>
                 <p class="text-slate-500 text-[13px] font-medium mb-6">Live voice chats & elite community.</p>
-                <span class="mt-auto px-5 py-2.5 bg-[#f0f2ff] text-[#5865F2] group-hover:bg-[#5865F2] group-hover:text-white font-bold text-sm rounded-full transition-colors flex items-center justify-center gap-2 w-fit mx-auto">Join Server <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></span>
+                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#5865F2] group-hover:bg-[#5865F2] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm">Join Server</span>
             </a>
 
-            <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm glass-card p-8 flex flex-col items-center text-center hover:border-red-300 hover:shadow-xl hover:shadow-red-500/10 h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-[#fff0f0] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-300">
-                    <i class="fab fa-youtube text-3xl text-[#FF0000]"></i>
+            <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
+                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(255,0,0,0.2)] text-[#FF0000]">
+                    <i class="fab fa-youtube text-3xl"></i>
                 </div>
-                <h3 class="text-xl font-black text-slate-900 mb-2">YouTube</h3>
+                <h3 class="text-xl font-bold text-[#0f172a] mb-2">YouTube</h3>
                 <p class="text-slate-500 text-[13px] font-medium mb-6">Watch full market analysis & tutorials.</p>
-                <span class="mt-auto px-5 py-2.5 bg-[#fff0f0] text-[#FF0000] group-hover:bg-[#FF0000] group-hover:text-white font-bold text-sm rounded-full transition-colors flex items-center justify-center gap-2 w-fit mx-auto">Subscribe Channel <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></span>
+                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#FF0000] group-hover:bg-[#FF0000] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm">Subscribe</span>
             </a>
             
-            <a href="https://twitter.com/rashiktrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm glass-card p-8 flex flex-col items-center text-center hover:border-slate-400 hover:shadow-xl hover:shadow-slate-900/10 h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-[#f3f4f6] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-300">
-                    <svg class="w-6 h-6 fill-current text-[#0f1419] group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+            <a href="https://twitter.com/rashiktrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
+                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(15,20,25,0.1)] text-[#0f1419]">
+                    <i class="fab fa-x-twitter text-3xl"></i>
                 </div>
-                <h3 class="text-xl font-black text-slate-900 mb-2">X (Twitter)</h3>
-                <p class="text-slate-500 text-[13px] font-medium mb-6">Daily trade setups and quick updates.</p>
-                <span class="mt-auto px-5 py-2.5 bg-[#f3f4f6] text-[#0f1419] group-hover:bg-[#0f1419] group-hover:text-white font-bold text-sm rounded-full transition-colors flex items-center justify-center gap-2 w-fit mx-auto">Follow Us <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></span>
+                <h3 class="text-xl font-bold text-[#0f172a] mb-2">X (Twitter)</h3>
+                <p class="text-slate-500 text-[13px] font-medium mb-6">Daily trade setups and updates.</p>
+                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#0f1419] group-hover:bg-[#0f1419] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm">Follow Us</span>
             </a>
             
-            <a href="https://t.me/RashikTradesCommunity" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm glass-card p-8 flex flex-col items-center text-center hover:border-[#0088cc]/40 hover:shadow-xl hover:shadow-[#0088cc]/10 h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-[#f0f9ff] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-300">
-                    <i class="fab fa-telegram-plane text-3xl text-[#0088cc] group-hover:-rotate-12 transition-transform"></i>
+            <a href="https://t.me/RashikTradesCommunity" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
+                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(0,136,204,0.2)] text-[#0088cc]">
+                    <i class="fab fa-telegram-plane text-3xl"></i>
                 </div>
-                <h3 class="text-xl font-black text-slate-900 mb-2">Telegram</h3>
+                <h3 class="text-xl font-bold text-[#0f172a] mb-2">Telegram</h3>
                 <p class="text-slate-500 text-[13px] font-medium mb-6">Instant market updates & free setups.</p>
-                <span class="mt-auto px-5 py-2.5 bg-[#f0f9ff] text-[#0088cc] group-hover:bg-[#0088cc] group-hover:text-white font-bold text-sm rounded-full transition-colors flex items-center justify-center gap-2 w-fit mx-auto">Join Channel <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></span>
+                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#0088cc] group-hover:bg-[#0088cc] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm">Join Channel</span>
             </a>
             
-            <a href="https://instagram.com/rashiktrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm glass-card p-8 flex flex-col items-center text-center hover:border-[#E1306C]/40 hover:shadow-xl hover:shadow-[#E1306C]/10 h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-[#fff0f5] flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-300">
-                    <i class="fab fa-instagram text-3xl text-[#E1306C] group-hover:rotate-12 transition-transform"></i>
+            <a href="https://instagram.com/rashiktrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
+                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(225,48,108,0.2)] text-[#E1306C]">
+                    <i class="fab fa-instagram text-3xl"></i>
                 </div>
-                <h3 class="text-xl font-black text-slate-900 mb-2">Instagram</h3>
+                <h3 class="text-xl font-bold text-[#0f172a] mb-2">Instagram</h3>
                 <p class="text-slate-500 text-[13px] font-medium mb-6">Trader lifestyle & behind the scenes.</p>
-                <span class="mt-auto px-5 py-2.5 bg-[#fff0f5] text-[#E1306C] group-hover:bg-gradient-to-r group-hover:from-[#f09433] group-hover:to-[#bc1888] group-hover:text-white font-bold text-sm rounded-full transition-colors flex items-center justify-center gap-2 w-fit mx-auto border border-transparent">Follow Us <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></span>
+                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#E1306C] group-hover:bg-[#E1306C] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm">Follow Us</span>
             </a>
         </div>
     </section>
 
-    <section class="max-w-4xl mx-auto py-12 px-4 sm:px-6 relative z-20 reveal-up flex flex-col gap-6">
-        <div class="glass-card hover:border-red-300 hover:shadow-red-500/10 border-l-[6px] border-l-[#d32f2f] rounded-xl p-8 transition-all duration-300 group">
-            <h3 class="text-[#d32f2f] font-black text-xl mb-3 flex items-center uppercase tracking-wide group-hover:scale-[1.01] transition-transform origin-left">
-                <i class="fas fa-shield-virus mr-3 group-hover:animate-pulse"></i> STRICT AML COMPLIANCE
-            </h3>
-            <p class="text-[#334155] font-medium text-[14px] leading-relaxed">
-                Payments from dark web sources, sanctioned entities, or illicit activities are <strong class="text-[#d32f2f]">STRICTLY PROHIBITED</strong>. Our automated system utilizes <span class="font-bold underline decoration-slate-300 underline-offset-4 hover:decoration-red-400 transition-colors cursor-default">Chainalysis Hash Filtering</span> to screen all incoming crypto transactions. Flagged funds allowance will be permanently blocked, and access will be denied.
-            </p>
-        </div>
-
-        <div class="glass-card hover:border-orange-300 hover:shadow-orange-500/10 border-l-[6px] border-l-[#ea580c] rounded-xl p-8 transition-all duration-300 group">
-            <h3 class="text-[#c2410c] font-black text-xl mb-5 flex items-center uppercase tracking-wide group-hover:scale-[1.01] transition-transform origin-left">
-                <i class="fas fa-lock mr-3 group-hover:animate-bounce" style="animation-duration: 2s;"></i> PAYMENT SECURITY ALERT
-            </h3>
-            <ul class="text-[#334155] font-medium text-[14px] space-y-4 list-none">
-                <li class="flex items-start group/item hover:translate-x-1 transition-transform"><i class="fas fa-times-circle text-[#ea580c] mt-0.5 mr-3 text-lg flex-shrink-0 group-hover/item:scale-110 transition-transform"></i> <span>Payments made using <strong>stolen cards</strong> will lead to immediate account termination.</span></li>
-                <li class="flex items-start group/item hover:translate-x-1 transition-transform"><i class="fas fa-times-circle text-[#ea580c] mt-0.5 mr-3 text-lg flex-shrink-0 group-hover/item:scale-110 transition-transform"></i> <span>Suspicious payment activities will be reported to authorities instantly.</span></li>
-                <li class="flex items-start group/item hover:translate-x-1 transition-transform"><i class="fas fa-times-circle text-[#ea580c] mt-0.5 mr-3 text-lg flex-shrink-0 group-hover/item:scale-110 transition-transform"></i> <span>Chargeback attempts result in a <strong>permanent IP ban</strong> and community blacklist.</span></li>
-            </ul>
-        </div>
-
-        <div class="bg-[#0f172a] rounded-xl p-10 text-center shadow-lg hover:shadow-2xl hover:shadow-slate-900/40 transition-all duration-300 hover:-translate-y-1">
-            <h3 class="font-black text-2xl mb-4 uppercase tracking-[0.15em] text-white">STRICT NO REFUND POLICY</h3>
-            <p class="text-slate-300 text-[14px] font-medium max-w-2xl mx-auto leading-relaxed">100% Digital Access - All Sales Final. Due to the digital nature of the RTC Indicator Suite, once access is granted, we cannot offer refunds, exchanges, or cancellations under any circumstances.</p>
+    <section class="max-w-6xl mx-auto px-6 pt-16 pb-10 relative z-20 reveal-up border-t border-slate-200/80 mt-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-slate-500 text-[13px] leading-[1.8]">
+            <div class="hover:-translate-y-1 transition-transform duration-300">
+                <h4 class="font-bold text-[#0f172a] mb-4 uppercase tracking-[0.15em] text-[11px] flex items-center">
+                    <i class="fas fa-shield-alt mr-2 text-indigo-500 text-[14px]"></i> AML Compliance
+                </h4>
+                <p>Payments from illicit activities, sanctioned entities, or dark web sources are strictly prohibited. We use automated Chainalysis Hash Filtering to screen incoming crypto transactions. Flagged funds will be permanently blocked.</p>
+            </div>
+            <div class="hover:-translate-y-1 transition-transform duration-300">
+                <h4 class="font-bold text-[#0f172a] mb-4 uppercase tracking-[0.15em] text-[11px] flex items-center">
+                    <i class="fas fa-lock mr-2 text-indigo-500 text-[14px]"></i> Payment Security
+                </h4>
+                <p>Payments made using stolen cards will lead to immediate account termination and will be reported to authorities. Any fraudulent chargeback attempts will result in a permanent IP ban and community blacklist.</p>
+            </div>
+            <div class="hover:-translate-y-1 transition-transform duration-300">
+                <h4 class="font-bold text-[#0f172a] mb-4 uppercase tracking-[0.15em] text-[11px] flex items-center">
+                    <i class="fas fa-file-invoice-dollar mr-2 text-indigo-500 text-[14px]"></i> Refund Policy
+                </h4>
+                <p>100% Digital Access - All Sales Final. Due to the digital nature of the RTC Indicator Suite, once access is granted, we cannot offer refunds, exchanges, or cancellations under any circumstances.</p>
+            </div>
         </div>
     </section>
 
-    <footer class="text-center py-10 mt-6 border-t border-slate-200 relative z-20 reveal-up">
-        <p class="text-slate-900 font-black text-xl mb-1">@RashikTrades</p>
-        <p class="text-slate-400 font-medium text-sm">&copy; 2026 RashikTrades. All Rights Reserved.</p>
+    <footer class="text-center py-10 relative z-20">
+        <p class="text-[#0f172a] font-black text-xl mb-1 tracking-tight">@RashikTrades</p>
+        <p class="text-slate-500 font-medium text-[13px]">&copy; 2026 RashikTrades.com. All Rights Reserved.</p>
     </footer>
 
-    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center bg-slate-900 text-white px-6 py-3 rounded-full font-bold shadow-2xl transform translate-y-32 opacity-0 transition-all duration-300 z-50 border border-slate-700 text-sm">
-        <i class="fas fa-check-circle text-green-400 mr-2 text-lg"></i> Copied to Clipboard!
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center bg-[#0f172a]/95 backdrop-blur-2xl text-white px-7 py-3.5 rounded-full font-medium shadow-[0_20px_40px_rgba(0,0,0,0.15)] transform translate-y-32 opacity-0 transition-all duration-400 z-50 text-[14px] border border-white/20">
+        <i class="fas fa-check-circle text-emerald-400 mr-2.5 text-lg"></i> Copied to clipboard
     </div>
 
     <script>
