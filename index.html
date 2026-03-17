@@ -66,21 +66,6 @@
             box-shadow: 0 25px 50px -10px rgba(79, 70, 229, 0.08), inset 0 1px 0 rgba(255,255,255,1);
         }
 
-        /* Specialized Ultra-Clear Glass for Center Pricing Card */
-        .glass-ultra-clear {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(35px);
-            -webkit-backdrop-filter: blur(35px);
-            border: 1px solid rgba(255, 255, 255, 1);
-            border-radius: 2rem;
-            box-shadow: inset 0 4px 20px rgba(255, 255, 255, 0.8);
-            position: relative;
-            z-index: 10;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateZ(0);
-        }
-
         /* Inner Glass for Rows */
         .inner-glass-light {
             background: rgba(255, 255, 255, 0.6);
@@ -99,29 +84,29 @@
             box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.1);
         }
 
-        /* ✨ SHINY SWEEP EFFECT ✨ */
-        .pure-glass-light::after, .inner-glass-light::after, .glass-ultra-clear::after {
+        /* ✨ VIP DARK SHINY SWEEP EFFECT ✨ */
+        .shiny-sweep::after {
             content: '';
             position: absolute;
-            top: 0; 
-            left: -150%;
-            width: 70%; 
-            height: 100%;
-            background: linear-gradient(to right, 
-                rgba(255,255,255,0) 0%, 
-                rgba(255,255,255,0.8) 50%, 
-                rgba(255,255,255,0) 100%);
+            top: 0; left: -150%; width: 70%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0) 100%);
             transform: skewX(-25deg);
             transition: left 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
-            z-index: 1;
-            pointer-events: none;
+            z-index: 1; pointer-events: none;
         }
-        .pure-glass-light:hover::after, .inner-glass-light:hover::after, .glass-ultra-clear:hover::after, .group:hover > .glass-ultra-clear::after {
+        .pure-glass-light::after, .inner-glass-light::after {
+            content: ''; position: absolute; top: 0; left: -150%; width: 70%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); transition: left 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 1; pointer-events: none;
+        }
+
+        .group:hover > .shiny-sweep::after, .pure-glass-light:hover::after, .inner-glass-light:hover::after {
             left: 150%;
         }
 
         /* Ensures content stays above the shine */
-        .pure-glass-light > *, .inner-glass-light > *, .glass-ultra-clear > * {
+        .pure-glass-light > *, .inner-glass-light > * {
             position: relative;
             z-index: 10;
         }
@@ -244,123 +229,78 @@
     </section>
 
     <section class="max-w-7xl mx-auto pt-24 pb-16 px-4 sm:px-6 relative z-20 reveal-up">
-        
-        <div class="text-center mb-12 relative">
-            <div id="flash-sale-badge" class="inline-flex items-center justify-center bg-gradient-to-r from-red-500 to-orange-500 text-white px-6 py-2.5 rounded-full font-black text-[12px] tracking-[0.2em] uppercase shadow-[0_4px_15px_rgba(239,68,68,0.4)] mb-5 animate-pulse transition-all duration-500">
-                <i class="fas fa-bolt text-yellow-300 mr-2 text-[14px]"></i> Sunday Flash Sale - Ends Tonight <i class="fas fa-bolt text-yellow-300 ml-2 text-[14px]"></i>
-            </div>
-
-            <div id="countdown" class="flex justify-center gap-3 sm:gap-4 mb-8">
-                <div class="flex flex-col items-center">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white/80 backdrop-blur-md border border-red-200 rounded-xl shadow-[0_8px_20px_rgba(239,68,68,0.15)] flex items-center justify-center text-2xl sm:text-3xl font-black text-red-500 font-mono">
-                        <span id="hours">00</span>
-                    </div>
-                    <span class="text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-widest">Hours</span>
-                </div>
-                <div class="text-3xl font-black text-red-400 mt-2">:</div>
-                <div class="flex flex-col items-center">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white/80 backdrop-blur-md border border-red-200 rounded-xl shadow-[0_8px_20px_rgba(239,68,68,0.15)] flex items-center justify-center text-2xl sm:text-3xl font-black text-red-500 font-mono">
-                        <span id="minutes">00</span>
-                    </div>
-                    <span class="text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-widest">Mins</span>
-                </div>
-                <div class="text-3xl font-black text-red-400 mt-2">:</div>
-                <div class="flex flex-col items-center">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white/80 backdrop-blur-md border border-red-200 rounded-xl shadow-[0_8px_20px_rgba(239,68,68,0.15)] flex items-center justify-center text-2xl sm:text-3xl font-black text-red-500 font-mono">
-                        <span id="seconds">00</span>
-                    </div>
-                    <span class="text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-widest">Secs</span>
-                </div>
-            </div>
-
+        <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-black text-[#0f172a] mb-4 tracking-tight drop-shadow-sm">Claim Your Access</h2>
-            <p class="text-slate-500 text-[16px] font-medium max-w-2xl mx-auto mb-8">Includes instant access to the full suite + the exclusive bonus gift.</p>
-
-            <div class="flex justify-center mb-8">
-                <div class="bg-white/80 backdrop-blur-md border border-red-200/60 rounded-full p-1.5 flex items-center shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer" onclick="copyText('couponCodeFlash')">
-                    <span class="text-slate-500 text-[13px] font-medium pl-4 pr-3 flex items-center">
-                        <i class="fas fa-ticket-alt text-red-500 mr-2"></i> Apply code at checkout:
-                    </span>
-                    <button class="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-mono font-bold text-[14px] px-5 py-2.5 rounded-full tracking-wider flex items-center gap-2 transition-all btn-press shadow-sm">
-                        <span id="couponCodeFlash">15SUNDAY</span>
-                        <i class="far fa-copy text-[13px] opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>
-                    </button>
-                </div>
-            </div>
+            <p class="text-slate-500 text-[16px] font-medium max-w-2xl mx-auto">Includes instant access to the full suite + the exclusive bonus gift.</p>
         </div>
 
         <div class="flex flex-col lg:flex-row justify-center items-center gap-8 pb-10">
             
-            <div class="w-full lg:w-1/3 relative group transition-all duration-500 z-10 flex flex-col h-full">
-                <div class="pure-glass-light p-10 flex flex-col items-center text-center h-full">
-                    <div class="w-16 h-16 rounded-2xl bg-white border border-white flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 text-blue-500 group-hover:shadow-[0_10px_20px_rgba(59,130,246,0.15)] shadow-sm">
+            <div class="w-full lg:w-1/3 relative group transition-all duration-500 z-10 flex flex-col h-full hover:-translate-y-2">
+                <div class="bg-[#0f1e38] border border-white/10 group-hover:border-cyan-500/40 p-10 rounded-[2rem] flex flex-col items-center text-center h-full shadow-2xl transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(6,182,212,0.15)] relative overflow-hidden shiny-sweep">
+                    
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 border border-white/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 text-cyan-400 shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative z-10">
                         <i class="fas fa-rocket text-2xl"></i>
                     </div>
-                    <h3 class="text-slate-500 font-black text-[12px] tracking-[0.2em] uppercase mb-4">1 Month Starter</h3>
                     
-                    <div class="flex items-end justify-center mb-2 tracking-tighter">
-                        <span class="text-3xl font-black text-slate-400 line-through mr-2 mb-1.5 opacity-80">$10</span>
-                        <div class="text-6xl font-black text-red-500 drop-shadow-sm">$8</div>
-                    </div>
+                    <h3 class="text-cyan-400 font-black text-[12px] tracking-[0.2em] uppercase mb-4 relative z-10">1 Month Starter</h3>
+                    <div class="text-6xl font-black text-white mb-2 tracking-tighter drop-shadow-md relative z-10">$10</div>
+                    <p class="text-slate-300 text-[13px] font-semibold mb-10 relative z-10">Regular Price: $10/mo</p>
                     
-                    <p class="text-slate-500 text-[13px] font-semibold mb-10">Save 20% Today</p>
-                    <a href="https://whop.com/rashik-trades-community/rtc-hero-membership/" target="_blank" class="w-full mt-auto py-4 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-bold text-[15px] shadow-lg transition-colors btn-press">Get Started</a>
+                    <a href="https://whop.com/rashik-trades-community/rtc-hero-membership/" target="_blank" class="w-full mt-auto py-4 rounded-xl bg-slate-800 hover:bg-cyan-500 text-white hover:text-slate-900 font-bold text-[15px] shadow-[0_8px_20px_rgba(15,30,56,0.3)] hover:shadow-[0_8px_25px_rgba(6,182,212,0.3)] transition-all btn-press relative z-10">Get Started</a>
                 </div>
             </div>
 
             <div class="w-full lg:w-1/3 relative group transition-all duration-500 z-30 lg:scale-105 flex flex-col h-full hover:scale-[1.08] lg:hover:scale-[1.08]">
                 
-                <div class="absolute -inset-[2.5px] rounded-[2.1rem] bg-gradient-to-r from-red-400 via-orange-400 to-red-400 opacity-60 blur-[10px] group-hover:opacity-90 group-hover:blur-[15px] transition-all duration-500 animate-gradient-xy"></div>
-                <div class="absolute -inset-[1.5px] rounded-[2.1rem] bg-gradient-to-r from-red-400 via-orange-400 to-red-400 shadow-md animate-gradient-xy"></div>
+                <div class="absolute -inset-[2.5px] rounded-[2.1rem] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-60 blur-[12px] group-hover:opacity-100 group-hover:blur-[18px] transition-all duration-500 animate-gradient-xy"></div>
+                <div class="absolute -inset-[1.5px] rounded-[2.1rem] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 shadow-md animate-gradient-xy"></div>
                 
                 <div class="absolute -top-[18px] inset-x-0 mx-auto flex justify-center z-40 transition-transform duration-500 group-hover:-translate-y-1">
-                    <div class="bg-white/90 backdrop-blur-md px-1.5 rounded-full border border-white shadow-sm">
-                        <div class="bg-gradient-to-r from-red-500 to-orange-500 text-white text-[11px] font-black px-6 py-2 rounded-full uppercase tracking-[0.15em] flex items-center shadow-[0_4px_15px_rgba(239,68,68,0.4)]">
-                            <i class="fas fa-fire text-[#fde047] mr-2 text-[14px] animate-pulse"></i> Sunday Special
+                    <div class="bg-[#0a1526] px-1.5 rounded-full border border-white/20 shadow-sm">
+                        <div class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-[11px] font-black px-6 py-2 rounded-full uppercase tracking-[0.15em] flex items-center shadow-[0_4px_15px_rgba(99,102,241,0.4)]">
+                            <i class="fas fa-crown text-[#fde047] mr-2 text-[14px]"></i> Most Popular
                         </div>
                     </div>
                 </div>
 
-                <div class="relative h-full glass-ultra-clear p-10 flex flex-col items-center text-center pt-14 border border-white">
-                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#3b82f6] to-[#4f46e5] flex items-center justify-center mb-8 shadow-[0_10px_25px_rgba(59,130,246,0.3)] group-hover:scale-110 transition-transform duration-500 group-hover:rotate-3 border-2 border-white/60 text-white relative z-20">
+                <div class="relative h-full bg-[#0a1526] p-10 flex flex-col items-center text-center pt-14 rounded-[2rem] border border-white/10 transition-all duration-500 group-hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] overflow-hidden shiny-sweep">
+                    
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-8 shadow-[0_10px_30px_rgba(99,102,241,0.4)] group-hover:scale-110 transition-transform duration-500 group-hover:rotate-3 border border-white/20 text-white relative z-20">
                         <i class="fas fa-gem text-3xl"></i>
                     </div>
-                    <h3 class="text-indigo-600 font-black text-[13px] tracking-[0.2em] uppercase mb-4 relative z-20">6 Months Pro</h3>
                     
-                    <div class="flex items-end justify-center mb-3 relative z-20 tracking-tighter">
-                        <span class="text-3xl font-black text-slate-400 line-through mr-2 mb-1.5 opacity-80">$50</span>
-                        <div class="text-7xl font-black text-red-600 drop-shadow-md">$40</div>
-                    </div>
+                    <h3 class="text-indigo-400 font-black text-[13px] tracking-[0.2em] uppercase mb-4 relative z-20 drop-shadow-sm">6 Months Pro</h3>
+                    <div class="text-7xl font-black text-white mb-3 tracking-tighter relative z-20 drop-shadow-md">$50</div>
                     
-                    <div class="text-red-600 text-[13px] font-bold mb-10 flex items-center justify-center bg-red-50/90 backdrop-blur-md px-4 py-2 rounded-full border border-red-200 shadow-sm relative z-20 group-hover:scale-105 transition-transform duration-500 w-max mx-auto">
-                        <i class="fas fa-gift mr-1.5 text-[14px]"></i> Save 20% Today <span class="mx-2 text-red-400/60">&bull;</span> Reg. $50
+                    <div class="text-emerald-400 text-[14px] font-bold mb-10 flex items-center justify-center bg-emerald-500/10 px-5 py-2 rounded-full border border-emerald-500/20 shadow-sm relative z-20 group-hover:scale-105 transition-transform duration-500 w-max mx-auto">
+                        <i class="fas fa-check-circle mr-2"></i> Save $10 <span class="text-slate-400 font-medium line-through ml-2 text-[12px]">($60 value)</span>
                     </div>
 
-                    <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy/" target="_blank" class="w-full mt-auto py-5 rounded-xl bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-bold text-[16px] shadow-[0_10px_20px_rgba(239,68,68,0.3)] transition-all duration-300 btn-press relative z-20">
-                        Secure Special Access
+                    <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy/" target="_blank" class="w-full mt-auto py-5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-[16px] shadow-[0_10px_25px_rgba(99,102,241,0.4)] transition-all duration-300 btn-press relative z-20">
+                        Secure Premium Access
                     </a>
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/3 relative group transition-all duration-500 z-10 flex flex-col h-full">
-                <div class="pure-glass-light p-10 flex flex-col items-center text-center h-full">
-                    <div class="w-16 h-16 rounded-2xl bg-white border border-white flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 text-purple-500 group-hover:shadow-[0_10px_20px_rgba(168,85,247,0.15)] shadow-sm">
+            <div class="w-full lg:w-1/3 relative group transition-all duration-500 z-10 flex flex-col h-full hover:-translate-y-2">
+                <div class="bg-[#0c162d] border border-white/10 group-hover:border-amber-500/50 p-10 rounded-[2rem] flex flex-col items-center text-center h-full shadow-2xl transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] relative overflow-hidden shiny-sweep">
+                    
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-600 border border-white/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 text-slate-900 shadow-[0_10px_25px_rgba(245,158,11,0.3)] relative z-10">
                         <i class="fas fa-shield-alt text-2xl"></i>
                     </div>
-                    <h3 class="text-slate-500 font-black text-[12px] tracking-[0.2em] uppercase mb-4">1 Year Elite</h3>
                     
-                    <div class="flex items-end justify-center mb-2 tracking-tighter">
-                        <span class="text-2xl font-black text-slate-400 line-through mr-2 mb-1.5 opacity-80">$100</span>
-                        <div class="text-6xl font-black text-red-500 drop-shadow-sm">$80</div>
-                    </div>
+                    <h3 class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500 font-black text-[12px] tracking-[0.2em] uppercase mb-4 relative z-10 drop-shadow-sm">1 Year Elite</h3>
+                    <div class="text-6xl font-black text-white mb-2 tracking-tighter drop-shadow-md relative z-10">$100</div>
                     
-                    <div class="text-red-500 text-[13px] font-bold mb-10 flex items-center justify-center bg-red-50/80 backdrop-blur-md px-4 py-2 rounded-full border border-red-200 shadow-sm transition-transform duration-500 group-hover:scale-105 w-max mx-auto relative z-10">
-                        <i class="fas fa-gift mr-1.5 text-[14px]"></i> Save 20% Today <span class="mx-2 text-red-400/60">&bull;</span> Reg. $100
-                    </div>
+                    <p class="text-amber-400 text-[13px] font-semibold mb-10 relative z-10">
+                        Save $20 <span class="text-slate-400 font-medium line-through ml-1 text-[12px]">($120 value)</span>
+                    </p>
 
-                    <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy-a2/" target="_blank" class="w-full mt-auto py-4 rounded-xl bg-slate-900 hover:bg-red-500 text-white font-bold text-[15px] shadow-xl transition-colors btn-press">Claim Elite Tier</a>
+                    <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy-a2/" target="_blank" class="w-full mt-auto py-4 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-slate-900 font-black text-[15px] shadow-[0_10px_25px_rgba(245,158,11,0.25)] transition-all duration-300 btn-press relative z-10">Claim Elite Tier</a>
                 </div>
             </div>
+            
         </div>
     </section>
 
@@ -684,51 +624,6 @@
                 observer.observe(element);
             });
         });
-
-        // ✨ SMART AUTO-EXPIRING SUNDAY COUNTDOWN TIMER ✨
-        function startCountdown() {
-            const badge = document.getElementById('flash-sale-badge');
-
-            function update() {
-                const now = new Date();
-                
-                // Get current time in US Eastern Time (EST/EDT)
-                const estTimeStr = now.toLocaleString("en-US", { timeZone: "America/New_York" });
-                const estTime = new Date(estTimeStr);
-                
-                // 0 means Sunday. If it's NOT Sunday in New York, end the offer.
-                if (estTime.getDay() !== 0) {
-                    document.getElementById('hours').innerText = "00";
-                    document.getElementById('minutes').innerText = "00";
-                    document.getElementById('seconds').innerText = "00";
-                    
-                    if (badge) {
-                        badge.innerHTML = '<i class="fas fa-lock mr-2 text-[14px]"></i> SUNDAY FLASH SALE ENDED';
-                        badge.className = 'inline-flex items-center justify-center bg-slate-600 text-white px-6 py-2.5 rounded-full font-black text-[12px] tracking-[0.2em] uppercase shadow-sm mb-5 transition-all duration-500';
-                    }
-                    return; // Stop updating
-                }
-
-                // If it IS Sunday, calculate time until 11:59:59 PM EST
-                const endOfDayEST = new Date(estTime);
-                endOfDayEST.setHours(23, 59, 59, 999);
-                const diff = endOfDayEST - estTime;
-
-                const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const m = Math.floor((diff / 1000 / 60) % 60);
-                const s = Math.floor((diff / 1000) % 60);
-
-                document.getElementById('hours').innerText = h.toString().padStart(2, '0');
-                document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
-                document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
-            }
-            
-            update();
-            setInterval(update, 1000);
-        }
-        
-        // Initialize Timer
-        document.addEventListener('DOMContentLoaded', startCountdown);
     </script>
 </body>
 </html>
