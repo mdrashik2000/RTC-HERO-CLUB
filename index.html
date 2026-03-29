@@ -1,629 +1,1246 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RTC Indicator Suite - Premium Trading Edge</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>RTC Indicator Suite — Premium Trading Edge</title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKS84XRWQ9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HKS84XRWQ9');
+</script>
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --black: #050805;
+    --dark: #0a0f0a;
+    --card: #0e150e;
+    --card2: #111a11;
+    --border: #1a2e1a;
+    --green: #00e676;
+    --green2: #00c853;
+    --green3: #69f0ae;
+    --green-dim: rgba(0,230,118,0.08);
+    --green-glow: rgba(0,230,118,0.18);
+    --muted: #4a6b4a;
+    --text: #c8e6c9;
+    --white: #f0fff0;
+    --red: #ef5350;
+    --orange: #ffa726;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--text); font-family: 'Syne', sans-serif; overflow-x: hidden; }
+  
+  /* GLOBAL LINK FIX - Prevents raw HTML purple visited links */
+  a { text-decoration: none !important; color: inherit; }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.35;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(5,8,5,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo { font-family: 'Bebas Neue', cursive; font-size: clamp(1.4rem, 2vw, 1.8rem); letter-spacing: 3px; color: var(--white); display: flex; align-items: center; gap: 10px; }
+  .nav-logo span { color: var(--green); text-shadow: 0 0 20px var(--green); }
+  .nav-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 12px var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+  .nav-links { display: flex; gap: 2vw; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); font-size: clamp(0.7rem, 1vw, 0.8rem); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green); }
+
+  .nav-tool-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-dim); border: 1px solid rgba(0,230,118,0.2); color: var(--green3) !important; padding: 6px 14px !important; border-radius: 3px; font-size: clamp(0.65rem, 1vw, 0.72rem) !important; letter-spacing: 1.5px !important; transition: background 0.2s, border-color 0.2s !important; }
+  .nav-tool-badge:hover { background: rgba(0,230,118,0.14) !important; border-color: var(--green) !important; color: var(--green) !important; }
+
+  .nav-cta { background: var(--green); color: var(--black) !important; padding: 10px 22px; border-radius: 3px; font-weight: 800 !important; transition: box-shadow 0.2s, transform 0.2s !important; white-space: nowrap; }
+  .nav-cta:hover { box-shadow: 0 0 24px var(--green) !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(100px, 15vh, 150px) 48px clamp(60px, 10vh, 100px); position: relative; overflow: hidden; text-align: center; }
+  .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,230,118,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,230,118,0.04) 1px,transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent); }
+  .hero-glow { position: absolute; width: clamp(400px, 60vw, 900px); height: clamp(400px, 60vw, 900px); background: radial-gradient(circle,rgba(0,230,118,0.07) 0%,transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); background: var(--green-dim); padding: 7px 18px; border-radius: 100px; font-size: clamp(0.65rem, 1vw, 0.72rem); font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green3); margin-bottom: 32px; animation: fadeUp 0.6s ease both; white-space: nowrap; }
+  .hero-badge::before { content:''; width:6px; height:6px; background:var(--green); border-radius:50%; box-shadow:0 0 8px var(--green); animation:pulse 1.5s infinite; }
+  .hero-title { font-family: 'Bebas Neue', cursive; font-size: clamp(3rem, 10vw, 9rem); line-height: 0.95; letter-spacing: 2px; color: var(--white); margin-bottom: 12px; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-title .accent { color:var(--green); text-shadow:0 0 40px rgba(0,230,118,0.4); display:block; }
+  .hero-subtitle { font-size: clamp(0.95rem, 1.5vw, 1.2rem); color: var(--muted); max-width: 600px; line-height: 1.7; margin: 20px auto 40px; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-subtitle strong { color: var(--green3); font-weight: 700; }
+  .hero-cta-group { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; animation:fadeUp 0.6s 0.3s ease both; z-index: 10;}
+
+  /* 🔥 ULTIMATE CYBER BUTTONS 🔥 */
+  .btn-cyber-wrap {
+    position: relative; display: block; padding: 2px; background: var(--border);
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+    transition: transform 0.3s ease, filter 0.3s ease, background 0.3s; cursor: pointer;
+  }
+  .btn-cyber-wrap:hover { transform: translateY(-2px); background: var(--green); filter: drop-shadow(0 0 15px rgba(0,230,118,0.3)); }
+  .btn-cyber {
+    display: block; width: 100%; padding: clamp(14px, 2vw, 18px) clamp(24px, 4vw, 36px);
+    background: var(--card2); color: var(--green) !important;
+    font-family: 'Syne', sans-serif; font-size: clamp(0.75rem, 1vw, 0.85rem); font-weight: 800;
+    letter-spacing: 2px; text-transform: uppercase; text-align: center;
+    clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+    transition: all 0.3s ease; white-space: nowrap;
+  }
+  .btn-cyber-wrap:hover .btn-cyber { background: var(--green); color: var(--black) !important; }
+  
+  /* Filled Version */
+  .btn-cyber-wrap.filled { background: var(--green); box-shadow: 0 0 20px rgba(0,230,118,0.2); filter: drop-shadow(0 0 10px rgba(0,230,118,0.2));}
+  .btn-cyber-wrap.filled .btn-cyber { background: var(--green); color: var(--black) !important; }
+  .btn-cyber-wrap.filled:hover .btn-cyber { background: var(--green3); }
+
+  .hero-stats { display:flex; gap: clamp(20px, 4vw, 48px); justify-content:center; margin-top:clamp(40px, 8vh, 72px); flex-wrap: wrap; animation:fadeUp 0.6s 0.4s ease both; }
+  .hero-stat { text-align:center; min-width: 120px; }
+  .hero-stat .num { font-family:'Bebas Neue',cursive; font-size: clamp(2rem, 3vw, 2.8rem); color:var(--green); text-shadow:0 0 20px rgba(0,230,118,0.3); letter-spacing:2px; display:block; }
+  .hero-stat .label { font-size: clamp(0.6rem, 1vw, 0.75rem); font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+  .hero-divider { width:1px; height:48px; background:var(--border); align-self:center; display: none; }
+  @media (min-width: 768px) { .hero-divider { display: block; } }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── SECTIONS ── */
+  section { padding: clamp(60px, 10vh, 100px) clamp(20px, 5vw, 48px); max-width:1400px; margin:0 auto; }
+  .section-label { font-size: clamp(0.65rem, 1vw, 0.75rem); font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--green); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .section-label::before { content:''; display:block; width:24px; height:1px; background:var(--green); }
+  .section-title { font-family:'Bebas Neue',cursive; font-size:clamp(2.5rem, 5vw, 4.5rem); color:var(--white); line-height:1; letter-spacing:1px; margin-bottom:16px; }
+  .section-desc { color:var(--muted); font-size: clamp(0.85rem, 1.2vw, 1rem); line-height:1.7; max-width:600px; }
+  .section-header { margin-bottom: clamp(40px, 6vh, 64px); }
+
+  /* ── INDICATORS ── */
+  .indicators-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2px; }
+  .ind-card { background:var(--card); border:1px solid var(--border); padding: clamp(24px, 4vw, 40px) clamp(20px, 3vw, 32px); position:relative; overflow:hidden; transition:border-color 0.3s,transform 0.3s; cursor:default; }
+  .ind-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--green),transparent); opacity:0; transition:opacity 0.3s; }
+  .ind-card:hover { border-color:rgba(0,230,118,0.3); transform:translateY(-4px); }
+  .ind-card:hover::before { opacity:1; }
+  .ind-number { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--green); letter-spacing:2px; margin-bottom:20px; opacity:0.6; }
+  .ind-icon { font-size:2rem; margin-bottom:20px; display:block; color: var(--green); }
+  .ind-name { font-family:'Bebas Neue',cursive; font-size: clamp(1.4rem, 2vw, 1.8rem); color:var(--white); letter-spacing:2px; margin-bottom:12px; }
+  .ind-desc { font-size:0.88rem; color:var(--muted); line-height:1.7; }
+  .ind-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:20px; }
+  .ind-tag { font-size:0.65rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--green3); background:var(--green-dim); border:1px solid rgba(0,230,118,0.15); padding:4px 10px; border-radius:2px; }
+  
+  .bonus-card { margin-top:2px; background:linear-gradient(135deg,var(--card) 0%,#0a1a0e 100%); border:1px solid rgba(0,230,118,0.25); padding: clamp(24px, 4vw, 40px); display:flex; flex-direction: column; align-items:flex-start; gap:24px; }
+  @media (min-width: 768px) { .bonus-card { flex-direction: row; justify-content: space-between; align-items: center; } }
+  .bonus-badge { background:var(--green); color:var(--black); font-size:0.65rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:5px 12px; border-radius:2px; display:inline-flex; align-items:center; gap:6px; margin-bottom:12px; }
+  .bonus-title { font-family:'Bebas Neue',cursive; font-size: clamp(1.6rem, 2.5vw, 2rem); color:var(--white); letter-spacing:2px; }
+  .bonus-desc { font-size:0.88rem; color:var(--muted); margin-top:8px; line-height:1.6; max-width: 700px; }
+  .bonus-free { font-family:'Bebas Neue',cursive; font-size: clamp(2rem, 3vw, 2.8rem); color:var(--green); text-shadow:0 0 30px rgba(0,230,118,0.4); letter-spacing:2px; white-space:nowrap; font-weight: 800;}
+
+  /* ── 🔥 UNIFORM PRICING SECTION 🔥 ── */
+  .pricing-wrapper { max-width:1400px; margin:0 auto; padding:clamp(60px, 10vh, 100px) clamp(20px, 5vw, 48px); }
+  .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; align-items:stretch; }
+  
+  .price-card { 
+    background: linear-gradient(180deg, var(--card) 0%, var(--black) 100%);
+    border: 1px solid var(--border); padding: clamp(30px, 4vw, 40px) clamp(24px, 3vw, 36px);
+    position: relative; transition: all 0.4s; display: flex; flex-direction: column; height: 100%;
+  }
+  .price-card:hover { transform: translateY(-4px); border-color: rgba(0,230,118,0.2); }
+  
+  .price-card.popular { 
+    background: linear-gradient(180deg, var(--card2) 0%, var(--card) 100%);
+    border: 1px solid var(--green); transform: translateY(-12px); 
+    box-shadow: 0 0 60px rgba(0,230,118,0.05), inset 0 0 20px rgba(0,230,118,0.05);
+  }
+  .price-card.popular:hover { transform: translateY(-16px); box-shadow: 0 0 60px rgba(0,230,118,0.1), inset 0 0 30px rgba(0,230,118,0.1); }
+  
+  .popular-badge { 
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%); 
+    background: var(--green); color: var(--black); font-size: 0.65rem; font-weight: 800; 
+    letter-spacing: 2px; text-transform: uppercase; padding: 6px 24px; 
+    white-space: nowrap; clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
+  }
+  
+  .tv-discount-tag { 
+    background: var(--red); color: #fff; font-family: 'JetBrains Mono', monospace; 
+    font-weight: 700; font-size: 0.65rem; padding: 3px 8px; border-radius: 2px; letter-spacing: 1px; 
+  }
+
+  .price-tier { font-size:0.75rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:24px; display: flex; justify-content: space-between; align-items: center; }
+  .price-amount { display:flex; align-items:flex-start; gap:4px; margin-bottom:6px; }
+  .price-currency { font-family:'JetBrains Mono',monospace; font-size:1.5rem; color:var(--green); margin-top:8px; }
+  .price-number { font-family:'Bebas Neue',cursive; font-size:clamp(3.5rem, 5vw, 5rem); color:var(--green); line-height:1; letter-spacing:2px; text-shadow: 0 0 30px rgba(0,230,118,0.2);}
+  .price-crossed { color:var(--muted); font-size:1rem; text-decoration:line-through; margin-bottom:4px; height: 20px; font-family:'JetBrains Mono',monospace;}
+  .price-period { font-size:0.8rem; color:var(--muted); margin-bottom:6px; font-weight: 600;}
+  .price-save { font-size:0.75rem; font-weight:700; color:var(--green3); margin-bottom:24px; font-family:'JetBrains Mono',monospace; display: flex; align-items: center; gap: 6px;}
+  .price-divider { height:1px; background:linear-gradient(90deg, var(--border), transparent); margin:24px 0; }
+  
+  .price-features { list-style:none; display:flex; flex-direction:column; gap:16px; margin-bottom:40px; flex-grow: 1;}
+  .price-features li { display:flex; align-items:flex-start; gap:12px; font-size:0.875rem; color:var(--text); line-height:1.5; }
+  .price-features li::before { content:'✓'; color:var(--green); font-weight:800; flex-shrink:0; margin-top:1px; }
+  
+  .btn-pricing-box { margin-top: auto; width: 100%; display: block;}
+
+  /* ── ALTERNATIVE PAYMENTS ── */
+  .payment-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2px; }
+  .pay-card { background:var(--card); border:1px solid var(--border); padding: clamp(30px, 4vw, 44px) clamp(20px, 4vw, 40px); }
+  .pay-title { font-family:'Bebas Neue',cursive; font-size:1.6rem; color:var(--white); letter-spacing:2px; margin-bottom:8px; }
+  .pay-subtitle { font-size:0.82rem; color:var(--muted); margin-bottom:32px; line-height:1.6; }
+  .crypto-list { display:flex; flex-direction:column; gap:12px; }
+  .crypto-item { display:flex; align-items:center; gap:14px; background:var(--dark); border:1px solid var(--border); padding:14px 18px; border-radius:4px; transition:border-color 0.2s; flex-wrap: wrap; }
+  .crypto-item:hover { border-color:rgba(0,230,118,0.25); }
+  .crypto-icon { width:36px; height:36px; border-radius:50%; background:var(--green-dim); border:1px solid rgba(0,230,118,0.2); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; color: var(--green); }
+  .crypto-name { font-family:'Bebas Neue',cursive; font-size:1rem; letter-spacing:2px; color:var(--white); }
+  .crypto-addr { font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--muted); margin-top:2px; word-break:break-all; }
+  .copy-btn { margin-left:auto; background:none; border:1px solid var(--border); color:var(--muted); padding:6px 10px; font-size:0.65rem; font-family:'JetBrains Mono',monospace; cursor:pointer; border-radius:2px; transition:all 0.2s; flex-shrink:0; }
+  .copy-btn:hover { border-color:var(--green); color:var(--green); }
+  .copy-btn.copied { border-color:var(--green); color:var(--green); background:var(--green-dim); }
+  .bank-steps { display:flex; flex-direction:column; gap:16px; }
+  .bank-step { display:flex; gap:16px; align-items:flex-start; }
+  .step-num { width:32px; height:32px; border:1px solid var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:0.75rem; font-weight:700; color:var(--green); flex-shrink:0; }
+  .step-text { font-size:0.88rem; color:var(--muted); line-height:1.6; padding-top:6px; }
+  .step-text strong { color:var(--text); }
+  .fiat-badges { display:flex; gap:10px; margin:20px 0; flex-wrap:wrap; }
+  .fiat-badge { display:flex; align-items:center; gap:8px; background:var(--dark); border:1px solid var(--border); padding:8px 14px; border-radius:4px; font-size:0.8rem; color:var(--text); font-weight:600; }
+  .fiat-badge i { color: var(--green); }
+
+  /* ── MASTERCLASS VIDEO GRID ── */
+  .video-container { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--dark); border: 1px solid var(--border); overflow: hidden; border-radius: 4px; margin-bottom: 24px; display: block; }
+  .video-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s, opacity 0.4s; opacity: 0.6; }
+  .ind-card:hover .video-container img { transform: scale(1.05); opacity: 1; }
+  .play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.4s; }
+  .ind-card:hover .play-btn { background: transparent; }
+  .play-icon { width: 50px; height: 50px; background: var(--green-dim); border: 1px solid rgba(0,230,118,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 1.2rem; padding-left: 4px; backdrop-filter: blur(4px); transition: all 0.3s; }
+  .ind-card:hover .play-icon { background: var(--green); color: var(--black); box-shadow: 0 0 20px rgba(0,230,118,0.5); transform: scale(1.1); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2px; }
+  .testi-card { background:var(--card); border:1px solid var(--border); padding: clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px); position:relative; transition:border-color 0.3s; }
+  .testi-card:hover { border-color:rgba(0,230,118,0.2); }
+  .testi-quote { font-size:3rem; color:var(--green); line-height:1; font-family:'Bebas Neue',cursive; opacity:0.4; margin-bottom:12px; }
+  .testi-text { font-size:0.9rem; line-height:1.75; color:var(--text); margin-bottom:28px; font-style:italic; }
+  .testi-stars { color:var(--green); font-size:0.8rem; letter-spacing:3px; margin-bottom:16px; }
+  .testi-author { display:flex; align-items:center; gap:12px; }
+  .testi-avatar { width:40px; height:40px; border-radius:50%; background:var(--green-dim); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',cursive; font-size:1rem; color:var(--green); flex-shrink: 0;}
+  .testi-name { font-weight:700; font-size:0.88rem; color:var(--white); }
+  .testi-pnl { position:absolute; top:24px; right:24px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; font-weight:700; color:var(--green); background:var(--green-dim); border:1px solid rgba(0,230,118,0.2); padding:4px 10px; border-radius:2px; }
+
+  /* ── FAQ ── */
+  .faq-list { display:flex; flex-direction:column; gap:2px; }
+  .faq-item { background:var(--card); border:1px solid var(--border); overflow:hidden; transition:border-color 0.2s; }
+  .faq-item.open { border-color:rgba(0,230,118,0.25); }
+  .faq-q { padding: clamp(16px, 3vw, 24px) clamp(20px, 3vw, 28px); cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-weight:700; font-size:0.95rem; color:var(--white); user-select:none; transition:color 0.2s; }
+  .faq-item.open .faq-q { color:var(--green); }
+  .faq-icon { width:24px; height:24px; border:1px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.9rem; color:var(--muted); flex-shrink:0; transition:all 0.2s; font-weight:300; }
+  .faq-item.open .faq-icon { border-color:var(--green); color:var(--green); transform:rotate(45deg); }
+  .faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
+  .faq-a-inner { padding:0 clamp(20px, 3vw, 28px) clamp(16px, 3vw, 24px); font-size:0.88rem; color:var(--muted); line-height:1.8; border-top:1px solid var(--border); padding-top:20px; }
+  .faq-item.open .faq-a { max-height:300px; }
+
+  /* ── COMMUNITY ── */
+  .community-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2px; }
+  .comm-card { background:var(--card); border:1px solid var(--border); padding:36px 28px; text-decoration:none; display:block; transition:all 0.3s; position:relative; overflow:hidden; }
+  .comm-card::after { content:'↗'; position:absolute; top:20px; right:20px; color:var(--muted); font-size:1rem; transition:all 0.25s; }
+  .comm-card:hover { border-color:rgba(0,230,118,0.3); background:var(--card2); transform:translateY(-4px); }
+  .comm-card:hover::after { color:var(--green); transform:translate(2px,-2px); }
+  .comm-icon { font-size:2rem; margin-bottom:16px; display:block; color: var(--green); }
+  .comm-name { font-family:'Bebas Neue',cursive; font-size:1.3rem; color:var(--white); letter-spacing:2px; margin-bottom:8px; }
+  .comm-desc { font-size:0.82rem; color:var(--muted); line-height:1.6; }
+
+  /* ── TICKER ── */
+  .ticker-wrap { overflow:hidden; background:var(--dark); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:12px 0; position:relative; }
+  .ticker-wrap::before,.ticker-wrap::after { content:''; position:absolute; top:0; width:80px; height:100%; z-index:2; }
+  .ticker-wrap::before { left:0; background:linear-gradient(90deg,var(--dark),transparent); }
+  .ticker-wrap::after { right:0; background:linear-gradient(-90deg,var(--dark),transparent); }
+  .ticker-track { display:flex; gap:48px; animation:ticker 25s linear infinite; width:max-content; white-space:nowrap; }
+  .ticker-item { font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:500; color:var(--muted); display:flex; align-items:center; gap:8px; }
+  .ticker-item .up { color:var(--green); }
+  .ticker-item .dn { color:#ff5252; }
+  @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ── FOOTER & POLICIES ── */
+  #policies { padding-top: 40px; padding-bottom: 60px; border-top: 1px solid var(--border); max-width: 1400px; margin: 0 auto; padding-left: clamp(20px, 5vw, 48px); padding-right: clamp(20px, 5vw, 48px); }
+  .policy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+  .policy-col h4 { color: var(--white); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px; }
+  .policy-col h4 i { color: var(--green); font-size: 1rem; }
+  .policy-col p { color: var(--muted); font-size: 0.8rem; line-height: 1.7; }
+  
+  footer { border-top:1px solid var(--border); padding:48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; max-width:100%; }
+  .footer-logo { font-family:'Bebas Neue',cursive; font-size:1.4rem; letter-spacing:3px; color:var(--white); }
+  .footer-logo span { color:var(--green); }
+  .footer-copy { font-size:0.72rem; color:var(--muted); font-family:'JetBrains Mono',monospace; }
+
+  ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:var(--dark)} ::-webkit-scrollbar-thumb{background:var(--border)}
+
+  /* ── ECONOMIC CALENDAR SECTION ── */
+  #econCalendar { padding: clamp(60px, 10vh, 100px) clamp(20px, 5vw, 48px); max-width: 1400px; margin: 0 auto; }
+  .cal-toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+  .local-time-selector { display: flex; align-items: center; gap: 8px; margin-left: auto; background: var(--dark); border: 1px solid var(--border); padding: 6px 12px; border-radius: 4px; transition: border-color 0.2s; }
+  .local-time-selector:hover { border-color: var(--green); }
+  .local-time-selector select { background: transparent; border: none; color: var(--green); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; outline: none; cursor: pointer; -webkit-appearance: none; appearance: none; }
+  .local-time-selector select option { background: var(--card); color: var(--text); }
+  .local-time-selector i { color: var(--muted); font-size: 0.8rem; }
+  .cal-filter-group { display: flex; gap: 2px; flex-wrap: wrap; }
+  .cal-filter-btn { background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+  .cal-filter-btn.active { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+  .cal-filter-btn:hover:not(.active) { border-color: rgba(0,230,118,0.2); color: var(--text); }
+  .cal-impact-filters { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .cal-impact-toggle { display: flex; align-items: center; gap: 6px; background: var(--card); border: 1px solid var(--border); padding: 7px 14px; border-radius: 3px; cursor: pointer; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); transition: all 0.2s; user-select: none; }
+  .cal-impact-toggle.active-high { border-color: var(--red); color: var(--red); background: rgba(239,83,80,0.07); }
+  .cal-impact-toggle.active-med { border-color: var(--orange); color: var(--orange); background: rgba(255,167,38,0.07); }
+  .cal-impact-toggle.active-low { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+  .impact-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-high { background: var(--red); box-shadow: 0 0 6px var(--red); }
+  .dot-med { background: var(--orange); box-shadow: 0 0 6px var(--orange); }
+  .dot-low { background: var(--green); box-shadow: 0 0 6px var(--green); }
+  .cal-day-group { margin-bottom: 24px; }
+  .cal-day-header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 20px; background: var(--dark); border: 1px solid var(--border); margin-bottom: 2px; }
+  .cal-day-label { font-family: 'Bebas Neue', cursive; font-size: 1rem; letter-spacing: 3px; color: var(--white); }
+  .cal-day-date { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+  .cal-day-badge { margin-left: auto; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: var(--green-dim); border: 1px solid rgba(0,230,118,0.2); color: var(--green3); padding: 3px 10px; border-radius: 2px; }
+  .cal-event { display: grid; grid-template-columns: 80px 50px 80px 1fr 100px 100px 100px; align-items: center; gap: 0; background: var(--card); border: 1px solid var(--border); border-top: none; padding: 14px 20px; transition: background 0.2s, border-color 0.2s; cursor: default; }
+  .cal-event:hover { background: var(--card2); border-color: rgba(0,230,118,0.12); }
+  .cal-event.hidden { display: none; }
+  .cal-time { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--muted); }
+  .cal-currency { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 2px; text-align: center; width: fit-content; }
+  .cur-usd { background: rgba(0,100,255,0.15); color: #5c9fff; border: 1px solid rgba(0,100,255,0.2); }
+  .cur-eur { background: rgba(0,180,230,0.12); color: #4dd0e1; border: 1px solid rgba(0,180,230,0.2); }
+  .cur-gbp { background: rgba(120,80,200,0.15); color: #b39ddb; border: 1px solid rgba(120,80,200,0.2); }
+  .cur-jpy { background: rgba(255,50,50,0.12); color: #ef9a9a; border: 1px solid rgba(255,50,50,0.2); }
+  .cur-cad { background: rgba(255,150,0,0.12); color: #ffcc80; border: 1px solid rgba(255,150,0,0.2); }
+  .cur-aud { background: rgba(0,200,120,0.12); color: #80cbc4; border: 1px solid rgba(0,200,120,0.2); }
+  .cur-chf { background: rgba(200,50,50,0.12); color: #ef9a9a; border: 1px solid rgba(200,50,50,0.2); }
+  .cal-impact { display: flex; align-items: center; gap: 6px; }
+  .cal-impact span { font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .impact-high { color: var(--red); }
+  .impact-med { color: var(--orange); }
+  .impact-low { color: var(--green); }
+  .cal-event-name { font-size: 0.88rem; color: var(--white); font-weight: 600; padding-right: 20px; }
+  .cal-event-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .cal-val { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+  .cal-val .val-label { font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+  .val-actual { color: var(--green); font-weight: 700; }
+  .val-forecast { color: var(--text); }
+  .val-previous { color: var(--muted); }
+  .val-pending { color: var(--muted); font-style: italic; font-size: 0.75rem; }
+  .val-beat { color: var(--green); }
+  .val-miss { color: var(--red); }
+
+  /* ── QUANT RISK CALCULATOR ── */
+  #riskCalc { padding: clamp(60px, 10vh, 100px) clamp(20px, 5vw, 48px); max-width: 1400px; margin: 0 auto; }
+  .calc-tabs { display: flex; gap: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 12px; overflow-x: auto;}
+  .calc-tab { background: transparent; color: var(--muted); border: none; font-family: 'Syne', sans-serif; font-size: clamp(0.75rem, 1vw, 0.9rem); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; padding: 8px 16px; transition: all 0.2s; white-space: nowrap;}
+  .calc-tab.active { color: var(--green); border-bottom: 2px solid var(--green); }
+  .calc-tab:hover:not(.active) { color: var(--text); }
+  .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .calc-panel { background: var(--card); border: 1px solid var(--border); padding: clamp(24px, 4vw, 44px) clamp(20px, 3vw, 40px); }
+  .calc-panel-title { font-family: 'Bebas Neue', cursive; font-size: 1.4rem; color: var(--white); letter-spacing: 2px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .calc-panel-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .calc-field { margin-bottom: 24px; }
+  .calc-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: block; }
+  .calc-input-wrap { position: relative; display: flex; align-items: center; }
+  .calc-prefix { position: absolute; left: 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--green); font-weight: 700; pointer-events: none; }
+  .calc-suffix { position: absolute; right: 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--muted); pointer-events: none; }
+  .calc-input { width: 100%; background: var(--dark); border: 1px solid var(--border); color: var(--white); font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; padding: 14px 44px 14px 36px; border-radius: 3px; outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+  .calc-input::-webkit-outer-spin-button, .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .calc-input:focus { border-color: var(--green); }
+  .calc-input.no-prefix { padding-left: 14px; }
+  .calc-slider-wrap { margin-top: 10px; }
+  .calc-slider { width: 100%; -webkit-appearance: none; appearance: none; height: 3px; background: var(--border); border-radius: 2px; outline: none; cursor: pointer; }
+  .calc-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--green); border: 2px solid var(--black); cursor: pointer; box-shadow: 0 0 8px rgba(0,230,118,0.4); }
+  .calc-pair-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); gap: 6px; }
+  .calc-pair-btn { background: var(--dark); border: 1px solid var(--border); color: var(--muted); padding: 8px 4px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+  .calc-pair-btn.active { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+  .calc-pair-btn:hover:not(.active) { border-color: rgba(0,230,118,0.2); color: var(--text); }
+  .calc-results { display: flex; flex-direction: column; gap: 2px; }
+  .result-main { background: var(--card2); border: 1px solid rgba(0,230,118,0.25); padding: 32px 36px; display: flex; flex-direction: column; align-items: flex-start; }
+  .result-main-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .result-main-val { font-family: 'Bebas Neue', cursive; font-size: clamp(3rem, 5vw, 4rem); color: var(--green); letter-spacing: 2px; line-height: 1; text-shadow: 0 0 30px rgba(0,230,118,0.2); word-break: break-all;}
+  .result-main-unit { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--green3); margin-top: 6px; }
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .result-stat { background: var(--card); border: 1px solid var(--border); padding: 22px 24px; }
+  .result-stat-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .result-stat-val { font-family: 'JetBrains Mono', monospace; font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 700; color: var(--white); }
+  .result-stat-val.green { color: var(--green); }
+  .result-stat-val.red { color: var(--red); }
+  .result-rr-bar { background: var(--card); border: 1px solid var(--border); padding: 22px 24px; grid-column: span 2; }
+  .rr-track { height: 6px; background: var(--dark); border-radius: 3px; margin-top: 12px; overflow: hidden; display: flex; gap: 2px; }
+  .rr-risk { background: var(--red); border-radius: 3px 0 0 3px; transition: width 0.4s ease; }
+  .rr-reward { background: var(--green); border-radius: 0 3px 3px 0; transition: width 0.4s ease; }
+  .result-warning { background: rgba(239,83,80,0.08); border: 1px solid rgba(239,83,80,0.2); padding: 16px 20px; display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: #ef9a9a; line-height: 1.5; border-radius: 2px; margin-top: 8px; display: none; }
+  .result-warning.show { display: flex; }
+  .calc-reset-btn { margin-top: 16px; background: none; border: 1px solid var(--border); color: var(--muted); padding: 10px 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.2s; width: 100%;}
+  .calc-reset-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-dim);}
+
+  /* ── RESPONSIVE OVERRIDES ── */
+  @media (max-width: 900px) {
+    .cal-event { grid-template-columns: 60px 45px 70px 1fr; }
+    .cal-event .cal-val:nth-child(5), .cal-event .cal-val:nth-child(6), .cal-event .cal-val:nth-child(7) { display: none; }
+    .calc-layout { grid-template-columns: 1fr; }
+    .local-time-selector { margin-left: 0; width: 100%; justify-content: center; margin-top: 10px; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .hero-stat { min-width: 45%; } 
+    .pricing-grid { grid-template-columns: 1fr; }
+    .payment-grid { grid-template-columns: 1fr; }
+    .crypto-item { flex-direction: column; align-items: flex-start; }
+    .copy-btn { margin-left: 0; width: 100%; margin-top: 8px;}
+    footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+    .cal-event { grid-template-columns: 55px 40px 1fr; gap: 8px; }
+    .cal-currency { display: none; }
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKS84XRWQ9"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-HKS84XRWQ9');
-    </script>
-
-    <link rel="icon" type="image/png" href="favicon.png">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* Mobile Overflow Fix */
-        html, body {
-            max-width: 100vw;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #f8fafc; 
-            color: #0f172a;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Ambient Background */
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
-            33% { transform: translate(30px, -40px) scale(1.1) rotate(10deg); }
-            66% { transform: translate(-20px, 30px) scale(0.9) rotate(-5deg); }
-            100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
-        }
-        .blob-1 { animation: blob 15s infinite alternate ease-in-out; }
-        .blob-2 { animation: blob 18s infinite alternate-reverse ease-in-out; }
-        .blob-3 { animation: blob 12s infinite alternate ease-in-out; }
-
-        /* 🔥 PREMIUM LIGHT FROSTED GLASS & SHINE ENGINE 🔥 */
-        .pure-glass-light {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            border-top: 1px solid rgba(255, 255, 255, 1); 
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,1);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            z-index: 10;
-            overflow: hidden; 
-            transform: translateZ(0); 
-        }
-        .pure-glass-light:hover {
-            transform: translateY(-6px) scale(1.02) translateZ(0); 
-            background: rgba(255, 255, 255, 0.85);
-            box-shadow: 0 25px 50px -10px rgba(79, 70, 229, 0.08), inset 0 1px 0 rgba(255,255,255,1);
-        }
-
-        /* Inner Glass for Rows */
-        .inner-glass-light {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 1);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            transform: translateZ(0);
-        }
-        .inner-glass-light:hover {
-            background: rgba(255, 255, 255, 1);
-            border-color: rgba(167, 139, 250, 0.6); 
-            transform: translateX(6px) scale(1.01) translateZ(0); 
-            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.1);
-        }
-
-        /* ✨ VIP DARK SHINY SWEEP EFFECT ✨ */
-        .shiny-sweep::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -150%; width: 70%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg);
-            transition: left 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
-            z-index: 1; pointer-events: none;
-        }
-        .pure-glass-light::after, .inner-glass-light::after {
-            content: ''; position: absolute; top: 0; left: -150%; width: 70%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg); transition: left 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
-            z-index: 1; pointer-events: none;
-        }
-
-        .group:hover > .shiny-sweep::after, .pure-glass-light:hover::after, .inner-glass-light:hover::after {
-            left: 150%;
-        }
-
-        /* Ensures content stays above the shine */
-        .pure-glass-light > *, .inner-glass-light > * {
-            position: relative;
-            z-index: 10;
-        }
-
-        /* General Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-fast { animation: float 4s ease-in-out infinite; }
-        
-        @keyframes gradient-xy {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        .animate-gradient-xy { background-size: 200% 200%; animation: gradient-xy 4s ease infinite; }
-
-        .text-gradient { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .btn-press { transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 20; position: relative; }
-        .btn-press:active { transform: scale(0.96); }
-        .crypto-text-safe { white-space: nowrap; letter-spacing: -0.02em; }
-
-        /* Scroll Reveal */
-        .reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal-up.active { opacity: 1; transform: translateY(0); }
-    </style>
+    /* Mobile Override for Cyber Buttons */
+    .btn-cyber { white-space: normal; text-align: center; padding: 14px 20px;}
+  }
+</style>
 </head>
-<body class="antialiased pb-10 relative">
+<body>
 
-    <div class="fixed top-[-5%] left-[-5%] w-[300px] md:w-[700px] h-[300px] md:h-[700px] bg-blue-300/25 rounded-full mix-blend-multiply filter blur-[80px] md:blur-[120px] blob-1 -z-10 pointer-events-none"></div>
-    <div class="fixed top-[20%] right-[-5%] w-[250px] md:w-[600px] h-[250px] md:h-[600px] bg-purple-300/25 rounded-full mix-blend-multiply filter blur-[80px] md:blur-[120px] blob-2 -z-10 pointer-events-none"></div>
-    <div class="fixed bottom-[-10%] left-[20%] w-[350px] md:w-[800px] h-[350px] md:h-[800px] bg-cyan-300/25 rounded-full mix-blend-multiply filter blur-[90px] md:blur-[140px] blob-3 -z-10 pointer-events-none"></div>
+<nav>
+  <div class="nav-logo">
+    <div class="nav-dot"></div>
+    RASHIK<span>TRADES</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#indicators">Indicators</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#masterclass">Masterclass</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#econCalendar" class="nav-tool-badge"><i class="fas fa-calendar-alt tool-icon"></i> Calendar</a></li>
+    <li><a href="#riskCalc" class="nav-tool-badge"><i class="fas fa-balance-scale tool-icon"></i> Risk Calc</a></li>
+    <li><a href="#pricing" class="nav-cta">Get Access</a></li>
+  </ul>
+</nav>
 
-    <header class="relative w-full pt-20 pb-16 px-6 flex flex-col items-center justify-center text-center z-10 reveal-up">
-        <div class="max-w-5xl mx-auto flex flex-col items-center">
-            
-            <div class="relative inline-flex group mb-14 animate-float hover:scale-105 transition-transform duration-500">
-                <div class="absolute -inset-[2px] bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 rounded-full opacity-50 blur-[6px] group-hover:opacity-100 transition-opacity duration-500 animate-gradient-xy"></div>
-                <div class="absolute -inset-[1px] bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 rounded-full opacity-100 shadow-sm"></div>
-                
-                <div class="relative flex items-center px-8 py-3 bg-white/95 backdrop-blur-2xl rounded-full border border-white">
-                    <span class="text-[12px] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 uppercase tracking-[0.2em] mr-6">RTC Social Hub</span>
-                    <div class="flex items-center gap-5 border-l border-slate-200 pl-6">
-                        <a href="https://discord.com/invite/RashikTrades" target="_blank" class="text-slate-400 hover:text-[#5865F2] hover:drop-shadow-[0_4px_10px_rgba(88,101,242,0.3)] transition-all duration-300 hover:scale-125"><i class="fab fa-discord text-[1.2rem]"></i></a>
-                        <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="text-slate-400 hover:text-[#FF0000] hover:drop-shadow-[0_4px_10px_rgba(255,0,0,0.3)] transition-all duration-300 hover:scale-125"><i class="fab fa-youtube text-[1.2rem]"></i></a>
-                        <a href="https://twitter.com/rashiktrades" target="_blank" class="text-slate-400 hover:text-[#0f1419] hover:drop-shadow-[0_4px_10px_rgba(15,20,25,0.2)] transition-all duration-300 hover:scale-125"><i class="fab fa-x-twitter text-[1.2rem]"></i></a>
-                        <a href="https://t.me/RashikTradesCommunity" target="_blank" class="text-slate-400 hover:text-[#0088cc] hover:drop-shadow-[0_4px_10px_rgba(0,136,204,0.3)] transition-all duration-300 hover:scale-125"><i class="fab fa-telegram-plane text-[1.2rem]"></i></a>
-                        <a href="https://instagram.com/rashiktrades" target="_blank" class="text-slate-400 hover:text-[#E1306C] hover:drop-shadow-[0_4px_10px_rgba(225,48,108,0.3)] transition-all duration-300 hover:scale-125"><i class="fab fa-instagram text-[1.2rem]"></i></a>
-                    </div>
-                </div>
-            </div>
+<div style="position:fixed;top:64px;left:0;right:0;z-index:99">
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+</div>
 
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 text-[#0f172a] leading-[1.05]">
-                THE <span class="text-gradient">RTC INDICATOR</span><br> SUITE
-            </h1>
-            <p class="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-sm">
-                Stop guessing. Start executing. The complete 4-indicator arsenal designed for ultimate market clarity and precision.
-            </p>
+<div id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-badge">Live • RTC 4 in 1 Bundle Suite</div>
+  <h1 class="hero-title">STOP GUESSING.<br><span class="accent">START EXECUTING.</span></h1>
+  <p class="hero-subtitle">The complete <strong>4-indicator arsenal</strong> engineered for institutional-grade market clarity. Powered by advanced algorithms. Trusted by thousands of precision traders.</p>
+  
+  <div class="hero-cta-group">
+    <div class="btn-cyber-wrap filled" style="width: auto; min-width: 220px;">
+      <a href="#pricing" class="btn-cyber">Claim Your Edge →</a>
+    </div>
+    <div class="btn-cyber-wrap outline" style="width: auto; min-width: 220px;">
+      <a href="#masterclass" class="btn-cyber">Watch Masterclass</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="num">4,200+</span><span class="label">Active Members</span></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><span class="num">4</span><span class="label">Elite Indicators</span></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><span class="num">98%</span><span class="label">Satisfaction Rate</span></div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat"><span class="num">24/7</span><span class="label">Community Support</span></div>
+  </div>
+</div>
+
+<section id="indicators">
+  <div class="section-header">
+    <div class="section-label">The Arsenal</div>
+    <h2 class="section-title">FOUR INDICATORS.<br>ONE EDGE.</h2>
+    <p class="section-desc">Each tool in the RTC Suite is engineered to eliminate noise and surface only the highest-probability setups.</p>
+  </div>
+  <div class="indicators-grid">
+    <div class="ind-card">
+      <div class="ind-number">01 / REVERSAL PRO+</div>
+      <i class="fas fa-crosshairs ind-icon"></i>
+      <div class="ind-name">Reversal Pro+</div>
+      <p class="ind-desc">Pinpoints absolute market tops and bottoms with laser precision. Triggers exclusively on valid CISD from high-probability FVG or Swing points — zero false signals.</p>
+      <div class="ind-tags"><span class="ind-tag">CISD Detection</span><span class="ind-tag">FVG Filter</span><span class="ind-tag">Swing Analysis</span></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-number">02 / PO3 PRO SUITE</div>
+      <i class="fas fa-chess-knight ind-icon"></i>
+      <div class="ind-name">PO3 Pro Suite</div>
+      <p class="ind-desc">Master institutional order flow. Deep market structure analysis with advanced C2 closure tracking algorithms designed for serious ICT traders.</p>
+      <div class="ind-tags"><span class="ind-tag">Institutional Flow</span><span class="ind-tag">C2 Closure</span><span class="ind-tag">ICT Concepts</span></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-number">03 / SMT PRO+</div>
+      <i class="fas fa-bolt ind-icon"></i>
+      <div class="ind-name">SMT Pro+</div>
+      <p class="ind-desc">Exploit hidden market inefficiencies. Instantly detects SMT divergence conditions across highly correlated global assets before price confirms.</p>
+      <div class="ind-tags"><span class="ind-tag">SMT Divergence</span><span class="ind-tag">Correlated Assets</span><span class="ind-tag">Multi-Market</span></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-number">04 / POI PRO+</div>
+      <i class="fas fa-bullseye ind-icon"></i>
+      <div class="ind-name">POI Pro+</div>
+      <p class="ind-desc">Never miss a sniper entry again. Automated alert matrix maps every critical Point of Interest directly on your chart in real-time.</p>
+      <div class="ind-tags"><span class="ind-tag">Auto-Alerts</span><span class="ind-tag">POI Mapping</span><span class="ind-tag">Real-Time</span></div>
+    </div>
+  </div>
+  
+  <div class="bonus-card">
+    <div>
+      <span class="bonus-badge"><i class="fas fa-gift"></i> Exclusive Bonus</span>
+      <div class="bonus-title">PO3 Pro Suite — Advanced Edition</div>
+      <p class="bonus-desc">The coveted Advanced Edition is an exclusive bonus included completely free for all active <strong>RTC Hero Club Membership</strong> members. Unlock deeper institutional models available nowhere else.</p>
+    </div>
+    <div class="bonus-free" style="font-family: 'Syne', sans-serif; font-weight: 800;">FREE FOR<br>HERO CLUB</div>
+  </div>
+</section>
+
+<div class="pricing-wrapper" id="pricing">
+  <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+    <div class="section-label" style="justify-content: center;">Claim Access</div>
+    <h2 class="section-title" style="margin-bottom: 24px;">CHOOSE YOUR PLAN.</h2>
+    <p class="section-desc" style="margin: 0 auto;">Get instant access to the ultimate indicator suite today.</p>
+  </div>
+
+  <div class="pricing-grid">
+    
+    <div class="price-card">
+      <div class="price-tier">Starter</div>
+      <div class="price-crossed"></div>
+      <div class="price-amount"><span class="price-currency">$</span><span class="price-number">10</span></div>
+      <div class="price-period">per month</div>
+      <div class="price-save" style="color:var(--muted);">Standard rate</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Full RTC Indicator Suite</li>
+        <li>PO3 Pro Suite Advanced (Bonus)</li>
+        <li>Discord Community Access</li>
+        <li>Live trade alerts</li>
+        <li>Cancel anytime</li>
+      </ul>
+      <div class="btn-pricing-box">
+        <div class="btn-cyber-wrap outline">
+          <a href="https://whop.com/rashik-trades-community/rtc-hero-membership/" target="_blank" class="btn-cyber">Get Started</a>
         </div>
-    </header>
-
-    <section class="max-w-6xl mx-auto py-8 px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 relative z-20">
-        <div class="pure-glass-light p-8 flex items-start group reveal-up" style="transition-delay: 100ms;">
-            <div class="w-14 h-14 rounded-2xl bg-white border border-white flex items-center justify-center mr-6 text-blue-500 group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-blue-600 group-hover:text-white group-hover:shadow-[0_10px_20px_rgba(59,130,246,0.3)] transition-all duration-500 flex-shrink-0 animate-float-fast shadow-sm" style="animation-delay: 0s;">
-                <i class="fas fa-crosshairs text-xl"></i>
-            </div>
-            <div>
-                <h3 class="text-[1.3rem] font-bold text-[#0f172a] mb-1.5 group-hover:text-blue-600 transition-colors tracking-tight">[Reversal Pro+]</h3>
-                <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Pinpoint absolute market tops and bottoms. Triggers exclusively on valid CISD from high-probability FVG or Swing points.</p>
-            </div>
-        </div>
-
-        <div class="pure-glass-light p-8 flex items-start group reveal-up" style="transition-delay: 200ms;">
-            <div class="w-14 h-14 rounded-2xl bg-white border border-white flex items-center justify-center mr-6 text-indigo-500 group-hover:bg-gradient-to-br group-hover:from-indigo-500 group-hover:to-indigo-600 group-hover:text-white group-hover:shadow-[0_10px_20px_rgba(79,70,229,0.3)] transition-all duration-500 flex-shrink-0 animate-float-fast shadow-sm" style="animation-delay: 1s;">
-                <i class="fas fa-chess-knight text-xl"></i>
-            </div>
-            <div>
-                <h3 class="text-[1.3rem] font-bold text-[#0f172a] mb-1.5 group-hover:text-indigo-600 transition-colors tracking-tight">[PO3 Pro Suite]</h3>
-                <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Master institutional order flow. Dive deep into complex market structures with advanced C2 closure tracking algorithms.</p>
-            </div>
-        </div>
-
-        <div class="pure-glass-light p-8 flex items-start group reveal-up" style="transition-delay: 300ms;">
-            <div class="w-14 h-14 rounded-2xl bg-white border border-white flex items-center justify-center mr-6 text-purple-500 group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-purple-600 group-hover:text-white group-hover:shadow-[0_10px_20px_rgba(168,85,247,0.3)] transition-all duration-500 flex-shrink-0 animate-float-fast shadow-sm" style="animation-delay: 2s;">
-                <i class="fas fa-chart-line text-xl"></i>
-            </div>
-            <div>
-                <h3 class="text-[1.3rem] font-bold text-[#0f172a] mb-1.5 group-hover:text-purple-600 transition-colors tracking-tight">[SMT Pro+]</h3>
-                <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Exploit market inefficiencies. Instantly detects hidden SMT divergence conditions across highly correlated global assets.</p>
-            </div>
-        </div>
-
-        <div class="pure-glass-light p-8 flex items-start group reveal-up" style="transition-delay: 400ms;">
-            <div class="w-14 h-14 rounded-2xl bg-white border border-white flex items-center justify-center mr-6 text-cyan-500 group-hover:bg-gradient-to-br group-hover:from-cyan-500 group-hover:to-cyan-600 group-hover:text-white group-hover:shadow-[0_10px_20px_rgba(6,182,212,0.3)] transition-all duration-500 flex-shrink-0 animate-float-fast shadow-sm" style="animation-delay: 3s;">
-                <i class="fas fa-map-marked-alt text-xl"></i>
-            </div>
-            <div>
-                <h3 class="text-[1.3rem] font-bold text-[#0f172a] mb-1.5 group-hover:text-cyan-600 transition-colors tracking-tight">[POI Pro+]</h3>
-                <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Never miss a sniper entry. Extensive and automated alert matrix mapping every critical Point of Interest (POI) directly on your chart.</p>
-            </div>
-        </div>
-
-        <div class="md:col-span-2 relative p-[1.5px] group reveal-up hover:scale-[1.01] transition-transform duration-500" style="transition-delay: 500ms;">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-300 via-indigo-300 to-purple-300 animate-gradient-xy opacity-60 group-hover:opacity-100 transition-opacity duration-700 rounded-[1.6rem]"></div>
-            
-            <div class="relative pure-glass-light !bg-white/80 !border-0 rounded-[1.5rem] p-8 flex flex-col sm:flex-row items-center text-center sm:text-left gap-8">
-                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-[0_10px_30px_rgba(99,102,241,0.3)] flex-shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-6 border-2 border-white">
-                    <i class="fas fa-gift text-white text-3xl"></i>
-                </div>
-                <div>
-                    <div class="inline-block px-4 py-1.5 bg-white text-indigo-600 text-[11px] font-black rounded-full mb-3 uppercase tracking-[0.15em] border border-white shadow-sm">
-                        <i class="fas fa-star mr-1 text-[#facc15]"></i> Bonus
-                    </div>
-                    <h3 class="text-2xl font-black text-[#0f172a] mb-2 tracking-tight">PO3 Pro Suite <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 font-black text-xl">(Advanced Version)</span></h3>
-                    <p class="text-slate-600 font-medium leading-relaxed text-[15px]">Purchase the RTC Indicator Suite today! As an exclusive benefit, the highly coveted <strong class="text-[#0f172a]">PO3 Pro Suite Advanced Edition</strong> is included completely FREE.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto pt-24 pb-16 px-4 sm:px-6 relative z-20 reveal-up">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-black text-[#0f172a] mb-4 tracking-tight drop-shadow-sm">Claim Your Access</h2>
-            <p class="text-slate-500 text-[16px] font-medium max-w-2xl mx-auto">Includes instant access to the full suite + the exclusive bonus gift.</p>
-        </div>
-
-        <div class="flex flex-col lg:flex-row justify-center items-center gap-8 pb-10">
-            
-            <div class="w-full lg:w-1/3 relative group transition-all duration-500 z-10 flex flex-col h-full hover:-translate-y-2">
-                <div class="bg-[#0f1e38] border border-white/10 group-hover:border-cyan-500/40 p-10 rounded-[2rem] flex flex-col items-center text-center h-full shadow-2xl transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(6,182,212,0.15)] relative overflow-hidden shiny-sweep">
-                    
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 border border-white/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 text-cyan-400 shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative z-10">
-                        <i class="fas fa-rocket text-2xl"></i>
-                    </div>
-                    
-                    <h3 class="text-cyan-400 font-black text-[12px] tracking-[0.2em] uppercase mb-4 relative z-10">1 Month Starter</h3>
-                    <div class="text-6xl font-black text-white mb-2 tracking-tighter drop-shadow-md relative z-10">$10</div>
-                    <p class="text-slate-300 text-[13px] font-semibold mb-10 relative z-10">Regular Price: $10/mo</p>
-                    
-                    <a href="https://whop.com/rashik-trades-community/rtc-hero-membership/" target="_blank" class="w-full mt-auto py-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold text-[15px] shadow-[0_8px_25px_rgba(6,182,212,0.4)] transition-all duration-300 btn-press relative z-10">Get Started</a>
-                </div>
-            </div>
-
-            <div class="w-full lg:w-1/3 relative group transition-all duration-500 z-30 lg:scale-105 flex flex-col h-full hover:scale-[1.08] lg:hover:scale-[1.08]">
-                
-                <div class="absolute -inset-[2.5px] rounded-[2.1rem] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-60 blur-[12px] group-hover:opacity-100 group-hover:blur-[18px] transition-all duration-500 animate-gradient-xy"></div>
-                <div class="absolute -inset-[1.5px] rounded-[2.1rem] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 shadow-md animate-gradient-xy"></div>
-                
-                <div class="absolute -top-[18px] inset-x-0 mx-auto flex justify-center z-40 transition-transform duration-500 group-hover:-translate-y-1">
-                    <div class="bg-[#0a1526] px-1.5 rounded-full border border-white/20 shadow-sm">
-                        <div class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-[11px] font-black px-6 py-2 rounded-full uppercase tracking-[0.15em] flex items-center shadow-[0_4px_15px_rgba(99,102,241,0.4)]">
-                            <i class="fas fa-crown text-[#fde047] mr-2 text-[14px]"></i> Most Popular
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative h-full bg-[#0a1526] p-10 flex flex-col items-center text-center pt-14 rounded-[2rem] border border-white/10 transition-all duration-500 group-hover:shadow-[0_20px_60px_rgba(99,102,241,0.3)] overflow-hidden shiny-sweep">
-                    
-                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-8 shadow-[0_10px_30px_rgba(99,102,241,0.4)] group-hover:scale-110 transition-transform duration-500 group-hover:rotate-3 border border-white/20 text-white relative z-20">
-                        <i class="fas fa-gem text-3xl"></i>
-                    </div>
-                    
-                    <h3 class="text-indigo-400 font-black text-[13px] tracking-[0.2em] uppercase mb-4 relative z-20 drop-shadow-sm">6 Months Pro</h3>
-                    <div class="text-7xl font-black text-white mb-3 tracking-tighter relative z-20 drop-shadow-md">$50</div>
-                    
-                    <div class="text-emerald-400 text-[14px] font-bold mb-10 flex items-center justify-center bg-emerald-500/10 px-5 py-2 rounded-full border border-emerald-500/20 shadow-sm relative z-20 group-hover:scale-105 transition-transform duration-500 w-max mx-auto">
-                        <i class="fas fa-check-circle mr-2"></i> Save $10 <span class="text-slate-400 font-medium line-through ml-2 text-[12px]">($60 value)</span>
-                    </div>
-
-                    <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy/" target="_blank" class="w-full mt-auto py-5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-[16px] shadow-[0_10px_25px_rgba(99,102,241,0.4)] transition-all duration-300 btn-press relative z-20">
-                        Secure Premium Access
-                    </a>
-                </div>
-            </div>
-
-            <div class="w-full lg:w-1/3 relative group transition-all duration-500 z-10 flex flex-col h-full hover:-translate-y-2">
-                <div class="bg-[#0c162d] border border-white/10 group-hover:border-amber-500/50 p-10 rounded-[2rem] flex flex-col items-center text-center h-full shadow-2xl transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] relative overflow-hidden shiny-sweep">
-                    
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-600 border border-white/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 text-slate-900 shadow-[0_10px_25px_rgba(245,158,11,0.3)] relative z-10">
-                        <i class="fas fa-shield-alt text-2xl"></i>
-                    </div>
-                    
-                    <h3 class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500 font-black text-[12px] tracking-[0.2em] uppercase mb-4 relative z-10 drop-shadow-sm">1 Year Elite</h3>
-                    <div class="text-6xl font-black text-white mb-2 tracking-tighter drop-shadow-md relative z-10">$100</div>
-                    
-                    <p class="text-amber-400 text-[13px] font-semibold mb-10 relative z-10">
-                        Save $20 <span class="text-slate-400 font-medium line-through ml-1 text-[12px]">($120 value)</span>
-                    </p>
-
-                    <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy-a2/" target="_blank" class="w-full mt-auto py-4 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-slate-900 font-black text-[15px] shadow-[0_10px_25px_rgba(245,158,11,0.4)] transition-all duration-300 btn-press relative z-10">Claim Elite Tier</a>
-                </div>
-            </div>
-            
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto py-10 px-4 sm:px-6 relative z-20 reveal-up">
-        <div class="text-center mb-14">
-            <h2 class="text-4xl font-black text-[#0f172a] mb-3 tracking-tight">Alternative Payment Hub</h2>
-            <p class="text-slate-500 text-[16px] font-medium">Bypass automated systems with direct Crypto or Fiat transfers.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-            
-            <div class="pure-glass-light p-8 flex flex-col h-full group">
-                <h3 class="text-xl font-bold text-[#0f172a] mb-6 flex items-center border-b border-slate-200/60 pb-5">
-                    <i class="fa-brands fa-bitcoin text-slate-400 mr-3 text-2xl animate-pulse"></i> Direct Crypto Transfer
-                </h3>
-                
-                <div class="flex flex-col flex-grow justify-between space-y-3">
-                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
-                        <div class="flex items-center min-w-0 flex-1">
-                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-[#F3BA2F] to-[#d49e1e] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] group-hover/row:scale-[1.05] transition-transform duration-300">
-                                <span class="text-white font-black text-[11px] tracking-[0.15em] uppercase">Binance</span>
-                            </div>
-                            <div class="flex flex-col overflow-hidden w-full ml-4">
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Binance Pay ID</p>
-                                <p class="crypto-text-safe text-[13px] sm:text-[14px] font-mono text-[#0f172a] font-bold mt-0.5" id="binance">133010319</p>
-                            </div>
-                        </div>
-                        <button onclick="copyText('binance')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-[#F3BA2F] bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn relative z-20"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
-                    </div>
-
-                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
-                        <div class="flex items-center min-w-0 flex-1">
-                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-slate-800 to-[#0a0a0a] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] group-hover/row:scale-[1.05] transition-transform duration-300">
-                                <span class="text-[#f7a600] font-black text-[11px] tracking-[0.15em] uppercase">Bybit</span>
-                            </div>
-                            <div class="flex flex-col overflow-hidden w-full ml-4">
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Bybit UID</p>
-                                <p class="crypto-text-safe text-[13px] sm:text-[14px] font-mono text-[#0f172a] font-bold mt-0.5" id="bybit">107261338</p>
-                            </div>
-                        </div>
-                        <button onclick="copyText('bybit')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-800 bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn relative z-20"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
-                    </div>
-
-                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
-                        <div class="flex items-center min-w-0 flex-1 overflow-x-auto scrollbar-hide">
-                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-[#26A17B] to-[#1a7358] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] group-hover/row:scale-[1.05] transition-transform duration-300">
-                                <span class="text-white font-black text-[11px] tracking-[0.15em] uppercase">USDT</span>
-                            </div>
-                            <div class="flex flex-col w-full ml-4">
-                                <p class="text-[10px] font-bold text-[#10b981] uppercase tracking-widest whitespace-nowrap">USDT (BEP-20 BSC)</p>
-                                <p class="crypto-text-safe text-[10.5px] sm:text-[13px] lg:text-[12px] xl:text-[13px] font-mono text-[#0f172a] font-bold mt-0.5" id="usdt-bep20">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</p>
-                            </div>
-                        </div>
-                        <button onclick="copyText('usdt-bep20')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-[#10b981] bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn relative z-20 ml-2"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
-                    </div>
-
-                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
-                        <div class="flex items-center min-w-0 flex-1 overflow-x-auto scrollbar-hide">
-                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-[#26A17B] to-[#1a7358] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] group-hover/row:scale-[1.05] transition-transform duration-300">
-                                <span class="text-white font-black text-[11px] tracking-[0.15em] uppercase">USDT</span>
-                            </div>
-                            <div class="flex flex-col w-full ml-4">
-                                <p class="text-[10px] font-bold text-rose-500 uppercase tracking-widest whitespace-nowrap">USDT (TRC-20)</p>
-                                <p class="crypto-text-safe text-[10.5px] sm:text-[13px] lg:text-[12px] xl:text-[13px] font-mono text-[#0f172a] font-bold mt-0.5" id="usdt-trc20">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</p>
-                            </div>
-                        </div>
-                        <button onclick="copyText('usdt-trc20')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-rose-500 bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn relative z-20 ml-2"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
-                    </div>
-
-                    <div class="inner-glass-light rounded-2xl flex items-center justify-between w-full p-2.5 pl-3 pr-3 sm:pr-4 group/row gap-2">
-                        <div class="flex items-center min-w-0 flex-1 overflow-x-auto scrollbar-hide">
-                            <div class="h-10 px-4 min-w-[6.5rem] rounded-[10px] bg-gradient-to-b from-[#2775CA] to-[#19589e] flex items-center justify-center flex-shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] group-hover/row:scale-[1.05] transition-transform duration-300">
-                                <span class="text-white font-black text-[11px] tracking-[0.15em] uppercase">USDC</span>
-                            </div>
-                            <div class="flex flex-col w-full ml-4">
-                                <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest whitespace-nowrap">USDC (SOL)</p>
-                                <p class="crypto-text-safe text-[10.5px] sm:text-[13px] lg:text-[12px] xl:text-[13px] font-mono text-[#0f172a] font-bold mt-0.5" id="usdc-sol">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</p>
-                            </div>
-                        </div>
-                        <button onclick="copyText('usdc-sol')" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-blue-600 bg-white border border-slate-200 rounded-xl shadow-sm btn-press transition-all group/btn relative z-20 ml-2"><i class="far fa-copy text-[16px] group-hover/btn:scale-110 transition-transform"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pure-glass-light p-8 flex flex-col h-full group">
-                <div class="flex items-center mb-6 border-b border-slate-200/60 pb-5">
-                    <i class="fas fa-university mr-3 text-2xl text-slate-400"></i>
-                    <h3 class="text-xl font-bold text-[#0f172a]">Fiat & Bank Transfer</h3>
-                </div>
-                <p class="text-slate-500 text-[14px] font-medium mb-8 leading-relaxed">Prefer traditional banking? We securely support transfers via Wise, GBP (FPS), and EUR (SEPA).</p>
-                
-                <div class="bg-white border border-slate-100 flex items-center justify-center space-x-6 mb-10 rounded-2xl p-5 w-fit shadow-sm cursor-default hover:scale-105 transition-transform duration-500 relative z-10">
-                    <div class="flex flex-col items-center">
-                        <img src="https://wise.com/public-resources/assets/logos/wise/brand_logo.svg" alt="Wise" class="h-5 mb-1.5 hover:scale-105 transition-transform">
-                        <span class="text-[9px] text-slate-400 font-black tracking-[0.2em]">WISE</span>
-                    </div>
-                    <div class="h-10 w-px bg-slate-200"></div>
-                    <div class="flex flex-col items-center px-2">
-                        <span class="text-2xl font-black text-[#0f172a] leading-none">£</span>
-                        <span class="text-[9px] text-slate-400 font-black tracking-[0.2em] mt-1.5">GBP</span>
-                    </div>
-                    <div class="flex flex-col items-center ml-2">
-                        <span class="text-2xl font-black text-[#0f172a] leading-none">€</span>
-                        <span class="text-[9px] text-slate-400 font-black tracking-[0.2em] mt-1.5">EUR</span>
-                    </div>
-                </div>
-
-                <div class="inner-glass-light rounded-2xl p-6 mb-8 flex-grow">
-                    <h4 class="text-slate-600 font-bold uppercase text-[11px] tracking-[0.15em] mb-5 flex items-center">
-                        <i class="fas fa-shield-check mr-2 text-[14px] text-indigo-400"></i> Verification Steps
-                    </h4>
-                    <div class="space-y-4">
-                        <div class="flex items-start group/step">
-                            <div class="w-5 h-5 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-[10px] font-black mr-3 shadow-sm group-hover/step:scale-110 transition-transform">1</div>
-                            <p class="text-[13px] text-slate-500 font-medium pt-0.5">Join the <strong class="text-[#0f172a]">Official Discord Server</strong>.</p>
-                        </div>
-                        <div class="flex items-start group/step">
-                            <div class="w-5 h-5 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-[10px] font-black mr-3 shadow-sm group-hover/step:scale-110 transition-transform">2</div>
-                            <p class="text-[13px] text-slate-500 font-medium pt-0.5">Navigate to the main official channels.</p>
-                        </div>
-                        <div class="flex items-start group/step">
-                            <div class="w-5 h-5 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-[10px] font-black mr-3 shadow-sm group-hover/step:scale-110 transition-transform">3</div>
-                            <p class="text-[13px] text-slate-500 font-medium pt-0.5">Click ONLY on the official <strong class="text-[#0f172a]">Admin Rashik's</strong> profile.</p>
-                        </div>
-                        <div class="flex items-start group/step">
-                            <div class="w-5 h-5 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center flex-shrink-0 text-[10px] font-black mr-3 shadow-sm group-hover/step:scale-110 transition-transform">4</div>
-                            <p class="text-[13px] text-slate-500 font-medium pt-0.5">Send a direct message requesting Bank/Wise details.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <a href="https://discord.com/invite/RashikTrades" target="_blank" class="w-full mt-auto py-4 bg-[#5865F2] hover:bg-[#4752c4] text-white font-bold rounded-xl btn-press flex items-center justify-center transition-all shadow-[0_4px_15px_rgba(88,101,242,0.3)] hover:shadow-[0_8px_25px_rgba(88,101,242,0.4)] text-[15px] relative z-20">
-                    <i class="fab fa-discord mr-2 text-[18px] group-hover:rotate-12 transition-transform"></i> Request Details via Discord
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto py-16 px-4 sm:px-6 relative z-20 reveal-up">
-        <div class="text-center mb-12">
-            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-500 font-bold text-[10px] tracking-[0.2em] uppercase shadow-sm">
-                Masterclass Series
-            </div>
-            <h2 class="text-4xl font-black text-[#0f172a] mb-3">Indicator Breakdown</h2>
-            <p class="text-slate-500 text-[16px] font-medium">Watch these visual guides to master the RTC Suite.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            
-            <div class="pure-glass-light p-6 flex flex-col h-full group">
-                <a href="https://youtu.be/uL51FufvU6Q" target="_blank" class="relative block rounded-[1.2rem] overflow-hidden mb-6 aspect-video bg-slate-900 border border-slate-200">
-                    <img src="https://img.youtube.com/vi/uL51FufvU6Q/maxresdefault.jpg?v=latest" alt="Part 1 Thumbnail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center">
-                        <div class="w-14 h-14 bg-white/90 backdrop-blur-md border border-white rounded-full flex items-center justify-center text-[#0f172a] shadow-[0_4px_15px_rgba(0,0,0,0.1)] group-hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
-                    </div>
-                </a>
-                <div class="px-2 flex-grow relative z-10">
-                    <span class="inline-block px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[10px] font-black tracking-widest uppercase rounded mb-4 shadow-sm">Part 1</span>
-                    <h3 class="text-[19px] font-bold text-[#0f172a] mb-2 leading-snug group-hover:text-blue-600 transition-colors">Indicator Suite Breakdown</h3>
-                    <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Master the basic setup, features and precise configuration of the indicators.</p>
-                </div>
-            </div>
-
-            <div class="pure-glass-light p-6 flex flex-col h-full group">
-                <a href="https://youtu.be/oyZyEIKUix4" target="_blank" class="relative block rounded-[1.2rem] overflow-hidden mb-6 aspect-video bg-slate-900 border border-slate-200">
-                    <img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg?v=latest" alt="Part 2 Thumbnail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center">
-                        <div class="w-14 h-14 bg-white/90 backdrop-blur-md border border-white rounded-full flex items-center justify-center text-[#0f172a] shadow-[0_4px_15px_rgba(0,0,0,0.1)] group-hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
-                    </div>
-                </a>
-                <div class="px-2 flex-grow relative z-10">
-                    <span class="inline-block px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[10px] font-black tracking-widest uppercase rounded mb-4 shadow-sm">Part 2</span>
-                    <h3 class="text-[19px] font-bold text-[#0f172a] mb-2 leading-snug group-hover:text-blue-600 transition-colors">Advanced Settings</h3>
-                    <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Deep dive into complex market structure and institutional entry models.</p>
-                </div>
-            </div>
-
-            <div class="pure-glass-light p-6 flex flex-col h-full group">
-                <a href="https://youtu.be/Dbz-iNeU9t8" target="_blank" class="relative block rounded-[1.2rem] overflow-hidden mb-6 aspect-video bg-slate-900 border border-slate-200">
-                    <img src="https://img.youtube.com/vi/Dbz-iNeU9t8/maxresdefault.jpg?v=latest" alt="Part 3 Thumbnail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center">
-                        <div class="w-14 h-14 bg-white/90 backdrop-blur-md border border-white rounded-full flex items-center justify-center text-[#0f172a] shadow-[0_4px_15px_rgba(0,0,0,0.1)] group-hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-play text-xl ml-1"></i>
-                        </div>
-                    </div>
-                </a>
-                <div class="px-2 flex-grow relative z-10">
-                    <span class="inline-block px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[10px] font-black tracking-widest uppercase rounded mb-4 shadow-sm">Part 3</span>
-                    <h3 class="text-[19px] font-bold text-[#0f172a] mb-2 leading-snug group-hover:text-blue-600 transition-colors">Strategy Application</h3>
-                    <p class="text-slate-500 text-[14px] font-medium leading-relaxed">Watch how to apply the indicators in real-time market scenarios effectively.</p>
-                </div>
-            </div>
-
-            <div class="inner-glass-light !border-[1.5px] border-dashed !border-slate-300 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center h-full group hover:!bg-white">
-                <div class="w-14 h-14 bg-white border border-slate-200 rounded-full flex items-center justify-center mb-6 text-slate-400 group-hover:text-blue-500 transition-colors shadow-sm group-hover:scale-110">
-                    <i class="fas fa-hourglass-half text-xl animate-pulse"></i>
-                </div>
-                <span class="inline-block px-3 py-1 bg-white border border-slate-200 text-slate-500 text-[10px] font-black tracking-widest uppercase rounded mb-4 shadow-sm relative z-10">Upcoming</span>
-                <h3 class="text-[19px] font-bold text-[#0f172a] mb-2 relative z-10">Part 4: Coming Soon</h3>
-                <p class="text-slate-500 text-[14px] font-medium px-4 leading-relaxed relative z-10">More advanced breakdowns and live trade examples are on the way.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto py-16 px-4 sm:px-6 relative z-20 reveal-up">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-black text-[#0f172a] mb-2 tracking-tight">Join The Community</h2>
-            <p class="text-slate-500 text-[16px] font-medium">Connect with elite traders directly across our platforms.</p>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
-            <a href="https://discord.com/invite/RashikTrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(88,101,242,0.2)] text-[#5865F2] relative z-10">
-                    <i class="fab fa-discord text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-[#0f172a] mb-2 relative z-10">Discord</h3>
-                <p class="text-slate-500 text-[13px] font-medium mb-6 relative z-10">Live voice chats & elite community.</p>
-                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#5865F2] group-hover:bg-[#5865F2] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm relative z-10">Join Server</span>
-            </a>
-
-            <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(255,0,0,0.2)] text-[#FF0000] relative z-10">
-                    <i class="fab fa-youtube text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-[#0f172a] mb-2 relative z-10">YouTube</h3>
-                <p class="text-slate-500 text-[13px] font-medium mb-6 relative z-10">Watch full market analysis & tutorials.</p>
-                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#FF0000] group-hover:bg-[#FF0000] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm relative z-10">Subscribe</span>
-            </a>
-            
-            <a href="https://twitter.com/rashiktrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(15,20,25,0.1)] text-[#0f1419] relative z-10">
-                    <i class="fab fa-x-twitter text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-[#0f172a] mb-2 relative z-10">X (Twitter)</h3>
-                <p class="text-slate-500 text-[13px] font-medium mb-6 relative z-10">Daily trade setups and updates.</p>
-                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#0f1419] group-hover:bg-[#0f1419] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm relative z-10">Follow Us</span>
-            </a>
-            
-            <a href="https://t.me/RashikTradesCommunity" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(0,136,204,0.2)] text-[#0088cc] relative z-10">
-                    <i class="fab fa-telegram-plane text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-[#0f172a] mb-2 relative z-10">Telegram</h3>
-                <p class="text-slate-500 text-[13px] font-medium mb-6 relative z-10">Instant market updates & free setups.</p>
-                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#0088cc] group-hover:bg-[#0088cc] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm relative z-10">Join Channel</span>
-            </a>
-            
-            <a href="https://instagram.com/rashiktrades" target="_blank" class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm pure-glass-light p-8 flex flex-col items-center text-center h-full btn-press group">
-                <div class="w-16 h-16 rounded-full bg-white border border-slate-100 shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-[0_8px_20px_rgba(225,48,108,0.2)] text-[#E1306C] relative z-10">
-                    <i class="fab fa-instagram text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-[#0f172a] mb-2 relative z-10">Instagram</h3>
-                <p class="text-slate-500 text-[13px] font-medium mb-6 relative z-10">Trader lifestyle & behind the scenes.</p>
-                <span class="mt-auto px-6 py-2.5 bg-white border border-slate-200 text-[#E1306C] group-hover:bg-[#E1306C] group-hover:text-white font-bold text-sm rounded-full transition-colors shadow-sm relative z-10">Follow Us</span>
-            </a>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-6 pt-16 pb-10 relative z-20 reveal-up border-t border-slate-200/80 mt-10">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-slate-500 text-[13px] leading-[1.8]">
-            <div class="hover:-translate-y-1 transition-transform duration-300">
-                <h4 class="font-bold text-[#0f172a] mb-4 uppercase tracking-[0.15em] text-[11px] flex items-center">
-                    <i class="fas fa-shield-alt mr-2 text-indigo-500 text-[14px]"></i> AML Compliance
-                </h4>
-                <p>Payments from illicit activities, sanctioned entities, or dark web sources are strictly prohibited. We use automated Chainalysis Hash Filtering to screen incoming crypto transactions. Flagged funds will be permanently blocked.</p>
-            </div>
-            <div class="hover:-translate-y-1 transition-transform duration-300">
-                <h4 class="font-bold text-[#0f172a] mb-4 uppercase tracking-[0.15em] text-[11px] flex items-center">
-                    <i class="fas fa-lock mr-2 text-indigo-500 text-[14px]"></i> Payment Security
-                </h4>
-                <p>Payments made using stolen cards will lead to immediate account termination and will be reported to authorities. Any fraudulent chargeback attempts will result in a permanent IP ban and community blacklist.</p>
-            </div>
-            <div class="hover:-translate-y-1 transition-transform duration-300">
-                <h4 class="font-bold text-[#0f172a] mb-4 uppercase tracking-[0.15em] text-[11px] flex items-center">
-                    <i class="fas fa-file-invoice-dollar mr-2 text-indigo-500 text-[14px]"></i> Refund Policy
-                </h4>
-                <p>100% Digital Access - All Sales Final. Due to the digital nature of the RTC Indicator Suite, once access is granted, we cannot offer refunds, exchanges, or cancellations under any circumstances.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="text-center py-10 relative z-20">
-        <p class="text-[#0f172a] font-black text-xl mb-1 tracking-tight">@RashikTrades</p>
-        <p class="text-slate-500 font-medium text-[13px]">&copy; 2026 RashikTrades.com. All Rights Reserved.</p>
-    </footer>
-
-    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center bg-[#0f172a]/95 backdrop-blur-2xl text-white px-7 py-3.5 rounded-full font-medium shadow-[0_20px_40px_rgba(0,0,0,0.15)] transform translate-y-32 opacity-0 transition-all duration-400 z-50 text-[14px] border border-white/20">
-        <i class="fas fa-check-circle text-emerald-400 mr-2.5 text-lg"></i> Copied to clipboard
+      </div>
     </div>
 
-    <script>
-        function copyText(elementId) {
-            var text = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(text).then(function() {
-                var toast = document.getElementById('toast');
-                toast.classList.remove('translate-y-32', 'opacity-0');
-                setTimeout(function() {
-                    toast.classList.add('translate-y-32', 'opacity-0');
-                }, 2500);
-            }, function(err) {
-                console.error('Could not copy text: ', err);
-            });
-        }
+    <div class="price-card popular">
+      <div class="popular-badge"><i class="fas fa-bolt"></i> Most Popular</div>
+      <div class="price-tier" style="margin-top:24px;">Pro <span class="tv-discount-tag">-16%</span></div>
+      <div class="price-crossed">$60</div>
+      <div class="price-amount"><span class="price-currency">$</span><span class="price-number">50</span></div>
+      <div class="price-period">for 6 months</div>
+      <div class="price-save">Save $10 a half-year</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Full RTC Indicator Suite</li>
+        <li>PO3 Pro Suite Advanced (Bonus)</li>
+        <li>Priority Discord Support</li>
+        <li>Live trade alerts + analysis</li>
+        <li>Indicator update access</li>
+        <li>Masterclass video series</li>
+      </ul>
+      <div class="btn-pricing-box">
+        <div class="btn-cyber-wrap filled">
+          <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy/" target="_blank" class="btn-cyber">Secure Premium</a>
+        </div>
+      </div>
+    </div>
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            document.querySelectorAll('.reveal-up').forEach(element => {
-                observer.observe(element);
-            });
-        });
-    </script>
+    <div class="price-card">
+      <div class="price-tier">Elite <span class="tv-discount-tag">-16%</span></div>
+      <div class="price-crossed">$120</div>
+      <div class="price-amount"><span class="price-currency">$</span><span class="price-number">100</span></div>
+      <div class="price-period">for 12 months</div>
+      <div class="price-save">Save $20 a year</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Full RTC Indicator Suite</li>
+        <li>PO3 Pro Suite Advanced (Bonus)</li>
+        <li>VIP Discord Role + Support</li>
+        <li>All alerts + strategy breakdowns</li>
+        <li>Lifetime indicator updates</li>
+        <li>Masterclass series + Part 4 early</li>
+        <li>1-on-1 onboarding session</li>
+      </ul>
+      <div class="btn-pricing-box">
+        <div class="btn-cyber-wrap outline">
+          <a href="https://whop.com/rashik-trades-community/rtc-hero-club-member-copy-a2/" target="_blank" class="btn-cyber">Claim Elite Tier</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<section id="payment">
+  <div class="section-header">
+    <div class="section-label">Alternative Payments</div>
+    <h2 class="section-title">FLEXIBLE PAYMENT<br>OPTIONS.</h2>
+    <p class="section-desc">Bypass automated systems with direct crypto or fiat bank transfers. Verified and secure.</p>
+  </div>
+  <div class="payment-grid">
+    <div class="pay-card">
+      <div class="pay-title">Direct Crypto Transfer</div>
+      <p class="pay-subtitle">Send directly to any of these addresses. Screenshot your transaction and send to Discord for verification.</p>
+      <div class="crypto-list">
+        <div class="crypto-item"><div class="crypto-icon"><i class="fas fa-coins"></i></div><div><div class="crypto-name">Binance Pay</div><div class="crypto-addr">Pay ID: 133010319</div></div><button class="copy-btn" onclick="copyText(this,'133010319')">COPY</button></div>
+        <div class="crypto-item"><div class="crypto-icon"><i class="fas fa-chart-pie"></i></div><div><div class="crypto-name">Bybit</div><div class="crypto-addr">UID: 107261338</div></div><button class="copy-btn" onclick="copyText(this,'107261338')">COPY</button></div>
+        <div class="crypto-item"><div class="crypto-icon"><i class="fas fa-dollar-sign"></i></div><div><div class="crypto-name">USDT (BEP-20)</div><div class="crypto-addr">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</div></div><button class="copy-btn" onclick="copyText(this,'0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973')">COPY</button></div>
+        <div class="crypto-item"><div class="crypto-icon"><i class="fas fa-dollar-sign"></i></div><div><div class="crypto-name">USDT (TRC-20)</div><div class="crypto-addr">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</div></div><button class="copy-btn" onclick="copyText(this,'TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9')">COPY</button></div>
+        <div class="crypto-item"><div class="crypto-icon"><i class="fas fa-dollar-sign"></i></div><div><div class="crypto-name">USDC (SOL)</div><div class="crypto-addr">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</div></div><button class="copy-btn" onclick="copyText(this,'FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH')">COPY</button></div>
+      </div>
+    </div>
+    <div class="pay-card">
+      <div class="pay-title">Fiat & Bank Transfer</div>
+      <p class="pay-subtitle">Prefer traditional banking? We support secure transfers via Wise, GBP (FPS), and EUR (SEPA).</p>
+      <div class="fiat-badges"><div class="fiat-badge"><i class="fas fa-university"></i> Wise</div><div class="fiat-badge"><i class="fas fa-pound-sign"></i> GBP — FPS</div><div class="fiat-badge"><i class="fas fa-euro-sign"></i> EUR — SEPA</div></div>
+      <div style="height:16px"></div>
+      <div class="bank-steps">
+        <div class="bank-step"><div class="step-num">01</div><div class="step-text">Join the <strong>Official Discord Server</strong> via the link below.</div></div>
+        <div class="bank-step"><div class="step-num">02</div><div class="step-text">Navigate to the main official channels in the server.</div></div>
+        <div class="bank-step"><div class="step-num">03</div><div class="step-text">Click <strong>ONLY on Admin Rashik's</strong> official profile. Do not message others.</div></div>
+        <div class="bank-step"><div class="step-num">04</div><div class="step-text">Send a DM requesting the bank or Wise transfer details to proceed.</div></div>
+      </div>
+      <div style="margin-top:32px"><a href="https://discord.com/invite/RashikTrades" class="btn-primary" style="display:inline-block" target="_blank">Request Details via Discord →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="masterclass">
+  <div class="section-header">
+    <div class="section-label">Masterclass Series</div>
+    <h2 class="section-title">INDICATOR<br>BREAKDOWN.</h2>
+    <p class="section-desc">Watch these visual guides to master the RTC Suite and execute perfectly.</p>
+  </div>
+  <div class="indicators-grid">
+    
+    <div class="ind-card" style="padding: 32px 24px;">
+      <a href="https://youtu.be/uL51FufvU6Q" target="_blank" class="video-container">
+        <img src="https://img.youtube.com/vi/uL51FufvU6Q/maxresdefault.jpg?v=latest" alt="Part 1">
+        <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+      </a>
+      <div class="ind-number">PART 1</div>
+      <div class="ind-name" style="font-size: 1.4rem;">Suite Breakdown</div>
+      <p class="ind-desc">Master the basic setup, features and precise configuration of the indicators.</p>
+    </div>
+
+    <div class="ind-card" style="padding: 32px 24px;">
+      <a href="https://youtu.be/oyZyEIKUix4" target="_blank" class="video-container">
+        <img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg?v=latest" alt="Part 2">
+        <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+      </a>
+      <div class="ind-number">PART 2</div>
+      <div class="ind-name" style="font-size: 1.4rem;">Advanced Settings</div>
+      <p class="ind-desc">Deep dive into complex market structure and institutional entry models.</p>
+    </div>
+
+    <div class="ind-card" style="padding: 32px 24px;">
+      <a href="https://youtu.be/Dbz-iNeU9t8" target="_blank" class="video-container">
+        <img src="https://img.youtube.com/vi/Dbz-iNeU9t8/maxresdefault.jpg?v=latest" alt="Part 3">
+        <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+      </a>
+      <div class="ind-number">PART 3</div>
+      <div class="ind-name" style="font-size: 1.4rem;">Strategy Application</div>
+      <p class="ind-desc">Watch how to apply the indicators in real-time market scenarios effectively.</p>
+    </div>
+
+    <div class="ind-card" style="padding: 32px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border-style: dashed;">
+      <i class="fas fa-hourglass-half ind-icon" style="margin-bottom: 10px; color: var(--muted); animation: pulse 2s infinite;"></i>
+      <div class="ind-number">UPCOMING</div>
+      <div class="ind-name" style="font-size: 1.4rem;">Part 4: Coming Soon</div>
+      <p class="ind-desc">More advanced breakdowns and live trade examples are on the way.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-header">
+    <div class="section-label">Social Proof</div>
+    <h2 class="section-title">TRADERS DON'T LIE.</h2>
+    <p class="section-desc">Real results from real members of the RTC community worldwide.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card"><div class="testi-pnl">+$4,200 this week</div><div class="testi-quote">"</div><p class="testi-text">The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade.</p><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Marcus K.</div></div></div></div>
+    <div class="testi-card"><div class="testi-pnl">+18.3% ROI</div><div class="testi-quote">"</div><p class="testi-text">SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month.</p><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sophie L.</div></div></div></div>
+    <div class="testi-card"><div class="testi-pnl">Best investment</div><div class="testi-quote">"</div><p class="testi-text">Rashik's community is genuinely one of the best trading spaces on the internet. The indicators are elite-level, but the Discord support and analysis are what truly sets this apart.</p><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amir T.</div></div></div></div>
+    <div class="testi-card"><div class="testi-pnl">2R avg trade</div><div class="testi-quote">"</div><p class="testi-text">POI Pro+ maps entries I would have missed completely. The automation is insane — I get alerted at exactly the right level. Went from breakeven to consistently profitable within 3 weeks.</p><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Jamie R.</div></div></div></div>
+    <div class="testi-card"><div class="testi-pnl">+$9,100 month</div><div class="testi-quote">"</div><p class="testi-text">I've tried 12 indicator suites. Nothing comes close. The PO3 Advanced edition alone is worth 10x the price. The logic behind these tools is clearly from someone who actually trades.</p><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">Daniel W.</div></div></div></div>
+    <div class="testi-card"><div class="testi-pnl">Elite member</div><div class="testi-quote">"</div><p class="testi-text">The yearly plan was the best decision I made. Constant updates, Rashik actually listens to the community, and the indicator keeps getting better. Zero reasons to leave.</p><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-author"><div class="testi-avatar">Y</div><div><div class="testi-name">Yuki N.</div></div></div></div>
+    
+    <div class="testi-card"><div class="testi-pnl">Steady returns</div><div class="testi-quote">"</div><p class="testi-text">The POI Pro+ on my Elite membership has become my daily weapon for swing trading. My entry precision has improved so much that I'm catching cleaner setups. Over the last three months, I've managed a steady +$1,200/mo without adding extra risk. Totally worth it.</p><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">David R.</div></div></div></div>
+    <div class="testi-card"><div class="testi-pnl">Part-time success</div><div class="testi-quote">"</div><p class="testi-text">Moving from paper trading to a real account was intimidating. The SMT Pro+ on the Pro membership helped me spot divergences easily. It boosted my confidence to place realistic trades. Last month was my best yet, pulling in +$650 profit on FX pairs. It’s a great feeling.</p><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sarah P.</div></div></div></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-header">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">COMMON QUESTIONS.</h2>
+    <p class="section-desc">Everything you need to know before joining the RTC community.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I trade any market with these indicators?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a"><div class="faq-a-inner">Absolutely. The RTC Indicator Suite is universally designed to work flawlessly across <strong>ALL</strong> markets and asset classes. Whether you trade global equities, forex pairs, crypto assets, or futures/indices, our algorithms adapt to any price action and time frame seamlessly.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What platform does the RTC Indicator Suite work on?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a"><div class="faq-a-inner">The RTC Indicator Suite is built for TradingView. You'll need a TradingView account (free or paid) to access and use the indicators. Once your membership is verified, you'll receive an invite link to add the tools directly to your charts.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I get access after payment?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a"><div class="faq-a-inner">After payment via Whop, access is granted automatically within minutes. For crypto or bank transfers, join our Discord and message Admin Rashik with your proof of payment. Access is typically verified within a few hours.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a refund policy?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a"><div class="faq-a-inner">Due to the digital nature of the RTC Indicator Suite, all sales are final once access is granted. We cannot offer refunds, exchanges, or cancellations under any circumstances.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to know ICT concepts to use the suite?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a"><div class="faq-a-inner">Some familiarity with ICT concepts like FVGs, CISD, and order blocks will help. However, our 3-part masterclass series on YouTube covers everything you need to configure and use the indicators from scratch.</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is my payment information secure?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a"><div class="faq-a-inner">Absolutely. Whop payments are processed via Stripe and are fully encrypted. For crypto payments, we use Chainalysis hash filtering to screen all incoming transactions.</div></div></div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="section-header">
+    <div class="section-label">Join The Network</div>
+    <h2 class="section-title">CONNECT WITH<br>ELITE TRADERS.</h2>
+    <p class="section-desc">Our community spans every major platform. Choose your channel and plug in.</p>
+  </div>
+  <div class="community-grid">
+    <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p></a>
+    <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p></a>
+    <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p></a>
+    <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p></a>
+    <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p></a>
+  </div>
+</section>
+
+<div id="econCalendar">
+  <div class="section-header">
+    <div class="section-label">Free Tool</div>
+    <h2 class="section-title">ECONOMIC<br>CALENDAR.</h2>
+    <p class="section-desc">Track high-impact market events. Filter by impact level or currency to stay ahead of volatility.</p>
+  </div>
+
+  <div class="cal-toolbar">
+    <div class="cal-filter-group">
+      <button class="cal-filter-btn active" onclick="filterDay('all',this)">All Days</button>
+      <button class="cal-filter-btn" onclick="filterDay('MON',this)">Mon</button>
+      <button class="cal-filter-btn" onclick="filterDay('TUE',this)">Tue</button>
+      <button class="cal-filter-btn" onclick="filterDay('WED',this)">Wed</button>
+      <button class="cal-filter-btn" onclick="filterDay('THU',this)">Thu</button>
+      <button class="cal-filter-btn" onclick="filterDay('FRI',this)">Fri</button>
+    </div>
+    <div class="cal-impact-filters">
+      <div class="cal-impact-toggle active-high" onclick="toggleImpact('high',this)"><div class="impact-dot dot-high"></div>High Impact</div>
+      <div class="cal-impact-toggle active-med" onclick="toggleImpact('med',this)"><div class="impact-dot dot-med"></div>Medium</div>
+      <div class="cal-impact-toggle active-low" onclick="toggleImpact('low',this)"><div class="impact-dot dot-low"></div>Low</div>
+    </div>
+    
+    <div class="local-time-selector" title="Select your preferred timezone">
+      <i class="fas fa-globe"></i>
+      <select id="timezoneSelect" onchange="renderCalendar()">
+        <option value="local">Local Time (Auto)</option>
+        <option value="America/New_York">New York (EST)</option>
+        <option value="Europe/London">London (GMT)</option>
+        <option value="Asia/Tokyo">Tokyo (JST)</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="calBody"></div>
+</div>
+
+<div id="riskCalc">
+  <div class="section-header">
+    <div class="section-label">Free Tool</div>
+    <h2 class="section-title">QUANT RISK<br>CALCULATOR.</h2>
+    <p class="section-desc">Calculate exact position size, risk/reward, and margin across Forex (Lots), Indices (Contracts), and Crypto (Tokens/Leverage).</p>
+  </div>
+
+  <div class="calc-tabs">
+    <button class="calc-tab active" onclick="switchAssetClass('forex', this)">Forex & Metals</button>
+    <button class="calc-tab" onclick="switchAssetClass('indices', this)">Indices</button>
+    <button class="calc-tab" onclick="switchAssetClass('crypto', this)">Crypto</button>
+  </div>
+
+  <div class="calc-layout">
+    <div class="calc-panel">
+      <div class="calc-panel-title">Trade Parameters</div>
+
+      <div class="calc-field">
+        <label class="calc-label">Instrument Selection</label>
+        <div class="calc-pair-grid" id="pairGrid">
+          </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Account Balance</label>
+        <div class="calc-input-wrap">
+          <span class="calc-prefix">$</span>
+          <input type="number" class="calc-input" id="balance" value="10000" min="100" step="100" oninput="calcRisk()">
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Risk Per Trade: <span id="riskPctLabel" style="color:var(--green);font-family:'JetBrains Mono',monospace">1.0%</span></label>
+        <div class="calc-input-wrap">
+          <input type="number" class="calc-input no-prefix" id="riskPct" value="1" min="0.1" max="10" step="0.1" oninput="syncSlider('riskPct', 'riskSlider', 'riskPctLabel', '%');calcRisk()">
+          <span class="calc-suffix">%</span>
+        </div>
+        <div class="calc-slider-wrap">
+          <input type="range" class="calc-slider" id="riskSlider" min="0.1" max="10" step="0.1" value="1" oninput="syncInput('riskSlider', 'riskPct', 'riskPctLabel', '%');calcRisk()">
+        </div>
+      </div>
+
+      <div class="calc-field" id="leverageField" style="display: none;">
+        <label class="calc-label">Leverage: <span id="leverageLabel" style="color:var(--orange);font-family:'JetBrains Mono',monospace">10x</span></label>
+        <div class="calc-input-wrap">
+          <span class="calc-prefix">x</span>
+          <input type="number" class="calc-input" id="leverage" value="10" min="1" max="100" step="1" oninput="syncSlider('leverage', 'levSlider', 'leverageLabel', 'x');calcRisk()">
+        </div>
+        <div class="calc-slider-wrap">
+          <input type="range" class="calc-slider" id="levSlider" min="1" max="100" step="1" value="10" oninput="syncInput('levSlider', 'leverage', 'leverageLabel', 'x');calcRisk()">
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Entry Price</label>
+        <div class="calc-input-wrap">
+          <input type="number" class="calc-input no-prefix" id="entry" value="2341.50" step="0.01" oninput="calcRisk()">
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Stop Loss Price</label>
+        <div class="calc-input-wrap">
+          <input type="number" class="calc-input no-prefix" id="stopLoss" value="2335.00" step="0.01" oninput="calcRisk()">
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <label class="calc-label">Take Profit Price</label>
+        <div class="calc-input-wrap">
+          <input type="number" class="calc-input no-prefix" id="takeProfit" value="2362.00" step="0.01" oninput="calcRisk()">
+        </div>
+      </div>
+
+      <button class="calc-reset-btn" onclick="resetCalc()">↺ Reset to Default</button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:2px;" id="resultsPanel">
+      <div class="result-main">
+        <div class="result-main-label" id="mainResultLabel">Position Size</div>
+        <div class="result-main-val" id="lotSize">0.00</div>
+        <div class="result-main-unit" id="lotUnit">Standard Lots</div>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-stat">
+          <div class="result-stat-label">Risk Amount</div>
+          <div class="result-stat-val red" id="riskAmt">$100.00</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-stat-label">Potential Profit</div>
+          <div class="result-stat-val green" id="profitAmt">$312.00</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-stat-label" id="slLabel">Stop Loss (Pips)</div>
+          <div class="result-stat-val" id="slPips">65</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-stat-label" id="tpLabel">Take Profit (Pips)</div>
+          <div class="result-stat-val" id="tpPips">205</div>
+        </div>
+
+        <div class="result-rr-bar">
+          <div class="result-stat-label">Risk : Reward Ratio — <span id="rrLabel" style="color:var(--green);font-family:'JetBrains Mono',monospace">1 : 3.15</span></div>
+          <div class="rr-track">
+            <div class="rr-risk" id="rrRisk" style="width:24%"></div>
+            <div class="rr-reward" id="rrReward" style="width:76%"></div>
+          </div>
+        </div>
+
+        <div class="result-stat">
+          <div class="result-stat-label" id="valLabel">Value per Pip</div>
+          <div class="result-stat-val" id="pipVal">$1.54</div>
+        </div>
+        <div class="result-stat" id="marginStat">
+          <div class="result-stat-label">Trade Bias</div>
+          <div class="result-stat-val" id="direction" style="color:var(--green)">LONG ↑</div>
+        </div>
+      </div>
+
+      <div class="result-warning" id="riskWarning">
+        <i class="fas fa-exclamation-triangle"></i> Risk exceeds 3% of account — this trade may be oversized. Consider reducing position.
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="policies">
+  <div class="policy-grid">
+    <div class="policy-col">
+      <h4><i class="fas fa-shield-alt"></i> AML Compliance</h4>
+      <p>Payments from illicit activities, sanctioned entities, or dark web sources are strictly prohibited. We use automated Chainalysis Hash Filtering to screen incoming crypto transactions. Flagged funds will be permanently blocked.</p>
+    </div>
+    <div class="policy-col">
+      <h4><i class="fas fa-lock"></i> Payment Security</h4>
+      <p>Payments made using stolen cards will lead to immediate account termination and will be reported to authorities. Any fraudulent chargeback attempts will result in a permanent IP ban and community blacklist.</p>
+    </div>
+    <div class="policy-col">
+      <h4><i class="fas fa-file-invoice-dollar"></i> Refund Policy</h4>
+      <p>100% Digital Access - All Sales Final. Due to the digital nature of the RTC Indicator Suite, once access is granted, we cannot offer refunds, exchanges, or cancellations under any circumstances.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">RASHIK<span>TRADES</span>.COM</div>
+  <div class="footer-copy">© 2026 RashikTrades.com — All Rights Reserved</div>
+</footer>
+
+<script>
+// ── TICKER ──
+const tickers=[{sym:'EUR/USD',val:'1.0842',chg:'+0.12%',up:true},{sym:'GBP/USD',val:'1.2634',chg:'+0.08%',up:true},{sym:'XAU/USD',val:'2,341.50',chg:'+0.34%',up:true},{sym:'BTC/USD',val:'67,842',chg:'-0.21%',up:false},{sym:'ETH/USD',val:'3,512',chg:'+0.55%',up:true},{sym:'USD/JPY',val:'151.24',chg:'-0.09%',up:false},{sym:'US100',val:'18,432',chg:'+0.44%',up:true},{sym:'SPX500',val:'5,234',chg:'+0.18%',up:true},{sym:'DXY',val:'104.32',chg:'-0.05%',up:false},{sym:'GBP/JPY',val:'191.12',chg:'+0.22%',up:true}];
+const track=document.getElementById('ticker');
+track.innerHTML=[...tickers,...tickers].map(t=>`<span class="ticker-item">${t.sym} <span class="${t.up?'up':'dn'}">${t.val} ${t.chg}</span></span>`).join('');
+
+// ── FAQ ──
+function toggleFaq(el){const item=el.parentElement;const was=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open');}
+
+// ── COPY ──
+function copyText(btn,text){
+  navigator.clipboard.writeText(text).then(()=>{
+    const oldText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> COPIED';
+    btn.classList.add('copied');
+    setTimeout(()=>{
+      btn.innerHTML = oldText;
+      btn.classList.remove('copied');
+    },2000);
+  });
+}
+
+// ── SCROLL ANIM ──
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
+document.querySelectorAll('.ind-card,.price-card,.testi-card,.comm-card,.faq-item,.cal-event').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease,border-color 0.3s';observer.observe(el);});
+
+// ════════════════════════════════════
+// 🔥 ECONOMIC CALENDAR (LOCAL TIMEZONE) 🔥
+// ════════════════════════════════════
+const calData = [
+  { day:'MON', date:'Mar 31, 2026', events:[
+    { timeUtc:'2026-03-31T12:30:00Z', cur:'USD', impact:'low',  name:'PCE Price Index m/m',      sub:'Personal Consumption Expenditures',  actual:'0.3%',  forecast:'0.3%',  prev:'0.4%' },
+    { timeUtc:'2026-03-31T14:00:00Z', cur:'USD', impact:'med',  name:'ISM Manufacturing PMI',     sub:'Institute for Supply Management',    actual:'—',     forecast:'48.7',  prev:'47.8' },
+    { timeUtc:'2026-03-31T19:00:00Z', cur:'EUR', impact:'low',  name:'German Retail Sales m/m',   sub:'MoM Change',                         actual:'—',     forecast:'0.5%',  prev:'-0.7%'},
+  ]},
+  { day:'TUE', date:'Apr 1, 2026', events:[
+    { timeUtc:'2026-04-01T12:30:00Z', cur:'USD', impact:'high', name:'JOLTS Job Openings',        sub:'Job Openings & Labor Turnover Survey',actual:'—',     forecast:'7.64M', prev:'7.74M'},
+    { timeUtc:'2026-04-01T13:45:00Z', cur:'USD', impact:'med',  name:'Final Manufacturing PMI',   sub:'S&P Global Flash PMI',               actual:'—',     forecast:'51.7',  prev:'52.0' },
+    { timeUtc:'2026-04-01T18:00:00Z', cur:'GBP', impact:'med',  name:'Construction PMI',          sub:'CIPS UK',                            actual:'—',     forecast:'46.8',  prev:'45.9' },
+  ]},
+  { day:'WED', date:'Apr 2, 2026', events:[
+    { timeUtc:'2026-04-02T12:15:00Z', cur:'USD', impact:'high', name:'ADP Non-Farm Employment',   sub:'Automatic Data Processing',          actual:'—',     forecast:'120K',  prev:'184K' },
+    { timeUtc:'2026-04-02T14:30:00Z', cur:'USD', impact:'high', name:'Crude Oil Inventories',     sub:'EIA Weekly Report',                  actual:'—',     forecast:'-1.4M', prev:'1.7M' },
+    { timeUtc:'2026-04-02T17:00:00Z', cur:'EUR', impact:'med',  name:'CPI Flash Estimate y/y',    sub:'Eurozone Consumer Price Index',      actual:'—',     forecast:'2.3%',  prev:'2.2%' },
+  ]},
+  { day:'THU', date:'Apr 3, 2026', events:[
+    { timeUtc:'2026-04-03T12:30:00Z', cur:'USD', impact:'high', name:'Unemployment Claims',       sub:'Initial Jobless Claims',             actual:'—',     forecast:'225K',  prev:'219K' },
+    { timeUtc:'2026-04-03T14:00:00Z', cur:'USD', impact:'med',  name:'ISM Services PMI',          sub:'Non-Manufacturing PMI',              actual:'—',     forecast:'53.4',  prev:'53.5' },
+    { timeUtc:'2026-04-03T16:45:00Z', cur:'EUR', impact:'high', name:'ECB Interest Rate Decision',sub:'European Central Bank',              actual:'—',     forecast:'2.50%', prev:'2.65%'},
+  ]},
+  { day:'FRI', date:'Apr 4, 2026', events:[
+    { timeUtc:'2026-04-04T12:30:00Z', cur:'USD', impact:'high', name:'Non-Farm Payrolls',         sub:'Bureau of Labor Statistics',         actual:'—',     forecast:'+185K', prev:'+151K'},
+    { timeUtc:'2026-04-04T12:30:00Z', cur:'USD', impact:'high', name:'Unemployment Rate',         sub:'BLS Monthly Survey',                 actual:'—',     forecast:'4.1%',  prev:'4.1%' },
+    { timeUtc:'2026-04-04T14:00:00Z', cur:'CAD', impact:'med',  name:'Ivey PMI',                  sub:'Richard Ivey School of Business',   actual:'—',     forecast:'52.0',  prev:'55.3' },
+  ]},
+];
+
+let activeDay='all', activeImpacts={high:true,med:true,low:true};
+
+// Get User's Local Timezone Name for the UI
+const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+document.getElementById('timezoneSelect').options[0].text = `Local Time (${userTimezone})`;
+
+function curClass(c){return 'cur-'+c.toLowerCase();}
+function impactClass(i){return i==='high'?'impact-high':i==='med'?'impact-med':'impact-low';}
+function dotClass(i){return i==='high'?'dot-high':i==='med'?'dot-med':'dot-low';}
+function impactLabel(i){return i==='high'?'HIGH':i==='med'?'MED':'LOW';}
+
+function renderCalendar(){
+  const body=document.getElementById('calBody');
+  const tzSelect = document.getElementById('timezoneSelect').value;
+  
+  body.innerHTML='';
+  calData.forEach(group=>{
+    const dayEvents=group.events.filter(e=>activeImpacts[e.impact]);
+    if(activeDay!=='all'&&group.day!==activeDay)return;
+    if(dayEvents.length===0)return;
+    const highCount=dayEvents.filter(e=>e.impact==='high').length;
+    let html=`<div class="cal-day-group">
+      <div class="cal-day-header">
+        <div class="cal-day-label">${group.day}</div>
+        <div class="cal-day-date">${group.date}</div>
+        ${highCount>0?`<div class="cal-day-badge">${highCount} HIGH IMPACT</div>`:''}
+      </div>`;
+      
+    dayEvents.forEach(ev=>{
+      const isActual=ev.actual!=='—';
+      // Format the UTC time into the User's Local Time or Selected Time
+      let timeString = '';
+      if(tzSelect === 'local') {
+          const localDate = new Date(ev.timeUtc);
+          timeString = localDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      } else {
+          const localDate = new Date(ev.timeUtc);
+          timeString = localDate.toLocaleTimeString("en-US", {timeZone: tzSelect, hour: '2-digit', minute:'2-digit'});
+      }
+      
+      html+=`<div class="cal-event">
+        <div class="cal-time">${timeString}</div>
+        <div><span class="cal-currency ${curClass(ev.cur)}">${ev.cur}</span></div>
+        <div class="cal-impact"><div class="impact-dot ${dotClass(ev.impact)}"></div><span class="${impactClass(ev.impact)}">${impactLabel(ev.impact)}</span></div>
+        <div><div class="cal-event-name">${ev.name}</div><div class="cal-event-sub">${ev.sub}</div></div>
+        <div class="cal-val"><div class="val-label">Actual</div><div class="${isActual?'val-actual':'val-pending'}">${ev.actual}</div></div>
+        <div class="cal-val"><div class="val-label">Forecast</div><div class="val-forecast">${ev.forecast}</div></div>
+        <div class="cal-val"><div class="val-label">Previous</div><div class="val-previous">${ev.prev}</div></div>
+      </div>`;
+    });
+    html+='</div>';
+    body.innerHTML+=html;
+  });
+  // re-observe new elements
+  document.querySelectorAll('.cal-event').forEach(el=>{
+    el.style.opacity='0';el.style.transform='translateY(12px)';
+    el.style.transition='opacity 0.4s ease,transform 0.4s ease,background 0.2s,border-color 0.2s';
+    observer.observe(el);
+  });
+}
+
+function filterDay(day,btn){
+  activeDay=day;
+  document.querySelectorAll('.cal-filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCalendar();
+}
+
+function toggleImpact(level,btn){
+  activeImpacts[level]=!activeImpacts[level];
+  const map={high:'active-high',med:'active-med',low:'active-low'};
+  btn.classList.toggle(map[level]);
+  renderCalendar();
+}
+
+// Initial render
+document.getElementById('timezoneSelect').value = 'local';
+renderCalendar();
+
+// ════════════════════════════════════
+// 🔥 ULTIMATE RISK CALCULATOR 🔥
+// ════════════════════════════════════
+const assets = {
+  forex: [
+    {id:'xauusd', label:'XAU/USD', entry:2341.50, sl:2335.00, tp:2362.00, mult:10},
+    {id:'xagusd', label:'XAG/USD', entry:28.50, sl:28.00, tp:29.50, mult:10},
+    {id:'eurusd', label:'EUR/USD', entry:1.08420, sl:1.08100, tp:1.09100, mult:10000},
+    {id:'gbpusd', label:'GBP/USD', entry:1.26340, sl:1.25900, tp:1.27400, mult:10000},
+    {id:'audusd', label:'AUD/USD', entry:0.65400, sl:0.65000, tp:0.66200, mult:10000},
+    {id:'nzdusd', label:'NZD/USD', entry:0.59800, sl:0.59400, tp:0.60600, mult:10000},
+    {id:'usdcad', label:'USD/CAD', entry:1.35200, sl:1.35800, tp:1.34000, mult:10000},
+    {id:'usdchf', label:'USD/CHF', entry:0.90400, sl:0.90000, tp:0.91200, mult:10000},
+    {id:'usdjpy', label:'USD/JPY', entry:151.24,  sl:151.90,  tp:149.80,  mult:100},
+    {id:'eurjpy', label:'EUR/JPY', entry:164.50,  sl:164.00,  tp:165.50,  mult:100},
+    {id:'gbpjpy', label:'GBP/JPY', entry:191.12,  sl:190.40,  tp:192.80,  mult:100}
+  ],
+  indices: [
+    {id:'nq',     label:'NQ (NAS100)', entry:18432.00, sl:18380.00, tp:18550.00, mult:1},
+    {id:'es',     label:'ES (SPX500)', entry:5234.50, sl:5220.00, tp:5260.00, mult:1},
+    {id:'ym',     label:'YM (US30)',   entry:39500, sl:39400, tp:39700, mult:1},
+    {id:'rty',    label:'RTY (US2000)',entry:2050.50, sl:2040.00, tp:2070.00, mult:1},
+    {id:'gc',     label:'GC (GOLD)',   entry:2350.10, sl:2345.00, tp:2365.00, mult:10},
+    {id:'cl',     label:'CL (OIL)',    entry:82.50, sl:81.00, tp:85.00, mult:100},
+    {id:'dax',    label:'DAX (GER40)', entry:18200, sl:18100, tp:18400, mult:1},
+    {id:'uk100',  label:'UK100',       entry:7900, sl:7850, tp:8000, mult:1}
+  ],
+  crypto: [
+    {id:'btc',  label:'BTC',  entry:67842, sl:66500, tp:70000, mult:1},
+    {id:'eth',  label:'ETH',  entry:3512,  sl:3420,  tp:3720,  mult:1},
+    {id:'sol',  label:'SOL',  entry:145.50,sl:138.00,tp:160.00, mult:1},
+    {id:'bnb',  label:'BNB',  entry:580.20,sl:560.00,tp:620.00, mult:1},
+    {id:'xrp',  label:'XRP',  entry:0.5520,sl:0.5100,tp:0.6200, mult:1},
+    {id:'ada',  label:'ADA',  entry:0.4500,sl:0.4200,tp:0.5100, mult:1},
+    {id:'doge', label:'DOGE', entry:0.1550,sl:0.1400,tp:0.1800, mult:1},
+    {id:'avax', label:'AVAX', entry:45.50, sl:41.00, tp:55.00, mult:1},
+    {id:'link', label:'LINK', entry:18.20, sl:17.00, tp:21.00, mult:1},
+    {id:'dot',  label:'DOT',  entry:8.50,  sl:7.80,  tp:10.00, mult:1}
+  ]
+};
+
+let currentClass = 'forex';
+let currentPair = assets.forex[0];
+
+function switchAssetClass(category, btn) {
+  // Update Tabs
+  document.querySelectorAll('.calc-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentClass = category;
+
+  // Build Pair Grid
+  const grid = document.getElementById('pairGrid');
+  grid.innerHTML = '';
+  assets[category].forEach((pair, index) => {
+    const btnHtml = `<button class="calc-pair-btn ${index===0?'active':''}" onclick="selectPair(this, '${pair.id}')">${pair.label}</button>`;
+    grid.innerHTML += btnHtml;
+  });
+
+  // UI Updates based on category
+  const levField = document.getElementById('leverageField');
+  const unitLabel = document.getElementById('lotUnit');
+  const slLabel = document.getElementById('slLabel');
+  const tpLabel = document.getElementById('tpLabel');
+  const valLabel = document.getElementById('valLabel');
+  const marginStat = document.getElementById('marginStat');
+
+  if(category === 'crypto') {
+    levField.style.display = 'block';
+    unitLabel.textContent = 'Tokens / Coins';
+    slLabel.textContent = 'Stop Loss (%)';
+    tpLabel.textContent = 'Take Profit (%)';
+    valLabel.textContent = 'Unleveraged ROI';
+    marginStat.innerHTML = `<div class="result-stat-label">Margin Required</div><div class="result-stat-val" id="marginReq">$0.00</div>`;
+  } else if (category === 'indices') {
+    levField.style.display = 'none';
+    unitLabel.textContent = 'Contracts / Units';
+    slLabel.textContent = 'Stop Loss (Points)';
+    tpLabel.textContent = 'Take Profit (Points)';
+    valLabel.textContent = 'Value per Point';
+    marginStat.innerHTML = `<div class="result-stat-label">Trade Bias</div><div class="result-stat-val" id="direction" style="color:var(--green)">LONG ↑</div>`;
+  } else {
+    levField.style.display = 'none';
+    unitLabel.textContent = 'Standard Lots';
+    slLabel.textContent = 'Stop Loss (Pips)';
+    tpLabel.textContent = 'Take Profit (Pips)';
+    valLabel.textContent = 'Value per Pip';
+    marginStat.innerHTML = `<div class="result-stat-label">Trade Bias</div><div class="result-stat-val" id="direction" style="color:var(--green)">LONG ↑</div>`;
+  }
+
+  // Auto select first pair
+  selectPair(grid.firstChild, assets[category][0].id);
+}
+
+function selectPair(btn, pairId) {
+  document.querySelectorAll('.calc-pair-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  currentPair = assets[currentClass].find(p => p.id === pairId);
+  
+  document.getElementById('entry').value = currentPair.entry;
+  document.getElementById('stopLoss').value = currentPair.sl;
+  document.getElementById('takeProfit').value = currentPair.tp;
+  
+  calcRisk();
+}
+
+function syncSlider(inputId, sliderId, labelId, suffix) {
+  const v = parseFloat(document.getElementById(inputId).value) || 1;
+  document.getElementById(sliderId).value = v;
+  document.getElementById(labelId).textContent = v.toFixed(inputId==='leverage'?0:1) + suffix;
+}
+
+function syncInput(sliderId, inputId, labelId, suffix) {
+  const v = parseFloat(document.getElementById(sliderId).value) || 1;
+  document.getElementById(inputId).value = v.toFixed(inputId==='leverage'?0:1);
+  document.getElementById(labelId).textContent = v.toFixed(inputId==='leverage'?0:1) + suffix;
+}
+
+function calcRisk() {
+  const balance = parseFloat(document.getElementById('balance').value) || 0;
+  const riskPct = parseFloat(document.getElementById('riskPct').value) || 0;
+  const entry = parseFloat(document.getElementById('entry').value) || 0;
+  const sl = parseFloat(document.getElementById('stopLoss').value) || 0;
+  const tp = parseFloat(document.getElementById('takeProfit').value) || 0;
+
+  if(!entry || !sl || entry === sl) return;
+
+  const riskAmt = balance * (riskPct / 100);
+  const isLong = entry > sl;
+  
+  let lotSize = 0, profitAmt = 0, slDist = 0, tpDist = 0, unitValue = 0, rr = 0;
+
+  if(currentClass === 'crypto') {
+    const lev = parseFloat(document.getElementById('leverage').value) || 1;
+    // Crypto logic: Risk = PositionSize * PriceDiff
+    const priceDiff = Math.abs(entry - sl);
+    lotSize = riskAmt / priceDiff; // Number of coins/tokens
+    
+    slDist = (priceDiff / entry) * 100; // SL in %
+    tpDist = (Math.abs(tp - entry) / entry) * 100; // TP in %
+    profitAmt = lotSize * Math.abs(tp - entry);
+    
+    // Unleveraged ROI for ValLabel
+    unitValue = tpDist; 
+    
+    const notionalValue = lotSize * entry;
+    const marginReq = notionalValue / lev;
+    document.getElementById('marginReq').textContent = '$' + marginReq.toFixed(2);
+    
+    document.getElementById('pipVal').textContent = unitValue.toFixed(2) + '%';
+    
+  } else {
+    // Forex & Indices Logic
+    slDist = Math.abs(entry - sl) * currentPair.mult;
+    tpDist = Math.abs(tp - entry) * currentPair.mult;
+    unitValue = slDist > 0 ? riskAmt / slDist : 0;
+    
+    if(currentClass === 'forex') {
+      lotSize = unitValue / 10; // Standard lot approx
+    } else {
+      lotSize = unitValue; // Contracts
+    }
+    
+    profitAmt = tpDist * unitValue;
+    document.getElementById('pipVal').textContent = '$' + unitValue.toFixed(2);
+    
+    const dirEl = document.getElementById('direction');
+    if(dirEl) {
+      dirEl.textContent = isLong ? 'LONG ↑' : 'SHORT ↓';
+      dirEl.style.color = isLong ? 'var(--green)' : 'var(--red)';
+    }
+  }
+
+  rr = slDist > 0 ? (tpDist / slDist) : 0;
+  const total = slDist + tpDist;
+  const riskW = total > 0 ? Math.round((slDist / total) * 100) : 50;
+  const rewardW = 100 - riskW;
+
+  document.getElementById('lotSize').textContent = (currentClass === 'crypto' && currentPair.id !== 'btc') ? lotSize.toFixed(1) : lotSize.toFixed(3);
+  document.getElementById('riskAmt').textContent = '$' + riskAmt.toFixed(2);
+  document.getElementById('profitAmt').textContent = '$' + profitAmt.toFixed(2);
+  document.getElementById('slPips').textContent = currentClass === 'crypto' ? slDist.toFixed(2)+'%' : Math.round(slDist);
+  document.getElementById('tpPips').textContent = currentClass === 'crypto' ? tpDist.toFixed(2)+'%' : Math.round(tpDist);
+  
+  document.getElementById('rrLabel').textContent = '1 : ' + rr.toFixed(2);
+  document.getElementById('rrRisk').style.width = riskW + '%';
+  document.getElementById('rrReward').style.width = rewardW + '%';
+  
+  document.getElementById('riskWarning').classList.toggle('show', riskPct > 3);
+}
+
+function resetCalc() {
+  document.getElementById('balance').value = 10000;
+  document.getElementById('riskPct').value = 1;
+  document.getElementById('riskSlider').value = 1;
+  document.getElementById('riskPctLabel').textContent = '1.0%';
+  if(currentClass === 'crypto') {
+    document.getElementById('leverage').value = 10;
+    document.getElementById('levSlider').value = 10;
+    document.getElementById('leverageLabel').textContent = '10x';
+  }
+  selectPair(document.querySelector('.calc-pair-btn'), assets[currentClass][0].id);
+}
+
+// Init Tabs
+switchAssetClass('forex', document.querySelector('.calc-tab'));
+
+</script>
 </body>
 </html>
