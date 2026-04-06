@@ -408,9 +408,9 @@
   .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
   .back-to-top:hover { background: var(--green); color: var(--black); box-shadow: 0 0 25px rgba(0,230,118,0.5); transform: translateY(-5px); }
 
-  /* ── COOKIE BANNER ── */
-  .cookie-banner { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: var(--card2); border: 1px solid var(--border); padding: 16px 24px; border-radius: 4px; display: flex; align-items: center; gap: 20px; z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.8); transition: bottom 0.5s ease; width: 90%; max-width: 600px; }
-  .cookie-banner.show { bottom: 30px; }
+  /* ── COOKIE BANNER (FIXED FOR MOBILE) ── */
+  .cookie-banner { position: fixed; bottom: -300px; left: 50%; transform: translateX(-50%); background: var(--card2); border: 1px solid var(--border); padding: 16px 24px; border-radius: 4px; display: flex; align-items: center; gap: 20px; z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.8); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); width: 90%; max-width: 600px; opacity: 0; pointer-events: none; }
+  .cookie-banner.show { bottom: 30px; opacity: 1; pointer-events: auto; }
   .cookie-text { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
   .cookie-text a { color: var(--green); text-decoration: underline; }
   .cookie-btn { background: var(--green); color: var(--black); border: none; padding: 10px 20px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border-radius: 2px; white-space: nowrap; }
@@ -1021,7 +1021,7 @@
 <!-- 🔥 FLOATING BACK TO TOP 🔥 -->
 <a href="#hero" class="back-to-top" id="backToTopBtn"><i class="fas fa-chevron-up"></i></a>
 
-<!-- 🔥 COOKIE CONSENT BANNER 🔥 -->
+<!-- 🔥 COOKIE CONSENT BANNER (FIXED FOR MOBILE) 🔥 -->
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-text">We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="#" onclick="alert('Privacy Policy Page'); return false;">Read More</a></div>
   <button class="cookie-btn" onclick="acceptCookies()">Accept All</button>
@@ -1065,17 +1065,25 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// ── COOKIE CONSENT ──
+// ── COOKIE CONSENT (FULLY REMOVES AFTER CLICK) ──
 document.addEventListener("DOMContentLoaded", () => {
+  const banner = document.getElementById('cookieBanner');
   if (!localStorage.getItem('cookiesAccepted')) {
     setTimeout(() => {
-      document.getElementById('cookieBanner').classList.add('show');
+      banner.classList.add('show');
     }, 2000);
+  } else {
+    banner.style.display = 'none'; // Totally hidden if previously accepted
   }
 });
+
 function acceptCookies() {
   localStorage.setItem('cookiesAccepted', 'true');
-  document.getElementById('cookieBanner').classList.remove('show');
+  const banner = document.getElementById('cookieBanner');
+  banner.classList.remove('show');
+  setTimeout(() => { 
+    banner.style.display = 'none'; // Completely removes from DOM view
+  }, 500); 
 }
 
 // ── TICKER ──
