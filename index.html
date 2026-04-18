@@ -113,7 +113,7 @@
   .btn-cyber-wrap:hover { transform: translateY(-2px); background: var(--green); filter: drop-shadow(0 0 15px rgba(0,230,118,0.3)); }
   .btn-cyber {
     display: block; width: 100%; 
-    padding: 15px 12px; /* Perfected padding to prevent cutoff */
+    padding: 15px 12px; 
     background: var(--card2); color: var(--green) !important;
     font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 800;
     letter-spacing: 1.5px; text-transform: uppercase; text-align: center;
@@ -187,6 +187,150 @@
   .bonus-free { font-family:'Bebas Neue',cursive; font-size: clamp(2rem, 3vw, 2.8rem); color:var(--green); text-shadow:0 0 30px rgba(0,230,118,0.4); letter-spacing:2px; white-space:nowrap; font-weight: 800; margin-top: auto; position: relative; z-index: 2; text-align: left;}
   @media (min-width: 768px) { .bonus-free { margin-top: 0; text-align: right; } }
 
+  /* ── 🔥 COUNTDOWN BANNER STYLES 🔥 ── */
+  .promo-banner {
+    background: linear-gradient(135deg, var(--card) 0%, rgba(0, 230, 118, 0.08) 100%);
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    padding: clamp(30px, 5vw, 50px) 20px;
+    text-align: center;
+    margin-bottom: 60px;
+    box-shadow: 0 0 40px rgba(0,230,118,0.1), inset 0 0 20px rgba(0,230,118,0.05);
+    position: relative;
+    overflow: visible; 
+  }
+  .promo-badge-top {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: var(--black);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    padding: 8px 30px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,230,118,0.5);
+    white-space: nowrap;
+    z-index: 5;
+  }
+  .promo-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    margin-top: 15px;
+    text-shadow: 0 0 20px rgba(0,230,118,0.3);
+  }
+  .promo-title span { color: var(--green); }
+  .promo-desc {
+    color: var(--text);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    margin-bottom: 25px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .promo-desc strong { color: var(--green3); }
+
+  /* 🔥 NEW BANNER COUPON STYLES 🔥 */
+  .banner-coupon-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .banner-coupon {
+    background: rgba(0, 230, 118, 0.1);
+    border: 1px dashed var(--green);
+    padding: 12px 35px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0,230,118,0.15);
+  }
+  .banner-coupon:hover {
+    background: rgba(0, 230, 118, 0.25);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0,230,118,0.3);
+    border-style: solid;
+  }
+  .bc-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 4px;
+    transition: color 0.3s;
+  }
+  .banner-coupon:hover .bc-label {
+    color: var(--green3);
+  }
+  .bc-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    color: var(--green);
+    font-weight: 800;
+    letter-spacing: 3px;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 25px);
+  }
+  .cd-box {
+    background: var(--black);
+    border: 1px solid rgba(0, 230, 118, 0.4);
+    padding: clamp(12px, 2vw, 20px);
+    border-radius: 6px;
+    min-width: clamp(75px, 12vw, 110px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cd-num {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--green);
+    line-height: 1;
+    text-shadow: 0 0 25px rgba(0,230,118,0.5);
+  }
+  .cd-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    font-weight: 700;
+  }
+  .extra-discount-tag {
+    background: var(--green);
+    color: var(--black);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 0.7rem;
+    padding: 5px 10px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(0,230,118,0.5);
+    margin-left: auto;
+    animation: pulseGlow 1.5s infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(0,230,118,0.4); transform: scale(1); }
+    50% { box-shadow: 0 0 25px rgba(0,230,118,0.8); transform: scale(1.05); }
+  }
+
   /* ── PRICING SECTION (PERFECTLY ALIGNED) ── */
   .pricing-wrapper { max-width:1400px; margin:0 auto; padding:clamp(60px, 10vh, 100px) clamp(20px, 5vw, 48px); }
   .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; align-items:stretch; }
@@ -194,12 +338,11 @@
   .price-card { 
     background: linear-gradient(180deg, var(--card) 0%, var(--black) 100%);
     border: 1px solid var(--border); 
-    padding: 48px clamp(20px, 2.5vw, 28px) 36px; /* Uniform padding for perfect baseline */
+    padding: 48px clamp(20px, 2.5vw, 28px) 36px;
     position: relative; transition: all 0.4s; display: flex; flex-direction: column; height: 100%;
   }
   .price-card:hover { border-color: rgba(0,230,118,0.3); }
   
-  /* Special styling for Free Offer Tier */
   .price-card.free-tier {
     background: linear-gradient(180deg, rgba(0, 230, 118, 0.05) 0%, var(--card) 100%);
     border: 1px solid rgba(0, 230, 118, 0.3);
@@ -229,7 +372,6 @@
 
   .price-tier { font-size:0.75rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:24px; display: flex; align-items: center; }
   
-  /* Inline SaaS Pricing Adjustment */
   .price-crossed { color:var(--muted); font-size:0.9rem; text-decoration:line-through; margin-bottom:4px; height: 18px; font-family:'JetBrains Mono',monospace;}
   .price-amount { display:flex; align-items:baseline; gap:4px; margin-bottom:6px; }
   .price-currency { font-family:'JetBrains Mono',monospace; font-size:1.6rem; color:var(--green); font-weight: 700;}
@@ -242,6 +384,23 @@
   .price-features { list-style:none; display:flex; flex-direction:column; gap:16px; margin-bottom:40px; flex-grow: 1;}
   .price-features li { display:flex; align-items:flex-start; gap:12px; font-size:0.875rem; color:var(--text); line-height:1.5; }
   .price-features li::before { content:'✓'; color:var(--green); font-weight:800; flex-shrink:0; margin-top:1px; }
+
+  .coupon-box { 
+    background: var(--green-dim); 
+    border: 1px dashed var(--green); 
+    border-radius: 4px; 
+    padding: 8px 12px; 
+    margin-bottom: 24px; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .coupon-box:hover { background: rgba(0,230,118,0.15); transform: translateY(-2px); }
+  .coupon-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 700; }
+  .coupon-code { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--green); font-weight: 800; letter-spacing: 2px; }
   
   .btn-pricing-box { margin-top: auto; width: 100%; display: block;}
 
@@ -298,7 +457,6 @@
   .faq-a-inner { padding:0 clamp(20px, 3vw, 28px) clamp(16px, 3vw, 24px); font-size:0.88rem; color:var(--muted); line-height:1.8; border-top:1px solid var(--border); padding-top:20px; }
   .faq-item.open .faq-a { max-height:300px; }
 
-  /* 🔥 INFINITE SCROLLING COMMUNITY TICKER 🔥 */
   .comm-section { width: 100vw; max-width: 100%; padding-left: 0; padding-right: 0; overflow: hidden; background: var(--black); }
   .comm-ticker-wrap { overflow:hidden; width:100%; position:relative; padding: 20px 0; display: flex; }
   .comm-ticker-wrap::before, .comm-ticker-wrap::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:2; pointer-events:none; }
@@ -602,6 +760,27 @@
 </section>
 
 <div class="pricing-wrapper" id="pricing">
+
+  <div class="promo-banner">
+    <div class="promo-badge-top">WEEKEND ONLY</div>
+    <h2 class="promo-title">APRIL WEEKEND <span>FLASH SALE</span></h2>
+    <p class="promo-desc">Get an <strong>Extra 10% OFF</strong> on our Pro (6-Month) & Elite (1-Year) Plans. Do not miss out, use the code below before the timer hits zero!</p>
+    
+    <div class="banner-coupon-wrapper">
+      <div class="banner-coupon" onclick="copyBannerCoupon('APRILFLASH', this)">
+        <span class="bc-label">TAP TO COPY CODE</span>
+        <span class="bc-code">APRILFLASH</span>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <div class="cd-box"><div class="cd-num" id="cd-days">00</div><div class="cd-label">Days</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-hours">00</div><div class="cd-label">Hours</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-minutes">00</div><div class="cd-label">Minutes</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-seconds">00</div><div class="cd-label">Seconds</div></div>
+    </div>
+  </div>
+
   <div class="section-header" style="text-align: center; margin-bottom: 40px;">
     <div class="section-label" style="justify-content: center;">Claim Access</div>
     <h2 class="section-title" style="margin-bottom: 24px;">CHOOSE YOUR PLAN.</h2>
@@ -651,11 +830,17 @@
 
     <div class="price-card popular">
       <div class="popular-badge"><i class="fas fa-bolt"></i> Most Popular</div>
-      <div class="price-tier">Pro <span class="tv-discount-tag">-16%</span></div>
+      <div class="price-tier">Pro <span class="extra-discount-tag">EXTRA 10% OFF</span></div>
       <div class="price-crossed">$60</div>
-      <div class="price-amount"><span class="price-currency">$</span><span class="price-number">50</span> <span class="price-period">/ 6 months</span></div>
-      <div class="price-save">Save $10 a half-year</div>
-      <div class="price-divider"></div>
+      <div class="price-amount"><span class="price-currency">$</span><span class="price-number">45</span> <span class="price-period">/ 6 months</span></div>
+      <div class="price-save">Save $15 a half-year (Flash Sale)</div>
+      
+      <div class="coupon-box" onclick="copyTextDirect('APRILFLASH', this)">
+        <span class="coupon-label">TAP TO COPY COUPON</span>
+        <span class="coupon-code">APRILFLASH</span>
+      </div>
+
+      <div class="price-divider" style="margin-top: 0;"></div>
       <ul class="price-features">
         <li>Full RTC 5-in-1 Suite</li>
         <li>PO3 Advanced Edition (Bonus)</li>
@@ -672,11 +857,17 @@
     </div>
 
     <div class="price-card">
-      <div class="price-tier">Elite <span class="tv-discount-tag">-16%</span></div>
+      <div class="price-tier">Elite <span class="extra-discount-tag">EXTRA 10% OFF</span></div>
       <div class="price-crossed">$120</div>
-      <div class="price-amount"><span class="price-currency">$</span><span class="price-number">100</span> <span class="price-period">/ 12 months</span></div>
-      <div class="price-save">Save $20 a year</div>
-      <div class="price-divider"></div>
+      <div class="price-amount"><span class="price-currency">$</span><span class="price-number">90</span> <span class="price-period">/ 12 months</span></div>
+      <div class="price-save">Save $30 a year (Flash Sale)</div>
+
+      <div class="coupon-box" onclick="copyTextDirect('APRILFLASH', this)">
+        <span class="coupon-label">TAP TO COPY COUPON</span>
+        <span class="coupon-code">APRILFLASH</span>
+      </div>
+
+      <div class="price-divider" style="margin-top: 0;"></div>
       <ul class="price-features">
         <li>Full RTC 5-in-1 Suite</li>
         <li>PO3 Advanced Edition (Bonus)</li>
@@ -1131,9 +1322,68 @@ function copyText(btn,text){
   });
 }
 
+function copyTextDirect(text, el) {
+  navigator.clipboard.writeText(text).then(() => {
+    const originalLabel = el.querySelector('.coupon-label').innerText;
+    el.querySelector('.coupon-label').innerText = 'COPIED TO CLIPBOARD!';
+    el.querySelector('.coupon-label').style.color = 'var(--green)';
+    setTimeout(() => {
+      el.querySelector('.coupon-label').innerText = originalLabel;
+      el.querySelector('.coupon-label').style.color = 'var(--muted)';
+    }, 2000);
+  });
+}
+
+// 🔥 NEW FUNCTION: For Banner Coupon Copy
+function copyBannerCoupon(text, el) {
+  navigator.clipboard.writeText(text).then(() => {
+    const originalLabel = el.querySelector('.bc-label').innerText;
+    el.querySelector('.bc-label').innerText = 'COPIED SUCCESSFULLY!';
+    el.querySelector('.bc-label').style.color = 'var(--black)';
+    setTimeout(() => {
+      el.querySelector('.bc-label').innerText = originalLabel;
+      el.querySelector('.bc-label').style.color = 'var(--green3)';
+    }, 2000);
+  });
+}
+
 // ── SCROLL ANIM ──
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
 document.querySelectorAll('.ind-card,.price-card,.testi-card,.faq-item,.card-3-2,.bonus-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease,border-color 0.3s';observer.observe(el);});
+
+// ════════════════════════════════════
+// 🔥 FLASH SALE COUNTDOWN LOGIC 🔥
+// ════════════════════════════════════
+// Set end date to Monday, April 20, 2026 at 23:59:59 (Midnight)
+const countDownDate = new Date("April 20, 2026 23:59:59").getTime();
+
+const countdownTimer = setInterval(function() {
+  const now = new Date().getTime();
+  const distance = countDownDate - now;
+
+  // If time is over, stop the timer and display 00s
+  if (distance < 0) {
+    clearInterval(countdownTimer);
+    document.getElementById("cd-days").innerHTML = "00";
+    document.getElementById("cd-hours").innerHTML = "00";
+    document.getElementById("cd-minutes").innerHTML = "00";
+    document.getElementById("cd-seconds").innerHTML = "00";
+    return;
+  }
+
+  // Time calculations
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Add leading zero if less than 10
+  document.getElementById("cd-days").innerHTML = days < 10 ? "0" + days : days;
+  document.getElementById("cd-hours").innerHTML = hours < 10 ? "0" + hours : hours;
+  document.getElementById("cd-minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+  document.getElementById("cd-seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+}, 1000);
+
 
 // ════════════════════════════════════
 // 🔥 ULTIMATE RISK CALCULATOR 🔥
