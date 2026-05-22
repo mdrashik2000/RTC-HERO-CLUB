@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>RTC Indicator Suite — Premium Trading Edge</title>
+<title>RTC Indicator Suite Bundle</title>
 
 <meta name="description" content="Unlock institutional-grade market clarity with the RTC Indicator Suite.">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKS84XRWQ9"></script>
@@ -40,7 +40,6 @@
     --glass-bg: rgba(11,20,34,0.65);
     --glass-hover: rgba(11,20,34,0.95);
     --input-bg: rgba(0,0,0,0.3);
-    --text-glow: 0 0 15px rgba(0,229,184,0.3);
   }
 
   body.light-mode {
@@ -63,21 +62,19 @@
     --glass-bg: rgba(255, 255, 255, 0.75);
     --glass-hover: rgba(255, 255, 255, 1);
     --input-bg: rgba(255, 255, 255, 0.6);
-    --text-glow: none; 
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--black); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; transition: background 0.5s ease, color 0.5s ease; cursor: none;}
-  a, button, .faq-q { text-decoration: none !important; color: inherit; cursor: none;}
+  body { background: var(--black); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; transition: background 0.5s ease, color 0.5s ease; }
+  a, button, .faq-q { text-decoration: none !important; color: inherit; }
 
   /* ── GRAIN TEXTURE ── */
   .noise-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
   body.light-mode .noise-overlay { opacity: 0.05; filter: invert(1); }
 
-  /* ── CUSTOM CURSOR ── */
+  /* ── PREMIUM MOUSE AURA ── */
   #mouse-aura { position: fixed; top: 0; left: 0; width: 600px; height: 600px; background: radial-gradient(circle, var(--green-glow) 0%, transparent 60%); border-radius: 50%; pointer-events: none; z-index: 0; transform: translate(-50%, -50%); filter: blur(50px); opacity: 0.8; will-change: transform; }
-  .cursor { width: 8px; height: 8px; background: var(--green); border-radius: 50%; position: fixed; top:0; left:0; pointer-events: none; z-index: 999999; transition: width 0.2s, height 0.2s; box-shadow: var(--text-glow); will-change: transform; }
 
   /* ── PRELOADER ── */
   #preloader { position: fixed; inset: 0; background: var(--black); z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s; }
@@ -103,7 +100,7 @@
 
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; position: relative; z-index: 2;}
   .nav-links a { color: var(--muted); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; font-family: 'Inter', sans-serif; }
-  .nav-links a:hover { color: var(--green); text-shadow: var(--text-glow);}
+  .nav-links a:hover { color: var(--green); text-shadow: 0 0 10px rgba(0,229,184,0.3);}
 
   .nav-tool-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-dim); border: 1px solid rgba(0,229,184,0.2); color: var(--green) !important; padding: 6px 14px !important; border-radius: 100px; font-size: clamp(0.7rem, 1vw, 0.75rem) !important; font-family: 'JetBrains Mono', monospace; transition: all 0.2s !important; }
   .nav-tool-badge:hover { background: rgba(0,229,184,0.14) !important; border-color: var(--green) !important; box-shadow: 0 0 15px rgba(0,229,184,0.2); }
@@ -112,9 +109,9 @@
   body.light-mode .nav-cta { color: #ffffff !important; }
   .nav-cta:hover { box-shadow: 0 0 25px rgba(0,229,184,0.6) !important; transform: translateY(-2px); }
 
-  .theme-toggle-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-size: 1rem; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; position: relative; z-index: 2; }
+  .theme-toggle-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-size: 1rem; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; position: relative; z-index: 2; cursor: pointer; }
   .theme-toggle-btn:hover { color: var(--green); border-color: var(--green); background: var(--green-dim);}
-  .mobile-menu-btn { display: none; color: var(--green); font-size: 1.5rem; z-index: 1001; }
+  .mobile-menu-btn { display: none; color: var(--green); font-size: 1.5rem; z-index: 1001; cursor: pointer; }
   
   .mobile-nav { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(4,9,15,0.98); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; z-index: 9999; opacity: 0; pointer-events: none; transition: all 0.4s ease; transform: translateY(-20px); }
   body.light-mode .mobile-nav { background: rgba(240, 244, 248, 0.98); }
@@ -123,19 +120,22 @@
   .mobile-nav a:hover { color: var(--green); }
 
   /* ── DYNAMIC TICKER ── */
-  .ticker-wrap { overflow:hidden; width:100%; position:relative; display: flex; background: var(--bg-main); padding: 8px 0; border-bottom: 1px solid var(--border);}
+  .ticker-wrap { overflow:hidden; width:100%; position:relative; display: flex; align-items: center; background: var(--bg-main); padding: 14px 0; border-bottom: 1px solid var(--border);}
   .ticker-wrap::before, .ticker-wrap::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:2; pointer-events:none; }
   .ticker-wrap::before { left:0; background:linear-gradient(90deg, var(--bg-main) 10%, transparent 100%); }
   .ticker-wrap::after { right:0; background:linear-gradient(-90deg, var(--bg-main) 10%, transparent 100%); }
-  .ticker-track { display:flex; gap:30px; width:max-content; animation:ticker 40s linear infinite; }
+  .ticker-track { display:flex; gap:30px; width:max-content; animation:ticker 40s linear infinite; align-items: center; }
   .ticker-track:hover { animation-play-state:paused; }
-  .ticker-item { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; white-space: nowrap; color: var(--muted);}
+  .ticker-item { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 600; white-space: nowrap; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
   .ticker-item span.up { color: var(--green); }
   .ticker-item span.dn { color: var(--red); }
   @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 15px)); } }
 
   /* ── SECTIONS & TYPOGRAPHY ── */
-  section { padding: clamp(60px, 10vh, 100px) clamp(24px, 5vw, 60px); max-width:1400px; margin:0 auto; position: relative; z-index: 2;}
+  section { padding: clamp(60px, 10vh, 100px) clamp(24px, 5vw, 60px); max-width: 100%; margin:0 auto; position: relative; z-index: 2;}
+  /* Consistent Inner Container Width for perfect alignment */
+  .inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0; }
+  
   .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--green); margin-bottom:16px; opacity: 0.9; display: flex; align-items: center; gap: 12px;}
   .section-label::before { content: ''; width: 24px; height: 2px; background: var(--green); display: block; border-radius: 2px;}
   .section-title { font-family:'Outfit',sans-serif; font-size:clamp(2rem, 5vw, 3.2rem); font-weight: 800; color:var(--white); line-height:1.1; letter-spacing:-0.02em; margin-bottom:16px; }
@@ -150,14 +150,21 @@
     white-space: nowrap; 
   }
 
-  /* ── REPEATING TYPEWRITER (NO CURSOR LINE) & SCROLL REVEAL ── */
-  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform, opacity; }
+  /* 🔥 SMOOTH TEXT REVEAL (NO GLITCH/FLIPPING) 🔥 */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform, opacity; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  .type-text { display: inline-block; overflow: hidden; white-space: nowrap; width: 0; vertical-align: bottom; }
-  .reveal.visible .type-text { animation: typing 1.2s steps(40, end) forwards; }
-  
-  @keyframes typing { from { width: 0; } to { width: 100%; } }
+  .type-text { 
+    display: inline-block; 
+    white-space: nowrap; 
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    transition-property: clip-path;
+    transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+    vertical-align: bottom;
+  }
+  .reveal.visible .type-text { 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
 
   .grid-3-2 .card-3-2:nth-child(1) { transition-delay: 0.1s; }
   .grid-3-2 .card-3-2:nth-child(2) { transition-delay: 0.2s; }
@@ -198,20 +205,20 @@
   .trust-strip p { font-size: 0.7rem; color: var(--muted); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
   .trust-logos { display: flex; justify-content: center; gap: clamp(20px, 6vw, 80px); flex-wrap: wrap; }
   .trust-logos span { color: var(--green); font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; letter-spacing: 0.05em; opacity: 0.8; transition: opacity 0.3s;}
-  .trust-logos span:hover { opacity: 1; text-shadow: var(--text-glow); }
+  .trust-logos span:hover { opacity: 1; text-shadow: 0 0 15px rgba(0,229,184,0.3); }
 
   /* ── INDICATORS GRID ── */
-  #indicators { background: var(--dark); max-width: 100%; padding-left: 0; padding-right: 0;}
-  #indicators .inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 60px);}
+  #indicators { background: var(--dark); max-width: 100%;}
   
   .grid-3-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 20px; }
-  .card-3-2 { background: var(--card); padding: 40px 36px; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: inset 0 0 0 1px transparent; will-change: transform, box-shadow; text-align: left; }
+  .card-3-2 { background: var(--card); padding: 40px 36px; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: inset 0 0 0 1px transparent; text-align: left; }
   .card-3-2::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--green),var(--green2)); transform: scaleX(0); transform-origin: left; transition:transform 0.4s ease; }
-  .card-3-2:hover { background: rgba(0,229,184,0.03); box-shadow: inset 0 0 0 1px rgba(0,229,184,0.3), 0 15px 40px rgba(0, 0, 0, 0.2); transform: translateY(-4px); }
+  /* Hover effect opacity reduced for a cleaner look */
+  .card-3-2:hover { background: rgba(0,229,184,0.015); box-shadow: inset 0 0 0 1px rgba(0,229,184,0.15), 0 8px 25px rgba(0, 0, 0, 0.1); transform: translateY(-2px); }
   .card-3-2:hover::before { transform: scaleX(1); }
   
   .ind-number { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--green); letter-spacing:0.15em; margin-bottom:16px; opacity:0.7; }
-  .ind-icon { font-size:2.2rem; margin-bottom:16px; display:block; color: var(--green); text-shadow: var(--text-glow);}
+  .ind-icon { font-size:2.2rem; margin-bottom:16px; display:block; color: var(--green); text-shadow: 0 0 15px rgba(0,229,184,0.3);}
   .ind-name { font-family:'Outfit',sans-serif; font-size: 1.4rem; font-weight: 700; color:var(--white); margin-bottom:12px; }
   .ind-desc { font-size:0.88rem; color:var(--muted); line-height:1.7; margin-bottom: 24px;}
   .ind-tags { display:flex; flex-wrap:wrap; gap:8px; }
@@ -230,20 +237,22 @@
   .bonus-free { font-family:'Outfit',sans-serif; font-size: 0.8rem; font-weight: 700; color:var(--green); letter-spacing:0.15em; text-transform: uppercase; position: relative; z-index: 2; margin-bottom: 12px;}
 
   /* ── PRICING ── */
-  .pricing-wrapper { max-width: 100%; margin: 0 auto; padding: clamp(80px, 10vh, 120px) 0; background: var(--dark);}
-  .pricing-inner { max-width: 1400px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 60px);}
+  .pricing-wrapper { max-width: 100%; margin: 0 auto; padding: clamp(80px, 10vh, 120px) clamp(24px, 5vw, 60px); background: var(--dark);}
+  .pricing-inner { max-width: 1200px; margin: 0 auto;}
   .pricing-header-center { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .pricing-header-center .section-label::before { display: none; }
 
+  /* 🔥 WHOP LOGO FIX (Exact Orange Match #FF5A00) 🔥 */
   .whop-logo-wrap { display: flex; justify-content: center; margin-bottom: 48px; width: 100%; }
-  .whop-logo { display: inline-flex; align-items: center; gap: 12px; background: var(--input-bg); border: 1px solid rgba(255,255,255,0.08); padding: 12px 28px; border-radius: 100px; transition: all 0.3s; backdrop-filter: blur(10px); }
-  .whop-logo:hover { border-color: rgba(0,229,184,0.4); box-shadow: 0 0 20px rgba(0,229,184,0.15); transform: translateY(-2px);}
-  .whop-logo img { filter: brightness(0) invert(1); opacity: 0.9; height: 20px; }
-  .whop-text-logo { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--white); letter-spacing: -0.5px; line-height: 1;}
-  .whop-label { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--muted); font-weight: 500;}
+  .whop-custom-box { background-color: #FF5A00; border-radius: 10px; padding: 6px 16px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(255, 90, 0, 0.2); transition: transform 0.3s; margin-right: 12px;}
+  .whop-custom-box:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 90, 0, 0.4); }
+  .whop-text-white { color: #ffffff !important; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.4rem; letter-spacing: -0.5px; line-height: 1; }
+  
+  .whop-logo-container { display: inline-flex; align-items: center; background: var(--input-bg); border: 1px solid rgba(255,255,255,0.08); padding: 8px 24px 8px 8px; border-radius: 100px; backdrop-filter: blur(10px); }
+  .whop-label { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text); font-weight: 500;}
 
   .pricing-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; text-align: left; }
-  .price-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; padding: 36px 28px; position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; height: 100%; will-change: transform, box-shadow, border-color; }
+  .price-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; padding: 36px 28px; position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; height: 100%; }
   .price-card:hover { border-color: rgba(0,229,184,0.4); transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0,0,0,0.5); background: var(--glass-hover);}
   body.light-mode .price-card:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.08); background: var(--glass-hover);}
   
@@ -271,7 +280,7 @@
   .price-btn.filled { background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f; border: 1px solid transparent;}
   .price-btn.filled:hover { box-shadow: 0 0 25px rgba(0,229,184,0.5); transform: translateY(-2px); }
 
-  /* ── PAYMENT ── */
+  /* ── PAYMENT & CRYPTO ── */
   #payment { background: var(--black); }
   .payment-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px; }
   .pay-card { background: var(--glass-bg); backdrop-filter: blur(10px); border:1px solid var(--border); border-radius: 16px; padding: 40px; transition: all 0.4s ease; }
@@ -279,12 +288,12 @@
   .pay-title { font-family:'Outfit',sans-serif; font-size:1.2rem; font-weight: 700; color:var(--white); margin-bottom:8px; }
   .pay-subtitle { font-size:0.85rem; color:var(--muted); margin-bottom:32px; line-height:1.6; }
   
-  .crypto-list { display:flex; flex-direction:column; gap:12px; }
+  .crypto-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
   .crypto-item { display:flex; align-items:center; justify-content: space-between; background:var(--input-bg); border:1px solid var(--border); padding:16px 20px; border-radius:12px; gap: 16px; flex-wrap: wrap; transition: border-color 0.2s;}
   .crypto-item:hover { border-color: rgba(0,229,184,0.3); }
   .crypto-label { font-family:'JetBrains Mono',monospace; font-size:0.8rem; font-weight: 600; color:var(--text); display: flex; align-items: center; gap: 8px;}
   .crypto-addr { font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--muted); word-break:break-all; margin-top: 4px;}
-  .copy-btn { background:rgba(0,229,184,0.1); border:1px solid rgba(0,229,184,0.2); color:var(--green); font-family:'JetBrains Mono',monospace; font-size:0.65rem; font-weight: 600; letter-spacing:0.08em; padding:8px 16px; border-radius:6px; transition:all 0.2s; flex-shrink:0; white-space: nowrap;}
+  .copy-btn { background:rgba(0,229,184,0.1); border:1px solid rgba(0,229,184,0.2); color:var(--green); font-family:'JetBrains Mono',monospace; font-size:0.65rem; font-weight: 600; letter-spacing:0.08em; padding:8px 16px; border-radius:6px; transition:all 0.2s; flex-shrink:0; white-space: nowrap; cursor: pointer;}
   .copy-btn:hover { background: rgba(0,229,184,0.2); transform: translateY(-1px);}
   .copy-btn.copied { background: var(--green); color: #04090f; }
 
@@ -307,21 +316,32 @@
   .play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.4s; }
   .play-icon { width: 56px; height: 56px; background: rgba(0,229,184,0.15); border: 1px solid rgba(0,229,184,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 1.4rem; padding-left: 4px; backdrop-filter: blur(8px); transition: all 0.3s; }
   .mc-card:hover .play-icon { background: var(--green); color: #04090f; box-shadow: 0 0 25px rgba(0,229,184,0.6); transform: scale(1.15); }
-  .ind-number-mc { position: absolute; top: 16px; left: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: var(--green); background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); border: 1px solid rgba(0,229,184,0.3); padding: 5px 14px; border-radius: 100px; z-index: 2;}
+  .ind-number-mc { position: absolute; top: 16px; left: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: var(--green); background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); border: 1px solid rgba(0,229,184,0.3); padding: 5px 14px; border-radius: 100px; z-index: 2;}
   .mc-body { padding: 28px; }
   .mc-title { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--white);}
   .mc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
-  /* ── TESTIMONIALS ── */
-  #testimonials { background: var(--black); max-width: 100%; padding-left: 0; padding-right: 0; overflow: hidden;}
-  #testimonials .inner { max-width: 1400px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 60px); margin-bottom: 48px;}
-  .testimonials-track { display: flex; gap: 24px; animation: scroll-left 45s linear infinite; width: max-content; padding: 10px 0;}
-  .testimonials-track:hover { animation-play-state: paused; }
-  @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  /* ── 3-LINE TESTIMONIAL MARQUEE ── */
+  #testimonials { background: var(--black); max-width: 100%; padding: 80px 0; overflow: hidden;}
+  #testimonials .inner { margin-bottom: 48px; padding: 0 clamp(24px, 5vw, 60px); }
+  
+  .marquee-container { display: flex; flex-direction: column; gap: 24px; position: relative; width: 100%; }
+  .marquee-container::before, .marquee-container::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:5; pointer-events:none; }
+  .marquee-container::before { left:0; background:linear-gradient(90deg,var(--black) 0%,transparent 100%); }
+  .marquee-container::after { right:0; background:linear-gradient(-90deg,var(--black) 0%,transparent 100%); }
+  
+  .testimonials-track { display: flex; gap: 24px; width: max-content; }
+  .testimonials-track:hover { animation-play-state: paused !important; }
+  
+  .track-left { animation: scrollLeft 45s linear infinite; }
+  .track-right { animation: scrollRight 45s linear infinite; }
+  
+  @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 12px)); } }
+  @keyframes scrollRight { 0% { transform: translateX(calc(-50% - 12px)); } 100% { transform: translateX(0); } }
 
-  .testi-card { background: var(--glass-bg); backdrop-filter: blur(10px); border:1px solid var(--border); border-radius: 16px; padding: 32px; width: 320px; flex-shrink: 0; transition: border-color 0.3s; }
+  .testi-card { background: var(--glass-bg); backdrop-filter: blur(10px); border:1px solid var(--border); border-radius: 16px; padding: 32px; width: 340px; flex-shrink: 0; transition: border-color 0.3s; }
   .testi-card:hover { border-color:rgba(0,229,184,0.4); box-shadow: 0 10px 25px rgba(0,0,0,0.2);}
-  .testi-pnl { font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 800; color: var(--green); margin-bottom: 14px; }
+  .testi-pnl { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--green); margin-bottom: 14px; }
   .testi-text { font-size:0.85rem; line-height:1.7; color:var(--muted); margin-bottom:20px; font-style:italic; }
   .testi-stars { color:var(--green); font-size:0.85rem; letter-spacing:2px; margin-bottom:16px; }
   .testi-author { display:flex; align-items:center; gap:14px; }
@@ -330,7 +350,6 @@
 
   /* ── FAQ ── */
   #faq { background: var(--dark); }
-  #faq .inner { max-width: 800px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 60px);}
   .faq-list { display:flex; flex-direction:column; gap:0; }
   .faq-item { border-bottom:1px solid var(--border); overflow:hidden; padding: 0;}
   .faq-q { display:flex; align-items:center; justify-content:space-between; padding: 24px 0; cursor:pointer; font-family: 'Outfit', sans-serif; font-size:1.05rem; font-weight:600; color:var(--text); transition:color 0.2s; gap: 16px;}
@@ -340,27 +359,20 @@
   .faq-a { font-size:0.9rem; color:var(--muted); line-height:1.75; max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.3s; padding-bottom: 0;}
   .faq-item.open .faq-a { max-height:300px; padding-bottom: 24px;}
 
-  /* ── COMMUNITY ── */
-  .comm-section { background: var(--black); max-width: 100%; padding-left: 0; padding-right: 0;}
-  .comm-section .inner { max-width: 900px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 60px);}
-  .comm-ticker-wrap { overflow:hidden; width:100%; position:relative; padding: 20px 0; display: flex; }
-  .comm-ticker-wrap::before, .comm-ticker-wrap::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:2; pointer-events:none; }
-  .comm-ticker-wrap::before { left:0; background:linear-gradient(90deg,var(--bg-main) 0%,transparent 100%); }
-  .comm-ticker-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg-main) 0%,transparent 100%); }
-  .comm-ticker-track { display:flex; gap:20px; width:max-content; animation:commTicker 40s linear infinite; }
-  .comm-ticker-track:hover { animation-play-state:paused; }
+  /* ── COMMUNITY (2-LINE MARQUEE) ── */
+  .comm-section { background: var(--black); max-width: 100%; padding: 80px 0;}
+  .comm-section .inner { padding: 0 clamp(24px, 5vw, 60px) 40px;}
+  
   .comm-card { background: var(--glass-bg); backdrop-filter: blur(10px); border:1px solid var(--border); border-radius: 16px; padding:28px 32px; display:flex; flex-direction: column; gap: 12px; width: 300px; flex-shrink: 0; transition:all 0.3s; color: inherit;}
   .comm-card:hover { border-color:rgba(0,229,184,0.4); background:rgba(0,229,184,0.05); transform:translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.2);}
   .comm-icon { font-size: 2.2rem; color: var(--green); margin-bottom: 8px;}
   .comm-name { font-family:'Outfit',sans-serif; font-weight: 700; font-size:1rem; color:var(--white); }
   .comm-desc { font-size:0.82rem; color:var(--muted); line-height:1.6; }
   .comm-arrow { color: var(--green); font-size: 1.2rem; margin-top: auto;}
-  @keyframes commTicker { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 10px)); } }
   .tv-svg-icon { width: 2.2rem; height: 2.2rem; fill: var(--green); display: block; margin-bottom: 8px;}
 
   /* ── RISK CALCULATOR ── */
-  #riskCalc { background: var(--dark); max-width: 100%; padding-left: 0; padding-right: 0;}
-  #riskCalc .inner { max-width: 900px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 60px);}
+  #riskCalc { background: var(--dark); max-width: 100%; }
   .calc-tabs { display: flex; gap: 6px; margin-bottom: 36px; background: var(--input-bg); border-radius: 12px; padding: 6px; width: fit-content; overflow-x: auto; border: 1px solid var(--border);}
   .calc-tab { background: transparent; color: var(--muted); border: none; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; padding: 10px 24px; border-radius: 8px; transition: all 0.2s; white-space: nowrap; cursor: pointer; position: relative; z-index: 2;}
   .calc-tab.active { background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f; box-shadow: 0 4px 15px rgba(0,229,184,0.2); }
@@ -395,15 +407,15 @@
   .calc-reset-btn:hover { border-color: var(--green); color: var(--green); background: rgba(0,229,184,0.05);}
 
   /* ── POLICIES ── */
-  .policy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 32px; max-width: 1400px; margin: 32px auto 0; position: relative; z-index: 2;}
-  .policy-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.3s;}
+  .policy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 32px auto 0; position: relative; z-index: 2; align-items: stretch;}
+  .policy-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.3s; display: flex; flex-direction: column;}
   .policy-card:hover { border-color: rgba(0,229,184,0.3); }
   .policy-card h4 { font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; color: var(--green); display: flex; align-items: center; gap: 10px;}
-  .policy-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+  .policy-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; flex: 1;}
 
   /* ── MODERN FOOTER ── */
   footer { background: var(--black); border-top: 1px solid var(--border); padding: 80px clamp(24px, 5vw, 60px) 32px; position: relative; z-index: 2;}
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; max-width: 1400px; margin-left: auto; margin-right: auto;}
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; max-width: 1200px; margin-left: auto; margin-right: auto;}
   .footer-brand .logo { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--green); letter-spacing: 0.1em; margin-bottom: 16px; display: inline-block;}
   .footer-brand .logo span { color: var(--white); }
   .footer-brand p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; max-width: 300px; margin-bottom: 24px; }
@@ -413,17 +425,18 @@
   .footer-col h4 { font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; color: var(--text); }
   .footer-col a { display: inline-block; font-size: 0.85rem; color: var(--muted); padding: 6px 0; transition: color 0.2s; position: relative; z-index: 2;}
   .footer-col a:hover { color: var(--green); }
-  .footer-disclaimer { max-width: 1400px; margin: 0 auto; font-size: 0.72rem; color: rgba(106,143,168,0.6); line-height: 1.8; margin-bottom: 32px; padding: 32px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 12px;}
+  .footer-disclaimer { max-width: 1200px; margin: 0 auto; font-size: 0.72rem; color: rgba(106,143,168,0.6); line-height: 1.8; margin-bottom: 32px; padding: 32px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 12px;}
   .footer-disclaimer strong { color: var(--muted); }
-  .footer-bottom { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(106,143,168,0.5); gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05);}
+  .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(106,143,168,0.5); gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05);}
   .footer-love { font-size: 0.82rem; font-family: 'Inter', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 8px; }
   .footer-love i { color: var(--red); font-size: 1rem; animation: heartbeat 1.5s infinite; }
   .footer-love span { color: var(--text); font-weight: 700; }
   @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 
-  .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: rgba(11,20,34,0.8); backdrop-filter: blur(10px); border: 1px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 1.2rem; z-index: 998; opacity: 0; pointer-events: none; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0,229,184,0.2); }
+  /* ── STANDARD BACK TO TOP ── */
+  .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; background: #2B323F; border: 2px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 1.3rem; z-index: 998; opacity: 0; pointer-events: none; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0,229,184,0.1); text-decoration: none;}
   .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
-  .back-to-top:hover { background: var(--green); color: var(--black); box-shadow: 0 0 25px rgba(0,229,184,0.5); transform: translateY(-5px); }
+  .back-to-top:hover { background: var(--green); color: var(--black); box-shadow: 0 0 25px rgba(0,229,184,0.4); transform: translateY(-5px); }
 
   .cookie-banner { position: fixed; bottom: -300px; left: 50%; transform: translateX(-50%); background: rgba(11,20,34,0.9); border: 1px solid var(--border); padding: 16px 24px; border-radius: 14px; display: flex; align-items: center; gap: 20px; z-index: 9999; box-shadow: 0 15px 50px rgba(0,0,0,0.8); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); width: 90%; max-width: 600px; opacity: 0; pointer-events: none; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);}
   .cookie-banner.show { bottom: 30px; opacity: 1; pointer-events: auto; }
@@ -432,6 +445,9 @@
   .cookie-btn { background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f; border: none; padding: 10px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.75rem; border-radius: 8px; white-space: nowrap; cursor: pointer; position: relative; z-index: 2;}
 
   /* ── RESPONSIVE OVERRIDES ── */
+  @media (max-width: 1024px) {
+    .policy-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 900px) {
     .calc-layout { grid-template-columns: 1fr; }
     nav { padding: 16px 24px; }
@@ -440,11 +456,12 @@
     .mobile-menu-btn { display: block; }
     section { padding: 80px 24px; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 20px;}
   }
   @media (max-width: 768px) {
     .hero-stat { min-width: 45%; } 
-    .pricing-grid { flex-direction: column; align-items: center;}
-    .price-card { width: 100%; max-width: 100%;}
+    .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
+    .price-card { width: 100%; max-width: 100%; }
     .payment-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .policy-grid { grid-template-columns: 1fr; }
@@ -456,18 +473,12 @@
   ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:var(--black)} ::-webkit-scrollbar-thumb{background:rgba(0,229,184,0.3); border-radius: 6px;}
   ::-webkit-scrollbar-thumb:hover{background:var(--green);}
 </style>
-
-<script>
-!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_2uYdvJOSlw6Nay");whop.track("page");
-</script>
-
 </head>
 <body>
 
 <div class="noise-overlay"></div>
 
 <div id="mouse-aura"></div>
-<div class="cursor" id="cursor"></div>
 
 <div id="preloader">
   <div class="loader-logo">RTC<span>SUITE</span></div>
@@ -486,7 +497,8 @@
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#payment">Payments</a></li>
     <li><a href="#masterclass">Masterclass</a></li>
-    <li><a href="#riskCalc" class="nav-tool-badge"><i class="fas fa-balance-scale tool-icon"></i> Risk Calculator</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#riskCalc" class="nav-tool-badge"><i class="fas fa-balance-scale tool-icon"></i> Calculator</a></li>
     <li><button class="theme-toggle-btn" id="themeToggleDesk" title="Toggle Light/Dark Theme"><i class="fas fa-sun"></i></button></li>
     <li><a href="#pricing" class="nav-cta">Get Access</a></li>
   </ul>
@@ -500,6 +512,7 @@
   <a href="#pricing" onclick="toggleMobileMenu()">Pricing</a>
   <a href="#payment" onclick="toggleMobileMenu()">Payments</a>
   <a href="#masterclass" onclick="toggleMobileMenu()">Masterclass</a>
+  <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
   <a href="#riskCalc" onclick="toggleMobileMenu()">Risk Calculator</a>
   <a href="#" id="themeToggleMob" onclick="event.preventDefault();"><i class="fas fa-sun"></i> Theme</a>
   <a href="#pricing" class="nav-cta" onclick="toggleMobileMenu()">Get Access Now</a>
@@ -515,7 +528,12 @@
   <canvas id="waveCanvas"></canvas>
   <div class="hero-content">
     <div class="hero-badge">Live • RTC 5 in 1 Bundle Suite</div>
-    <h1 class="hero-title reveal"><span class="type-text">STOP GUESSING.</span><br><span class="accent type-text" style="animation-delay: 1.5s;">START EXECUTING.</span></h1>
+    
+    <h1 class="hero-title reveal">
+        <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">STOP GUESSING</span><br>
+        <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">START EXECUTING</span>
+    </h1>
+    
     <p class="hero-subtitle reveal">The complete <strong>5-indicator arsenal</strong> engineered for institutional-grade market clarity. Powered by advanced algorithms. Trusted by thousands of precision traders.</p>
     
     <div class="hero-cta-group reveal">
@@ -549,7 +567,10 @@
 <section id="indicators">
   <div class="inner">
     <div class="section-label reveal">The Arsenal</div>
-    <h2 class="section-title reveal"><span class="type-text">FIVE INDICATORS.</span><br><span class="accent type-text" style="animation-delay: 1.5s;">ONE EDGE.</span></h2>
+    <h2 class="section-title reveal">
+      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">FIVE INDICATORS.</span><br>
+      <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">ONE EDGE.</span>
+    </h2>
     <p class="section-desc reveal">Each tool in the RTC Suite is engineered to eliminate noise and surface only the highest-probability setups.</p>
     
     <div class="grid-3-2 reveal">
@@ -616,14 +637,16 @@
   <div class="pricing-inner">
     <div class="pricing-header-center">
       <p class="section-label reveal">Claim Access</p>
-      <h2 class="section-title reveal"><span class="type-text">CHOOSE YOUR PLAN.</span></h2>
+      <h2 class="section-title reveal">
+        <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">CHOOSE YOUR PLAN.</span>
+      </h2>
       <p class="section-desc reveal" style="margin: 0 auto 30px;">Get instant access to the ultimate indicator suite today.</p>
       
       <div class="whop-logo-wrap reveal">
-        <div class="whop-logo">
-          <img src="https://cdn.prod.website-files.com/64b52ebaa6293be66487fc6a/64b5327b0eb2d815eebcd425_Whop-logo.svg" alt="Whop" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-          <span class="whop-text-logo" style="display:none;">whop</span>
-          <div class="whop-logo-dot"></div>
+        <div class="whop-logo-container">
+          <div class="whop-custom-box">
+             <span class="whop-text-white">whop</span>
+          </div>
           <span class="whop-label">Secure Payment Processing</span>
         </div>
       </div>
@@ -738,9 +761,12 @@
 </div>
 
 <section id="payment">
-  <div class="inner" style="max-width:1000px; margin:0 auto;">
+  <div class="inner">
     <p class="section-label reveal">Alternative Payments</p>
-    <h2 class="section-title reveal"><span class="type-text">FLEXIBLE PAYMENT</span><br><span class="accent type-text" style="animation-delay: 1.5s;">OPTIONS.</span></h2>
+    <h2 class="section-title reveal">
+      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">FLEXIBLE PAYMENT</span><br>
+      <span class="accent type-text" style="transition-duration: 1s; transition-delay: 0.4s;">OPTIONS.</span>
+    </h2>
     <p class="section-desc reveal">Bypass automated systems with direct crypto or fiat bank transfers. Verified and secure.</p>
     
     <div class="payment-grid reveal">
@@ -793,15 +819,18 @@
 </section>
 
 <section id="masterclass">
-  <div class="inner" style="max-width:1000px; margin:0 auto;">
+  <div class="inner">
     <p class="section-label reveal">Masterclass Series</p>
-    <h2 class="section-title reveal"><span class="type-text">INDICATOR</span><br><span class="accent type-text" style="animation-delay: 1.5s;">BREAKDOWN.</span></h2>
+    <h2 class="section-title reveal">
+      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">INDICATOR</span><br>
+      <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">BREAKDOWN.</span>
+    </h2>
     <p class="section-desc reveal">Watch these visual guides to master the RTC Suite and execute perfectly.</p>
     
     <div class="masterclass-grid reveal">
       <a href="https://youtu.be/uL51FufvU6Q" target="_blank" class="mc-card">
         <div class="video-container">
-          <img src="https://img.youtube.com/vi/uL51FufvU6Q/maxresdefault.jpg?v=latest" alt="Part 1">
+          <img src="https://img.youtube.com/vi/uL51FufvU6Q/maxresdefault.jpg" alt="Part 1">
           <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 1</div>
         </div>
@@ -813,7 +842,7 @@
       
       <a href="https://youtu.be/oyZyEIKUix4" target="_blank" class="mc-card">
         <div class="video-container">
-          <img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg?v=latest" alt="Part 2">
+          <img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg" alt="Part 2">
           <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 2</div>
         </div>
@@ -825,13 +854,61 @@
       
       <a href="https://youtu.be/Dbz-iNeU9t8" target="_blank" class="mc-card">
         <div class="video-container">
-          <img src="https://img.youtube.com/vi/Dbz-iNeU9t8/maxresdefault.jpg?v=latest" alt="Part 3">
+          <img src="https://img.youtube.com/vi/Dbz-iNeU9t8/maxresdefault.jpg" alt="Part 3">
           <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 3</div>
         </div>
         <div class="mc-body">
           <div class="mc-title">Strategy Application</div>
           <div class="mc-desc">Watch how to apply the indicators in real-time market scenarios effectively.</div>
+        </div>
+      </a>
+
+      <a href="https://youtu.be/zaJeKmR_r_Y" target="_blank" class="mc-card">
+        <div class="video-container">
+          <img src="https://img.youtube.com/vi/zaJeKmR_r_Y/maxresdefault.jpg" alt="Part 4">
+          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+          <div class="ind-number-mc">PART 4</div>
+        </div>
+        <div class="mc-body">
+          <div class="mc-title">Liquidity Voids & Inducement</div>
+          <div class="mc-desc">Learn how to identify true smart money liquidity sweeps vs fakeouts.</div>
+        </div>
+      </a>
+
+      <a href="https://youtu.be/G0yAnMUdXqE" target="_blank" class="mc-card">
+        <div class="video-container">
+          <img src="https://img.youtube.com/vi/G0yAnMUdXqE/maxresdefault.jpg" alt="Part 5">
+          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+          <div class="ind-number-mc">PART 5</div>
+        </div>
+        <div class="mc-body">
+          <div class="mc-title">Advanced Time & Price</div>
+          <div class="mc-desc">How to sync macro timings with precise price levels for sniper entries.</div>
+        </div>
+      </a>
+
+      <a href="https://youtu.be/rMoZ21e0lNQ" target="_blank" class="mc-card">
+        <div class="video-container">
+          <img src="https://img.youtube.com/vi/rMoZ21e0lNQ/maxresdefault.jpg" alt="Part 6">
+          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+          <div class="ind-number-mc">PART 6</div>
+        </div>
+        <div class="mc-body">
+          <div class="mc-title">Precision Entries</div>
+          <div class="mc-desc">Drop down to the lower timeframes to execute with minimal drawdown.</div>
+        </div>
+      </a>
+
+      <a href="https://youtu.be/gAUBNhJn9cY" target="_blank" class="mc-card">
+        <div class="video-container">
+          <img src="https://img.youtube.com/vi/gAUBNhJn9cY/maxresdefault.jpg" alt="Part 7">
+          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
+          <div class="ind-number-mc">PART 7</div>
+        </div>
+        <div class="mc-body">
+          <div class="mc-title">The Cleaner Edge</div>
+          <div class="mc-desc">Master the sub-lines and custom UI settings to maintain a professional, distraction-free chart.</div>
         </div>
       </a>
       
@@ -841,7 +918,7 @@
           <div class="ind-number-mc">UPCOMING</div>
         </div>
         <div class="mc-body">
-          <div class="mc-title">Part 4: Coming Soon</div>
+          <div class="mc-title">Part 8: Coming Soon</div>
           <div class="mc-desc">More advanced breakdowns and live trade examples are on the way.</div>
         </div>
       </div>
@@ -852,29 +929,48 @@
 <section id="testimonials">
   <div class="inner reveal">
     <p class="section-label">Social Proof</p>
-    <h2 class="section-title"><span class="type-text">TRADERS DON'T LIE.</span></h2>
+    <h2 class="section-title">
+      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">TRADERS DON'T LIE.</span>
+    </h2>
     <p class="section-desc" style="margin-bottom:0">Real results from real members of the RTC community worldwide.</p>
   </div>
   
-  <div class="testimonials-track reveal" id="testiTrack">
-    <div class="testi-card"><div class="testi-pnl">+$4,200 this week</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade."</div><div class="testi-author"><div class="testi-avatar">M</div><div class="testi-name">Marcus K.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">+18.3% ROI</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month."</div><div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name">Sophie L.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">Best investment</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Rashik's community is genuinely one of the best trading spaces on the internet. The indicators are elite-level, but the Discord support and analysis are what truly sets this apart."</div><div class="testi-author"><div class="testi-avatar">A</div><div class="testi-name">Amir T.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">2R avg trade</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"POI Pro+ maps entries I would have missed completely. The automation is insane — I get alerted at exactly the right level. Went from breakeven to consistently profitable within 3 weeks."</div><div class="testi-author"><div class="testi-avatar">J</div><div class="testi-name">Jamie R.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">+$9,100 month</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"I've tried 12 indicator suites. Nothing comes close. The PO3 Advanced edition alone is worth 10x the price. The logic behind these tools is clearly from someone who actually trades."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">Daniel W.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">Elite member</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The yearly plan was the best decision I made. Constant updates, Rashik actually listens to the community, and the indicator keeps getting better. Zero reasons to leave."</div><div class="testi-author"><div class="testi-avatar">Y</div><div class="testi-name">Yuki N.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">Steady returns</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The POI Pro+ on my Elite membership has become my daily weapon for swing trading. My entry precision has improved so much. Over the last three months, I've managed a steady +$1,200/mo."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">David R.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">Part-time success</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Moving from paper trading to a real account was intimidating. The SMT Pro+ helped me spot divergences easily. Last month was my best yet, pulling in +$650 profit on FX pairs."</div><div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name">Sarah P.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">+$4,200 this week</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade."</div><div class="testi-author"><div class="testi-avatar">M</div><div class="testi-name">Marcus K.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">+18.3% ROI</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month."</div><div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name">Sophie L.</div></div></div>
-    <div class="testi-card"><div class="testi-pnl">Best investment</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Rashik's community is genuinely one of the best trading spaces on the internet. The indicators are elite-level, but the Discord support and analysis are what truly sets this apart."</div><div class="testi-author"><div class="testi-avatar">A</div><div class="testi-name">Amir T.</div></div></div>
+  <div class="marquee-container reveal">
+    <div class="testimonials-track track-left">
+      <div class="testi-card"><div class="testi-pnl">+$4,200 this week</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade."</div><div class="testi-author"><div class="testi-avatar">M</div><div class="testi-name">Marcus K.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">+18.3% ROI</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month."</div><div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name">Sophie L.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">Best investment</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Rashik's community is genuinely one of the best trading spaces on the internet. The indicators are elite-level, but the Discord support and analysis are what truly sets this apart."</div><div class="testi-author"><div class="testi-avatar">A</div><div class="testi-name">Amir T.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">2R avg trade</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"POI Pro+ maps entries I would have missed completely. The automation is insane — I get alerted at exactly the right level. Went from breakeven to consistently profitable within 3 weeks."</div><div class="testi-author"><div class="testi-avatar">J</div><div class="testi-name">Jamie R.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">+$4,200 this week</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade."</div><div class="testi-author"><div class="testi-avatar">M</div><div class="testi-name">Marcus K.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">+18.3% ROI</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month."</div><div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name">Sophie L.</div></div></div>
+    </div>
+
+    <div class="testimonials-track track-right">
+      <div class="testi-card"><div class="testi-pnl">Funded $100k</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Passed my $100k prop firm challenge using the SMT divergence filter alone. The setups are extremely clean and remove all emotional trading."</div><div class="testi-author"><div class="testi-avatar">L</div><div class="testi-name">Liam D.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">+$9,100 month</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"I've tried 12 indicator suites. Nothing comes close. The PO3 Advanced edition alone is worth 10x the price. The logic behind these tools is clearly from someone who actually trades."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">Daniel W.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">Saves 2 Hours</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The Session Pro+ draws the exact macro killzones I used to draw manually every morning. It saves me 2 hours a day and the accuracy is frightening."</div><div class="testi-author"><div class="testi-avatar">E</div><div class="testi-name">Emma R.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">Elite member</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The yearly plan was the best decision I made. Constant updates, Rashik actually listens to the community, and the indicator keeps getting better. Zero reasons to leave."</div><div class="testi-author"><div class="testi-avatar">Y</div><div class="testi-name">Yuki N.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">Funded $100k</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Passed my $100k prop firm challenge using the SMT divergence filter alone. The setups are extremely clean and remove all emotional trading."</div><div class="testi-author"><div class="testi-avatar">L</div><div class="testi-name">Liam D.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">+$9,100 month</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"I've tried 12 indicator suites. Nothing comes close. The PO3 Advanced edition alone is worth 10x the price. The logic behind these tools is clearly from someone who actually trades."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">Daniel W.</div></div></div>
+    </div>
+
+    <div class="testimonials-track track-left">
+      <div class="testi-card"><div class="testi-pnl">Steady returns</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The POI Pro+ on my Elite membership has become my daily weapon for swing trading. My entry precision has improved so much. Over the last three months, I've managed a steady +$1,200/mo."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">David R.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">Win rate 65%</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Finally, an indicator that understands C1-C2 sweeps properly. Took my win rate from 40% to 65% in a single month. Absolute game-changer."</div><div class="testi-author"><div class="testi-avatar">O</div><div class="testi-name">Omar F.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">Part-time success</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Moving from paper trading to a real account was intimidating. The SMT Pro+ helped me spot divergences easily. Last month was my best yet, pulling in +$650 profit on FX pairs."</div><div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name">Sarah P.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">Crystal Clear</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The charts used to give me a headache with all the noise. RTC strips it all away and highlights exactly where the smart money is stepping in."</div><div class="testi-author"><div class="testi-avatar">C</div><div class="testi-name">Chris M.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">Steady returns</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The POI Pro+ on my Elite membership has become my daily weapon for swing trading. My entry precision has improved so much. Over the last three months, I've managed a steady +$1,200/mo."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">David R.</div></div></div>
+      <div class="testi-card"><div class="testi-pnl">Win rate 65%</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Finally, an indicator that understands C1-C2 sweeps properly. Took my win rate from 40% to 65% in a single month. Absolute game-changer."</div><div class="testi-author"><div class="testi-avatar">O</div><div class="testi-name">Omar F.</div></div></div>
+    </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="inner">
     <p class="section-label reveal">FAQ</p>
-    <h2 class="section-title reveal"><span class="type-text">COMMON QUESTIONS.</span></h2>
+    <h2 class="section-title reveal">
+      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">COMMON QUESTIONS.</span>
+    </h2>
     <p class="section-desc reveal">Everything you need to know before joining the RTC community.</p>
     
     <div class="faq-list reveal">
@@ -891,33 +987,44 @@
 <section id="community" class="comm-section">
   <div class="inner reveal">
     <p class="section-label">Join The Network</p>
-    <h2 class="section-title"><span class="type-text">CONNECT WITH</span><br><span class="accent type-text" style="animation-delay: 1.5s;">ELITE TRADERS.</span></h2>
+    <h2 class="section-title">
+      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">CONNECT WITH</span><br>
+      <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">ELITE TRADERS.</span>
+    </h2>
     <p class="section-desc" style="margin-bottom:20px">Our community spans every major platform. Choose your channel and plug in.</p>
   </div>
   
-  <div class="comm-ticker-wrap reveal">
-    <div class="comm-ticker-track">
+  <div class="marquee-container reveal">
+    <div class="testimonials-track track-left">
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
       <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
-      <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
-      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card">
-        <svg class="tv-svg-icon" viewBox="0 0 32 32"><path d="M19.16 7L13.78 25h4.2l5.38-18h-4.2zm-4.66 0L10.02 20.5h-4.2L10.3 7h4.2zm-9.06 13L2.5 25h4.2l2.94-5h-4.2z"/></svg>
-        <div class="comm-name">TradingView</div>
-        <p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div>
-      </a>
       
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
       <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
+    </div>
+
+    <div class="testimonials-track track-right">
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card">
         <svg class="tv-svg-icon" viewBox="0 0 32 32"><path d="M19.16 7L13.78 25h4.2l5.38-18h-4.2zm-4.66 0L10.02 20.5h-4.2L10.3 7h4.2zm-9.06 13L2.5 25h4.2l2.94-5h-4.2z"/></svg>
         <div class="comm-name">TradingView</div>
         <p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div>
       </a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
+      <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
+      
+      <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
+      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card">
+        <svg class="tv-svg-icon" viewBox="0 0 32 32"><path d="M19.16 7L13.78 25h4.2l5.38-18h-4.2zm-4.66 0L10.02 20.5h-4.2L10.3 7h4.2zm-9.06 13L2.5 25h4.2l2.94-5h-4.2z"/></svg>
+        <div class="comm-name">TradingView</div>
+        <p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div>
+      </a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
+      <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
     </div>
   </div>
 </section>
@@ -925,7 +1032,10 @@
 <div id="riskCalc">
   <div class="inner">
     <p class="section-label reveal">Free Tool</p>
-    <h2 class="section-title reveal"><span class="type-text">RISK</span><br><span class="accent type-text" style="animation-delay: 1.5s;">CALCULATOR.</span></h2>
+    <h2 class="section-title reveal">
+      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">RISK</span><br>
+      <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">CALCULATOR.</span>
+    </h2>
     <p class="section-desc reveal">Calculate exact position size, risk/reward, and margin across Forex (Lots), Indices (Contracts), and Crypto (Tokens/Leverage).</p>
     
     <div class="reveal">
@@ -1029,18 +1139,20 @@
 </div>
 
 <section id="policies" style="padding-top:40px; padding-bottom:60px; background:var(--black);">
-  <div class="policy-grid reveal">
-    <div class="policy-card">
-      <h4><i class="fas fa-shield-alt"></i> AML Compliance</h4>
-      <p>Payments from illicit activities, sanctioned entities, or dark web sources are strictly prohibited. We use automated Chainalysis Hash Filtering to screen incoming crypto transactions. Flagged funds will be permanently blocked.</p>
-    </div>
-    <div class="policy-card">
-      <h4><i class="fas fa-lock"></i> Payment Security</h4>
-      <p>Payments made using stolen cards will lead to immediate account termination and will be reported to authorities. Any fraudulent chargeback attempts will result in a permanent IP ban and community blacklist.</p>
-    </div>
-    <div class="policy-card">
-      <h4><i class="fas fa-file-invoice-dollar"></i> Refund Policy</h4>
-      <p>100% Digital Access - All Sales Final. Due to the digital nature of the RTC Indicator Suite, once access is granted, we cannot offer refunds, exchanges, or cancellations under any circumstances.</p>
+  <div class="inner">
+    <div class="policy-grid reveal">
+      <div class="policy-card">
+        <h4><i class="fas fa-shield-alt"></i> AML Compliance</h4>
+        <p>Payments from illicit activities, sanctioned entities, or dark web sources are strictly prohibited. We use automated Chainalysis Hash Filtering to screen incoming crypto transactions. Flagged funds will be permanently blocked.</p>
+      </div>
+      <div class="policy-card">
+        <h4><i class="fas fa-lock"></i> Payment Security</h4>
+        <p>Payments made using stolen cards will lead to immediate account termination and will be reported to authorities. Any fraudulent chargeback attempts will result in a permanent IP ban and community blacklist.</p>
+      </div>
+      <div class="policy-card">
+        <h4><i class="fas fa-file-invoice-dollar"></i> Refund Policy</h4>
+        <p>100% Digital Access - All Sales Final. Due to the digital nature of the RTC Indicator Suite, once access is granted, we cannot offer refunds, exchanges, or cancellations under any circumstances.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1120,28 +1232,6 @@ function animateAura() {
 animateAura();
 
 // ═══════════════════════════════════════════
-//  CURSOR
-// ═══════════════════════════════════════════
-const cursor = document.getElementById('cursor');
-let mx=0,my=0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.transform = `translate(calc(${mx}px - 50%), calc(${my}px - 50%))`;
-});
-
-// Hover effect for cursor
-document.querySelectorAll('a, button, .faq-q, .calc-tab, .calc-pair-btn').forEach(el => {
-  el.addEventListener('mouseenter', () => { 
-    cursor.style.width = '14px'; cursor.style.height = '14px';
-    cursor.style.boxShadow = '0 0 20px var(--green)';
-  });
-  el.addEventListener('mouseleave', () => { 
-    cursor.style.width = '10px'; cursor.style.height = '10px';
-    cursor.style.boxShadow = 'var(--text-glow)';
-  });
-});
-
-// ═══════════════════════════════════════════
 //  PRELOADER & SCROLL PROGRESS
 // ═══════════════════════════════════════════
 window.addEventListener('load', () => {
@@ -1177,7 +1267,7 @@ function toggleMobileMenu() {
 }
 
 // ═══════════════════════════════════════════
-//  THEME TOGGLE
+//  THEME TOGGLE (Auto Timezone Support)
 // ═══════════════════════════════════════════
 const themeToggleDesk = document.getElementById('themeToggleDesk');
 const themeToggleMob = document.getElementById('themeToggleMob');
@@ -1304,7 +1394,7 @@ function animateCanvas() {
 animateCanvas();
 
 // ═══════════════════════════════════════════
-//  REPEATING SCROLL & TYPEWRITER TRIGGER
+//  SMOOTH REVEAL TRIGGER
 // ═══════════════════════════════════════════
 const revealOptions = {
   threshold: 0.15,
