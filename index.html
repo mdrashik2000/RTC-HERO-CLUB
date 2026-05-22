@@ -267,14 +267,16 @@
   .price-currency { font-size: 1.4rem; font-weight: 600; margin-right: 4px; color: var(--green);}
   .price-period { font-size:0.8rem; color:var(--muted); font-family: 'Inter', sans-serif; margin-bottom: 24px; font-weight: 500;}
 
-.price-save { 
+ .price-save { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
     font-size: 0.72rem; 
     color: var(--green); 
     background: var(--green-dim); 
     border: 1px solid rgba(0,229,184,0.2); 
-    padding: 4px 14px; 
+    padding: 4px 12px; 
     border-radius: 100px; 
-    display: inline-block; 
     margin-bottom: 24px; 
     font-family: 'JetBrains Mono', monospace; 
     white-space: nowrap; 
@@ -468,8 +470,6 @@
   @media (max-width: 1024px) {
     .policy-grid { grid-template-columns: repeat(2, 1fr); }
   }
- 
-/* ── RESPONSIVE OVERRIDES (MOBILE & TABLET FIXED) ── */
   @media (max-width: 900px) {
     .calc-layout { grid-template-columns: 1fr; }
     nav { padding: 16px 24px; }
@@ -480,20 +480,16 @@
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
     .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 20px;}
   }
-
-  /* আপনার নতুন মোবাইল ফিক্স কোড এখানে বসবে */
   @media (max-width: 768px) {
-    #hero { padding-top: 100px !important; }
-    .hero-badge { 
-      font-size: 0.65rem !important; 
-      padding: 6px 12px !important; 
-      white-space: normal !important; 
-      text-align: center; 
-    }
-    .policy-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
-    .policy-card { padding: 20px !important; }
-    section { padding: 40px 15px !important; overflow: hidden !important; }
-    .inner { width: 95% !important; overflow: hidden !important; }
+    .hero-stat { min-width: 45%; } 
+    .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
+    .price-card { width: 100%; max-width: 100%; }
+    .payment-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .policy-grid { grid-template-columns: 1fr; }
+    .cookie-banner { flex-direction: column; text-align: center; gap: 16px; }
+    .cookie-btn { width: 100%; }
+    .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1rem;}
   }
 
   ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:var(--black)} ::-webkit-scrollbar-thumb{background:rgba(0,229,184,0.3); border-radius: 6px;}
