@@ -66,7 +66,7 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--black); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; transition: background 0.5s ease, color 0.5s ease; }
+  body { background: var(--black); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; transition: background 0.5s ease, color 0.5s ease; width: 100vw; max-width: 100%;}
   a, button, .faq-q { text-decoration: none !important; color: inherit; }
 
   /* ── GRAIN TEXTURE ── */
@@ -93,9 +93,9 @@
   nav.scrolled { padding: 12px 60px; background: rgba(4,9,15,0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.1); }
   body.light-mode nav.scrolled { background: rgba(240, 244, 248, 0.9); }
 
-  .nav-logo { font-family: 'Outfit', sans-serif; font-size: clamp(1.2rem, 2vw, 1.4rem); font-weight: 800; letter-spacing: 0.12em; color: var(--green); display: flex; align-items: center; gap: 10px; z-index: 1001;}
-  .nav-logo span { color: var(--white); }
-  .nav-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 12px var(--green); animation: pulse 2s infinite; }
+  .nav-logo { font-family: 'Outfit', sans-serif; font-size: clamp(0.75rem, 2vw, 1.2rem); font-weight: 800; letter-spacing: 0.08em; color: var(--green); display: flex; align-items: center; gap: 8px; z-index: 1001; white-space: nowrap; flex-shrink: 0;}
+  .nav-logo span { color: var(--green); }
+  .nav-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 12px var(--green); animation: pulse 2s infinite; flex-shrink: 0;}
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
 
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; position: relative; z-index: 2;}
@@ -111,7 +111,7 @@
 
   .theme-toggle-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-size: 1rem; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; position: relative; z-index: 2; cursor: pointer; }
   .theme-toggle-btn:hover { color: var(--green); border-color: var(--green); background: var(--green-dim);}
-  .mobile-menu-btn { display: none; color: var(--green); font-size: 1.5rem; z-index: 1001; cursor: pointer; }
+  .mobile-menu-btn { display: none; color: var(--green); font-size: 1.5rem; z-index: 1001; cursor: pointer; flex-shrink: 0;}
   
   .mobile-nav { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(4,9,15,0.98); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; z-index: 9999; opacity: 0; pointer-events: none; transition: all 0.4s ease; transform: translateY(-20px); }
   body.light-mode .mobile-nav { background: rgba(240, 244, 248, 0.98); }
@@ -251,7 +251,7 @@
   .whop-logo-container { display: inline-flex; align-items: center; background: var(--input-bg); border: 1px solid rgba(255,255,255,0.08); padding: 8px 24px 8px 8px; border-radius: 100px; backdrop-filter: blur(10px); }
   .whop-label { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text); font-weight: 500;}
 
-  .pricing-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; text-align: left; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; text-align: left; }
   .price-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; padding: 36px 28px; position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; height: 100%; }
   .price-card:hover { border-color: rgba(0,229,184,0.4); transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0,0,0,0.5); background: var(--glass-hover);}
   body.light-mode .price-card:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.08); background: var(--glass-hover);}
@@ -508,9 +508,9 @@
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <nav id="navbar">
-  <a href="#hero" class="nav-logo" style="font-size: 1rem;">
+  <a href="#hero" class="nav-logo">
     <div class="nav-dot"></div>
-    RASHIK TRADES <span>COMMUNITY - RTC</span>
+    <span>Rashik Trades Community (RTC)</span>
   </a>
   <ul class="nav-links">
     <li><a href="#indicators">Indicators</a></li>
@@ -566,11 +566,11 @@
     </div>
 
     <div class="hero-stats reveal">
-     <div class="hero-stat"><span class="num">6,200+</span><span class="label">Active Members</span></div>
+     <div class="hero-stat"><span class="num dynamic-counter" data-target="6200">0+</span><span class="label">Active Members</span></div>
       <div class="hero-divider"></div>
-      <div class="hero-stat"><span class="num">5</span><span class="label">Elite Indicators</span></div>
+      <div class="hero-stat"><span class="num dynamic-counter" data-target="5" data-suffix="">0</span><span class="label">Elite Indicators</span></div>
       <div class="hero-divider"></div>
-      <div class="hero-stat"><span class="num">98%</span><span class="label">Satisfaction Rate</span></div>
+      <div class="hero-stat"><span class="num dynamic-counter" data-target="98" data-suffix="%">0%</span><span class="label">Satisfaction Rate</span></div>
       <div class="hero-divider"></div>
       <div class="hero-stat"><span class="num">24/7</span><span class="label">Community Support</span></div>
     </div>
@@ -1661,6 +1661,41 @@ function resetCalc() {
 }
 
 switchAssetClass('forex', document.querySelector('.calc-tab'));
+
+// ═══════════════════════════════════════════
+//  DYNAMIC COUNTER EFFECT
+// ═══════════════════════════════════════════
+const counters = document.querySelectorAll('.dynamic-counter');
+const observerOptions = { threshold: 0.5 };
+const counterObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = entry.target;
+      const endValue = parseInt(target.getAttribute('data-target'));
+      const suffix = target.getAttribute('data-suffix') !== null ? target.getAttribute('data-suffix') : '+';
+      const duration = 2500; 
+      const stepTime = 16; 
+      const steps = duration / stepTime;
+      const increment = endValue / steps;
+      let currentValue = 0;
+
+      const updateCounter = setInterval(() => {
+        currentValue += increment;
+        if (currentValue >= endValue) {
+          target.innerText = endValue.toLocaleString() + suffix;
+          clearInterval(updateCounter);
+        } else {
+          target.innerText = Math.floor(currentValue).toLocaleString() + suffix;
+        }
+      }, stepTime);
+      observer.unobserve(target);
+    }
+  });
+}, observerOptions);
+
+counters.forEach(counter => {
+  counterObserver.observe(counter);
+});
 
 </script>
 </body>
