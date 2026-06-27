@@ -3,1062 +3,888 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>RTC Indicator Suite Bundle</title>
+<title>RTC Indicator Suite | RashikTrades</title>
 
 <meta name="description" content="Unlock institutional-grade market clarity with the RTC Indicator Suite.">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKS84XRWQ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HKS84XRWQ9');
-</script>
 
-<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
   :root {
-    --bg-main: #04090f;
-    --black: #04090f;
-    --dark: #070e1a;
-    --card: #0b1422;
-    --card-border: rgba(0, 229, 184, 0.15);
-    --border: rgba(0,229,184,0.15);
-    --green: #00e5b8;
-    --green2: #00c4f0;
-    --green-dim: rgba(0,229,184,0.08);
-    --green-glow: rgba(0,229,184,0.18);
-    --muted: #8ba3b8;
-    --text: #e8f4f8;
-    --white: #ffffff;
-    --red: #ff4d4d;
-    --orange: #ffa726;
+    --bg-main: #ffffff;
+    --bg-sec: #fafafa;
+    --bg-gradient: linear-gradient(135deg, #ffffff 0%, #fff6f0 100%);
+    --text-dark: #111111;
+    --text-muted: #6b7280;
+    --border: #eaeaea;
+    --border-dark: #111111;
+    --whop-orange: #FF5A00;
+    --green: #10b981;
+    --red: #ef4444;
     
-    /* Dynamic Glass Variables */
-    --glass-bg: rgba(11,20,34,0.65);
-    --glass-hover: rgba(11,20,34,0.95);
-    --input-bg: rgba(0,0,0,0.3);
-  }
-
-  body.light-mode {
-    --bg-main: #f0f4f8; 
-    --black: #f0f4f8; 
-    --dark: #e8eef3;
-    --card: #ffffff;
-    --card-border: rgba(0, 178, 144, 0.3);
-    --border: rgba(0,229,184,0.3);
-    --green: #00b290; 
-    --green2: #0099cc;
-    --green-dim: rgba(0, 229, 184, 0.1);
-    --green-glow: rgba(0, 229, 184, 0.2);
-    --muted: #5a7a92;
-    --text: #1a2634;
-    --white: #0a111a; 
-    --red: #ef5350;
-    --orange: #f57c00;
-    
-    --glass-bg: rgba(255, 255, 255, 0.75);
-    --glass-hover: rgba(255, 255, 255, 1);
-    --input-bg: rgba(255, 255, 255, 0.6);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--black); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; transition: background 0.5s ease, color 0.5s ease; width: 100vw; max-width: 100%;}
-  a, button, .faq-q { text-decoration: none !important; color: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { background: var(--bg-main); color: var(--text-dark); font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; }
+  a, button { text-decoration: none !important; color: inherit; cursor: pointer; outline: none; border: none;}
+  ul { list-style: none; }
 
-  /* ── GRAIN TEXTURE ── */
-  .noise-overlay { position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
-  body.light-mode .noise-overlay { opacity: 0.05; filter: invert(1); }
-
-  /* ── PREMIUM MOUSE AURA ── */
-  #mouse-aura { position: fixed; top: 0; left: 0; width: 600px; height: 600px; background: radial-gradient(circle, var(--green-glow) 0%, transparent 60%); border-radius: 50%; pointer-events: none; z-index: 0; transform: translate(-50%, -50%); filter: blur(50px); opacity: 0.8; will-change: transform; }
+  .hover-scale { transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease; }
+  .hover-scale:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 
   /* ── PRELOADER ── */
-  #preloader { position: fixed; inset: 0; background: var(--black); z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s; }
-  .loader-logo { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 3rem; color: var(--white); letter-spacing: 4px; margin-bottom: 20px; animation: pulse 1.5s infinite; }
-  .loader-logo span { background: linear-gradient(90deg, var(--green), var(--green2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .loader-bar { width: 200px; height: 3px; background: var(--border); overflow: hidden; position: relative; border-radius: 3px; }
-  .loader-fill { position: absolute; top: 0; left: 0; height: 100%; background: linear-gradient(90deg, var(--green), var(--green2)); width: 0%; animation: loadFill 1.2s ease forwards; box-shadow: 0 0 10px var(--green); }
-  @keyframes loadFill { 0% { width: 0%; } 100% { width: 100%; } }
+  #preloader { position: fixed; inset: 0; background: var(--bg-main); z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s; }
+  .loader-logo { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 2.5rem; letter-spacing: -0.02em; animation: pulse 1.5s infinite; }
   body.loaded #preloader { opacity: 0; visibility: hidden; }
-
-  .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--green), var(--green2)); width: 0%; z-index: 10001; transition: width 0.1s; box-shadow: 0 0 10px var(--green); }
+  .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--whop-orange); width: 0%; z-index: 10001; transition: width 0.1s; }
 
   /* ── NAV ── */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 10000; display: flex; align-items: center; justify-content: space-between; padding: 18px 60px; background: rgba(4,9,15,0.65); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: all 0.3s ease; }
-  body.light-mode nav { background: rgba(240, 244, 248, 0.75); }
-  nav.scrolled { padding: 12px 60px; background: rgba(4,9,15,0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.1); }
-  body.light-mode nav.scrolled { background: rgba(240, 244, 248, 0.9); }
-
-  .nav-logo { font-family: 'Outfit', sans-serif; font-size: clamp(0.75rem, 2vw, 1.2rem); font-weight: 800; letter-spacing: 0.08em; color: var(--green); display: flex; align-items: center; gap: 8px; z-index: 1001; white-space: nowrap; flex-shrink: 0;}
-  .nav-logo span { color: var(--green); }
-  .nav-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 12px var(--green); animation: pulse 2s infinite; flex-shrink: 0;}
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
-
-  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; position: relative; z-index: 2;}
-  .nav-links a { color: var(--muted); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; font-family: 'Inter', sans-serif; }
-  .nav-links a:hover { color: var(--green); text-shadow: 0 0 10px rgba(0,229,184,0.3);}
-
-  .nav-tool-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-dim); border: 1px solid rgba(0,229,184,0.2); color: var(--green) !important; padding: 6px 14px !important; border-radius: 100px; font-size: clamp(0.7rem, 1vw, 0.75rem) !important; font-family: 'JetBrains Mono', monospace; transition: all 0.2s !important; }
-  .nav-tool-badge:hover { background: rgba(0,229,184,0.14) !important; border-color: var(--green) !important; box-shadow: 0 0 15px rgba(0,229,184,0.2); }
-
-  .nav-cta { background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f !important; padding: 9px 22px; border-radius: 6px; font-weight: 700 !important; font-family: 'Inter', sans-serif; transition: all 0.25s !important; white-space: nowrap; font-size: 0.85rem; letter-spacing: 0.04em; position: relative; z-index: 2;}
-  body.light-mode .nav-cta { color: #ffffff !important; }
-  .nav-cta:hover { box-shadow: 0 0 25px rgba(0,229,184,0.6) !important; transform: translateY(-2px); }
-
-  .theme-toggle-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-size: 1rem; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; position: relative; z-index: 2; cursor: pointer; }
-  .theme-toggle-btn:hover { color: var(--green); border-color: var(--green); background: var(--green-dim);}
-  .mobile-menu-btn { display: none; color: var(--green); font-size: 1.5rem; z-index: 1001; cursor: pointer; flex-shrink: 0;}
+  nav { position: fixed; top: 0; left: 0; right: 0; height: 70px; z-index: 10000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; background: rgba(255,255,255,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: all 0.3s ease; }
   
-  .mobile-nav { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(4,9,15,0.98); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; z-index: 9999; opacity: 0; pointer-events: none; transition: all 0.4s ease; transform: translateY(-20px); }
-  body.light-mode .mobile-nav { background: rgba(240, 244, 248, 0.98); }
-  .mobile-nav.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
-  .mobile-nav a { color: var(--white); font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; font-family: 'Outfit', sans-serif; }
-  .mobile-nav a:hover { color: var(--green); }
+  .nav-logo { font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 900; letter-spacing: -0.03em; transition: transform 0.3s; display: flex; align-items: center; }
+  .nav-logo:hover { transform: scale(1.02); }
+  .logo-black { color: var(--text-dark); }
+  .logo-orange { color: var(--whop-orange); }
+  
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s, transform 0.2s; }
+  .nav-links a:hover { color: var(--text-dark); transform: translateY(-1px); }
+  
+  .nav-cta { background: var(--text-dark); color: #fff !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; font-size: 0.9rem; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+  .nav-cta:hover { background: var(--whop-orange); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 90, 0, 0.2); }
+  
+  .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
 
-  /* ── DYNAMIC TICKER ── */
-  .ticker-wrap { overflow:hidden; width:100%; position:relative; display: flex; align-items: center; background: var(--bg-main); padding: 14px 0; border-bottom: 1px solid var(--border);}
-  .ticker-wrap::before, .ticker-wrap::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:2; pointer-events:none; }
-  .ticker-wrap::before { left:0; background:linear-gradient(90deg, var(--bg-main) 10%, transparent 100%); }
-  .ticker-wrap::after { right:0; background:linear-gradient(-90deg, var(--bg-main) 10%, transparent 100%); }
-  .ticker-track { display:flex; gap:30px; width:max-content; animation:ticker 40s linear infinite; align-items: center; }
-  .ticker-track:hover { animation-play-state:paused; }
-  .ticker-item { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 600; white-space: nowrap; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
-  .ticker-item span.up { color: var(--green); }
-  .ticker-item span.dn { color: var(--red); }
-  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 15px)); } }
+  .mobile-menu { position: fixed; top: 70px; left: 0; width: 100%; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; padding: 20px 5%; gap: 20px; box-shadow: var(--shadow-md); z-index: 9998; display: none; transform: translateY(-10px); opacity: 0; transition: all 0.3s;}
+  .mobile-menu.active { display: flex; transform: translateY(0); opacity: 1; }
+  .mobile-menu a { font-size: 1.1rem; font-weight: 600; color: var(--text-dark); }
+
+  /* ── HERO SECTION & ROUNDED REVIEWS ── */
+  #hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 5% 80px; background: #ffffff; text-align: center; overflow: hidden; perspective: 1200px; }
+  
+  .hero-content { position: relative; z-index: 10; max-width: 900px; display: flex; flex-direction: column; align-items: center; background: radial-gradient(circle, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0) 100%); padding: 40px; border-radius: 50%; }
+  
+  .hero-badge { display: inline-flex; align-items: center; gap: 12px; font-size: 0.9rem; font-weight: 800; color: var(--text-dark); margin-bottom: 30px; background: #fff; border: 1px solid var(--border); padding: 8px 24px; border-radius: 100px; box-shadow: var(--shadow-sm); transition: transform 0.3s;}
+  .hero-badge:hover { transform: translateY(-2px); border-color: var(--whop-orange); }
+  
+  .hero-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(2.8rem, 6vw, 5.5rem); line-height: 1.05; letter-spacing: -0.04em; color: var(--text-dark); margin-bottom: 24px; }
+  .hero-title span.light { color: #9ca3af; font-weight: 700; }
+  
+  .hero-subtitle { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-muted); font-weight: 500; margin-bottom: 40px; }
+  .hero-subtitle strong { color: var(--text-dark); font-weight: 800; }
+  
+  .btn-cyber { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: all 0.3s; cursor: pointer; font-family: 'Inter', sans-serif; gap: 8px;}
+  .btn-outline { background: #fff; color: var(--text-dark); border: 2px solid var(--border-dark); box-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
+  .btn-outline:hover { background: var(--bg-sec); transform: translate(-2px, -2px); box-shadow: 6px 6px 0px rgba(0,0,0,0.15);}
+  .btn-filled { background: var(--text-dark); color: #fff; border: 2px solid var(--text-dark); box-shadow: 4px 4px 0px rgba(0,0,0,0.2);}
+  .btn-filled:hover { background: var(--whop-orange); border-color: var(--whop-orange); transform: translate(-2px, -2px); box-shadow: 6px 6px 0px rgba(255,90,0,0.3); }
+
+  .hero-stats { display: flex; gap: clamp(20px, 4vw, 50px); justify-content: center; flex-wrap: wrap; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); width: 100%;}
+  .hero-stat { text-align: center; }
+  .hero-stat .num { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 900; color: var(--text-dark); display: block; }
+  .hero-stat .label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px;}
+
+  /* ── Hero Reviews (Curved/Round Style) ── */
+  .hero-reviews-wrapper { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1600px; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+  
+  .side-reviews { position: absolute; width: 320px; height: 200vh; top: -50vh; opacity: 0.8; pointer-events: auto; }
+  /* Applying the round perspective angle */
+  .side-reviews.left { left: -2%; transform: rotate(8deg) rotateY(15deg); }
+  .side-reviews.right { right: -2%; transform: rotate(-8deg) rotateY(-15deg); }
+  
+  .review-track { display: flex; flex-direction: column; gap: 24px; animation: scrollDown 45s linear infinite; }
+  
+  @keyframes scrollDown { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
+
+  .review-track:hover { animation-play-state: paused; z-index: 100; }
+
+  /* ── Float Card with Big Quote Logo ── */
+  .float-card { 
+    background: #fff; 
+    border: 1px solid var(--border); 
+    padding: 24px; 
+    border-radius: 12px; 
+    box-shadow: var(--shadow-sm); 
+    text-align: left; 
+    position: relative; 
+    z-index: 2; 
+    cursor: default;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden; /* Contains the big quote */
+  }
+
+  /* Big transparent quote on the right side */
+  .float-card::before {
+    content: '\201D'; /* Right Double Quote */
+    position: absolute;
+    right: 15px;
+    bottom: -40px;
+    font-size: 9rem;
+    font-family: Arial, sans-serif;
+    color: var(--text-dark);
+    opacity: 0.05;
+    line-height: 1;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .float-card:hover {
+    transform: scale(1.06) translateY(-5px);
+    z-index: 100;
+    box-shadow: var(--shadow-lg);
+    border-color: var(--whop-orange);
+  }
+  
+  .float-card:hover::before {
+    opacity: 0.15;
+    transform: scale(1.1);
+    color: var(--whop-orange);
+  }
+
+  .float-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; font-weight: 500; font-style: italic; position: relative; z-index: 1;}
+  .float-author { font-size: 0.9rem; font-weight: 800; color: var(--text-dark); text-align: right; position: relative; z-index: 1;}
 
   /* ── SECTIONS & TYPOGRAPHY ── */
-  section { padding: clamp(60px, 10vh, 100px) clamp(24px, 5vw, 60px); max-width: 100%; margin:0 auto; position: relative; z-index: 2;}
-  /* Consistent Inner Container Width for perfect alignment */
-  .inner { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0; }
+  section { padding: 100px 5%; max-width: 100%; margin: 0 auto; text-align: center; }
+  .inner { max-width: 1200px; margin: 0 auto; width: 100%; }
   
-  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--green); margin-bottom:16px; opacity: 0.9; display: flex; align-items: center; gap: 12px;}
-  .section-label::before { content: ''; width: 24px; height: 2px; background: var(--green); display: block; border-radius: 2px;}
-  .section-title { font-family:'Outfit',sans-serif; font-size:clamp(2rem, 5vw, 3.2rem); font-weight: 800; color:var(--white); line-height:1.1; letter-spacing:-0.02em; margin-bottom:16px; }
-  .section-desc { color:var(--muted); font-size: 1rem; line-height:1.7; max-width:520px; margin-bottom: 60px; }
+  .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dark); margin-bottom: 16px; background: #fff; padding: 6px 16px; border: 1px solid var(--border); border-radius: 6px; box-shadow: var(--shadow-sm); }
+  .section-title { font-family: 'Inter', sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; color: var(--text-dark); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 20px; }
+  .section-desc { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; max-width: 650px; margin: 0 auto 50px; line-height: 1.6; }
   
-  .accent, .hero-title .accent, .section-title .accent { 
-    background: linear-gradient(90deg, var(--green), var(--green2)); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-    display: inline-block; 
-    padding-bottom: 0.1em; 
-    white-space: nowrap; 
-  }
-
-  /* 🔥 SMOOTH TEXT REVEAL (NO GLITCH/FLIPPING) 🔥 */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform, opacity; }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  .type-text { 
-    display: inline-block; 
-    white-space: nowrap; 
-    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    transition-property: clip-path;
-    transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
-    vertical-align: bottom;
-  }
-  .reveal.visible .type-text { 
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .grid-3-2 .card-3-2:nth-child(1) { transition-delay: 0.1s; }
-  .grid-3-2 .card-3-2:nth-child(2) { transition-delay: 0.2s; }
-  .grid-3-2 .card-3-2:nth-child(3) { transition-delay: 0.3s; }
-  .grid-3-2 .card-3-2:nth-child(4) { transition-delay: 0.4s; }
-  .grid-3-2 .card-3-2:nth-child(5) { transition-delay: 0.5s; }
-  .grid-3-2 .card-3-2:nth-child(6) { transition-delay: 0.6s; }
-
-  /* ── HERO ── */
-  #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(100px, 15vh, 150px) 24px clamp(60px, 10vh, 100px); position: relative; overflow: hidden; text-align: center; z-index: 1;}
-  #waveCanvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-  .hero-content { position: relative; z-index: 2; max-width: 860px; padding: 0 16px; margin: 0 auto;}
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(0,229,184,0.25); background: rgba(0,229,184,0.08); padding: 7px 18px; border-radius: 100px; font-size: clamp(0.65rem, 1vw, 0.75rem); font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 32px; animation: fadeUp 0.8s ease both; white-space: nowrap; backdrop-filter: blur(10px); }
-  .hero-title { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 6vw, 6rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--white); margin-bottom: 24px; animation: fadeUp 0.9s 0.1s ease both; }
-  .hero-subtitle { font-size: 1.1rem; color: var(--muted); max-width: 560px; line-height: 1.7; margin: 0 auto 40px; animation: fadeUp 1s 0.2s ease both; }
-  .hero-subtitle strong { color: var(--white); }
-  .hero-cta-group { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; animation:fadeUp 1s 0.3s ease both; margin-bottom: 60px; position: relative; z-index: 10;}
-
-  .btn-cyber-wrap { position: relative; display: block; width: auto; min-width: 220px;}
-  .btn-cyber { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 14px 34px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); white-space: nowrap; }
-  .btn-cyber-wrap.filled .btn-cyber { background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f !important; border: 1px solid transparent;}
-  body.light-mode .btn-cyber-wrap.filled .btn-cyber { color: #ffffff !important; }
-  .btn-cyber-wrap.filled:hover .btn-cyber { box-shadow: 0 0 35px rgba(0,229,184,0.6); transform: translateY(-3px); }
-  .btn-cyber-wrap.outline .btn-cyber { background: rgba(4,9,15,0.4); backdrop-filter: blur(10px); border: 1px solid var(--border); color: var(--text) !important; }
-  .btn-cyber-wrap.outline:hover .btn-cyber { border-color: var(--green); color: var(--green) !important; background: rgba(0,229,184,0.06); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2);}
-
-  .hero-stats { display:flex; gap: clamp(20px, 4vw, 48px); justify-content:center; flex-wrap: wrap; animation:fadeUp 1s 0.4s ease both; }
-  .hero-stat { text-align:center; min-width: 120px; position: relative; z-index: 2;}
-  .hero-stat .num { font-family:'Outfit',sans-serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800; background: linear-gradient(90deg, var(--green), var(--green2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display:block; }
-  .hero-stat .label { font-size: 0.75rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-top: 2px;}
-  .hero-divider { width:1px; height:48px; background:var(--border); align-self:center; display: none; }
-  @media (min-width: 768px) { .hero-divider { display: block; } }
+  /* ── TAG CLOUD ── */
+  .tag-cloud-section { padding: 60px 0; background: #fff; overflow: hidden; position: relative;}
+  .tag-cloud-section .inner { padding: 0 5%; margin-bottom: 40px; }
   
-  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+  .tag-marquee-wrap { position: relative; display: flex; flex-direction: column; gap: 16px; width: 100%; }
+  .tag-marquee-wrap::before, .tag-marquee-wrap::after { content: ''; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2; pointer-events: none; }
+  .tag-marquee-wrap::before { left: 0; background: linear-gradient(90deg, #fff 0%, transparent 100%); }
+  .tag-marquee-wrap::after { right: 0; background: linear-gradient(-90deg, #fff 0%, transparent 100%); }
 
-  /* ── STRIP ── */
-  .trust-strip { padding: 24px 0; background: rgba(0,229,184,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center; transition: background 0.5s ease; position: relative; z-index: 2; backdrop-filter: blur(10px); }
-  .trust-strip p { font-size: 0.7rem; color: var(--muted); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
-  .trust-logos { display: flex; justify-content: center; gap: clamp(20px, 6vw, 80px); flex-wrap: wrap; }
-  .trust-logos span { color: var(--green); font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; letter-spacing: 0.05em; opacity: 0.8; transition: opacity 0.3s;}
-  .trust-logos span:hover { opacity: 1; text-shadow: 0 0 15px rgba(0,229,184,0.3); }
+  .tag-track { display: flex; gap: 16px; width: max-content; }
+  .tag-track.left { animation: scrollLeftMarquee 40s linear infinite; }
+  .tag-track.right { animation: scrollRightMarquee 40s linear infinite; }
+  .tag-track:hover { animation-play-state: paused; }
 
-  /* ── INDICATORS GRID ── */
-  #indicators { background: var(--dark); max-width: 100%;}
-  
-  .grid-3-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 20px; }
-  .card-3-2 { background: var(--card); padding: 40px 36px; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: inset 0 0 0 1px transparent; text-align: left; }
-  .card-3-2::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--green),var(--green2)); transform: scaleX(0); transform-origin: left; transition:transform 0.4s ease; }
-  /* Hover effect opacity reduced for a cleaner look */
-  .card-3-2:hover { background: rgba(0,229,184,0.015); box-shadow: inset 0 0 0 1px rgba(0,229,184,0.15), 0 8px 25px rgba(0, 0, 0, 0.1); transform: translateY(-2px); }
-  .card-3-2:hover::before { transform: scaleX(1); }
-  
-  .ind-number { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--green); letter-spacing:0.15em; margin-bottom:16px; opacity:0.7; }
-  .ind-icon { font-size:2.2rem; margin-bottom:16px; display:block; color: var(--green); text-shadow: 0 0 15px rgba(0,229,184,0.3);}
-  .ind-name { font-family:'Outfit',sans-serif; font-size: 1.4rem; font-weight: 700; color:var(--white); margin-bottom:12px; }
-  .ind-desc { font-size:0.88rem; color:var(--muted); line-height:1.7; margin-bottom: 24px;}
-  .ind-tags { display:flex; flex-wrap:wrap; gap:8px; }
-  .ind-tag { font-family: 'JetBrains Mono', monospace; font-size:0.65rem; font-weight:600; letter-spacing:0.08em; color:var(--green); background:var(--green-dim); border:1px solid rgba(0,229,184,0.2); padding:5px 12px; border-radius:100px; backdrop-filter: blur(4px); }
-  
-  .bonus-section { margin-top: 80px; text-align: center; background: var(--black); max-width: 100%; padding: 80px 24px; overflow: hidden;}
-  .bonus-card { max-width: 640px; margin: 0 auto; background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--card-border); padding: 56px 48px; border-radius: 20px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); transition: background 0.3s ease; }
-  .bonus-card:hover { background: var(--glass-hover); }
-  .bonus-card::after { content: ''; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(0,229,184,0.15), transparent 70%); pointer-events: none; z-index: -1;}
-  
-  .bonus-badge { display: inline-block; background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f; font-family: 'JetBrains Mono', monospace; font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:6px 18px; border-radius:100px; margin-bottom:24px; position: relative; z-index: 2; box-shadow: 0 0 15px rgba(0,229,184,0.3);}
-  body.light-mode .bonus-badge { color: #ffffff; }
-  
-  .bonus-title { font-family:'Outfit',sans-serif; font-size: 1.8rem; font-weight: 800; color:var(--white); position: relative; z-index: 2; margin-bottom: 12px;}
-  .bonus-desc { font-size:0.95rem; color:var(--muted); line-height:1.7; position: relative; z-index: 2; margin-bottom: 28px;}
-  .bonus-free { font-family:'Outfit',sans-serif; font-size: 0.8rem; font-weight: 700; color:var(--green); letter-spacing:0.15em; text-transform: uppercase; position: relative; z-index: 2; margin-bottom: 12px;}
+  @keyframes scrollLeftMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @keyframes scrollRightMarquee { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 
-  /* ── PRICING ── */
-  .pricing-wrapper { max-width: 100%; margin: 0 auto; padding: clamp(80px, 10vh, 120px) clamp(24px, 5vw, 60px); background: var(--dark);}
-  .pricing-inner { max-width: 1200px; margin: 0 auto;}
-  .pricing-header-center { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .pricing-header-center .section-label::before { display: none; }
+  .feature-tag { padding: 14px 28px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text-dark); background: #fff; white-space: nowrap; transition: all 0.3s; cursor: pointer; box-shadow: var(--shadow-sm); position: relative;}
+  .feature-tag:hover { transform: translateY(-3px) scale(1.02); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md); }
 
-  /* 🔥 WHOP LOGO FIX (Exact Orange Match #FF5A00) 🔥 */
-  .whop-logo-wrap { display: flex; justify-content: center; margin-bottom: 48px; width: 100%; }
-  .whop-custom-box { background-color: #FF5A00; border-radius: 10px; padding: 6px 16px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(255, 90, 0, 0.2); transition: transform 0.3s; margin-right: 12px;}
-  .whop-custom-box:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 90, 0, 0.4); }
-  .whop-text-white { color: #ffffff !important; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.4rem; letter-spacing: -0.5px; line-height: 1; }
-  
-  .whop-logo-container { display: inline-flex; align-items: center; background: var(--input-bg); border: 1px solid rgba(255,255,255,0.08); padding: 8px 24px 8px 8px; border-radius: 100px; backdrop-filter: blur(10px); }
-  .whop-label { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text); font-weight: 500;}
+  /* ── ADVANCED AUTOMATION ── */
+  #architecture { background: var(--bg-sec); border-top: 1px solid var(--border); }
+  .arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; text-align: left; }
+  .arch-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 40px; box-shadow: var(--shadow-sm); transition: all 0.4s ease;}
+  .arch-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--whop-orange);}
+  .arch-card i { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; transition: 0.3s; }
+  .arch-card:hover i { color: var(--whop-orange); transform: scale(1.1); }
+  .arch-title { font-size: 1.5rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark); letter-spacing: -0.02em;}
+  .arch-sub { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--whop-orange); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em;}
+  .arch-desc { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; font-weight: 500;}
 
-  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; text-align: left; }
-  .price-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; padding: 36px 28px; position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; height: 100%; }
-  .price-card:hover { border-color: rgba(0,229,184,0.4); transform: translateY(-8px); box-shadow: 0 25px 60px rgba(0,0,0,0.5); background: var(--glass-hover);}
-  body.light-mode .price-card:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.08); background: var(--glass-hover);}
+  /* ── MAIN INDICATORS ── */
+  #indicators { background: #fff; border-top: 1px solid var(--border); }
+  .grid-3-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; text-align: left; }
+  .card-suite { background: var(--bg-gradient); border: 1px solid rgba(255, 90, 0, 0.15); border-radius: 12px; padding: 36px; transition: all 0.4s ease; display: flex; flex-direction: column; position: relative; overflow: hidden; z-index: 1;}
+  .card-suite::after { content:''; position: absolute; inset:0; border-radius: 12px; box-shadow: inset 0 0 0 2px transparent; transition: 0.3s; z-index: -1;}
+  .card-suite:hover::after { box-shadow: inset 0 0 0 2px var(--whop-orange); }
+  .card-suite:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
   
-  .price-card.popular { border-color: var(--green); box-shadow: 0 0 40px rgba(0,229,184,0.12); }
-  .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 18px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; white-space: nowrap; z-index: 10; box-shadow: 0 5px 15px rgba(0,229,184,0.3); }
-  .tv-discount-tag { background: var(--red); color: #fff; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.65rem; padding: 4px 10px; border-radius: 100px; letter-spacing: 0.05em; margin-left: auto; animation: pulse 2s infinite; box-shadow: 0 0 10px rgba(255,77,77,0.4);}
-  .free-badge { background: var(--green); color: #04090f; font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; padding: 4px 10px; border-radius: 100px; letter-spacing: 0.05em; text-transform: uppercase; margin-left: auto; }
-  
-  .price-tier { font-family: 'JetBrains Mono', monospace; font-size:0.75rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--green); margin-bottom:16px; display: flex; align-items: center; }
-  .price-crossed { color: var(--muted); font-size: 0.9rem; text-decoration: line-through; margin-bottom: 4px; font-family: 'Inter', sans-serif; height: 18px; opacity: 0.7;}
-  .price-amount { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px; display: flex; align-items: baseline;}
-  .price-currency { font-size: 1.4rem; font-weight: 600; margin-right: 4px; color: var(--green);}
-  .price-period { font-size:0.8rem; color:var(--muted); font-family: 'Inter', sans-serif; margin-bottom: 24px; font-weight: 500;}
+  .mockup-icon-wrap { width: 54px; height: 54px; background: #fff; border: 1px solid rgba(255,90,0,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 1.4rem; color: var(--text-dark); box-shadow: var(--shadow-sm); transition: transform 0.3s;}
+  .card-suite:hover .mockup-icon-wrap { transform: rotate(10deg) scale(1.1); background: var(--whop-orange); color: #fff; border-color: var(--whop-orange);}
 
-.price-save { 
-    font-size: 0.72rem; 
-    color: var(--green); 
-    background: var(--green-dim); 
-    border: 1px solid rgba(0,229,184,0.2); 
-    padding: 4px 14px; 
-    border-radius: 100px; 
-    display: inline-block; 
-    margin-bottom: 24px; 
-    font-family: 'JetBrains Mono', monospace; 
-    white-space: nowrap; 
-  }
+  /* ── MINIMALIST PROFESSIONAL PRICING (Black Border Styles) ── */
+  .pricing-wrapper { background: var(--bg-sec); border-top: 1px solid var(--border); }
+  .whop-badge { display: inline-flex; align-items: center; background: #fff; border: 1px solid var(--border); padding: 8px 24px 8px 8px; border-radius: 100px; box-shadow: var(--shadow-sm); margin-bottom: 40px;}
+  .whop-badge .whop-box { background-color: var(--whop-orange); border-radius: 100px; padding: 6px 16px; color: #fff; font-weight: 900; margin-right: 12px; font-family: 'Outfit', sans-serif;}
+  .whop-badge .whop-text { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); }
   
-  .price-features { list-style:none; flex: 1; margin-bottom:32px; display: flex; flex-direction: column; gap: 8px;}
-  .price-features li { display:flex; align-items:flex-start; gap:12px; font-size:0.85rem; color:var(--muted); line-height:1.5; padding: 4px 0;}
-  .price-features li::before { content:'✓'; color:var(--green); font-size: 0.8rem; flex-shrink:0; margin-top:2px; text-shadow: 0 0 8px rgba(0,229,184,0.5);}
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; text-align: left; align-items: stretch;}
   
-  .btn-pricing-box { margin-top: auto; width: 100%; display: block;}
-  .price-btn { display: block; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.03em; font-family: 'Inter', sans-serif;}
-  .price-btn.outline { border: 1px solid var(--border); color: var(--text); background: var(--input-bg);}
-  .price-btn.outline:hover { border-color: var(--green); color: var(--green); background: rgba(0,229,184,0.06); transform: translateY(-2px);}
-  .price-btn.filled { background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f; border: 1px solid transparent;}
-  .price-btn.filled:hover { box-shadow: 0 0 25px rgba(0,229,184,0.5); transform: translateY(-2px); }
+  /* Black borders for modern minimalist look */
+  .price-card { background: #fff; border: 2px solid var(--border-dark); border-radius: 16px; padding: 32px 24px; transition: all 0.3s ease; display: flex; flex-direction: column; position: relative; box-shadow: 4px 4px 0px rgba(17,17,17,0.05);}
+  .price-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0px rgba(17,17,17,0.15); z-index: 2;}
+  
+  .price-tier { font-family: 'Inter', sans-serif; font-size:1rem; font-weight:800; color:var(--text-dark); margin-bottom:12px; display: flex; align-items: center; justify-content: space-between;}
+  .popular-badge { font-size: 0.65rem; background: var(--text-dark); color: #fff; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800;}
+  
+  .price-crossed { font-size: 0.9rem; color: var(--text-muted); text-decoration: line-through; height: 18px; margin-bottom: 4px; font-weight: 600;}
+  .price-amount { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 900; color: var(--text-dark); line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline; letter-spacing: -0.02em;}
+  .price-currency { font-size: 1.4rem; font-weight: 800; margin-right: 4px; }
+  .price-period { font-size:0.85rem; color:var(--text-muted); font-weight: 600; margin-bottom: 12px;}
+  
+  .tv-discount-tag { background: #fef2f2; color: var(--red); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; padding: 4px 10px; border-radius: 100px; border: 1px solid #fca5a5; display: inline-block; margin-right: 6px;}
+  .price-save { font-size: 0.8rem; color: var(--text-dark); font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; height: 24px;}
 
-  /* ── PAYMENT & CRYPTO ── */
-  #payment { background: var(--black); }
-  .payment-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px; }
-  .pay-card { background: var(--glass-bg); backdrop-filter: blur(10px); border:1px solid var(--border); border-radius: 16px; padding: 40px; transition: all 0.4s ease; }
-  .pay-card:hover { border-color: rgba(0,229,184,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2);}
-  .pay-title { font-family:'Outfit',sans-serif; font-size:1.2rem; font-weight: 700; color:var(--white); margin-bottom:8px; }
-  .pay-subtitle { font-size:0.85rem; color:var(--muted); margin-bottom:32px; line-height:1.6; }
+  .price-features { list-style:none; flex: 1; margin-bottom:32px; display: flex; flex-direction: column; gap: 14px;}
+  .price-features li { display:flex; align-items:flex-start; gap:10px; font-size:0.85rem; color:var(--text-muted); line-height:1.4; font-weight: 600;}
+  .price-features li::before { content:'✓'; color:var(--text-dark); font-weight: 900; }
   
-  .crypto-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
-  .crypto-item { display:flex; align-items:center; justify-content: space-between; background:var(--input-bg); border:1px solid var(--border); padding:16px 20px; border-radius:12px; gap: 16px; flex-wrap: wrap; transition: border-color 0.2s;}
-  .crypto-item:hover { border-color: rgba(0,229,184,0.3); }
-  .crypto-label { font-family:'JetBrains Mono',monospace; font-size:0.8rem; font-weight: 600; color:var(--text); display: flex; align-items: center; gap: 8px;}
-  .crypto-addr { font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--muted); word-break:break-all; margin-top: 4px;}
-  .copy-btn { background:rgba(0,229,184,0.1); border:1px solid rgba(0,229,184,0.2); color:var(--green); font-family:'JetBrains Mono',monospace; font-size:0.65rem; font-weight: 600; letter-spacing:0.08em; padding:8px 16px; border-radius:6px; transition:all 0.2s; flex-shrink:0; white-space: nowrap; cursor: pointer;}
-  .copy-btn:hover { background: rgba(0,229,184,0.2); transform: translateY(-1px);}
-  .copy-btn.copied { background: var(--green); color: #04090f; }
+  .price-btn { display: block; text-align: center; padding: 14px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; transition: all 0.3s; width: 100%; border: 2px solid var(--text-dark); cursor: pointer;}
+  .price-btn.btn-outline { background: #fff; color: var(--text-dark); box-shadow: 3px 3px 0px rgba(0,0,0,0.1);}
+  .price-btn.btn-outline:hover { background: var(--bg-sec); transform: translate(-2px, -2px); box-shadow: 5px 5px 0px rgba(0,0,0,0.15);}
+  .price-btn.btn-filled { background: var(--text-dark); color: #fff; box-shadow: 3px 3px 0px rgba(0,0,0,0.2);}
+  .price-btn.btn-filled:hover { background: var(--whop-orange); border-color: var(--whop-orange); transform: translate(-2px, -2px); box-shadow: 5px 5px 0px rgba(255,90,0,0.3);}
 
-  .fiat-badges { display:flex; gap:10px; margin-bottom:28px; flex-wrap:wrap; }
-  .fiat-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(0,229,184,0.06); border:1px solid rgba(0,229,184,0.15); padding:10px 20px; border-radius:8px; font-size:0.85rem; color:var(--text); font-weight: 500;}
-  .bank-steps { list-style: none; margin-top: 24px;}
-  .bank-step { display:flex; gap:16px; align-items:flex-start; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.88rem; color: var(--muted); line-height: 1.6;}
-  .step-num { width:28px; height:28px; background: rgba(0,229,184,0.1); border:1px solid rgba(0,229,184,0.25); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--green); flex-shrink:0; font-weight: 600;}
+  /* ── CENTRALIZED CRYPTO PAYMENT SECTION ── */
+  #payment { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px; }
+  .crypto-container { display: flex; flex-direction: column; gap: 16px; max-width: 650px; margin: 40px auto 0; width: 100%; }
+  
+  .crypto-item { background: #fff; border: 2px solid var(--border); padding: 20px 24px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; box-shadow: var(--shadow-sm); width: 100%;}
+  .crypto-item:hover { border-color: var(--text-dark); box-shadow: 4px 4px 0px rgba(17,17,17,0.1); transform: translate(-2px, -2px);}
+  
+  .crypto-left { display: flex; flex-direction: column; gap: 6px; text-align: left; overflow: hidden;}
+  .crypto-label { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 8px;}
+  .crypto-addr { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); word-break: break-all; margin-right: 15px;}
+  
+  .copy-btn { background: var(--text-dark); border: 2px solid var(--text-dark); color: #fff; font-size: 0.75rem; font-weight: 800; padding: 10px 20px; border-radius: 8px; cursor: pointer; transition: 0.2s; white-space: nowrap; font-family: 'JetBrains Mono', monospace; flex-shrink: 0;}
+  .copy-btn:hover { background: var(--whop-orange); border-color: var(--whop-orange); }
+  .copy-btn.copied { background: var(--green); border-color: var(--green); color: #fff; }
+
+  /* ── DISCORD COMMUNITY ── */
+  #discord-join { padding: 80px 5%; background: var(--bg-sec); border-top: 1px solid var(--border); text-align: center; }
+
+  /* ── SOCIAL MARQUEE (COMMUNITY) ── */
+  #community { background: var(--bg-main); border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; }
+  #community .inner { padding: 0 5%; margin-bottom: 40px; text-align: center; }
+  .comm-marquee-wrap { display: flex; flex-direction: column; gap: 24px; position: relative; width: 100%; }
+  .comm-marquee-wrap::before, .comm-marquee-wrap::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:5; pointer-events:none; }
+  .comm-marquee-wrap::before { left:0; background:linear-gradient(90deg,var(--bg-main) 0%,transparent 100%); }
+  .comm-marquee-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg-main) 0%,transparent 100%); }
+  
+  .comm-track { display: flex; gap: 24px; width: max-content; }
+  .comm-track:hover { animation-play-state: paused !important; }
+  .comm-card { background: var(--bg-sec); border:1px solid var(--border); border-radius: 16px; padding:28px; display:flex; flex-direction: column; gap: 12px; width: 300px; flex-shrink: 0; transition:all 0.3s; text-align: left;}
+  .comm-card:hover { border-color: var(--whop-orange); box-shadow: var(--shadow-md); transform:translateY(-4px);}
+  .comm-icon { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 8px;}
+  .comm-name { font-family:'Outfit',sans-serif; font-weight: 800; font-size:1.1rem; color:var(--text-dark); }
+  .comm-desc { font-size:0.9rem; color:var(--text-muted); line-height:1.6; }
+  .comm-arrow { font-weight: 800; margin-top: auto;}
 
   /* ── MASTERCLASS ── */
-  #masterclass { background: var(--dark); }
-  .masterclass-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
-  .mc-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column;}
-  .mc-card:hover { border-color: rgba(0,229,184,0.4); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.3);}
-  .mc-card.upcoming { opacity: 0.6; }
-  
-  .video-container { position: relative; width: 100%; height: 180px; background: linear-gradient(135deg, rgba(0,229,184,0.08), rgba(0,196,240,0.08)); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .video-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s, opacity 0.4s; opacity: 0.7; }
+  #masterclass { background: var(--bg-sec); border-top: 1px solid var(--border);}
+  .mc-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:24px; text-align: left; }
+  .mc-card { background: #fff; border: 2px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; cursor: pointer; box-shadow: 4px 4px 0px rgba(0,0,0,0.03);}
+  .mc-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0px rgba(17,17,17,0.1); border-color: var(--text-dark);}
+  .video-container { position: relative; width: 100%; height: 170px; background: #eaeaea; overflow: hidden; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); }
+  .video-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: transform 0.5s, opacity 0.3s;}
   .mc-card:hover .video-container img { transform: scale(1.08); opacity: 1; }
-  .play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.4s; }
-  .play-icon { width: 56px; height: 56px; background: rgba(0,229,184,0.15); border: 1px solid rgba(0,229,184,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 1.4rem; padding-left: 4px; backdrop-filter: blur(8px); transition: all 0.3s; }
-  .mc-card:hover .play-icon { background: var(--green); color: #04090f; box-shadow: 0 0 25px rgba(0,229,184,0.6); transform: scale(1.15); }
-  .ind-number-mc { position: absolute; top: 16px; left: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: var(--green); background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); border: 1px solid rgba(0,229,184,0.3); padding: 5px 14px; border-radius: 100px; z-index: 2;}
-  .mc-body { padding: 28px; }
-  .mc-title { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--white);}
-  .mc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-
-  /* ── 3-LINE TESTIMONIAL MARQUEE ── */
-  #testimonials { background: var(--black); max-width: 100%; padding: 80px 0; overflow: hidden;}
-  #testimonials .inner { margin-bottom: 48px; padding: 0 clamp(24px, 5vw, 60px); }
-  
-  .marquee-container { display: flex; flex-direction: column; gap: 24px; position: relative; width: 100%; }
-  .marquee-container::before, .marquee-container::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:5; pointer-events:none; }
-  .marquee-container::before { left:0; background:linear-gradient(90deg,var(--black) 0%,transparent 100%); }
-  .marquee-container::after { right:0; background:linear-gradient(-90deg,var(--black) 0%,transparent 100%); }
-  
-  .testimonials-track { display: flex; gap: 24px; width: max-content; }
-  .testimonials-track:hover { animation-play-state: paused !important; }
-  
-  .track-left { animation: scrollLeft 45s linear infinite; }
-  .track-right { animation: scrollRight 45s linear infinite; }
-  
-  @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 12px)); } }
-  @keyframes scrollRight { 0% { transform: translateX(calc(-50% - 12px)); } 100% { transform: translateX(0); } }
-
-  .testi-card { background: var(--glass-bg); backdrop-filter: blur(10px); border:1px solid var(--border); border-radius: 16px; padding: 32px; width: 340px; flex-shrink: 0; transition: border-color 0.3s; }
-  .testi-card:hover { border-color:rgba(0,229,184,0.4); box-shadow: 0 10px 25px rgba(0,0,0,0.2);}
-  .testi-pnl { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--green); margin-bottom: 14px; }
-  .testi-text { font-size:0.85rem; line-height:1.7; color:var(--muted); margin-bottom:20px; font-style:italic; }
-  .testi-stars { color:var(--green); font-size:0.85rem; letter-spacing:2px; margin-bottom:16px; }
-  .testi-author { display:flex; align-items:center; gap:14px; }
-  .testi-avatar { width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg, var(--green), var(--green2)); display:flex; align-items:center; justify-content:center; font-family:'Outfit',sans-serif; font-size:0.85rem; font-weight: 800; color:#04090f; }
-  .testi-name { font-weight:600; font-size:0.88rem; color:var(--white); }
-
-  /* ── FAQ ── */
-  #faq { background: var(--dark); }
-  .faq-list { display:flex; flex-direction:column; gap:0; }
-  .faq-item { border-bottom:1px solid var(--border); overflow:hidden; padding: 0;}
-  .faq-q { display:flex; align-items:center; justify-content:space-between; padding: 24px 0; cursor:pointer; font-family: 'Outfit', sans-serif; font-size:1.05rem; font-weight:600; color:var(--text); transition:color 0.2s; gap: 16px;}
-  .faq-q:hover { color:var(--green); }
-  .faq-icon { width:28px; height:28px; border:1px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--green); flex-shrink:0; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-  .faq-item.open .faq-icon { transform:rotate(45deg); background: var(--green); color: #04090f; border-color: var(--green);}
-  .faq-a { font-size:0.9rem; color:var(--muted); line-height:1.75; max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.3s; padding-bottom: 0;}
-  .faq-item.open .faq-a { max-height:300px; padding-bottom: 24px;}
-
-  /* ── COMMUNITY (2-LINE MARQUEE) ── */
-  .comm-section { background: var(--black); max-width: 100%; padding: 80px 0;}
-  .comm-section .inner { padding: 0 clamp(24px, 5vw, 60px) 40px;}
-  
-  .comm-card { background: var(--glass-bg); backdrop-filter: blur(10px); border:1px solid var(--border); border-radius: 16px; padding:28px 32px; display:flex; flex-direction: column; gap: 12px; width: 300px; flex-shrink: 0; transition:all 0.3s; color: inherit;}
-  .comm-card:hover { border-color:rgba(0,229,184,0.4); background:rgba(0,229,184,0.05); transform:translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.2);}
-  .comm-icon { font-size: 2.2rem; color: var(--green); margin-bottom: 8px;}
-  .comm-name { font-family:'Outfit',sans-serif; font-weight: 700; font-size:1rem; color:var(--white); }
-  .comm-desc { font-size:0.82rem; color:var(--muted); line-height:1.6; }
-  .comm-arrow { color: var(--green); font-size: 1.2rem; margin-top: auto;}
-  .tv-svg-icon { width: 2.2rem; height: 2.2rem; fill: var(--green); display: block; margin-bottom: 8px;}
+  .mc-body { padding: 24px; flex: 1; display: flex; flex-direction: column;}
+  .ind-number-mc { position: absolute; top: 12px; left: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; color: #fff; background: rgba(17,17,17,0.85); backdrop-filter: blur(4px); padding: 6px 14px; border-radius: 100px; z-index: 2;}
 
   /* ── RISK CALCULATOR ── */
-  #riskCalc { background: var(--dark); max-width: 100%; }
-  .calc-tabs { display: flex; gap: 6px; margin-bottom: 36px; background: var(--input-bg); border-radius: 12px; padding: 6px; width: fit-content; overflow-x: auto; border: 1px solid var(--border);}
-  .calc-tab { background: transparent; color: var(--muted); border: none; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; padding: 10px 24px; border-radius: 8px; transition: all 0.2s; white-space: nowrap; cursor: pointer; position: relative; z-index: 2;}
-  .calc-tab.active { background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f; box-shadow: 0 4px 15px rgba(0,229,184,0.2); }
-  .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  #riskCalc { background: #fff; border-top: 1px solid var(--border);}
+  .calc-wrapper { background: #fff; border: 2px solid var(--border-dark); border-radius: 16px; padding: 40px; box-shadow: 8px 8px 0px rgba(17,17,17,0.05); text-align: left; max-width: 1000px; margin: 0 auto; transition: box-shadow 0.3s;}
+  .calc-wrapper:hover { box-shadow: 12px 12px 0px rgba(17,17,17,0.08); }
+  
+  .calc-tabs { display: flex; gap: 8px; margin-bottom: 24px; background: var(--bg-sec); padding: 8px; border-radius: 12px; width: fit-content; border: 1px solid var(--border); overflow-x: auto;}
+  .calc-tab { background: transparent; border: none; padding: 10px 24px; font-weight: 800; font-size: 0.9rem; color: var(--text-muted); border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-family: 'Inter', sans-serif;}
+  .calc-tab.active { background: #fff; color: var(--text-dark); box-shadow: var(--shadow-sm); border: 1px solid var(--border);}
+  
+  .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
   .calc-form { display: flex; flex-direction: column; gap: 20px;}
-  .form-group { display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 2;}
-  .form-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-weight: 600; }
-  .form-input { background: var(--input-bg); border: 1px solid var(--border); color: var(--text); padding: 14px 16px; border-radius: 10px; font-size: 0.95rem; font-family: 'Inter', sans-serif; width: 100%; transition: border-color 0.2s; outline: none; }
-  .form-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(0,229,184,0.1); background: var(--card);}
-  .slider { accent-color: var(--green); width: 100%; cursor: pointer; padding: 0; background: transparent; border: none;}
-  .slider-val { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--green); }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-label { font-size: 0.75rem; font-weight: 800; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
+  .form-input { width: 100%; padding: 14px 16px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; background: var(--bg-sec); color: var(--text-dark); outline: none; transition: all 0.2s; }
+  .form-input:focus { border-color: var(--text-dark); background: #fff; box-shadow: 3px 3px 0px rgba(17,17,17,0.1);}
   
   .calc-pair-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
-  .calc-pair-btn { background: var(--input-bg); border: 1px solid var(--border); color: var(--muted); padding: 10px 4px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; border-radius: 8px; transition: all 0.2s; cursor: pointer; }
-  .calc-pair-btn.active { background: rgba(0,229,184,0.1); border-color: var(--green); color: var(--green); box-shadow: inset 0 0 10px rgba(0,229,184,0.1);}
-  .calc-pair-btn:hover:not(.active) { border-color: rgba(0,229,184,0.3); color: var(--text); }
+  .calc-pair-btn { background: var(--bg-sec); border: 2px solid var(--border); padding: 10px 4px; font-size: 0.75rem; border-radius: 8px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--text-muted); transition: 0.2s;}
+  .calc-pair-btn.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
+  .calc-pair-btn:hover:not(.active) { border-color: var(--text-dark); color: var(--text-dark);}
   
-  .calc-results { display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 2;}
-  .result-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: border-color 0.3s;}
-  .result-card:hover { border-color: rgba(0,229,184,0.3); }
-  .result-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 600; }
-  .result-val { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--green); }
+  .calc-results { display: flex; flex-direction: column; gap: 16px; }
+  .result-card { background: var(--bg-sec); border: 2px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s;}
+  .result-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px rgba(17,17,17,0.05); border-color: var(--text-dark); }
+  .result-label { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
+  .result-val { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--text-dark); }
   .result-val.red { color: var(--red); }
   
-  .rr-card { background: linear-gradient(135deg, rgba(0,229,184,0.08), rgba(0,196,240,0.06)); border: 1px solid rgba(0,229,184,0.25); border-radius: 14px; padding: 24px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1);}
-  .rr-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
-  .rr-val { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 800; background: linear-gradient(90deg, var(--green), var(--green2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  
-  .warn-msg { font-size: 0.8rem; color: #ff9944; background: rgba(255,153,68,0.1); border: 1px solid rgba(255,153,68,0.3); border-radius: 10px; padding: 14px 20px; display: none; font-weight: 500; }
+  .rr-card { background: #fff; border: 2px solid var(--text-dark); border-radius: 12px; padding: 24px; text-align: center; box-shadow: 4px 4px 0px rgba(17,17,17,0.1);}
+  .warn-msg { font-size: 0.85rem; color: #b45309; background: #fffbeb; border: 2px solid #fcd34d; border-radius: 10px; padding: 14px 20px; display: none; font-weight: 700; margin-top: 10px;}
   .warn-msg.show { display: block;}
-  .calc-reset-btn { margin-top: 10px; background: var(--input-bg); border: 1px solid var(--border); color: var(--muted); padding: 14px; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; border-radius: 10px; transition: all 0.2s; width: 100%; cursor: pointer;}
-  .calc-reset-btn:hover { border-color: var(--green); color: var(--green); background: rgba(0,229,184,0.05);}
+  .calc-reset-btn { margin-top: 10px; background: #fff; border: 2px solid var(--border); padding: 14px; font-family: 'Inter', sans-serif; font-weight: 800; border-radius: 10px; cursor: pointer; color: var(--text-dark); transition: 0.2s;}
+  .calc-reset-btn:hover { border-color: var(--text-dark); transform: translate(-2px, -2px); box-shadow: 4px 4px 0px rgba(17,17,17,0.1); }
 
-  /* ── POLICIES ── */
-  .policy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 32px auto 0; position: relative; z-index: 2; align-items: stretch;}
-  .policy-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.3s; display: flex; flex-direction: column;}
-  .policy-card:hover { border-color: rgba(0,229,184,0.3); }
-  .policy-card h4 { font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; color: var(--green); display: flex; align-items: center; gap: 10px;}
-  .policy-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; flex: 1;}
-
-  /* ── MODERN FOOTER ── */
-  footer { background: var(--black); border-top: 1px solid var(--border); padding: 80px clamp(24px, 5vw, 60px) 32px; position: relative; z-index: 2;}
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; max-width: 1200px; margin-left: auto; margin-right: auto;}
-  .footer-brand .logo { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--green); letter-spacing: 0.1em; margin-bottom: 16px; display: inline-block;}
-  .footer-brand .logo span { color: var(--white); }
-  .footer-brand p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; max-width: 300px; margin-bottom: 24px; }
-  .footer-social { display: flex; gap: 12px; }
-  .footer-social a { width: 38px; height: 38px; background: rgba(0,229,184,0.06); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1.1rem; transition: all 0.2s; position: relative; z-index: 2;}
-  .footer-social a:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,229,184,0.15);}
-  .footer-col h4 { font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; color: var(--text); }
-  .footer-col a { display: inline-block; font-size: 0.85rem; color: var(--muted); padding: 6px 0; transition: color 0.2s; position: relative; z-index: 2;}
-  .footer-col a:hover { color: var(--green); }
-  .footer-disclaimer { max-width: 1200px; margin: 0 auto; font-size: 0.72rem; color: rgba(106,143,168,0.6); line-height: 1.8; margin-bottom: 32px; padding: 32px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 12px;}
-  .footer-disclaimer strong { color: var(--muted); }
-  .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(106,143,168,0.5); gap: 10px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05);}
-  .footer-love { font-size: 0.82rem; font-family: 'Inter', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-  .footer-love i { color: var(--red); font-size: 1rem; animation: heartbeat 1.5s infinite; }
-  .footer-love span { color: var(--text); font-weight: 700; }
-  @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
-
-  /* ── STANDARD BACK TO TOP ── */
-  .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; background: #2B323F; border: 2px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 1.3rem; z-index: 998; opacity: 0; pointer-events: none; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0,229,184,0.1); text-decoration: none;}
-  .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
-  .back-to-top:hover { background: var(--green); color: var(--black); box-shadow: 0 0 25px rgba(0,229,184,0.4); transform: translateY(-5px); }
-
- .cookie-banner { position: fixed; bottom: -300px; left: 50%; transform: translateX(-50%); background: rgba(11,20,34,0.9); border: 1px solid var(--border); padding: 16px 24px; border-radius: 14px; display: flex; align-items: center; gap: 20px; z-index: 9999; box-shadow: 0 15px 50px rgba(0,0,0,0.8); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); width: 90%; max-width: 600px; opacity: 0; pointer-events: none; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);}
-  .cookie-banner.show { bottom: 30px; opacity: 1; pointer-events: auto; }
-  .cookie-text { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
-  .cookie-text a { color: var(--green); text-decoration: underline; position: relative; z-index: 2;}
-  .cookie-btn { background: linear-gradient(135deg, var(--green), var(--green2)); color: #04090f; border: none; padding: 10px 24px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.75rem; border-radius: 8px; white-space: nowrap; cursor: pointer; position: relative; z-index: 2;}
-
-  /* Light Mode Cookie Banner Fix */
-  body.light-mode .cookie-banner {
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-  }
-  body.light-mode .cookie-text {
-    color: var(--text);
+  /* ── BIG TEXT PRE-FOOTER, WATERMARK & DISCLAIMER ── */
+  .pre-footer-text { padding: 120px 5% 0px; text-align: center; background: #fff; border-top: 1px solid var(--border); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center;}
+  .pre-footer-title { font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 900; letter-spacing: -0.04em; color: var(--text-dark); max-width: 900px; margin: 0 auto; line-height: 1.15; z-index: 2;}
+  .pre-footer-title span { color: #d1d5db; }
+  
+  /* 40% Solid Black and Italic as requested */
+  .big-watermark { 
+    font-family: 'Outfit', sans-serif; 
+    font-size: 11vw; /* Perfect screen fit */
+    font-weight: 900; 
+    font-style: italic; /* added italic */
+    color: #000000; 
+    opacity: 0.4; /* 40% black opacity */
+    text-align: center; 
+    line-height: 1; 
+    margin-top: 60px; 
+    margin-bottom: -15px;
+    pointer-events: none; 
+    user-select: none; 
+    white-space: nowrap; 
+    width: 100%; 
+    overflow: hidden; 
+    z-index: 1;
   }
 
-  /* ── RESPONSIVE OVERRIDES ── */
+  .risk-disclaimer-box {
+    max-width: 1200px;
+    margin: 40px auto 60px;
+    padding: 32px;
+    background: var(--bg-sec);
+    border: 2px solid var(--border-dark);
+    border-radius: 16px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    text-align: left;
+    box-shadow: 6px 6px 0px rgba(17,17,17,0.05);
+  }
+  .risk-disclaimer-box strong { color: var(--text-dark); font-weight: 900;}
+
+  footer { background: #fff; padding: 0 5% 40px;}
+  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px;}
+  
+  .social-icon-btn { width: 44px; height: 44px; background: #fff; border: 2px solid var(--border-dark); border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.2rem; transition: all 0.3s; box-shadow: 3px 3px 0px rgba(17,17,17,0.1); cursor: pointer;}
+  .social-icon-btn:hover { transform: translate(-2px, -2px); background: var(--text-dark); color: #fff; box-shadow: 5px 5px 0px rgba(17,17,17,0.2);}
+  
+  .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.9rem; color: var(--text-muted); padding-top: 24px; border-top: 1px solid var(--border); font-weight: 600;}
+  
   @media (max-width: 1024px) {
-    .policy-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   }
   @media (max-width: 900px) {
     .calc-layout { grid-template-columns: 1fr; }
-    nav { padding: 16px 24px; }
-    nav.scrolled { padding: 10px 24px; }
-    .nav-links { display: none; }
+    nav { padding: 0 5%; }
+    .nav-links, .nav-cta { display: none; }
     .mobile-menu-btn { display: block; }
-    section { padding: 80px 24px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-    .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 20px;}
+    section { padding: 80px 5%; }
+    .hero-reviews-wrapper { display: none; } 
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .big-watermark { font-size: 14vw; margin-top: 40px; }
+    .crypto-label { font-size: 0.8rem; }
+    .crypto-addr { font-size: 0.7rem; }
   }
-  @media (max-width: 768px) {
-    .hero-stat { min-width: 45%; } 
-    .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
-    .price-card { width: 100%; max-width: 100%; }
-    .payment-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .policy-grid { grid-template-columns: 1fr; }
-    .cookie-banner { flex-direction: column; text-align: center; gap: 16px; }
-    .cookie-btn { width: 100%; }
-    .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1rem;}
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; text-align: center;}
+    .social-icon-btn { margin: 0 5px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center;}
+    .crypto-item { flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+    .crypto-left { text-align: center; align-items: center; }
+    .copy-btn { margin-left: 0; width: 100%; text-align: center; }
   }
-
-  ::-webkit-scrollbar{width:6px} ::-webkit-scrollbar-track{background:var(--black)} ::-webkit-scrollbar-thumb{background:rgba(0,229,184,0.3); border-radius: 6px;}
-  ::-webkit-scrollbar-thumb:hover{background:var(--green);}
 </style>
 </head>
 <body>
 
-<div class="noise-overlay"></div>
-
-<div id="mouse-aura"></div>
-
 <div id="preloader">
-  <div class="loader-logo">RTC<span>SUITE</span></div>
-  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-logo"><span class="logo-black">RTC</span><span class="logo-orange">SUITE</span></div>
 </div>
-
 <div class="scroll-progress" id="scrollProgress"></div>
 
+<!-- ── NAVBAR ── -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
-    <div class="nav-dot"></div>
-    <span>Rashik Trades Community (RTC)</span>
+    <span class="logo-black">Rashik</span><span class="logo-orange">Trades</span>
   </a>
   <ul class="nav-links">
+    <li><a href="#architecture">Features</a></li>
     <li><a href="#indicators">Indicators</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#payment">Payments</a></li>
     <li><a href="#masterclass">Masterclass</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#riskCalc" class="nav-tool-badge"><i class="fas fa-balance-scale tool-icon"></i> Calculator</a></li>
-    <li><button class="theme-toggle-btn" id="themeToggleDesk" title="Toggle Light/Dark Theme"><i class="fas fa-sun"></i></button></li>
-    <li><a href="#pricing" class="nav-cta">Get Access</a></li>
+    <li><a href="#riskCalc">Calculator</a></li>
   </ul>
-  <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
-    <i class="fas fa-bars"></i>
-  </div>
+  <a href="#pricing" class="nav-cta">Start for free <i class="fas fa-arrow-right"></i></a>
+  <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </nav>
 
-<div class="mobile-nav" id="mobileNav">
-  <a href="#indicators" onclick="toggleMobileMenu()">Indicators</a>
-  <a href="#pricing" onclick="toggleMobileMenu()">Pricing</a>
-  <a href="#payment" onclick="toggleMobileMenu()">Payments</a>
-  <a href="#masterclass" onclick="toggleMobileMenu()">Masterclass</a>
-  <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
-  <a href="#riskCalc" onclick="toggleMobileMenu()">Risk Calculator</a>
-  <a href="#" id="themeToggleMob" onclick="event.preventDefault();"><i class="fas fa-sun"></i> Theme</a>
-  <a href="#pricing" class="nav-cta" onclick="toggleMobileMenu()">Get Access Now</a>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#architecture" onclick="toggleMenu()">Features</a>
+  <a href="#indicators" onclick="toggleMenu()">Indicators</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="#masterclass" onclick="toggleMenu()">Masterclass</a>
+  <a href="#riskCalc" onclick="toggleMenu()">Calculator</a>
 </div>
 
-<div style="position:fixed;top:64px;left:0;right:0;z-index:9999; pointer-events: none;">
-  <div class="ticker-wrap">
-    <div class="ticker-track" id="ticker"></div>
+<!-- ── HERO SECTION ── -->
+<section id="hero">
+  <!-- Rounded/Angled Reviews -->
+  <div class="hero-reviews-wrapper">
+    <div class="side-reviews left">
+      <div class="review-track" id="heroTrackLeft">
+        <!-- JS Populated -->
+      </div>
+    </div>
+    <div class="side-reviews right">
+      <div class="review-track" id="heroTrackRight">
+        <!-- JS Populated -->
+      </div>
+    </div>
   </div>
-</div>
 
-<div id="hero">
-  <canvas id="waveCanvas"></canvas>
   <div class="hero-content">
-    <div class="hero-badge">Live • RTC 5 in 1 Bundle Suite</div>
+    <div class="hero-badge reveal">
+      <span style="color: var(--whop-orange); font-size: 1.1rem;">★★★★★</span> 4.9 / 5 <span style="margin: 0 4px; color: var(--border-hover);">|</span> Trusted by Traders
+    </div>
     
     <h1 class="hero-title reveal">
-        <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">STOP GUESSING</span><br>
-        <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">START EXECUTING</span>
+      Execute <span class="light">Every Trade</span><br>with Confidence
     </h1>
     
-    <p class="hero-subtitle reveal">The complete <strong>5-indicator arsenal</strong> engineered for institutional-grade market clarity. Powered by advanced algorithms. Trusted by thousands of precision traders.</p>
+    <p class="hero-subtitle reveal">Your trading helping hand with <strong>RTC 5 in 1 Bundle</strong></p>
     
-    <div class="hero-cta-group reveal">
-      <div class="btn-cyber-wrap filled">
-        <a href="#pricing" class="btn-cyber">Claim Your Edge →</a>
-      </div>
-      <div class="btn-cyber-wrap outline">
-        <a href="#masterclass" class="btn-cyber">Watch Masterclass</a>
-      </div>
+    <div class="reveal" style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+      <a href="#pricing" class="btn-cyber btn-outline">Get your own Indicator</a>
+      <a href="#masterclass" class="btn-cyber btn-filled">Watch Masterclass <i class="fas fa-play" style="font-size: 0.8rem;"></i></a>
     </div>
 
     <div class="hero-stats reveal">
-     <div class="hero-stat"><span class="num dynamic-counter" data-target="5000">0+</span><span class="label">Active Members</span></div>
-      <div class="hero-divider"></div>
-      <div class="hero-stat"><span class="num dynamic-counter" data-target="5" data-suffix="">0</span><span class="label">Elite Indicators</span></div>
-      <div class="hero-divider"></div>
-      <div class="hero-stat"><span class="num dynamic-counter" data-target="98" data-suffix="%">0%</span><span class="label">Satisfaction Rate</span></div>
-      <div class="hero-divider"></div>
-      <div class="hero-stat"><span class="num">24/7</span><span class="label">Community Support</span></div>
+      <div class="hero-stat"><span class="num">5,000+</span><span class="label">Active Members</span></div>
+      <div class="hero-stat"><span class="num">5</span><span class="label">Elite Indicators</span></div>
+      <div class="hero-stat"><span class="num">98%</span><span class="label">Satisfaction Rate</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="trust-strip">
-  <p>POWERING TRADERS ACROSS ELITE PLATFORMS</p>
-  <div class="trust-logos">
-     <span><i class="fas fa-chart-line"></i> TradingView</span>
+<!-- ── TAG CLOUD ── -->
+<div class="tag-cloud-section">
+  <div class="inner" style="text-align: center;">
+    <div class="section-label reveal"><i class="fas fa-layer-group"></i> Features</div>
+    <h2 class="section-title reveal" style="font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 10px;">Everything Smart Money</h2>
+    <p class="section-desc reveal">RTC Suite covers base for a wide variety of Smart Money Traders. We got it all.</p>
+  </div>
+  
+  <div class="tag-marquee-wrap reveal">
+    <div class="tag-track left" id="tagTrack1"></div>
+    <div class="tag-track right" id="tagTrack2" style="margin-left: -150px;"></div>
   </div>
 </div>
 
+<!-- ── ADVANCED TRADING AUTOMATION ── -->
+<section id="architecture">
+  <div class="inner">
+    <div class="section-label reveal">Architecture</div>
+    <h2 class="section-title reveal">Advanced Trading Automation</h2>
+    
+    <div class="arch-grid reveal">
+      <div class="arch-card">
+        <i class="fas fa-expand-arrows-alt"></i>
+        <div class="arch-title">TTFM / CRT Automation</div>
+        <div class="arch-sub">Power of 3 combined with HTF Market Structure.</div>
+        <div class="arch-desc">Get automated alerts for C1, C2, C3, T Spot, and EQ setups. Fully customizable to match your trading style.</div>
+      </div>
+      
+      <div class="arch-card">
+        <i class="fas fa-layer-group"></i>
+        <div class="arch-title">Multi HTF View</div>
+        <div class="arch-sub">See multiple HTF structures on a single chart.</div>
+        <div class="arch-desc">View up to three Higher Timeframe candles with SMT and Gaps directly on your current chart, just like Lower Timeframe candles.</div>
+      </div>
+      
+      <div class="arch-card">
+        <i class="fas fa-bell"></i>
+        <div class="arch-title">Smart TTFM Alerts</div>
+        <div class="arch-sub">Extra confirmation for high quality entries.</div>
+        <div class="arch-desc">Combine two fractals with smart filters to receive the most precise and fully automated trading alerts.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN INDICATORS ── -->
 <section id="indicators">
   <div class="inner">
     <div class="section-label reveal">The Arsenal</div>
-    <h2 class="section-title reveal">
-      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">FIVE INDICATORS.</span><br>
-      <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">ONE EDGE.</span>
-    </h2>
-    <p class="section-desc reveal">Each tool in the RTC Suite is engineered to eliminate noise and surface only the highest-probability setups.</p>
+    <h2 class="section-title reveal">The Complete Suite</h2>
     
     <div class="grid-3-2 reveal">
-      <div class="card-3-2">
-        <div class="ind-number">01 / REVERSAL PRO+</div>
-        <i class="fas fa-crosshairs ind-icon"></i>
-        <div class="ind-name">Reversal Pro+</div>
-        <div class="ind-desc">Pinpoints absolute market tops and bottoms with laser precision. Triggers exclusively on valid CISD from high-probability FVG or Swing points — zero false signals.</div>
-        <div class="ind-tags"><span class="ind-tag">CISD Detection</span><span class="ind-tag">FVG Filter</span><span class="ind-tag">Swing Analysis</span></div>
+      <div class="card-suite">
+        <div class="mockup-icon-wrap"><i class="fas fa-crosshairs"></i></div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">Reversal Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Pinpoints absolute market tops and bottoms with laser precision using true CISD logic.</p>
       </div>
-      <div class="card-3-2">
-        <div class="ind-number">02 / PO3 PRO SUITE</div>
-        <i class="fas fa-chess-knight ind-icon"></i>
-        <div class="ind-name">PO3 Pro Suite</div>
-        <div class="ind-desc">Master institutional order flow. Deep market structure analysis with advanced C2 closure tracking algorithms designed for serious ICT traders.</div>
-        <div class="ind-tags"><span class="ind-tag">Institutional Flow</span><span class="ind-tag">C2 Closure</span><span class="ind-tag">ICT Concepts</span></div>
+      <div class="card-suite">
+        <div class="mockup-icon-wrap"><i class="fas fa-chess-knight"></i></div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">PO3 Pro Suite</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Deep market structure analysis with advanced C2 closure tracking algorithms.</p>
       </div>
-      <div class="card-3-2">
-        <div class="ind-number">03 / SMT PRO+</div>
-        <i class="fas fa-bolt ind-icon"></i>
-        <div class="ind-name">SMT Pro+</div>
-        <div class="ind-desc">Exploit hidden market inefficiencies. Instantly detects SMT divergence conditions across highly correlated global assets before price confirms.</div>
-        <div class="ind-tags"><span class="ind-tag">SMT Divergence</span><span class="ind-tag">Correlated Assets</span><span class="ind-tag">Multi-Market</span></div>
+      <div class="card-suite">
+        <div class="mockup-icon-wrap"><i class="fas fa-bolt"></i></div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">SMT Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Exploit hidden market inefficiencies with instant SMT divergence detection.</p>
       </div>
-      <div class="card-3-2">
-        <div class="ind-number">04 / POI PRO+</div>
-        <i class="fas fa-bullseye ind-icon"></i>
-        <div class="ind-name">POI Pro+</div>
-        <div class="ind-desc">Never miss a sniper entry again. Automated alert matrix maps every critical Point of Interest directly on your chart in real-time.</div>
-        <div class="ind-tags"><span class="ind-tag">Auto-Alerts</span><span class="ind-tag">POI Mapping</span><span class="ind-tag">Real-Time</span></div>
+      <div class="card-suite">
+        <div class="mockup-icon-wrap"><i class="fas fa-bullseye"></i></div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">POI Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Automated alert matrix maps every critical Point of Interest directly on your chart.</p>
       </div>
-      <div class="card-3-2">
-        <div class="ind-number">05 / SESSION PRO+</div>
-        <i class="fas fa-clock ind-icon"></i>
-        <div class="ind-name">Session Pro+</div>
-        <div class="ind-desc">Master the true algorithm of time and price. Automatically marks Asian Accumulation, London Silver Bullet, and New York Distribution with macro killzones.</div>
-        <div class="ind-tags"><span class="ind-tag">Macro Killzones</span><span class="ind-tag">Silver Bullet</span><span class="ind-tag">Time & Price</span></div>
+      <div class="card-suite">
+        <div class="mockup-icon-wrap"><i class="fas fa-clock"></i></div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">Session Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Automatically marks Asian, London, and NY Killzones with extreme precision.</p>
       </div>
-      <div class="card-3-2">
-        <div class="ind-number">06 / SMT & PSP SYNC PRO+</div>
-        <i class="fas fa-sync-alt ind-icon"></i>
-        <div class="ind-name">SMT & PSP Sync Pro+</div>
-        <div class="ind-desc">Master Precision Swing Points (PSP). Advanced logic to distinguish between true C1-C2 sweeps and valid SMTs across complex market structures.</div>
-        <div class="ind-tags">
-          <span class="ind-tag">PSP Tracking</span>
-          <span class="ind-tag">C1-C2 Sweep</span>
-          <span class="ind-tag">C1-C2 SMT</span>
-        </div>
+      <div class="card-suite">
+        <div class="mockup-icon-wrap"><i class="fas fa-sync-alt"></i></div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">SMT & PSP Sync Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Advanced logic to distinguish between true C1-C2 sweeps and valid SMTs.</p>
       </div>
-    </div>
-  </div>
-  
-  <div class="bonus-section reveal">
-    <div class="bonus-card">
-      <span class="bonus-badge"><i class="fas fa-gift"></i> Exclusive Bonus</span>
-      <h3 class="bonus-title">PO3 Pro Suite — Advanced Edition</h3>
-      <p class="bonus-desc">Unlock deeper institutional models and hidden C2 closure algorithms available nowhere else. Included completely free for active members.</p>
-      <div class="bonus-free">FREE FOR RTC HERO CLUB</div>
     </div>
   </div>
 </section>
 
+<!-- ── PRICING (Black Border Sharp UI) ── -->
 <div class="pricing-wrapper" id="pricing">
-  <div class="pricing-inner">
-    <div class="pricing-header-center">
-      <p class="section-label reveal">Claim Access</p>
-      <h2 class="section-title reveal">
-        <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">CHOOSE YOUR PLAN.</span>
-      </h2>
-      <p class="section-desc reveal" style="margin: 0 auto 30px;">Get instant access to the ultimate indicator suite today.</p>
+  <section>
+    <div class="inner">
+      <div class="section-label reveal">Claim Access</div>
+      <h2 class="section-title reveal">Choose Your Plan</h2>
       
-      <div class="whop-logo-wrap reveal">
-        <div class="whop-logo-container">
-          <div class="whop-custom-box">
-             <span class="whop-text-white">whop</span>
-          </div>
-          <span class="whop-label">Secure Payment Processing</span>
+      <div class="whop-badge reveal">
+        <div class="whop-box">whop</div>
+        <span class="whop-text">Secure Payment Processing</span>
+      </div>
+      
+      <div class="pricing-grid reveal">
+        <!-- Basic -->
+        <div class="price-card">
+          <div class="price-tier">Basic <span style="background: var(--text-dark); color: #fff; padding: 4px 10px; border-radius: 100px; font-size: 0.65rem; text-transform: uppercase; font-weight: 800;">Free</span></div>
+          <div class="price-crossed" style="visibility:hidden;">$0</div>
+          <div class="price-amount"><span class="price-currency">$</span>0</div>
+          <div class="price-period">/ month</div>
+          <div class="price-save" style="visibility:hidden;">Placeholder</div>
+          <ul class="price-features">
+            <li>RTC [POI Pro+] Indicator</li>
+            <li>RTC [90m, 6H, 7H Matrix Pro+]</li>
+            <li>RTC [SMT Radar]+</li> <!-- NEW ADDED -->
+            <li>Basic Discord Access</li>
+            <li>Community Support</li>
+            <li>Real-time Alerts Preview</li>
+          </ul>
+          <a href="https://whop.com/rtcheroclub/free-indicator-access/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Claim Access</a>
+        </div>
+
+        <!-- Starter -->
+        <div class="price-card">
+          <div class="price-tier">Starter</div>
+          <div class="price-crossed" style="visibility:hidden;">$0</div>
+          <div class="price-amount"><span class="price-currency">$</span>10</div>
+          <div class="price-period">/ month</div>
+          <div class="price-save" style="color: var(--text-muted);">Standard rate</div>
+          <ul class="price-features">
+            <li>Full RTC 5-in-1 Suite</li>
+            <li>RTC [SMT & PSP Sync Pro+]</li>
+            <li>PO3 Advanced Edition (Bonus)</li>
+            <li>Discord Community Access</li>
+            <li>Live trade alerts</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a href="https://whop.com/rtcheroclub/rtc-hero-membership-monthly/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Get Started</a>
+        </div>
+
+        <!-- Advanced -->
+        <div class="price-card">
+          <div class="price-tier">Advanced</div>
+          <div class="price-crossed">$30</div>
+          <div class="price-amount"><span class="price-currency">$</span>24.99</div>
+          <div class="price-period">/ 3 months</div>
+          <div class="price-save"><span class="tv-discount-tag">-17% OFF</span> Save $5.01</div>
+          <ul class="price-features">
+            <li>Full RTC 5-in-1 Suite</li>
+            <li>RTC [SMT & PSP Sync Pro+]</li>
+            <li>PO3 Advanced Edition (Bonus)</li>
+            <li>Discord Community Access</li>
+            <li>Live trade alerts + analysis</li>
+            <li>Indicator update access</li>
+          </ul>
+          <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-3month/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Select Plan</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="price-card popular">
+          <div class="price-tier">Pro <span class="popular-badge">Most Popular</span></div>
+          <div class="price-crossed">$60</div>
+          <div class="price-amount"><span class="price-currency">$</span>50</div>
+          <div class="price-period">/ 6 months</div>
+          <div class="price-save"><span class="tv-discount-tag">-17% OFF</span> Save $10</div>
+          <ul class="price-features">
+            <li>Full RTC 5-in-1 Suite</li>
+            <li>RTC [SMT & PSP Sync Pro+]</li>
+            <li>PO3 Advanced Edition (Bonus)</li>
+            <li>Priority Discord Support</li>
+            <li>Live trade alerts + analysis</li>
+            <li>Indicator update access</li>
+            <li>Masterclass video series</li>
+          </ul>
+          <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-6month/" target="_blank" class="price-btn btn-filled" style="margin-top: auto;">Secure Premium</a>
+        </div>
+
+        <!-- Elite -->
+        <div class="price-card">
+          <div class="price-tier">Elite</div>
+          <div class="price-crossed">$120</div>
+          <div class="price-amount"><span class="price-currency">$</span>100</div>
+          <div class="price-period">/ 12 months</div>
+          <div class="price-save"><span class="tv-discount-tag">-17% OFF</span> Save $20</div>
+          <ul class="price-features">
+            <li>Full RTC 5-in-1 Suite</li>
+            <li>RTC [SMT & PSP Sync Pro+]</li>
+            <li>PO3 Advanced Edition (Bonus)</li>
+            <li>VIP Discord Role + Support</li>
+            <li>All alerts + strategy breakdowns</li>
+            <li>Lifetime indicator updates</li>
+            <li>Masterclass series access</li>
+            <li>1-on-1 onboarding session</li>
+          </ul>
+          <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-yearly/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Claim Elite</a>
         </div>
       </div>
     </div>
-
-    <div class="pricing-grid reveal">
-      <div class="price-card">
-        <div class="price-tier">Basic <span class="free-badge">Free</span></div>
-        <div class="price-crossed" style="visibility:hidden;">$0</div>
-        <div class="price-amount"><span class="price-currency">$</span>0</div>
-        <div class="price-period">/ month</div>
-        <div class="price-save" style="color:var(--muted); background:transparent; border-color:transparent; box-shadow:none;">No credit card required</div>
-        <hr class="price-divider">
-        <ul class="price-features">
-          <li>RTC [POI Pro+] Indicator</li>
-          <li>RTC [90m, 6H, 7H Matrix Pro+]</li>
-          <li>Basic Discord Access</li>
-          <li>Community Support</li>
-          <li>Real-time Alerts Preview</li>
-          <li>Never Expires</li>
-        </ul>
-        <div class="btn-pricing-box">
-          <a href="https://whop.com/rtcheroclub/free-indicator-access/" target="_blank" class="price-btn outline">Claim Free Access</a>
-        </div>
-      </div>
-
-      <div class="price-card">
-        <div class="price-tier">Starter</div>
-        <div class="price-crossed" style="visibility:hidden;">$0</div>
-        <div class="price-amount"><span class="price-currency">$</span>10</div>
-        <div class="price-period">/ month</div>
-        <div class="price-save" style="color:var(--muted); background:transparent; border-color:transparent; box-shadow:none;">Standard rate</div>
-        <hr class="price-divider">
-        <ul class="price-features">
-          <li>Full RTC 5-in-1 Suite</li>
-          <li>RTC [SMT & PSP Sync Pro+]</li>
-          <li>PO3 Advanced Edition (Bonus)</li>
-          <li>Discord Community Access</li>
-          <li>Live trade alerts</li>
-          <li>Cancel anytime</li>
-        </ul>
-        <div class="btn-pricing-box">
-          <a href="https://whop.com/rtcheroclub/rtc-hero-membership-monthly/" target="_blank" class="price-btn outline">Get Started</a>
-        </div>
-      </div>
-
-      <div class="price-card">
-        <div class="price-tier">Advanced</div>
-        <div class="price-crossed">$30</div>
-        <div class="price-amount"><span class="price-currency">$</span>24.99</div>
-        <div class="price-period">/ 3 months</div>
-        <div class="price-save"><span class="tv-discount-tag">-17% OFF</span> Save $5.01</div>
-        <hr class="price-divider">
-        <ul class="price-features">
-          <li>Full RTC 5-in-1 Suite</li>
-          <li>RTC [SMT & PSP Sync Pro+]</li>
-          <li>PO3 Advanced Edition (Bonus)</li>
-          <li>Discord Community Access</li>
-          <li>Live trade alerts + analysis</li>
-          <li>Indicator update access</li>
-        </ul>
-        <div class="btn-pricing-box">
-          <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-3month/" target="_blank" class="price-btn outline">Select Plan</a>
-        </div>
-      </div>
-
-      <div class="price-card popular">
-        <div class="popular-badge"><i class="fas fa-bolt"></i> Most Popular</div>
-        <div class="price-tier">Pro</div>
-        <div class="price-crossed">$60</div>
-        <div class="price-amount"><span class="price-currency">$</span>50</div>
-        <div class="price-period">/ 6 months</div>
-        <div class="price-save"><span class="tv-discount-tag">-17% OFF</span> Save $10</div>
-        <hr class="price-divider">
-        <ul class="price-features">
-          <li>Full RTC 5-in-1 Suite</li>
-          <li>RTC [SMT & PSP Sync Pro+]</li>
-          <li>PO3 Advanced Edition (Bonus)</li>
-          <li>Priority Discord Support</li>
-          <li>Live trade alerts + analysis</li>
-          <li>Indicator update access</li>
-          <li>Masterclass video series</li>
-        </ul>
-        <div class="btn-pricing-box">
-          <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-6month/" target="_blank" class="price-btn filled">Secure Premium</a>
-        </div>
-      </div>
-
-      <div class="price-card">
-        <div class="price-tier">Elite</div>
-        <div class="price-crossed">$120</div>
-        <div class="price-amount"><span class="price-currency">$</span>100</div>
-        <div class="price-period">/ 12 months</div>
-        <div class="price-save"><span class="tv-discount-tag">-17% OFF</span> Save $20</div>
-        <hr class="price-divider">
-        <ul class="price-features">
-          <li>Full RTC 5-in-1 Suite</li>
-          <li>RTC [SMT & PSP Sync Pro+]</li>
-          <li>PO3 Advanced Edition (Bonus)</li>
-          <li>VIP Discord Role + Support</li>
-          <li>All alerts + strategy breakdowns</li>
-          <li>Lifetime indicator updates</li>
-          <li>Masterclass series + Part 4 early</li>
-          <li>1-on-1 onboarding session</li>
-        </ul>
-        <div class="btn-pricing-box">
-          <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-yearly/" target="_blank" class="price-btn outline">Claim Elite Tier</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 </div>
 
+<!-- ── CENTRALIZED CRYPTO PAYMENT ── -->
 <section id="payment">
   <div class="inner">
-    <p class="section-label reveal">Alternative Payments</p>
-    <h2 class="section-title reveal">
-      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">FLEXIBLE PAYMENT</span><br>
-      <span class="accent type-text" style="transition-duration: 1s; transition-delay: 0.4s;">OPTIONS.</span>
-    </h2>
-    <p class="section-desc reveal">Bypass automated systems with direct crypto or fiat bank transfers. Verified and secure.</p>
+    <div class="section-label reveal">Alternative Payments</div>
+    <h2 class="section-title reveal">Direct Crypto Transfer</h2>
+    <p class="section-desc reveal">Bypass automated systems with direct crypto transfer. Verified and secure. Send a screenshot to Discord for verification.</p>
     
-    <div class="payment-grid reveal">
-      <div class="pay-card">
-        <div class="pay-title">Direct Crypto Transfer</div>
-        <div class="pay-subtitle">Send directly to any of these addresses. Screenshot your transaction and send to Discord for verification.</div>
-        <div class="crypto-list">
-          <div class="crypto-item">
-            <div><div class="crypto-label"><i class="fas fa-coins" style="color:var(--green)"></i> Binance Pay</div><div class="crypto-addr">Pay ID: 133010319</div></div>
-            <button class="copy-btn" onclick="copyText(this,'133010319')">COPY</button>
-          </div>
-          <div class="crypto-item">
-            <div><div class="crypto-label"><i class="fas fa-chart-pie" style="color:var(--green)"></i> Bybit</div><div class="crypto-addr">UID: 107261338</div></div>
-            <button class="copy-btn" onclick="copyText(this,'107261338')">COPY</button>
-          </div>
-          <div class="crypto-item">
-            <div><div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (BEP-20)</div><div class="crypto-addr">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</div></div>
-            <button class="copy-btn" onclick="copyText(this,'0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973')">COPY</button>
-          </div>
-          <div class="crypto-item">
-            <div><div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (TRC-20)</div><div class="crypto-addr">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</div></div>
-            <button class="copy-btn" onclick="copyText(this,'TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9')">COPY</button>
-          </div>
-          <div class="crypto-item">
-            <div><div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDC (SOL)</div><div class="crypto-addr">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</div></div>
-            <button class="copy-btn" onclick="copyText(this,'FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH')">COPY</button>
-          </div>
+    <div class="crypto-container reveal">
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-coins" style="color:var(--green)"></i> Binance Pay</div>
+          <div class="crypto-addr">Pay ID: 133010319</div>
         </div>
+        <button class="copy-btn" onclick="copyText(this,'133010319')">COPY</button>
       </div>
-      <div class="pay-card">
-        <div class="pay-title">Fiat & Bank Transfer</div>
-        <div class="pay-subtitle">Prefer traditional banking? We support secure transfers via Wise, GBP (FPS), and EUR (SEPA).</div>
-        <div class="fiat-badges">
-          <div class="fiat-badge"><i class="fas fa-university" style="color:var(--green)"></i> Wise</div>
-          <div class="fiat-badge"><i class="fas fa-pound-sign" style="color:var(--green)"></i> GBP — FPS</div>
-          <div class="fiat-badge"><i class="fas fa-euro-sign" style="color:var(--green)"></i> EUR — SEPA</div>
+      
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-chart-pie" style="color:var(--whop-orange)"></i> Bybit</div>
+          <div class="crypto-addr">UID: 107261338</div>
         </div>
-        <ul class="bank-steps">
-          <li class="bank-step"><div class="step-num">01</div>Join the <strong style="color:var(--text)">Official Discord Server</strong> via the link below.</li>
-          <li class="bank-step"><div class="step-num">02</div>Navigate to the main official channels in the server.</li>
-          <li class="bank-step"><div class="step-num">03</div>Click <strong style="color:var(--text)">ONLY on Admin Rashik's</strong> official profile. Do not message others.</li>
-          <li class="bank-step"><div class="step-num">04</div>Send a DM requesting the bank or Wise transfer details to proceed.</li>
-        </ul>
-        <div style="margin-top:24px">
-          <a href="https://discord.com/invite/RashikTrades" class="btn-cyber btn-cyber-wrap filled" style="padding: 14px 20px; font-size:0.9rem;" target="_blank">Request Details via Discord →</a>
+        <button class="copy-btn" onclick="copyText(this,'107261338')">COPY</button>
+      </div>
+      
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (BEP-20)</div>
+          <div class="crypto-addr">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</div>
         </div>
+        <button class="copy-btn" onclick="copyText(this,'0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973')">COPY</button>
+      </div>
+      
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (TRC-20)</div>
+          <div class="crypto-addr">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this,'TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9')">COPY</button>
+      </div>
+      
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDC (SOL)</div>
+          <div class="crypto-addr">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this,'FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH')">COPY</button>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ── DISCORD COMMUNITY ── -->
+<section id="discord-join">
+  <div class="inner reveal">
+    <i class="fab fa-discord" style="font-size: 4rem; color: #5865F2; margin-bottom: 20px;"></i>
+    <h2 class="section-title">Join Our Discord Community</h2>
+    <p class="section-desc">Get real-time alerts, live voice trading rooms, and direct access to Admin Rashik and the elite community.</p>
+    <a href="https://discord.com/invite/RashikTrades" target="_blank" class="btn-cyber btn-filled" style="background: #5865F2; border-color: #5865F2; box-shadow: 4px 4px 0px rgba(88, 101, 242, 0.3);">Join Now <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- ── MASTERCLASS (All 10 Items Added) ── -->
 <section id="masterclass">
   <div class="inner">
-    <p class="section-label reveal">Masterclass Series</p>
-    <h2 class="section-title reveal">
-      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">INDICATOR</span><br>
-      <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">BREAKDOWN.</span>
-    </h2>
+    <div class="section-label reveal">Masterclass Series</div>
+    <h2 class="section-title reveal">Indicator Breakdown</h2>
     <p class="section-desc reveal">Watch these visual guides to master the RTC Suite and execute perfectly.</p>
     
-    <div class="masterclass-grid reveal">
-      <a href="https://youtu.be/uL51FufvU6Q" target="_blank" class="mc-card">
+    <div class="mc-grid reveal">
+      <div class="mc-card" onclick="window.open('https://youtu.be/uL51FufvU6Q', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/uL51FufvU6Q/maxresdefault.jpg" alt="Part 1">
-          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 1</div>
         </div>
         <div class="mc-body">
-          <div class="mc-title">Suite Breakdown</div>
-          <div class="mc-desc">Master the basic setup, features and precise configuration of the indicators.</div>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Suite Breakdown</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Master the basic setup, features and precise configuration of the indicators.</p>
         </div>
-      </a>
+      </div>
       
-      <a href="https://youtu.be/oyZyEIKUix4" target="_blank" class="mc-card">
+      <div class="mc-card" onclick="window.open('https://youtu.be/oyZyEIKUix4', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg" alt="Part 2">
-          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 2</div>
         </div>
         <div class="mc-body">
-          <div class="mc-title">Advanced Settings</div>
-          <div class="mc-desc">Deep dive into complex market structure and institutional entry models.</div>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Advanced Settings</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Deep dive into complex market structure and institutional entry models.</p>
         </div>
-      </a>
+      </div>
       
-      <a href="https://youtu.be/Dbz-iNeU9t8" target="_blank" class="mc-card">
+      <div class="mc-card" onclick="window.open('https://youtu.be/Dbz-iNeU9t8', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/Dbz-iNeU9t8/maxresdefault.jpg" alt="Part 3">
-          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 3</div>
         </div>
         <div class="mc-body">
-          <div class="mc-title">Strategy Application</div>
-          <div class="mc-desc">Watch how to apply the indicators in real-time market scenarios effectively.</div>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Strategy Application</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Watch how to apply the indicators in real-time market scenarios effectively.</p>
         </div>
-      </a>
+      </div>
 
-      <a href="https://youtu.be/zaJeKmR_r_Y" target="_blank" class="mc-card">
+      <div class="mc-card" onclick="window.open('https://youtu.be/zaJeKmR_r_Y', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/zaJeKmR_r_Y/maxresdefault.jpg" alt="Part 4">
-          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 4</div>
         </div>
         <div class="mc-body">
-          <div class="mc-title">Liquidity Voids & Inducement</div>
-          <div class="mc-desc">Learn how to identify true smart money liquidity sweeps vs fakeouts.</div>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Liquidity & Inducement</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn how to identify true smart money liquidity sweeps vs fakeouts.</p>
         </div>
-      </a>
+      </div>
 
-      <a href="https://youtu.be/G0yAnMUdXqE" target="_blank" class="mc-card">
+      <div class="mc-card" onclick="window.open('https://youtu.be/G0yAnMUdXqE', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/G0yAnMUdXqE/maxresdefault.jpg" alt="Part 5">
-          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 5</div>
         </div>
         <div class="mc-body">
-          <div class="mc-title">Advanced Time & Price</div>
-          <div class="mc-desc">How to sync macro timings with precise price levels for sniper entries.</div>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Advanced Time & Price</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">How to sync macro timings with precise price levels for sniper entries.</p>
         </div>
-      </a>
+      </div>
 
-      <a href="https://youtu.be/rMoZ21e0lNQ" target="_blank" class="mc-card">
+      <div class="mc-card" onclick="window.open('https://youtu.be/rMoZ21e0lNQ', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/rMoZ21e0lNQ/maxresdefault.jpg" alt="Part 6">
-          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 6</div>
         </div>
         <div class="mc-body">
-          <div class="mc-title">Precision Entries</div>
-          <div class="mc-desc">Drop down to the lower timeframes to execute with minimal drawdown.</div>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Precision Entries</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Drop down to the lower timeframes to execute with minimal drawdown.</p>
         </div>
-      </a>
+      </div>
 
-      <a href="https://youtu.be/gAUBNhJn9cY" target="_blank" class="mc-card">
+      <div class="mc-card" onclick="window.open('https://youtu.be/gAUBNhJn9cY', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/gAUBNhJn9cY/maxresdefault.jpg" alt="Part 7">
-          <div class="play-btn"><div class="play-icon"><i class="fas fa-play"></i></div></div>
           <div class="ind-number-mc">PART 7</div>
         </div>
         <div class="mc-body">
-          <div class="mc-title">The Cleaner Edge</div>
-          <div class="mc-desc">Master the sub-lines and custom UI settings to maintain a professional, distraction-free chart.</div>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">The Cleaner Edge</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Master the sub-lines and custom UI settings to maintain a professional chart.</p>
         </div>
-      </a>
-      
-      <div class="mc-card upcoming">
-        <div class="video-container" style="border-style: dashed; border-width: 1px;">
-          <i class="fas fa-hourglass-half ind-icon" style="color: var(--muted); animation: pulse 2s infinite;"></i>
-          <div class="ind-number-mc">UPCOMING</div>
+      </div>
+
+      <!-- New Videos Added Here -->
+      <div class="mc-card" onclick="window.open('https://youtu.be/w7n4nix0SQU', '_blank')">
+        <div class="video-container">
+          <img src="https://img.youtube.com/vi/w7n4nix0SQU/maxresdefault.jpg" alt="Part 8">
+          <div class="ind-number-mc">PART 8</div>
         </div>
         <div class="mc-body">
-          <div class="mc-title">Part 8: Coming Soon</div>
-          <div class="mc-desc">More advanced breakdowns and live trade examples are on the way.</div>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">True vs Fake CISD</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn to accurately identify true changes in state of delivery vs fakeouts.</p>
+        </div>
+      </div>
+
+      <div class="mc-card" onclick="window.open('https://youtu.be/jSlO-DnZe1M', '_blank')">
+        <div class="video-container">
+          <img src="https://img.youtube.com/vi/jSlO-DnZe1M/maxresdefault.jpg" alt="Part 9">
+          <div class="ind-number-mc">PART 9</div>
+        </div>
+        <div class="mc-body">
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">AMD Concept Mastery</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Accumulation, Manipulation, and Distribution phase tracking on charts.</p>
+        </div>
+      </div>
+
+      <div class="mc-card" onclick="window.open('https://youtu.be/AQ0oolftL_g', '_blank')">
+        <div class="video-container">
+          <img src="https://img.youtube.com/vi/AQ0oolftL_g/maxresdefault.jpg" alt="Part 10">
+          <div class="ind-number-mc">PART 10</div>
+        </div>
+        <div class="mc-body">
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Fractal Markets</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Deep dive into timeframes and fractal market structure combinations.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="testimonials">
+<!-- ── SOCIAL MARQUEE (COMMUNITY) ── -->
+<section id="community">
   <div class="inner reveal">
-    <p class="section-label">Social Proof</p>
-    <h2 class="section-title">
-      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">TRADERS DON'T LIE.</span>
-    </h2>
-    <p class="section-desc" style="margin-bottom:0">Real results from real members of the RTC community worldwide.</p>
+    <div class="section-label">Join The Network</div>
+    <h2 class="section-title">Connect with Elite Traders</h2>
   </div>
   
-  <div class="marquee-container reveal">
-    <div class="testimonials-track track-left">
-      <div class="testi-card"><div class="testi-pnl">+$4,200 this week</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade."</div><div class="testi-author"><div class="testi-avatar">M</div><div class="testi-name">Marcus K.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">+18.3% ROI</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month."</div><div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name">Sophie L.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">Best investment</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Rashik's community is genuinely one of the best trading spaces on the internet. The indicators are elite-level, but the Discord support and analysis are what truly sets this apart."</div><div class="testi-author"><div class="testi-avatar">A</div><div class="testi-name">Amir T.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">2R avg trade</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"POI Pro+ maps entries I would have missed completely. The automation is insane — I get alerted at exactly the right level. Went from breakeven to consistently profitable within 3 weeks."</div><div class="testi-author"><div class="testi-avatar">J</div><div class="testi-name">Jamie R.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">+$4,200 this week</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade."</div><div class="testi-author"><div class="testi-avatar">M</div><div class="testi-name">Marcus K.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">+18.3% ROI</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month."</div><div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name">Sophie L.</div></div></div>
-    </div>
-
-    <div class="testimonials-track track-right">
-      <div class="testi-card"><div class="testi-pnl">Funded $100k</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Passed my $100k prop firm challenge using the SMT divergence filter alone. The setups are extremely clean and remove all emotional trading."</div><div class="testi-author"><div class="testi-avatar">L</div><div class="testi-name">Liam D.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">+$9,100 month</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"I've tried 12 indicator suites. Nothing comes close. The PO3 Advanced edition alone is worth 10x the price. The logic behind these tools is clearly from someone who actually trades."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">Daniel W.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">Saves 2 Hours</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The Session Pro+ draws the exact macro killzones I used to draw manually every morning. It saves me 2 hours a day and the accuracy is frightening."</div><div class="testi-author"><div class="testi-avatar">E</div><div class="testi-name">Emma R.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">Elite member</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The yearly plan was the best decision I made. Constant updates, Rashik actually listens to the community, and the indicator keeps getting better. Zero reasons to leave."</div><div class="testi-author"><div class="testi-avatar">Y</div><div class="testi-name">Yuki N.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">Funded $100k</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Passed my $100k prop firm challenge using the SMT divergence filter alone. The setups are extremely clean and remove all emotional trading."</div><div class="testi-author"><div class="testi-avatar">L</div><div class="testi-name">Liam D.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">+$9,100 month</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"I've tried 12 indicator suites. Nothing comes close. The PO3 Advanced edition alone is worth 10x the price. The logic behind these tools is clearly from someone who actually trades."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">Daniel W.</div></div></div>
-    </div>
-
-    <div class="testimonials-track track-left">
-      <div class="testi-card"><div class="testi-pnl">Steady returns</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The POI Pro+ on my Elite membership has become my daily weapon for swing trading. My entry precision has improved so much. Over the last three months, I've managed a steady +$1,200/mo."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">David R.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">Win rate 65%</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Finally, an indicator that understands C1-C2 sweeps properly. Took my win rate from 40% to 65% in a single month. Absolute game-changer."</div><div class="testi-author"><div class="testi-avatar">O</div><div class="testi-name">Omar F.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">Part-time success</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Moving from paper trading to a real account was intimidating. The SMT Pro+ helped me spot divergences easily. Last month was my best yet, pulling in +$650 profit on FX pairs."</div><div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name">Sarah P.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">Crystal Clear</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The charts used to give me a headache with all the noise. RTC strips it all away and highlights exactly where the smart money is stepping in."</div><div class="testi-author"><div class="testi-avatar">C</div><div class="testi-name">Chris M.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">Steady returns</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"The POI Pro+ on my Elite membership has become my daily weapon for swing trading. My entry precision has improved so much. Over the last three months, I've managed a steady +$1,200/mo."</div><div class="testi-author"><div class="testi-avatar">D</div><div class="testi-name">David R.</div></div></div>
-      <div class="testi-card"><div class="testi-pnl">Win rate 65%</div><div class="testi-stars">★ ★ ★ ★ ★</div><div class="testi-text">"Finally, an indicator that understands C1-C2 sweeps properly. Took my win rate from 40% to 65% in a single month. Absolute game-changer."</div><div class="testi-author"><div class="testi-avatar">O</div><div class="testi-name">Omar F.</div></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="inner">
-    <p class="section-label reveal">FAQ</p>
-    <h2 class="section-title reveal">
-      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">COMMON QUESTIONS.</span>
-    </h2>
-    <p class="section-desc reveal">Everything you need to know before joining the RTC community.</p>
-    
-    <div class="faq-list reveal">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I trade any market with these indicators?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a">Absolutely. The RTC Indicator Suite is universally designed to work flawlessly across <strong>ALL</strong> markets and asset classes. Whether you trade global equities, forex pairs, crypto assets, or futures/indices, our algorithms adapt to any price action and time frame seamlessly.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What platform does the RTC Indicator Suite work on?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a">The RTC Indicator Suite is built for TradingView. You'll need a TradingView account (free or paid) to access and use the indicators. Once your membership is verified, you'll receive an invite link to add the tools directly to your charts.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I get access after payment?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a">After payment via Whop, access is granted automatically within minutes. For crypto or bank transfers, join our Discord and message Admin Rashik with your proof of payment. Access is typically verified within a few hours.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a refund policy?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a">Due to the digital nature of the RTC Indicator Suite, all sales are final once access is granted. We cannot offer refunds, exchanges, or cancellations under any circumstances.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to know ICT concepts to use the suite?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a">Some familiarity with ICT concepts like FVGs, CISD, and order blocks will help. However, our 3-part masterclass series on YouTube covers everything you need to configure and use the indicators from scratch.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is my payment information secure?<div class="faq-icon"><i class="fas fa-plus"></i></div></div><div class="faq-a">Absolutely. Whop payments are processed via Stripe and are fully encrypted. For crypto payments, we use Chainalysis hash filtering to screen all incoming transactions.</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="community" class="comm-section">
-  <div class="inner reveal">
-    <p class="section-label">Join The Network</p>
-    <h2 class="section-title">
-      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">CONNECT WITH</span><br>
-      <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">ELITE TRADERS.</span>
-    </h2>
-    <p class="section-desc" style="margin-bottom:20px">Our community spans every major platform. Choose your channel and plug in.</p>
-  </div>
-  
-  <div class="marquee-container reveal">
-    <div class="testimonials-track track-left">
+  <div class="comm-marquee-wrap reveal">
+    <div class="comm-track track-left" id="commTrack1">
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
       <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
       
+      <!-- Duplicate -->
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
       <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
     </div>
 
-    <div class="testimonials-track track-right">
+    <div class="comm-track track-right" id="commTrack2">
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
-      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card">
-        <svg class="tv-svg-icon" viewBox="0 0 32 32"><path d="M19.16 7L13.78 25h4.2l5.38-18h-4.2zm-4.66 0L10.02 20.5h-4.2L10.3 7h4.2zm-9.06 13L2.5 25h4.2l2.94-5h-4.2z"/></svg>
-        <div class="comm-name">TradingView</div>
-        <p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div>
-      </a>
-      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
+      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
       <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
       
+      <!-- Duplicate -->
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
-      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card">
-        <svg class="tv-svg-icon" viewBox="0 0 32 32"><path d="M19.16 7L13.78 25h4.2l5.38-18h-4.2zm-4.66 0L10.02 20.5h-4.2L10.3 7h4.2zm-9.06 13L2.5 25h4.2l2.94-5h-4.2z"/></svg>
-        <div class="comm-name">TradingView</div>
-        <p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div>
-      </a>
-      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
+      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
       <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
     </div>
   </div>
 </section>
 
-<div id="riskCalc">
+<!-- ── RISK CALCULATOR ── -->
+<section id="riskCalc">
   <div class="inner">
-    <p class="section-label reveal">Free Tool</p>
-    <h2 class="section-title reveal">
-      <span class="type-text" style="transition-duration: 1s; transition-delay: 0.1s;">RISK</span><br>
-      <span class="accent type-text" style="transition-duration: 1.2s; transition-delay: 0.4s;">CALCULATOR.</span>
-    </h2>
+    <div class="section-label reveal">Free Tool</div>
+    <h2 class="section-title reveal">Precision Calculator</h2>
     <p class="section-desc reveal">Calculate exact position size, risk/reward, and margin across Forex (Lots), Indices (Contracts), and Crypto (Tokens/Leverage).</p>
     
-    <div class="reveal">
+    <div class="calc-wrapper reveal">
       <div class="calc-tabs">
         <button class="calc-tab active" onclick="switchAssetClass('forex', this)">Forex & Metals</button>
         <button class="calc-tab" onclick="switchAssetClass('indices', this)">Indices</button>
@@ -1071,81 +897,72 @@
             <label class="form-label">Instrument Selection</label>
             <div class="calc-pair-grid" id="pairGrid"></div>
           </div>
-
           <div class="form-group">
             <label class="form-label">Account Balance ($)</label>
             <input type="number" class="form-input" id="balance" value="10000" min="100" step="100" oninput="calcRisk()">
           </div>
-
           <div class="form-group">
-            <label class="form-label">Risk Per Trade: <span class="slider-val" id="riskPctLabel">1.0%</span></label>
-            <input type="number" class="form-input" id="riskPct" value="1" min="0.1" max="10" step="0.1" oninput="syncSlider('riskPct', 'riskSlider', 'riskPctLabel', '%');calcRisk()">
-            <input type="range" class="form-input slider" style="margin-top:8px" id="riskSlider" min="0.1" max="10" step="0.1" value="1" oninput="syncInput('riskSlider', 'riskPct', 'riskPctLabel', '%');calcRisk()">
+            <label class="form-label">Risk Per Trade (%)</label>
+            <input type="number" class="form-input" id="riskPct" value="1" min="0.1" max="10" step="0.1" oninput="calcRisk()">
           </div>
-
           <div class="form-group" id="leverageField" style="display: none;">
-            <label class="form-label">Leverage: <span class="slider-val" id="leverageLabel">10x</span></label>
-            <input type="number" class="form-input" id="leverage" value="10" min="1" max="100" step="1" oninput="syncSlider('leverage', 'levSlider', 'leverageLabel', 'x');calcRisk()">
-            <input type="range" class="form-input slider" style="margin-top:8px" id="levSlider" min="1" max="100" step="1" value="10" oninput="syncInput('levSlider', 'leverage', 'leverageLabel', 'x');calcRisk()">
+            <label class="form-label">Leverage (x)</label>
+            <input type="number" class="form-input" id="leverage" value="10" min="1" max="100" step="1" oninput="calcRisk()">
           </div>
-
           <div class="form-group">
             <label class="form-label">Entry Price</label>
             <input type="number" class="form-input" id="entry" value="2341.50" step="0.01" oninput="calcRisk()">
           </div>
-
           <div class="form-group">
             <label class="form-label">Stop Loss Price</label>
             <input type="number" class="form-input" id="stopLoss" value="2335.00" step="0.01" oninput="calcRisk()">
           </div>
-
           <div class="form-group">
             <label class="form-label">Take Profit Price</label>
             <input type="number" class="form-input" id="takeProfit" value="2362.00" step="0.01" oninput="calcRisk()">
           </div>
-
           <button class="calc-reset-btn" onclick="resetCalc()">↺ Reset to Default</button>
         </div>
 
-        <div class="calc-results" id="resultsPanel">
+        <div class="calc-results">
           <div class="result-card">
-            <div class="result-label" id="mainResultLabel">Position Size</div>
+            <div class="result-label">Position Size</div>
             <div class="result-val" id="lotSize">0.00</div>
-            <div style="font-size:0.85rem;font-weight:500;color:var(--muted); font-family: 'Inter', sans-serif;" id="lotUnit">Standard Lots</div>
+            <div style="font-size:0.85rem;font-weight:600;color:var(--text-muted); margin-top:4px;" id="lotUnit">Standard Lots</div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px; margin-top:16px;">
             <div class="result-card">
               <div class="result-label">Risk Amount</div>
               <div class="result-val red" id="riskAmt" style="font-size:1.4rem">$100.00</div>
             </div>
             <div class="result-card">
               <div class="result-label">Potential Profit</div>
-              <div class="result-val" id="profitAmt" style="font-size:1.4rem">$312.00</div>
+              <div class="result-val" id="profitAmt" style="font-size:1.4rem; color:var(--green);">$312.00</div>
             </div>
             <div class="result-card">
               <div class="result-label" id="slLabel">Stop Loss (Pips)</div>
-              <div class="result-val" id="slPips" style="font-size:1.4rem; color:var(--text);">65</div>
+              <div class="result-val" id="slPips" style="font-size:1.4rem;">65</div>
             </div>
             <div class="result-card">
               <div class="result-label" id="tpLabel">Take Profit (Pips)</div>
-              <div class="result-val" id="tpPips" style="font-size:1.4rem; color:var(--text);">205</div>
+              <div class="result-val" id="tpPips" style="font-size:1.4rem;">205</div>
             </div>
           </div>
 
-          <div class="rr-card">
-            <div class="rr-label">Risk : Reward Ratio</div>
-            <div class="rr-val" id="rrLabel">1 : 3.15</div>
+          <div class="rr-card" style="margin-top: 16px;">
+            <div class="result-label">Risk : Reward Ratio</div>
+            <div class="result-val" id="rrLabel" style="font-size: 2.2rem;">1 : 3.15</div>
           </div>
           
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px; margin-top: 16px;">
             <div class="result-card">
               <div class="result-label" id="valLabel">Value per Pip</div>
-              <div class="result-val" id="pipVal" style="font-size:1.2rem; color:var(--text);">$1.54</div>
+              <div class="result-val" id="pipVal" style="font-size:1.2rem;">$1.54</div>
             </div>
             <div class="result-card" id="marginStat">
               <div class="result-label">Trade Bias</div>
-              <div class="result-val" id="direction" style="font-size:1.2rem;">LONG ↑</div>
+              <div class="result-val" id="direction" style="font-size:1.2rem; color:var(--green)">LONG ↑</div>
             </div>
           </div>
 
@@ -1156,362 +973,125 @@
       </div>
     </div>
   </div>
-</div>
-
-<section id="policies" style="padding-top:40px; padding-bottom:60px; background:var(--black);">
-  <div class="inner">
-    <div class="policy-grid reveal">
-      <div class="policy-card">
-        <h4><i class="fas fa-shield-alt"></i> AML Compliance</h4>
-        <p>Payments from illicit activities, sanctioned entities, or dark web sources are strictly prohibited. We use automated Chainalysis Hash Filtering to screen incoming crypto transactions. Flagged funds will be permanently blocked.</p>
-      </div>
-      <div class="policy-card">
-        <h4><i class="fas fa-lock"></i> Payment Security</h4>
-        <p>Payments made using stolen cards will lead to immediate account termination and will be reported to authorities. Any fraudulent chargeback attempts will result in a permanent IP ban and community blacklist.</p>
-      </div>
-      <div class="policy-card">
-        <h4><i class="fas fa-file-invoice-dollar"></i> Refund Policy</h4>
-        <p>100% Digital Access - All Sales Final. Due to the digital nature of the RTC Indicator Suite, once access is granted, we cannot offer refunds, exchanges, or cancellations under any circumstances.</p>
-      </div>
-    </div>
-  </div>
 </section>
 
+<!-- ── BIG TEXT PRE-FOOTER, WATERMARK & DISCLAIMER ── -->
+<div class="pre-footer-text">
+  <div class="pre-footer-title reveal">
+    Your mind is built for precision and execution,<br><span>not for chasing every setup.</span>
+  </div>
+  <a href="#pricing" class="btn-cyber btn-filled hover-scale" style="margin-top: 40px; box-shadow: 6px 6px 0px rgba(0,0,0,0.15);">Start for free <i class="fas fa-arrow-right"></i></a>
+  
+  <div class="big-watermark reveal">RASHIKTRADES</div>
+</div>
+
+<div class="risk-disclaimer-box reveal">
+  <strong>HIGH RISK WARNING:</strong> Trading foreign exchange, cryptocurrencies, indices, and other margin-based assets carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite. There is a possibility that you could sustain a loss of some or all of your initial investment. Past performance is not indicative of future results. The RTC Indicator Suite and all content provided by Rashik Trades is strictly for educational purposes and should not be construed as financial advice.
+</div>
+
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo">RASHIK<span>TRADES</span></div>
-      <p>The ultimate indicator suite engineered for institutional-grade market clarity. Built by traders, for traders to remove the guesswork out of the markets.</p>
-      <div class="footer-social">
-        <a href="https://discord.com/invite/RashikTrades" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-        <a href="https://www.youtube.com/@RashikTrades" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://twitter.com/rashiktrades" target="_blank" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://t.me/RashikTradesCommunity" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+    <div>
+      <div style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 900; margin-bottom: 16px;"><span class="logo-black">Rashik</span><span class="logo-orange">Trades</span></div>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; font-weight: 500;">The ultimate indicator suite engineered for institutional-grade market clarity.</p>
+      <div style="display:flex; gap:12px;">
+        <a href="https://discord.com/invite/RashikTrades" target="_blank" class="social-icon-btn"><i class="fab fa-discord"></i></a>
+        <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="social-icon-btn"><i class="fab fa-youtube"></i></a>
+        <a href="https://twitter.com/rashiktrades" target="_blank" class="social-icon-btn"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://t.me/RashikTradesCommunity" target="_blank" class="social-icon-btn"><i class="fab fa-telegram-plane"></i></a>
       </div>
     </div>
-    
-    <div class="footer-col">
-      <h4>The Suite</h4>
-      <a href="#indicators">Pro Indicators</a>
-      <a href="#pricing">Membership Plans</a>
-      <a href="#riskCalc">Risk Calculator</a>
-      <a href="#masterclass">Video Masterclass</a>
+    <div>
+      <h4 style="font-weight: 800; margin-bottom: 20px;">The Suite</h4>
+      <a href="#indicators"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Pro Indicators</p></a>
+      <a href="#pricing"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Membership Plans</p></a>
+      <a href="#riskCalc"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Risk Calculator</p></a>
     </div>
-    <div class="footer-col">
-      <h4>Support</h4>
-      <a href="#faq">Help & FAQ</a>
-      <a href="https://discord.com/invite/RashikTrades" target="_blank">Contact via Discord</a>
-      <a href="#payment">Payment Options</a>
-    </div>
-    <div class="footer-col">
-      <h4>Legal Information</h4>
-      <a href="#" onclick="alert('Terms & Conditions: This is a placeholder link for your future Terms page.'); return false;">Terms & Conditions</a>
-      <a href="#" onclick="alert('Privacy Policy: This is a placeholder link for your future Privacy page.'); return false;">Privacy Policy</a>
-      <a href="#policies">Refund Policy</a>
-      <a href="#" onclick="alert('Risk Disclaimer: Trading involves risk. Please manage your capital wisely.'); return false;">Risk Disclaimer</a>
+    <div>
+      <h4 style="font-weight: 800; margin-bottom: 20px;">Support</h4>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Contact via Discord</p></a>
+      <a href="#policies"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Refund Policy</p></a>
+      <a href="#"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Privacy Policy</p></a>
     </div>
   </div>
-
-  <div class="footer-disclaimer">
-    <strong>HIGH RISK WARNING:</strong> Trading foreign exchange, cryptocurrencies, indices, and other margin-based assets carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite. There is a possibility that you could sustain a loss of some or all of your initial investment. Past performance is not indicative of future results. The RTC Indicator Suite and all content provided by Rashik Trades is strictly for educational purposes and should not be construed as financial advice.
-  </div>
-
   <div class="footer-bottom">
-    <div>© 2026 RashikTrades.com — All Rights Reserved.</div>
-    <div class="footer-love">Built with <i class="fas fa-heart"></i> for <span>Rashik Trades Community</span></div>
+    <div>Made with 🧡 for Rashik Trades Community</div>
+    <div>© 2026 RashikTrades</div>
   </div>
 </footer>
 
-<a href="#hero" class="back-to-top" id="backToTopBtn"><i class="fas fa-chevron-up"></i></a>
-
-<div class="cookie-banner" id="cookieBanner">
-  <div class="cookie-text">We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="#" onclick="alert('Privacy Policy Page'); return false;">Read More</a></div>
-  <button class="cookie-btn" onclick="acceptCookies()">Accept All</button>
-</div>
-
 <script>
-// ═══════════════════════════════════════════
-//  PREMIUM MOUSE AURA TRACKER
-// ═══════════════════════════════════════════
-const mouseAura = document.getElementById('mouse-aura');
-let auraX = 0, auraY = 0;
-let mouseXAura = window.innerWidth / 2;
-let mouseYAura = window.innerHeight / 2;
-
-document.addEventListener('mousemove', (e) => {
-  mouseXAura = e.clientX;
-  mouseYAura = e.clientY;
-});
-
-function animateAura() {
-  auraX += (mouseXAura - auraX) * 0.15;
-  auraY += (mouseYAura - auraY) * 0.15;
-  mouseAura.style.transform = `translate(calc(${auraX}px - 50%), calc(${auraY}px - 50%))`;
-  requestAnimationFrame(animateAura);
-}
-animateAura();
-
-// ═══════════════════════════════════════════
-//  PRELOADER & SCROLL PROGRESS
-// ═══════════════════════════════════════════
-window.addEventListener('load', () => {
-  setTimeout(() => { document.body.classList.add('loaded'); }, 1200);
-});
+window.addEventListener('load', () => { setTimeout(() => { document.body.classList.add('loaded'); }, 500); });
 
 window.addEventListener('scroll', () => {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  document.getElementById('scrollProgress').style.width = scrolled + "%";
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-  
-  const btn = document.getElementById('backToTopBtn');
-  if (window.scrollY > 500) btn.classList.add('show');
-  else btn.classList.remove('show');
+  document.getElementById('scrollProgress').style.width = (winScroll / height) * 100 + "%";
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
 });
-
-// ═══════════════════════════════════════════
-//  MOBILE MENU
-// ═══════════════════════════════════════════
-function toggleMobileMenu() {
-  const nav = document.getElementById('mobileNav');
-  const icon = document.querySelector('.mobile-menu-btn i');
-  nav.classList.toggle('active');
-  if(nav.classList.contains('active')) {
-    icon.classList.remove('fa-bars');
-    icon.classList.add('fa-times');
-  } else {
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
-  }
-}
-
-// ═══════════════════════════════════════════
-//  THEME TOGGLE (Auto Timezone Support)
-// ═══════════════════════════════════════════
-const themeToggleDesk = document.getElementById('themeToggleDesk');
-const themeToggleMob = document.getElementById('themeToggleMob');
-
-function applyTheme(isLight) {
-  if (isLight) {
-    document.body.classList.add('light-mode');
-    themeToggleDesk.innerHTML = '<i class="fas fa-moon"></i>';
-    themeToggleMob.innerHTML = '<i class="fas fa-moon"></i> Theme';
-    localStorage.setItem('rtc_theme', 'light');
-  } else {
-    document.body.classList.remove('light-mode');
-    themeToggleDesk.innerHTML = '<i class="fas fa-sun"></i>';
-    themeToggleMob.innerHTML = '<i class="fas fa-sun"></i> Theme';
-    localStorage.setItem('rtc_theme', 'dark');
-  }
-}
-
-function initTheme() {
-  const savedTheme = localStorage.getItem('rtc_theme');
-  if (savedTheme) {
-    applyTheme(savedTheme === 'light');
-  } else {
-    const currentHour = new Date().getHours();
-    const isDayTime = currentHour >= 6 && currentHour < 18;
-    applyTheme(isDayTime);
-  }
-}
-
-themeToggleDesk.addEventListener('click', () => { applyTheme(!document.body.classList.contains('light-mode')); });
-themeToggleMob.addEventListener('click', () => { applyTheme(!document.body.classList.contains('light-mode')); toggleMobileMenu(); });
-initTheme();
-
-// ═══════════════════════════════════════════
-//  WAVE CANVAS
-// ═══════════════════════════════════════════
-const canvas = document.getElementById('waveCanvas');
-const ctx = canvas.getContext('2d', { alpha: false });
-function resizeCanvas() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-const PARTICLE_COUNT = 100;
-const particles = [];
-class Particle {
-  constructor() { this.reset(true); }
-  reset(initial) {
-    this.x = Math.random() * canvas.width;
-    this.y = initial ? Math.random() * canvas.height : canvas.height + 10;
-    this.vx = (Math.random() - 0.5) * 0.4;
-    this.vy = -(Math.random() * 0.5 + 0.15);
-    this.radius = Math.random() * 1.5 + 0.4;
-    this.alpha = Math.random() * 0.5 + 0.1;
-    this.life = 0;
-    this.maxLife = Math.random() * 400 + 200;
-  }
-  update() {
-    this.x += this.vx; this.y += this.vy; this.life++;
-    if (this.life > this.maxLife || this.y < -10) this.reset(false);
-  }
-  draw() {
-    const t = this.life / this.maxLife;
-    const fade = t < 0.1 ? t/0.1 : t > 0.85 ? (1-t)/0.15 : 1;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-    ctx.fillStyle = `rgba(0,229,184,${this.alpha * fade})`;
-    ctx.fill();
-  }
-}
-for (let i=0; i<PARTICLE_COUNT; i++) particles.push(new Particle());
-
-const waves = [
-  { amp: 60, freq: 0.008, speed: 0.012, phase: 0, y: 0.55, color: 'rgba(0,229,184,0.05)' },
-  { amp: 45, freq: 0.012, speed: 0.018, phase: 1.5, y: 0.62, color: 'rgba(0,196,240,0.04)' },
-  { amp: 70, freq: 0.006, speed: 0.009, phase: 3.0, y: 0.70, color: 'rgba(0,229,184,0.03)' }
-];
-
-let cw_t = 0;
-let mouseX = canvas.width/2, mouseY = canvas.height/2;
-
-canvas.addEventListener('mousemove', e => {
-  const r = canvas.getBoundingClientRect();
-  mouseX = e.clientX - r.left; mouseY = e.clientY - r.top;
-});
-
-function drawWave(wave, t) {
-  const W = canvas.width, H = canvas.height;
-  const baseY = H * wave.y;
-  
-  ctx.beginPath();
-  ctx.moveTo(0, H);
-  for (let x=0; x<=W; x+=5) { 
-    const dist = Math.abs(x - mouseX) / W;
-    const mInfluence = Math.max(0, 1 - dist * 3) * 15;
-    const y = baseY + Math.sin(x * wave.freq + t * wave.speed + wave.phase) * wave.amp + mInfluence;
-    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-  }
-  ctx.lineTo(W, H); ctx.closePath();
-  ctx.fillStyle = wave.color; ctx.fill();
-  
-  ctx.beginPath();
-  for (let x=0; x<=W; x+=5) {
-    const dist = Math.abs(x - mouseX) / W;
-    const mInfluence = Math.max(0, 1 - dist * 3) * 15;
-    const y = baseY + Math.sin(x * wave.freq + t * wave.speed + wave.phase) * wave.amp + mInfluence;
-    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-  }
-  ctx.strokeStyle = wave.color; ctx.lineWidth = 1; ctx.stroke();
-}
-
-function animateCanvas() {
-  const isLight = document.body.classList.contains('light-mode');
-  const bgColor = isLight ? '#f0f4f8' : '#04090f';
-  
-  ctx.fillStyle = bgColor;
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  
-  waves.forEach(w => drawWave(w, cw_t));
-  particles.forEach(p => { p.update(); p.draw(); });
-  
-  cw_t++;
-  requestAnimationFrame(animateCanvas);
-}
-animateCanvas();
-
-// ═══════════════════════════════════════════
-//  SMOOTH REVEAL TRIGGER
-// ═══════════════════════════════════════════
-const revealOptions = {
-  threshold: 0.15,
-  rootMargin: '0px 0px -50px 0px'
-};
 
 const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    } else {
-      entry.target.classList.remove('visible');
-    }
-  });
-}, revealOptions);
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-document.querySelectorAll('.reveal').forEach(el => {
-  revealObserver.observe(el);
-});
+// ── TAG CLOUD ──
+const tags1 = ['IFVG', 'CISD', 'True Opens', 'CRT', 'FVG', 'Fractal Model', 'Continuous CISD', 'TTFM', 'Protraction', 'HTF Candles'];
+const tags2 = ['PO3', 'TTFM', 'AMD', 'CISD', 'True Opens', 'C2 Closure Alert', 'Sweeps', 'IFVG', 'CRT', 'Protraction'];
+document.getElementById('tagTrack1').innerHTML = [...tags1, ...tags1, ...tags1].map(t=>`<div class="feature-tag">${t}</div>`).join('');
+document.getElementById('tagTrack2').innerHTML = [...tags2, ...tags2, ...tags2].map(t=>`<div class="feature-tag">${t}</div>`).join('');
 
-// ═══════════════════════════════════════════
-//  TICKER, FAQ & COPY
-// ═══════════════════════════════════════════
-const tickers=[{sym:'EUR/USD',val:'1.0842',chg:'+0.12%',up:true},{sym:'GBP/USD',val:'1.2634',chg:'+0.08%',up:true},{sym:'XAU/USD',val:'2,341.50',chg:'+0.34%',up:true},{sym:'BTC/USD',val:'67,842',chg:'-0.21%',up:false},{sym:'ETH/USD',val:'3,512',chg:'+0.55%',up:true},{sym:'USD/JPY',val:'151.24',chg:'-0.09%',up:false},{sym:'US100',val:'18,432',chg:'+0.44%',up:true},{sym:'SPX500',val:'5,234',chg:'+0.18%',up:true},{sym:'DXY',val:'104.32',chg:'-0.05%',up:false},{sym:'GBP/JPY',val:'191.12',chg:'+0.22%',up:true}];
-const track=document.getElementById('ticker');
-track.innerHTML=[...tickers,...tickers].map(t=>`<span class="ticker-item">${t.sym} <span class="${t.up?'up':'dn'}">${t.val} ${t.chg}</span></span>`).join('');
+// ── HIGH-CONVERTING & REALISTIC REVIEWS ──
+const heroRevLeft = [
+  {t: "Always bringing the highest quality to indicators", a: "Lethality"},
+  {t: "If you trade GxT style trading it is a must have indicator!", a: "Chris"},
+  {t: "This might be the best indicator I've ever used.", a: "Wolf"},
+  {t: "The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone.", a: "Marcus K."},
+  {t: "SMT Pro+ is an absolute weapon. Automatic and clean. Divergence alerts alone saved me from two bad trades.", a: "Sophie L."},
+  {t: "Rashik's community is genuinely one of the best trading spaces on the internet.", a: "Amir T."}
+];
+const heroRevRight = [
+  {t: "Well I have to say that this indicator is built different", a: "Rvlsy"},
+  {t: "PO3 is the best out there by far... chef's kiss", a: "Boyd"},
+  {t: "Passed my $100k prop firm challenge using the SMT divergence filter alone. Setups are clean.", a: "Liam D."},
+  {t: "POI Pro+ maps entries I would have missed completely. Automation is insane.", a: "Jamie R."},
+  {t: "I've tried 12 indicator suites. Nothing comes close. PO3 alone is worth 10x.", a: "Daniel W."},
+  {t: "The Session Pro+ saves me 2 hours a day mapping killzones. The accuracy is frightening.", a: "Emma R."}
+];
 
-function toggleFaq(el){const item=el.parentElement;const was=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open');}
+// Populate Hero Reviews
+const buildHeroRev = (arr) => arr.map(r => `<div class="float-card"><i class="fas fa-quote-left"></i><div class="float-text">"${r.t}"</div><div class="float-author">~ ${r.a}</div></div>`).join('');
+document.getElementById('heroTrackLeft').innerHTML = buildHeroRev([...heroRevLeft, ...heroRevLeft, ...heroRevLeft]);
+document.getElementById('heroTrackRight').innerHTML = buildHeroRev([...heroRevRight, ...heroRevRight, ...heroRevRight]);
 
 function copyText(btn,text){
   navigator.clipboard.writeText(text).then(()=>{
     const oldText = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-check"></i> COPIED';
+    btn.innerHTML = 'COPIED ✓';
     btn.classList.add('copied');
-    setTimeout(()=>{
-      btn.innerHTML = oldText;
-      btn.classList.remove('copied');
-    },2000);
+    setTimeout(()=>{ btn.innerHTML = oldText; btn.classList.remove('copied'); }, 2000);
   });
 }
 
-// ═══════════════════════════════════════════
-//  COOKIES
-// ═══════════════════════════════════════════
-document.addEventListener("DOMContentLoaded", () => {
-  const banner = document.getElementById('cookieBanner');
-  if (!localStorage.getItem('cookiesAccepted')) {
-    setTimeout(() => { banner.classList.add('show'); }, 2000);
-  } else {
-    banner.style.display = 'none';
-  }
-});
-function acceptCookies() {
-  localStorage.setItem('cookiesAccepted', 'true');
-  const banner = document.getElementById('cookieBanner');
-  banner.classList.remove('show');
-  setTimeout(() => { banner.style.display = 'none'; }, 500); 
-}
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
 
-// ═══════════════════════════════════════════
-//  ULTIMATE RISK CALCULATOR LOGIC
-// ═══════════════════════════════════════════
+// ── ULTIMATE RISK CALCULATOR LOGIC ──
 const assets = {
   forex: [
     {id:'xauusd', label:'XAU/USD', entry:2341.50, sl:2335.00, tp:2362.00, mult:10},
-    {id:'xagusd', label:'XAG/USD', entry:28.50, sl:28.00, tp:29.50, mult:10},
     {id:'eurusd', label:'EUR/USD', entry:1.08420, sl:1.08100, tp:1.09100, mult:10000},
     {id:'gbpusd', label:'GBP/USD', entry:1.26340, sl:1.25900, tp:1.27400, mult:10000},
-    {id:'audusd', label:'AUD/USD', entry:0.65400, sl:0.65000, tp:0.66200, mult:10000},
-    {id:'nzdusd', label:'NZD/USD', entry:0.59800, sl:0.59400, tp:0.60600, mult:10000},
-    {id:'usdcad', label:'USD/CAD', entry:1.35200, sl:1.35800, tp:1.34000, mult:10000},
-    {id:'usdchf', label:'USD/CHF', entry:0.90400, sl:0.90000, tp:0.91200, mult:10000},
-    {id:'usdjpy', label:'USD/JPY', entry:151.24,  sl:151.90,  tp:149.80,  mult:100},
-    {id:'eurjpy', label:'EUR/JPY', entry:164.50,  sl:164.00,  tp:165.50,  mult:100},
-    {id:'gbpjpy', label:'GBP/JPY', entry:191.12,  sl:190.40,  tp:192.80,  mult:100}
+    {id:'usdjpy', label:'USD/JPY', entry:151.24,  sl:151.90,  tp:149.80,  mult:100}
   ],
   indices: [
-    {id:'nq',     label:'NQ (NAS100)', entry:18432.00, sl:18380.00, tp:18550.00, mult:1},
-    {id:'es',     label:'ES (SPX500)', entry:5234.50, sl:5220.00, tp:5260.00, mult:1},
-    {id:'ym',     label:'YM (US30)',   entry:39500, sl:39400, tp:39700, mult:1},
-    {id:'rty',    label:'RTY (US2000)',entry:2050.50, sl:2040.00, tp:2070.00, mult:1},
-    {id:'gc',     label:'GC (GOLD)',   entry:2350.10, sl:2345.00, tp:2365.00, mult:10},
-    {id:'cl',     label:'CL (OIL)',    entry:82.50, sl:81.00, tp:85.00, mult:100},
-    {id:'dax',    label:'DAX (GER40)', entry:18200, sl:18100, tp:18400, mult:1},
-    {id:'uk100',  label:'UK100',       entry:7900, sl:7850, tp:8000, mult:1}
+    {id:'nq',     label:'NAS100', entry:18432.00, sl:18380.00, tp:18550.00, mult:1},
+    {id:'es',     label:'SPX500', entry:5234.50, sl:5220.00, tp:5260.00, mult:1}
   ],
   crypto: [
     {id:'btc',  label:'BTC',  entry:67842, sl:66500, tp:70000, mult:1},
     {id:'eth',  label:'ETH',  entry:3512,  sl:3420,  tp:3720,  mult:1},
-    {id:'sol',  label:'SOL',  entry:145.50,sl:138.00,tp:160.00, mult:1},
-    {id:'bnb',  label:'BNB',  entry:580.20,sl:560.00,tp:620.00, mult:1},
-    {id:'xrp',  label:'XRP',  entry:0.5520,sl:0.5100,tp:0.6200, mult:1},
-    {id:'ada',  label:'ADA',  entry:0.4500,sl:0.4200,tp:0.5100, mult:1},
-    {id:'doge', label:'DOGE', entry:0.1550,sl:0.1400,tp:0.1800, mult:1},
-    {id:'avax', label:'AVAX', entry:45.50, sl:41.00, tp:55.00, mult:1},
-    {id:'link', label:'LINK', entry:18.20, sl:17.00, tp:21.00, mult:1},
-    {id:'dot',  label:'DOT',  entry:8.50,  sl:7.80,  tp:10.00, mult:1}
+    {id:'sol',  label:'SOL',  entry:145.50,sl:138.00,tp:160.00, mult:1}
   ]
 };
 
@@ -1526,8 +1106,7 @@ function switchAssetClass(category, btn) {
   const grid = document.getElementById('pairGrid');
   grid.innerHTML = '';
   assets[category].forEach((pair, index) => {
-    const btnHtml = `<button class="calc-pair-btn ${index===0?'active':''}" onclick="selectPair(this, '${pair.id}')">${pair.label}</button>`;
-    grid.innerHTML += btnHtml;
+    grid.innerHTML += `<button class="calc-pair-btn ${index===0?'active':''}" onclick="selectPair(this, '${pair.id}')">${pair.label}</button>`;
   });
 
   const levField = document.getElementById('leverageField');
@@ -1543,7 +1122,7 @@ function switchAssetClass(category, btn) {
     slLabel.textContent = 'Stop Loss (%)';
     tpLabel.textContent = 'Take Profit (%)';
     valLabel.textContent = 'Unleveraged ROI';
-    marginStat.innerHTML = `<div class="result-label">Margin Required</div><div class="result-val" id="marginReq" style="font-size:1.2rem; color:var(--text);">$0.00</div>`;
+    marginStat.innerHTML = `<div class="result-label">Margin Required</div><div class="result-val" id="marginReq" style="font-size:1.2rem; color:var(--text-dark);">$0.00</div>`;
   } else if (category === 'indices') {
     levField.style.display = 'none';
     unitLabel.textContent = 'Contracts / Units';
@@ -1559,7 +1138,6 @@ function switchAssetClass(category, btn) {
     valLabel.textContent = 'Value per Pip';
     marginStat.innerHTML = `<div class="result-label">Trade Bias</div><div class="result-val" id="direction" style="font-size:1.2rem; color:var(--green)">LONG ↑</div>`;
   }
-
   selectPair(grid.firstChild, assets[category][0].id);
 }
 
@@ -1573,18 +1151,6 @@ function selectPair(btn, pairId) {
   calcRisk();
 }
 
-function syncSlider(inputId, sliderId, labelId, suffix) {
-  const v = parseFloat(document.getElementById(inputId).value) || 1;
-  document.getElementById(sliderId).value = v;
-  document.getElementById(labelId).textContent = v.toFixed(inputId==='leverage'?0:1) + suffix;
-}
-
-function syncInput(sliderId, inputId, labelId, suffix) {
-  const v = parseFloat(document.getElementById(sliderId).value) || 1;
-  document.getElementById(inputId).value = v.toFixed(inputId==='leverage'?0:1);
-  document.getElementById(labelId).textContent = v.toFixed(inputId==='leverage'?0:1) + suffix;
-}
-
 function calcRisk() {
   const balance = parseFloat(document.getElementById('balance').value) || 0;
   const riskPct = parseFloat(document.getElementById('riskPct').value) || 0;
@@ -1596,38 +1162,28 @@ function calcRisk() {
 
   const riskAmt = balance * (riskPct / 100);
   const isLong = entry > sl;
-  
   let lotSize = 0, profitAmt = 0, slDist = 0, tpDist = 0, unitValue = 0, rr = 0;
 
   if(currentClass === 'crypto') {
     const lev = parseFloat(document.getElementById('leverage').value) || 1;
     const priceDiff = Math.abs(entry - sl);
     lotSize = riskAmt / priceDiff; 
-    
     slDist = (priceDiff / entry) * 100; 
     tpDist = (Math.abs(tp - entry) / entry) * 100; 
     profitAmt = lotSize * Math.abs(tp - entry);
-    
     unitValue = tpDist; 
-    
     const notionalValue = lotSize * entry;
     const marginReq = notionalValue / lev;
     const reqEl = document.getElementById('marginReq');
     if(reqEl) reqEl.textContent = '$' + marginReq.toFixed(2);
-    
     document.getElementById('pipVal').textContent = unitValue.toFixed(2) + '%';
-    
   } else {
     slDist = Math.abs(entry - sl) * currentPair.mult;
     tpDist = Math.abs(tp - entry) * currentPair.mult;
     unitValue = slDist > 0 ? riskAmt / slDist : 0;
-    
-    if(currentClass === 'forex') lotSize = unitValue / 10;
-    else lotSize = unitValue;
-    
+    if(currentClass === 'forex') lotSize = unitValue / 10; else lotSize = unitValue;
     profitAmt = tpDist * unitValue;
     document.getElementById('pipVal').textContent = '$' + unitValue.toFixed(2);
-    
     const dirEl = document.getElementById('direction');
     if(dirEl) {
       dirEl.textContent = isLong ? 'LONG ↑' : 'SHORT ↓';
@@ -1636,13 +1192,11 @@ function calcRisk() {
   }
 
   rr = slDist > 0 ? (tpDist / slDist) : 0;
-  
   document.getElementById('lotSize').textContent = (currentClass === 'crypto' && currentPair.id !== 'btc') ? lotSize.toFixed(1) : lotSize.toFixed(3);
   document.getElementById('riskAmt').textContent = '$' + riskAmt.toFixed(2);
   document.getElementById('profitAmt').textContent = '$' + profitAmt.toFixed(2);
   document.getElementById('slPips').textContent = currentClass === 'crypto' ? slDist.toFixed(2)+'%' : Math.round(slDist);
   document.getElementById('tpPips').textContent = currentClass === 'crypto' ? tpDist.toFixed(2)+'%' : Math.round(tpDist);
-  
   document.getElementById('rrLabel').textContent = '1 : ' + rr.toFixed(2);
   document.getElementById('riskWarning').classList.toggle('show', riskPct > 3);
 }
@@ -1650,53 +1204,11 @@ function calcRisk() {
 function resetCalc() {
   document.getElementById('balance').value = 10000;
   document.getElementById('riskPct').value = 1;
-  document.getElementById('riskSlider').value = 1;
-  document.getElementById('riskPctLabel').textContent = '1.0%';
-  if(currentClass === 'crypto') {
-    document.getElementById('leverage').value = 10;
-    document.getElementById('levSlider').value = 10;
-    document.getElementById('leverageLabel').textContent = '10x';
-  }
+  if(currentClass === 'crypto') document.getElementById('leverage').value = 10;
   selectPair(document.querySelector('.calc-pair-btn'), assets[currentClass][0].id);
 }
 
 switchAssetClass('forex', document.querySelector('.calc-tab'));
-
-// ═══════════════════════════════════════════
-//  DYNAMIC COUNTER EFFECT
-// ═══════════════════════════════════════════
-const counters = document.querySelectorAll('.dynamic-counter');
-const observerOptions = { threshold: 0.5 };
-const counterObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const target = entry.target;
-      const endValue = parseInt(target.getAttribute('data-target'));
-      const suffix = target.getAttribute('data-suffix') !== null ? target.getAttribute('data-suffix') : '+';
-      const duration = 2500; 
-      const stepTime = 16; 
-      const steps = duration / stepTime;
-      const increment = endValue / steps;
-      let currentValue = 0;
-
-      const updateCounter = setInterval(() => {
-        currentValue += increment;
-        if (currentValue >= endValue) {
-          target.innerText = endValue.toLocaleString() + suffix;
-          clearInterval(updateCounter);
-        } else {
-          target.innerText = Math.floor(currentValue).toLocaleString() + suffix;
-        }
-      }, stepTime);
-      observer.unobserve(target);
-    }
-  });
-}, observerOptions);
-
-counters.forEach(counter => {
-  counterObserver.observe(counter);
-});
-
 </script>
 </body>
 </html>
