@@ -7,6 +7,15 @@
 
 <meta name="description" content="Unlock institutional-grade market clarity with the RTC Indicator Suite.">
 
+<link rel="icon" type="image/png" href="favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKS84XRWQ9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HKS84XRWQ9');
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,19 +23,18 @@
 <style>
   :root {
     --bg-main: #ffffff;
-    --bg-sec: #fafafa;
-    --bg-gradient: linear-gradient(135deg, #ffffff 0%, #fff6f0 100%);
+    --bg-sec: #fcfcfd;
     --text-dark: #111111;
     --text-muted: #6b7280;
-    --border: #eaeaea;
-    --border-dark: #111111;
+    --border: #f0f0f0;
     --whop-orange: #FF5A00;
     --green: #10b981;
     --red: #ef4444;
     
-    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+    --glow-orange: 0 15px 35px rgba(255, 90, 0, 0.15);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,17 +43,14 @@
   a, button { text-decoration: none !important; color: inherit; cursor: pointer; outline: none; border: none;}
   ul { list-style: none; }
 
-  .hover-scale { transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease; }
+  .hover-scale { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
   .hover-scale:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 
-  /* ── PRELOADER ── */
-  #preloader { position: fixed; inset: 0; background: var(--bg-main); z-index: 99999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s; }
-  .loader-logo { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 2.5rem; letter-spacing: -0.02em; animation: pulse 1.5s infinite; }
-  body.loaded #preloader { opacity: 0; visibility: hidden; }
+  /* ── SCROLL PROGRESS ── */
   .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--whop-orange); width: 0%; z-index: 10001; transition: width 0.1s; }
 
   /* ── NAV ── */
-  nav { position: fixed; top: 0; left: 0; right: 0; height: 70px; z-index: 10000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; background: rgba(255,255,255,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: all 0.3s ease; }
+  nav { position: fixed; top: 0; left: 0; right: 0; height: 70px; z-index: 10000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.03); transition: all 0.3s ease; }
   
   .nav-logo { font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 900; letter-spacing: -0.03em; transition: transform 0.3s; display: flex; align-items: center; }
   .nav-logo:hover { transform: scale(1.02); }
@@ -56,124 +61,120 @@
   .nav-links a { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s, transform 0.2s; }
   .nav-links a:hover { color: var(--text-dark); transform: translateY(-1px); }
   
-  .nav-cta { background: var(--text-dark); color: #fff !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; font-size: 0.9rem; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
-  .nav-cta:hover { background: var(--whop-orange); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 90, 0, 0.2); }
+  .nav-cta { background: var(--text-dark); color: #fff !important; padding: 10px 24px; border-radius: 100px; font-weight: 700 !important; font-size: 0.9rem; transition: all 0.3s; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm);}
+  .nav-cta:hover { background: var(--whop-orange); transform: translateY(-2px); box-shadow: var(--glow-orange); }
   
   .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
-
-  .mobile-menu { position: fixed; top: 70px; left: 0; width: 100%; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; padding: 20px 5%; gap: 20px; box-shadow: var(--shadow-md); z-index: 9998; display: none; transform: translateY(-10px); opacity: 0; transition: all 0.3s;}
+  .mobile-menu { position: fixed; top: 70px; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); flex-direction: column; padding: 20px 5%; gap: 20px; box-shadow: var(--shadow-md); z-index: 9998; display: none; transform: translateY(-10px); opacity: 0; transition: all 0.3s;}
   .mobile-menu.active { display: flex; transform: translateY(0); opacity: 1; }
   .mobile-menu a { font-size: 1.1rem; font-weight: 600; color: var(--text-dark); }
 
   /* ── HERO SECTION & ROUNDED REVIEWS ── */
-  #hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 5% 80px; background: #ffffff; text-align: center; overflow: hidden; perspective: 1200px; }
+  #hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 140px 5% 80px; background: #ffffff; text-align: center; overflow: hidden; perspective: 1200px; }
   
-  .hero-content { position: relative; z-index: 10; max-width: 900px; display: flex; flex-direction: column; align-items: center; background: radial-gradient(circle, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0) 100%); padding: 40px; border-radius: 50%; }
+  .hero-content { position: relative; z-index: 10; max-width: 900px; display: flex; flex-direction: column; align-items: center; background: radial-gradient(circle, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0) 100%); padding: 60px 40px; border-radius: 50%; }
   
   .hero-badge { display: inline-flex; align-items: center; gap: 12px; font-size: 0.9rem; font-weight: 800; color: var(--text-dark); margin-bottom: 30px; background: #fff; border: 1px solid var(--border); padding: 8px 24px; border-radius: 100px; box-shadow: var(--shadow-sm); transition: transform 0.3s;}
-  .hero-badge:hover { transform: translateY(-2px); border-color: var(--whop-orange); }
+  .hero-badge:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(255, 90, 0, 0.2);}
   
-  .hero-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(2.8rem, 6vw, 5.5rem); line-height: 1.05; letter-spacing: -0.04em; color: var(--text-dark); margin-bottom: 24px; }
-  .hero-title span.light { color: #9ca3af; font-weight: 700; }
+  /* Strictly 2 Lines Heading */
+  .hero-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 6vw, 5.5rem); line-height: 1.05; letter-spacing: -0.04em; color: var(--text-dark); margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; }
+  .hero-title span { white-space: nowrap; }
+  .hero-title span.light { color: #9ca3af; font-weight: 700; display: inline; }
   
   .hero-subtitle { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-muted); font-weight: 500; margin-bottom: 40px; }
   .hero-subtitle strong { color: var(--text-dark); font-weight: 800; }
   
-  .btn-cyber { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: all 0.3s; cursor: pointer; font-family: 'Inter', sans-serif; gap: 8px;}
-  .btn-outline { background: #fff; color: var(--text-dark); border: 2px solid var(--border-dark); box-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
-  .btn-outline:hover { background: var(--bg-sec); transform: translate(-2px, -2px); box-shadow: 6px 6px 0px rgba(0,0,0,0.15);}
-  .btn-filled { background: var(--text-dark); color: #fff; border: 2px solid var(--text-dark); box-shadow: 4px 4px 0px rgba(0,0,0,0.2);}
-  .btn-filled:hover { background: var(--whop-orange); border-color: var(--whop-orange); transform: translate(-2px, -2px); box-shadow: 6px 6px 0px rgba(255,90,0,0.3); }
+  .btn-cyber { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 1rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; font-family: 'Inter', sans-serif; gap: 8px;}
+  .btn-outline { background: #fff; color: var(--text-dark); border: 1px solid rgba(0,0,0,0.1); box-shadow: var(--shadow-sm); }
+  .btn-outline:hover { background: var(--bg-sec); transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(0,0,0,0.2);}
+  .btn-filled { background: var(--text-dark); color: #fff; box-shadow: var(--shadow-sm); border: 1px solid transparent;}
+  .btn-filled:hover { background: var(--whop-orange); transform: translateY(-3px); box-shadow: var(--glow-orange); }
 
   .hero-stats { display: flex; gap: clamp(20px, 4vw, 50px); justify-content: center; flex-wrap: wrap; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); width: 100%;}
   .hero-stat { text-align: center; }
-  .hero-stat .num { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 900; color: var(--text-dark); display: block; }
+  .hero-stat .num { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 900; color: var(--text-dark); display: block; letter-spacing: -0.02em;}
   .hero-stat .label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px;}
 
-  /* ── Hero Reviews (Curved/Round Style) ── */
-  .hero-reviews-wrapper { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1600px; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+  /* ── 3D Circular Arc Reviews ── */
+  .hero-reviews-wrapper { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1800px; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
   
-  .side-reviews { position: absolute; width: 320px; height: 200vh; top: -50vh; opacity: 0.8; pointer-events: auto; }
-  /* Applying the round perspective angle */
-  .side-reviews.left { left: -2%; transform: rotate(8deg) rotateY(15deg); }
-  .side-reviews.right { right: -2%; transform: rotate(-8deg) rotateY(-15deg); }
+  .side-reviews { position: absolute; width: 340px; height: 200vh; top: -50vh; pointer-events: auto; }
+  /* Roundable/Arc Style using rotateY */
+  .side-reviews.left { left: -50px; transform: rotate(10deg) rotateY(35deg); }
+  .side-reviews.right { right: -50px; transform: rotate(-10deg) rotateY(-35deg); }
   
-  .review-track { display: flex; flex-direction: column; gap: 24px; animation: scrollDown 45s linear infinite; }
-  
+  .review-track { display: flex; flex-direction: column; gap: 24px; animation: scrollDown 45s linear infinite; padding: 20px;}
   @keyframes scrollDown { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
 
-  .review-track:hover { animation-play-state: paused; z-index: 100; }
+  .review-track:hover { animation-play-state: paused; }
 
-  /* ── Float Card with Big Quote Logo ── */
   .float-card { 
-    background: #fff; 
-    border: 1px solid var(--border); 
-    padding: 24px; 
-    border-radius: 12px; 
+    background: rgba(255,255,255,0.9); 
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,0,0,0.05); 
+    padding: 28px; 
+    border-radius: 20px; 
     box-shadow: var(--shadow-sm); 
     text-align: left; 
     position: relative; 
     z-index: 2; 
     cursor: default;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    overflow: hidden; /* Contains the big quote */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden; 
   }
 
-  /* Big transparent quote on the right side */
-  .float-card::before {
-    content: '\201D'; /* Right Double Quote */
+  .float-card::after {
+    content: '\201D';
     position: absolute;
     right: 15px;
-    bottom: -40px;
-    font-size: 9rem;
+    bottom: -30px;
+    font-size: 10rem;
     font-family: Arial, sans-serif;
-    color: var(--text-dark);
-    opacity: 0.05;
+    color: var(--whop-orange);
+    opacity: 0.03;
     line-height: 1;
     z-index: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: all 0.4s ease;
   }
 
   .float-card:hover {
-    transform: scale(1.06) translateY(-5px);
+    transform: scale(1.05) translateY(-5px);
     z-index: 100;
-    box-shadow: var(--shadow-lg);
-    border-color: var(--whop-orange);
+    background: #fff;
+    box-shadow: var(--glow-orange);
+    border-color: rgba(255, 90, 0, 0.3);
   }
   
-  .float-card:hover::before {
-    opacity: 0.15;
-    transform: scale(1.1);
-    color: var(--whop-orange);
-  }
+  .float-card:hover::after { opacity: 0.1; transform: scale(1.1); }
 
-  .float-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; font-weight: 500; font-style: italic; position: relative; z-index: 1;}
+  .float-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; font-weight: 500; font-style: italic; position: relative; z-index: 1;}
   .float-author { font-size: 0.9rem; font-weight: 800; color: var(--text-dark); text-align: right; position: relative; z-index: 1;}
 
-  /* ── SECTIONS & TYPOGRAPHY ── */
+  /* ── SECTIONS ── */
   section { padding: 100px 5%; max-width: 100%; margin: 0 auto; text-align: center; }
   .inner { max-width: 1200px; margin: 0 auto; width: 100%; }
   
-  .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dark); margin-bottom: 16px; background: #fff; padding: 6px 16px; border: 1px solid var(--border); border-radius: 6px; box-shadow: var(--shadow-sm); }
-  .section-title { font-family: 'Inter', sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; color: var(--text-dark); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 20px; }
+  .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dark); margin-bottom: 16px; background: #fff; padding: 6px 16px; border: 1px solid var(--border); border-radius: 100px; box-shadow: var(--shadow-sm); }
+  .section-title { font-family: 'Inter', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900; color: var(--text-dark); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 20px; }
   .section-desc { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; max-width: 650px; margin: 0 auto 50px; line-height: 1.6; }
   
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── TAG CLOUD ── */
-  .tag-cloud-section { padding: 60px 0; background: #fff; overflow: hidden; position: relative;}
-  .tag-cloud-section .inner { padding: 0 5%; margin-bottom: 40px; }
+  /* ── TAG CLOUD (FIXED CSS/JS Animation) ── */
+  .tag-cloud-section { padding: 60px 0; background: #fff; overflow: hidden; position: relative; width: 100vw; max-width: 100%; }
+  .tag-cloud-section .inner { padding: 0 5%; margin-bottom: 40px; text-align: center; }
   
-  .tag-marquee-wrap { position: relative; display: flex; flex-direction: column; gap: 16px; width: 100%; }
+  .tag-marquee-wrap { position: relative; display: flex; flex-direction: column; gap: 16px; width: 100%; overflow: hidden; }
   .tag-marquee-wrap::before, .tag-marquee-wrap::after { content: ''; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2; pointer-events: none; }
   .tag-marquee-wrap::before { left: 0; background: linear-gradient(90deg, #fff 0%, transparent 100%); }
   .tag-marquee-wrap::after { right: 0; background: linear-gradient(-90deg, #fff 0%, transparent 100%); }
 
   .tag-track { display: flex; gap: 16px; width: max-content; }
-  .tag-track.left { animation: scrollLeftMarquee 40s linear infinite; }
-  .tag-track.right { animation: scrollRightMarquee 40s linear infinite; }
+  .track-left { animation: scrollLeftMarquee 40s linear infinite; }
+  .track-right { animation: scrollRightMarquee 40s linear infinite; }
   .tag-track:hover { animation-play-state: paused; }
 
   @keyframes scrollLeftMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -185,8 +186,8 @@
   /* ── ADVANCED AUTOMATION ── */
   #architecture { background: var(--bg-sec); border-top: 1px solid var(--border); }
   .arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; text-align: left; }
-  .arch-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 40px; box-shadow: var(--shadow-sm); transition: all 0.4s ease;}
-  .arch-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--whop-orange);}
+  .arch-card { background: #fff; border: 1px solid var(--border); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-sm); transition: all 0.4s ease;}
+  .arch-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: rgba(255,90,0,0.2);}
   .arch-card i { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; transition: 0.3s; }
   .arch-card:hover i { color: var(--whop-orange); transform: scale(1.1); }
   .arch-title { font-size: 1.5rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark); letter-spacing: -0.02em;}
@@ -196,140 +197,135 @@
   /* ── MAIN INDICATORS ── */
   #indicators { background: #fff; border-top: 1px solid var(--border); }
   .grid-3-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; text-align: left; }
-  .card-suite { background: var(--bg-gradient); border: 1px solid rgba(255, 90, 0, 0.15); border-radius: 12px; padding: 36px; transition: all 0.4s ease; display: flex; flex-direction: column; position: relative; overflow: hidden; z-index: 1;}
-  .card-suite::after { content:''; position: absolute; inset:0; border-radius: 12px; box-shadow: inset 0 0 0 2px transparent; transition: 0.3s; z-index: -1;}
-  .card-suite:hover::after { box-shadow: inset 0 0 0 2px var(--whop-orange); }
-  .card-suite:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .card-suite { background: var(--bg-main); border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 40px; transition: all 0.4s ease; display: flex; flex-direction: column; position: relative; overflow: hidden; z-index: 1; box-shadow: var(--shadow-sm);}
+  .card-suite:hover { transform: translateY(-6px); box-shadow: var(--glow-orange); border-color: rgba(255,90,0,0.3);}
   
-  .mockup-icon-wrap { width: 54px; height: 54px; background: #fff; border: 1px solid rgba(255,90,0,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 1.4rem; color: var(--text-dark); box-shadow: var(--shadow-sm); transition: transform 0.3s;}
+  .mockup-icon-wrap { width: 60px; height: 60px; background: #fff; border: 1px solid rgba(255,90,0,0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 1.5rem; color: var(--text-dark); box-shadow: var(--shadow-sm); transition: transform 0.3s;}
   .card-suite:hover .mockup-icon-wrap { transform: rotate(10deg) scale(1.1); background: var(--whop-orange); color: #fff; border-color: var(--whop-orange);}
 
-  /* ── MINIMALIST PROFESSIONAL PRICING (Black Border Styles) ── */
+  /* ── PRICING (Modern Clean Tabs) ── */
   .pricing-wrapper { background: var(--bg-sec); border-top: 1px solid var(--border); }
   .whop-badge { display: inline-flex; align-items: center; background: #fff; border: 1px solid var(--border); padding: 8px 24px 8px 8px; border-radius: 100px; box-shadow: var(--shadow-sm); margin-bottom: 40px;}
   .whop-badge .whop-box { background-color: var(--whop-orange); border-radius: 100px; padding: 6px 16px; color: #fff; font-weight: 900; margin-right: 12px; font-family: 'Outfit', sans-serif;}
   .whop-badge .whop-text { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); }
   
-  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; text-align: left; align-items: stretch;}
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left; align-items: stretch;}
   
-  /* Black borders for modern minimalist look */
-  .price-card { background: #fff; border: 2px solid var(--border-dark); border-radius: 16px; padding: 32px 24px; transition: all 0.3s ease; display: flex; flex-direction: column; position: relative; box-shadow: 4px 4px 0px rgba(17,17,17,0.05);}
-  .price-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0px rgba(17,17,17,0.15); z-index: 2;}
+  .price-card { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 36px 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; position: relative; box-shadow: var(--shadow-sm);}
+  .price-card:hover { transform: translateY(-10px); box-shadow: var(--glow-orange); border-color: rgba(255,90,0,0.3); z-index: 2;}
+  .price-card.popular { border: 1px solid rgba(255,90,0,0.3); box-shadow: var(--shadow-md);}
   
-  .price-tier { font-family: 'Inter', sans-serif; font-size:1rem; font-weight:800; color:var(--text-dark); margin-bottom:12px; display: flex; align-items: center; justify-content: space-between;}
-  .popular-badge { font-size: 0.65rem; background: var(--text-dark); color: #fff; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800;}
+  .price-tier { font-family: 'Inter', sans-serif; font-size:1.1rem; font-weight:900; color:var(--text-dark); margin-bottom:12px; display: flex; align-items: center; justify-content: space-between;}
+  .popular-badge { font-size: 0.65rem; background: var(--whop-orange); color: #fff; padding: 6px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800;}
   
-  .price-crossed { font-size: 0.9rem; color: var(--text-muted); text-decoration: line-through; height: 18px; margin-bottom: 4px; font-weight: 600;}
-  .price-amount { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 900; color: var(--text-dark); line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline; letter-spacing: -0.02em;}
-  .price-currency { font-size: 1.4rem; font-weight: 800; margin-right: 4px; }
-  .price-period { font-size:0.85rem; color:var(--text-muted); font-weight: 600; margin-bottom: 12px;}
+  .price-crossed { font-size: 0.95rem; color: var(--text-muted); text-decoration: line-through; height: 18px; margin-bottom: 4px; font-weight: 600;}
+  .price-amount { font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--text-dark); line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline; letter-spacing: -0.03em;}
+  .price-currency { font-size: 1.5rem; font-weight: 800; margin-right: 4px; }
+  .price-period { font-size:0.9rem; color:var(--text-muted); font-weight: 600; margin-bottom: 12px;}
   
-  .tv-discount-tag { background: #fef2f2; color: var(--red); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.7rem; padding: 4px 10px; border-radius: 100px; border: 1px solid #fca5a5; display: inline-block; margin-right: 6px;}
-  .price-save { font-size: 0.8rem; color: var(--text-dark); font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; height: 24px;}
+  .tv-discount-tag { background: #fff3ed; color: var(--whop-orange); font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; padding: 6px 12px; border-radius: 100px; border: 1px solid rgba(255,90,0,0.2); display: inline-block; margin-right: 6px;}
+  .price-save { font-size: 0.85rem; color: var(--text-dark); font-weight: 700; margin-bottom: 32px; display: flex; align-items: center; height: 28px;}
 
-  .price-features { list-style:none; flex: 1; margin-bottom:32px; display: flex; flex-direction: column; gap: 14px;}
-  .price-features li { display:flex; align-items:flex-start; gap:10px; font-size:0.85rem; color:var(--text-muted); line-height:1.4; font-weight: 600;}
-  .price-features li::before { content:'✓'; color:var(--text-dark); font-weight: 900; }
+  .price-features { list-style:none; flex: 1; margin-bottom:32px; display: flex; flex-direction: column; gap: 16px;}
+  .price-features li { display:flex; align-items:flex-start; gap:12px; font-size:0.9rem; color:var(--text-muted); line-height:1.4; font-weight: 500;}
+  .price-features li::before { content:'✓'; color:var(--green); font-weight: 900; font-size: 1.1rem; }
   
-  .price-btn { display: block; text-align: center; padding: 14px; border-radius: 8px; font-weight: 800; font-size: 0.9rem; transition: all 0.3s; width: 100%; border: 2px solid var(--text-dark); cursor: pointer;}
-  .price-btn.btn-outline { background: #fff; color: var(--text-dark); box-shadow: 3px 3px 0px rgba(0,0,0,0.1);}
-  .price-btn.btn-outline:hover { background: var(--bg-sec); transform: translate(-2px, -2px); box-shadow: 5px 5px 0px rgba(0,0,0,0.15);}
-  .price-btn.btn-filled { background: var(--text-dark); color: #fff; box-shadow: 3px 3px 0px rgba(0,0,0,0.2);}
-  .price-btn.btn-filled:hover { background: var(--whop-orange); border-color: var(--whop-orange); transform: translate(-2px, -2px); box-shadow: 5px 5px 0px rgba(255,90,0,0.3);}
+  .price-btn { display: block; text-align: center; padding: 16px; border-radius: 100px; font-weight: 800; font-size: 0.95rem; transition: all 0.3s; width: 100%; cursor: pointer;}
+  .price-btn.btn-outline { background: #fff; color: var(--text-dark); border: 1px solid rgba(0,0,0,0.1); box-shadow: var(--shadow-sm);}
+  .price-btn.btn-outline:hover { background: var(--bg-sec); transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(0,0,0,0.2);}
+  .price-btn.btn-filled { background: var(--text-dark); color: #fff; border: 1px solid transparent; box-shadow: var(--shadow-sm);}
+  .price-btn.btn-filled:hover { background: var(--whop-orange); transform: translateY(-2px); box-shadow: var(--glow-orange);}
 
-  /* ── CENTRALIZED CRYPTO PAYMENT SECTION ── */
-  #payment { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px; }
-  .crypto-container { display: flex; flex-direction: column; gap: 16px; max-width: 650px; margin: 40px auto 0; width: 100%; }
+  /* ── CENTRALIZED FULL ADDRESS CRYPTO PAYMENT ── */
+  #payment { background: var(--bg-main); border-top: 1px solid var(--border); }
+  .crypto-container { display: flex; flex-direction: column; gap: 16px; max-width: 700px; margin: 40px auto 0; width: 100%; }
   
-  .crypto-item { background: #fff; border: 2px solid var(--border); padding: 20px 24px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; box-shadow: var(--shadow-sm); width: 100%;}
-  .crypto-item:hover { border-color: var(--text-dark); box-shadow: 4px 4px 0px rgba(17,17,17,0.1); transform: translate(-2px, -2px);}
+  .crypto-item { background: #fff; border: 1px solid rgba(0,0,0,0.05); padding: 24px 32px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; box-shadow: var(--shadow-sm); width: 100%;}
+  .crypto-item:hover { border-color: rgba(255,90,0,0.3); box-shadow: var(--shadow-md); transform: translateY(-2px);}
   
-  .crypto-left { display: flex; flex-direction: column; gap: 6px; text-align: left; overflow: hidden;}
-  .crypto-label { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 8px;}
-  .crypto-addr { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); word-break: break-all; margin-right: 15px;}
+  .crypto-left { display: flex; flex-direction: column; gap: 8px; text-align: left; overflow: visible;}
+  .crypto-label { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 10px;}
+  .crypto-addr { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); word-break: break-all; margin-right: 20px; user-select: all;}
   
-  .copy-btn { background: var(--text-dark); border: 2px solid var(--text-dark); color: #fff; font-size: 0.75rem; font-weight: 800; padding: 10px 20px; border-radius: 8px; cursor: pointer; transition: 0.2s; white-space: nowrap; font-family: 'JetBrains Mono', monospace; flex-shrink: 0;}
-  .copy-btn:hover { background: var(--whop-orange); border-color: var(--whop-orange); }
+  .copy-btn { background: var(--bg-sec); border: 1px solid var(--border); color: var(--text-dark); font-size: 0.8rem; font-weight: 800; padding: 12px 24px; border-radius: 100px; cursor: pointer; transition: 0.3s; white-space: nowrap; font-family: 'JetBrains Mono', monospace; flex-shrink: 0;}
+  .copy-btn:hover { background: var(--text-dark); border-color: var(--text-dark); color: #fff; box-shadow: var(--shadow-sm);}
   .copy-btn.copied { background: var(--green); border-color: var(--green); color: #fff; }
 
-  /* ── DISCORD COMMUNITY ── */
-  #discord-join { padding: 80px 5%; background: var(--bg-sec); border-top: 1px solid var(--border); text-align: center; }
-
   /* ── SOCIAL MARQUEE (COMMUNITY) ── */
-  #community { background: var(--bg-main); border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; }
+  #community { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; width: 100vw; max-width: 100%;}
   #community .inner { padding: 0 5%; margin-bottom: 40px; text-align: center; }
-  .comm-marquee-wrap { display: flex; flex-direction: column; gap: 24px; position: relative; width: 100%; }
+  .comm-marquee-wrap { display: flex; flex-direction: column; gap: 24px; position: relative; width: 100%; overflow: hidden;}
   .comm-marquee-wrap::before, .comm-marquee-wrap::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:5; pointer-events:none; }
-  .comm-marquee-wrap::before { left:0; background:linear-gradient(90deg,var(--bg-main) 0%,transparent 100%); }
-  .comm-marquee-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg-main) 0%,transparent 100%); }
+  .comm-marquee-wrap::before { left:0; background:linear-gradient(90deg,var(--bg-sec) 0%,transparent 100%); }
+  .comm-marquee-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg-sec) 0%,transparent 100%); }
   
   .comm-track { display: flex; gap: 24px; width: max-content; }
   .comm-track:hover { animation-play-state: paused !important; }
-  .comm-card { background: var(--bg-sec); border:1px solid var(--border); border-radius: 16px; padding:28px; display:flex; flex-direction: column; gap: 12px; width: 300px; flex-shrink: 0; transition:all 0.3s; text-align: left;}
-  .comm-card:hover { border-color: var(--whop-orange); box-shadow: var(--shadow-md); transform:translateY(-4px);}
-  .comm-icon { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 8px;}
-  .comm-name { font-family:'Outfit',sans-serif; font-weight: 800; font-size:1.1rem; color:var(--text-dark); }
-  .comm-desc { font-size:0.9rem; color:var(--text-muted); line-height:1.6; }
+  .comm-card { background: #fff; border:1px solid var(--border); border-radius: 20px; padding:32px; display:flex; flex-direction: column; gap: 16px; width: 320px; flex-shrink: 0; transition:all 0.3s; text-align: left; box-shadow: var(--shadow-sm);}
+  .comm-card:hover { border-color: rgba(255,90,0,0.3); box-shadow: var(--shadow-md); transform:translateY(-4px);}
+  .comm-icon { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 8px;}
+  .comm-name { font-family:'Outfit',sans-serif; font-weight: 800; font-size:1.2rem; color:var(--text-dark); }
+  .comm-desc { font-size:0.95rem; color:var(--text-muted); line-height:1.6; }
   .comm-arrow { font-weight: 800; margin-top: auto;}
 
   /* ── MASTERCLASS ── */
-  #masterclass { background: var(--bg-sec); border-top: 1px solid var(--border);}
+  #masterclass { background: var(--bg-main); border-top: 1px solid var(--border);}
   .mc-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:24px; text-align: left; }
-  .mc-card { background: #fff; border: 2px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; cursor: pointer; box-shadow: 4px 4px 0px rgba(0,0,0,0.03);}
-  .mc-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0px rgba(17,17,17,0.1); border-color: var(--text-dark);}
-  .video-container { position: relative; width: 100%; height: 170px; background: #eaeaea; overflow: hidden; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); }
-  .video-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: transform 0.5s, opacity 0.3s;}
+  .mc-card { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; cursor: pointer; box-shadow: var(--shadow-sm);}
+  .mc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(255,90,0,0.3);}
+  .video-container { position: relative; width: 100%; height: 180px; background: #eaeaea; overflow: hidden; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); }
+  .video-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.95; transition: transform 0.6s, opacity 0.3s;}
   .mc-card:hover .video-container img { transform: scale(1.08); opacity: 1; }
   .mc-body { padding: 24px; flex: 1; display: flex; flex-direction: column;}
-  .ind-number-mc { position: absolute; top: 12px; left: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; color: #fff; background: rgba(17,17,17,0.85); backdrop-filter: blur(4px); padding: 6px 14px; border-radius: 100px; z-index: 2;}
+  .ind-number-mc { position: absolute; top: 16px; left: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; color: #fff; background: rgba(17,17,17,0.8); backdrop-filter: blur(8px); padding: 6px 16px; border-radius: 100px; z-index: 2;}
 
   /* ── RISK CALCULATOR ── */
-  #riskCalc { background: #fff; border-top: 1px solid var(--border);}
-  .calc-wrapper { background: #fff; border: 2px solid var(--border-dark); border-radius: 16px; padding: 40px; box-shadow: 8px 8px 0px rgba(17,17,17,0.05); text-align: left; max-width: 1000px; margin: 0 auto; transition: box-shadow 0.3s;}
-  .calc-wrapper:hover { box-shadow: 12px 12px 0px rgba(17,17,17,0.08); }
+  #riskCalc { background: var(--bg-sec); border-top: 1px solid var(--border);}
+  .calc-wrapper { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 48px; box-shadow: var(--shadow-md); text-align: left; max-width: 1000px; margin: 0 auto; transition: box-shadow 0.3s;}
+  .calc-wrapper:hover { box-shadow: var(--shadow-lg); }
   
-  .calc-tabs { display: flex; gap: 8px; margin-bottom: 24px; background: var(--bg-sec); padding: 8px; border-radius: 12px; width: fit-content; border: 1px solid var(--border); overflow-x: auto;}
-  .calc-tab { background: transparent; border: none; padding: 10px 24px; font-weight: 800; font-size: 0.9rem; color: var(--text-muted); border-radius: 8px; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-family: 'Inter', sans-serif;}
+  .calc-tabs { display: flex; gap: 8px; margin-bottom: 32px; background: var(--bg-sec); padding: 8px; border-radius: 100px; width: fit-content; border: 1px solid var(--border); overflow-x: auto;}
+  .calc-tab { background: transparent; border: none; padding: 12px 28px; font-weight: 800; font-size: 0.95rem; color: var(--text-muted); border-radius: 100px; cursor: pointer; transition: all 0.3s; white-space: nowrap; font-family: 'Inter', sans-serif;}
   .calc-tab.active { background: #fff; color: var(--text-dark); box-shadow: var(--shadow-sm); border: 1px solid var(--border);}
   
   .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-  .calc-form { display: flex; flex-direction: column; gap: 20px;}
-  .form-group { display: flex; flex-direction: column; gap: 8px; }
-  .form-label { font-size: 0.75rem; font-weight: 800; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
-  .form-input { width: 100%; padding: 14px 16px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; background: var(--bg-sec); color: var(--text-dark); outline: none; transition: all 0.2s; }
-  .form-input:focus { border-color: var(--text-dark); background: #fff; box-shadow: 3px 3px 0px rgba(17,17,17,0.1);}
+  .calc-form { display: flex; flex-direction: column; gap: 24px;}
+  .form-group { display: flex; flex-direction: column; gap: 10px; }
+  .form-label { font-size: 0.8rem; font-weight: 800; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
+  .form-input { width: 100%; padding: 16px 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; background: var(--bg-sec); color: var(--text-dark); outline: none; transition: all 0.3s; }
+  .form-input:focus { border-color: var(--whop-orange); background: #fff; box-shadow: 0 0 0 4px rgba(255,90,0,0.1);}
   
-  .calc-pair-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
-  .calc-pair-btn { background: var(--bg-sec); border: 2px solid var(--border); padding: 10px 4px; font-size: 0.75rem; border-radius: 8px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--text-muted); transition: 0.2s;}
-  .calc-pair-btn.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
-  .calc-pair-btn:hover:not(.active) { border-color: var(--text-dark); color: var(--text-dark);}
+  .calc-pair-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px; }
+  .calc-pair-btn { background: var(--bg-sec); border: 1px solid var(--border); padding: 12px 8px; font-size: 0.8rem; border-radius: 10px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--text-muted); transition: 0.3s;}
+  .calc-pair-btn.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-sm);}
+  .calc-pair-btn:hover:not(.active) { background: #fff; border-color: rgba(0,0,0,0.2); color: var(--text-dark);}
   
   .calc-results { display: flex; flex-direction: column; gap: 16px; }
-  .result-card { background: var(--bg-sec); border: 2px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.3s;}
-  .result-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0px rgba(17,17,17,0.05); border-color: var(--text-dark); }
-  .result-label { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
-  .result-val { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--text-dark); }
+  .result-card { background: var(--bg-sec); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: 0.3s;}
+  .result-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); border-color: rgba(0,0,0,0.1); }
+  .result-label { font-size: 0.8rem; font-weight: 800; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
+  .result-val { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 900; color: var(--text-dark); letter-spacing: -0.02em;}
   .result-val.red { color: var(--red); }
   
-  .rr-card { background: #fff; border: 2px solid var(--text-dark); border-radius: 12px; padding: 24px; text-align: center; box-shadow: 4px 4px 0px rgba(17,17,17,0.1);}
-  .warn-msg { font-size: 0.85rem; color: #b45309; background: #fffbeb; border: 2px solid #fcd34d; border-radius: 10px; padding: 14px 20px; display: none; font-weight: 700; margin-top: 10px;}
+  .rr-card { background: #fff; border: 2px solid var(--text-dark); border-radius: 16px; padding: 32px; text-align: center; box-shadow: var(--shadow-md);}
+  .warn-msg { font-size: 0.9rem; color: #b45309; background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 16px 24px; display: none; font-weight: 700; margin-top: 10px;}
   .warn-msg.show { display: block;}
-  .calc-reset-btn { margin-top: 10px; background: #fff; border: 2px solid var(--border); padding: 14px; font-family: 'Inter', sans-serif; font-weight: 800; border-radius: 10px; cursor: pointer; color: var(--text-dark); transition: 0.2s;}
-  .calc-reset-btn:hover { border-color: var(--text-dark); transform: translate(-2px, -2px); box-shadow: 4px 4px 0px rgba(17,17,17,0.1); }
+  .calc-reset-btn { margin-top: 10px; background: #fff; border: 1px solid var(--border); padding: 16px; font-family: 'Inter', sans-serif; font-weight: 800; border-radius: 12px; cursor: pointer; color: var(--text-dark); transition: 0.3s;}
+  .calc-reset-btn:hover { background: var(--bg-sec); border-color: rgba(0,0,0,0.2); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 
   /* ── BIG TEXT PRE-FOOTER, WATERMARK & DISCLAIMER ── */
   .pre-footer-text { padding: 120px 5% 0px; text-align: center; background: #fff; border-top: 1px solid var(--border); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center;}
-  .pre-footer-title { font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 900; letter-spacing: -0.04em; color: var(--text-dark); max-width: 900px; margin: 0 auto; line-height: 1.15; z-index: 2;}
+  .pre-footer-title { font-size: clamp(2.2rem, 4.5vw, 4.5rem); font-weight: 900; letter-spacing: -0.04em; color: var(--text-dark); max-width: 900px; margin: 0 auto; line-height: 1.15; z-index: 2;}
   .pre-footer-title span { color: #d1d5db; }
   
-  /* 40% Solid Black and Italic as requested */
+  /* Dhusor Black - 40% Opacity (Using exact hex for gray + opacity) */
   .big-watermark { 
     font-family: 'Outfit', sans-serif; 
-    font-size: 11vw; /* Perfect screen fit */
+    font-size: 11vw; 
     font-weight: 900; 
-    font-style: italic; /* added italic */
-    color: #000000; 
-    opacity: 0.4; /* 40% black opacity */
+    font-style: italic; 
+    color: #d1d5db; /* Dhusor base color */
+    opacity: 0.4;   /* Exact 40% opacity as requested */
     text-align: center; 
     line-height: 1; 
     margin-top: 60px; 
@@ -345,26 +341,36 @@
   .risk-disclaimer-box {
     max-width: 1200px;
     margin: 40px auto 60px;
-    padding: 32px;
+    padding: 40px;
     background: var(--bg-sec);
-    border: 2px solid var(--border-dark);
-    border-radius: 16px;
-    font-size: 0.8rem;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 20px;
+    font-size: 0.85rem;
     color: var(--text-muted);
     line-height: 1.8;
     text-align: left;
-    box-shadow: 6px 6px 0px rgba(17,17,17,0.05);
+    box-shadow: var(--shadow-sm);
   }
   .risk-disclaimer-box strong { color: var(--text-dark); font-weight: 900;}
 
   footer { background: #fff; padding: 0 5% 40px;}
   .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px;}
   
-  .social-icon-btn { width: 44px; height: 44px; background: #fff; border: 2px solid var(--border-dark); border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.2rem; transition: all 0.3s; box-shadow: 3px 3px 0px rgba(17,17,17,0.1); cursor: pointer;}
-  .social-icon-btn:hover { transform: translate(-2px, -2px); background: var(--text-dark); color: #fff; box-shadow: 5px 5px 0px rgba(17,17,17,0.2);}
+  .social-icon-btn { width: 48px; height: 48px; background: #fff; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.2rem; transition: all 0.3s; box-shadow: var(--shadow-sm); cursor: pointer;}
+  .social-icon-btn:hover { transform: translateY(-4px); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md);}
   
-  .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.9rem; color: var(--text-muted); padding-top: 24px; border-top: 1px solid var(--border); font-weight: 600;}
+  .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.95rem; color: var(--text-muted); padding-top: 30px; border-top: 1px solid var(--border); font-weight: 600;}
   
+  /* ── POLICY MODAL ── */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px;}
+  .modal-overlay.active { opacity: 1; pointer-events: auto; }
+  .modal-content { background: #fff; width: 100%; max-width: 600px; border-radius: 24px; padding: 40px; position: relative; transform: translateY(20px); transition: 0.3s; max-height: 80vh; overflow-y: auto; box-shadow: var(--shadow-lg);}
+  .modal-overlay.active .modal-content { transform: translateY(0); }
+  .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: 0.2s; background: var(--bg-sec); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;}
+  .modal-close:hover { color: var(--red); background: #fef2f2;}
+  .modal-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 900; margin-bottom: 20px; color: var(--text-dark); }
+  .modal-body { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+
   @media (max-width: 1024px) {
     .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   }
@@ -377,27 +383,23 @@
     .hero-reviews-wrapper { display: none; } 
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
     .big-watermark { font-size: 14vw; margin-top: 40px; }
-    .crypto-label { font-size: 0.8rem; }
-    .crypto-addr { font-size: 0.7rem; }
+    .crypto-label { font-size: 0.85rem; }
+    .crypto-addr { font-size: 0.75rem; margin-right: 0;}
   }
   @media (max-width: 600px) {
+    .hero-title { font-size: 2.2rem; }
     .footer-grid { grid-template-columns: 1fr; text-align: center;}
     .social-icon-btn { margin: 0 5px; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center;}
-    .crypto-item { flex-direction: column; gap: 16px; align-items: center; text-align: center; }
-    .crypto-left { text-align: center; align-items: center; }
-    .copy-btn { margin-left: 0; width: 100%; text-align: center; }
+    .crypto-item { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .copy-btn { width: 100%; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<div id="preloader">
-  <div class="loader-logo"><span class="logo-black">RTC</span><span class="logo-orange">SUITE</span></div>
-</div>
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ── NAVBAR ── -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
     <span class="logo-black">Rashik</span><span class="logo-orange">Trades</span>
@@ -413,7 +415,6 @@
   <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </nav>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#architecture" onclick="toggleMenu()">Features</a>
   <a href="#indicators" onclick="toggleMenu()">Indicators</a>
@@ -422,29 +423,24 @@
   <a href="#riskCalc" onclick="toggleMenu()">Calculator</a>
 </div>
 
-<!-- ── HERO SECTION ── -->
 <section id="hero">
-  <!-- Rounded/Angled Reviews -->
   <div class="hero-reviews-wrapper">
     <div class="side-reviews left">
-      <div class="review-track" id="heroTrackLeft">
-        <!-- JS Populated -->
-      </div>
+      <div class="review-track" id="heroTrackLeft"></div>
     </div>
     <div class="side-reviews right">
-      <div class="review-track" id="heroTrackRight">
-        <!-- JS Populated -->
-      </div>
+      <div class="review-track" id="heroTrackRight"></div>
     </div>
   </div>
 
   <div class="hero-content">
     <div class="hero-badge reveal">
-      <span style="color: var(--whop-orange); font-size: 1.1rem;">★★★★★</span> 4.9 / 5 <span style="margin: 0 4px; color: var(--border-hover);">|</span> Trusted by Traders
+      <span style="color: var(--whop-orange); font-size: 1.1rem;">★★★★★</span> 4.9 / 5 <span style="margin: 0 4px; color: rgba(0,0,0,0.1);">|</span> Trusted by Traders
     </div>
     
     <h1 class="hero-title reveal">
-      Execute <span class="light">Every Trade</span><br>with Confidence
+      <span>Execute Every Trade</span>
+      <span><span class="light">with</span> Confidence</span>
     </h1>
     
     <p class="hero-subtitle reveal">Your trading helping hand with <strong>RTC 5 in 1 Bundle</strong></p>
@@ -455,14 +451,13 @@
     </div>
 
     <div class="hero-stats reveal">
-      <div class="hero-stat"><span class="num">5,000+</span><span class="label">Active Members</span></div>
-      <div class="hero-stat"><span class="num">5</span><span class="label">Elite Indicators</span></div>
-      <div class="hero-stat"><span class="num">98%</span><span class="label">Satisfaction Rate</span></div>
+      <div class="hero-stat"><span class="num dynamic-counter" data-target="5000" data-suffix="+">0+</span><span class="label">Active Members</span></div>
+      <div class="hero-stat"><span class="num dynamic-counter" data-target="5" data-suffix="">0</span><span class="label">Elite Indicators</span></div>
+      <div class="hero-stat"><span class="num dynamic-counter" data-target="98" data-suffix="%">0%</span><span class="label">Satisfaction Rate</span></div>
     </div>
   </div>
 </section>
 
-<!-- ── TAG CLOUD ── -->
 <div class="tag-cloud-section">
   <div class="inner" style="text-align: center;">
     <div class="section-label reveal"><i class="fas fa-layer-group"></i> Features</div>
@@ -471,12 +466,11 @@
   </div>
   
   <div class="tag-marquee-wrap reveal">
-    <div class="tag-track left" id="tagTrack1"></div>
-    <div class="tag-track right" id="tagTrack2" style="margin-left: -150px;"></div>
+    <div class="tag-track track-left" id="tagTrack1"></div>
+    <div class="tag-track track-right" id="tagTrack2" style="margin-left: -150px;"></div>
   </div>
 </div>
 
-<!-- ── ADVANCED TRADING AUTOMATION ── -->
 <section id="architecture">
   <div class="inner">
     <div class="section-label reveal">Architecture</div>
@@ -507,7 +501,6 @@
   </div>
 </section>
 
-<!-- ── MAIN INDICATORS ── -->
 <section id="indicators">
   <div class="inner">
     <div class="section-label reveal">The Arsenal</div>
@@ -548,7 +541,6 @@
   </div>
 </section>
 
-<!-- ── PRICING (Black Border Sharp UI) ── -->
 <div class="pricing-wrapper" id="pricing">
   <section>
     <div class="inner">
@@ -561,9 +553,8 @@
       </div>
       
       <div class="pricing-grid reveal">
-        <!-- Basic -->
         <div class="price-card">
-          <div class="price-tier">Basic <span style="background: var(--text-dark); color: #fff; padding: 4px 10px; border-radius: 100px; font-size: 0.65rem; text-transform: uppercase; font-weight: 800;">Free</span></div>
+          <div class="price-tier">Basic <span style="background: var(--text-dark); color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 0.65rem; text-transform: uppercase; font-weight: 800;">Free</span></div>
           <div class="price-crossed" style="visibility:hidden;">$0</div>
           <div class="price-amount"><span class="price-currency">$</span>0</div>
           <div class="price-period">/ month</div>
@@ -571,7 +562,7 @@
           <ul class="price-features">
             <li>RTC [POI Pro+] Indicator</li>
             <li>RTC [90m, 6H, 7H Matrix Pro+]</li>
-            <li>RTC [SMT Radar]+</li> <!-- NEW ADDED -->
+            <li>RTC [SMT Radar]+</li>
             <li>Basic Discord Access</li>
             <li>Community Support</li>
             <li>Real-time Alerts Preview</li>
@@ -579,7 +570,6 @@
           <a href="https://whop.com/rtcheroclub/free-indicator-access/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Claim Access</a>
         </div>
 
-        <!-- Starter -->
         <div class="price-card">
           <div class="price-tier">Starter</div>
           <div class="price-crossed" style="visibility:hidden;">$0</div>
@@ -597,7 +587,6 @@
           <a href="https://whop.com/rtcheroclub/rtc-hero-membership-monthly/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Get Started</a>
         </div>
 
-        <!-- Advanced -->
         <div class="price-card">
           <div class="price-tier">Advanced</div>
           <div class="price-crossed">$30</div>
@@ -615,7 +604,6 @@
           <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-3month/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Select Plan</a>
         </div>
 
-        <!-- Pro -->
         <div class="price-card popular">
           <div class="price-tier">Pro <span class="popular-badge">Most Popular</span></div>
           <div class="price-crossed">$60</div>
@@ -634,7 +622,6 @@
           <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-6month/" target="_blank" class="price-btn btn-filled" style="margin-top: auto;">Secure Premium</a>
         </div>
 
-        <!-- Elite -->
         <div class="price-card">
           <div class="price-tier">Elite</div>
           <div class="price-crossed">$120</div>
@@ -658,7 +645,6 @@
   </section>
 </div>
 
-<!-- ── CENTRALIZED CRYPTO PAYMENT ── -->
 <section id="payment">
   <div class="inner">
     <div class="section-label reveal">Alternative Payments</div>
@@ -709,17 +695,37 @@
   </div>
 </section>
 
-<!-- ── DISCORD COMMUNITY ── -->
-<section id="discord-join">
+<section id="community">
   <div class="inner reveal">
-    <i class="fab fa-discord" style="font-size: 4rem; color: #5865F2; margin-bottom: 20px;"></i>
-    <h2 class="section-title">Join Our Discord Community</h2>
-    <p class="section-desc">Get real-time alerts, live voice trading rooms, and direct access to Admin Rashik and the elite community.</p>
-    <a href="https://discord.com/invite/RashikTrades" target="_blank" class="btn-cyber btn-filled" style="background: #5865F2; border-color: #5865F2; box-shadow: 4px 4px 0px rgba(88, 101, 242, 0.3);">Join Now <i class="fas fa-arrow-right"></i></a>
+    <div class="section-label">Join The Network</div>
+    <h2 class="section-title">Connect with Elite Traders</h2>
+  </div>
+  
+  <div class="comm-marquee-wrap reveal">
+    <div class="comm-track track-left" id="commTrack1">
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
+      <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
+      <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
+      <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
+      <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
+      <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
+      <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
+    </div>
+
+    <div class="comm-track track-right" id="commTrack2">
+      <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
+      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
+      <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
+      <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
+      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
+      <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
+    </div>
   </div>
 </section>
 
-<!-- ── MASTERCLASS (All 10 Items Added) ── -->
 <section id="masterclass">
   <div class="inner">
     <div class="section-label reveal">Masterclass Series</div>
@@ -804,14 +810,13 @@
         </div>
       </div>
 
-      <!-- New Videos Added Here -->
       <div class="mc-card" onclick="window.open('https://youtu.be/w7n4nix0SQU', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/w7n4nix0SQU/maxresdefault.jpg" alt="Part 8">
           <div class="ind-number-mc">PART 8</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">True vs Fake CISD</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Indicator Access Guide</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn to accurately identify true changes in state of delivery vs fakeouts.</p>
         </div>
       </div>
@@ -841,43 +846,6 @@
   </div>
 </section>
 
-<!-- ── SOCIAL MARQUEE (COMMUNITY) ── -->
-<section id="community">
-  <div class="inner reveal">
-    <div class="section-label">Join The Network</div>
-    <h2 class="section-title">Connect with Elite Traders</h2>
-  </div>
-  
-  <div class="comm-marquee-wrap reveal">
-    <div class="comm-track track-left" id="commTrack1">
-      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
-      <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
-      <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
-      <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
-      
-      <!-- Duplicate -->
-      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
-      <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
-      <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
-      <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
-    </div>
-
-    <div class="comm-track track-right" id="commTrack2">
-      <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
-      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
-      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
-      <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
-      
-      <!-- Duplicate -->
-      <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
-      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
-      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
-      <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
-    </div>
-  </div>
-</section>
-
-<!-- ── RISK CALCULATOR ── -->
 <section id="riskCalc">
   <div class="inner">
     <div class="section-label reveal">Free Tool</div>
@@ -975,12 +943,11 @@
   </div>
 </section>
 
-<!-- ── BIG TEXT PRE-FOOTER, WATERMARK & DISCLAIMER ── -->
 <div class="pre-footer-text">
   <div class="pre-footer-title reveal">
     Your mind is built for precision and execution,<br><span>not for chasing every setup.</span>
   </div>
-  <a href="#pricing" class="btn-cyber btn-filled hover-scale" style="margin-top: 40px; box-shadow: 6px 6px 0px rgba(0,0,0,0.15);">Start for free <i class="fas fa-arrow-right"></i></a>
+  <a href="#pricing" class="btn-cyber btn-filled hover-scale" style="margin-top: 40px; box-shadow: var(--shadow-sm);">Start for free <i class="fas fa-arrow-right"></i></a>
   
   <div class="big-watermark reveal">RASHIKTRADES</div>
 </div>
@@ -989,7 +956,6 @@
   <strong>HIGH RISK WARNING:</strong> Trading foreign exchange, cryptocurrencies, indices, and other margin-based assets carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite. There is a possibility that you could sustain a loss of some or all of your initial investment. Past performance is not indicative of future results. The RTC Indicator Suite and all content provided by Rashik Trades is strictly for educational purposes and should not be construed as financial advice.
 </div>
 
-<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-grid">
     <div>
@@ -1011,8 +977,8 @@
     <div>
       <h4 style="font-weight: 800; margin-bottom: 20px;">Support</h4>
       <a href="https://discord.com/invite/RashikTrades" target="_blank"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Contact via Discord</p></a>
-      <a href="#policies"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Refund Policy</p></a>
-      <a href="#"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Privacy Policy</p></a>
+      <p onclick="openModal('refund')" style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Refund Policy</p>
+      <p onclick="openModal('privacy')" style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Privacy Policy</p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1020,6 +986,14 @@
     <div>© 2026 RashikTrades</div>
   </div>
 </footer>
+
+<div class="modal-overlay" id="policyModal">
+  <div class="modal-content">
+    <div class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></div>
+    <h2 class="modal-title" id="modalTitle">Policy</h2>
+    <div class="modal-body" id="modalBody">Loading...</div>
+  </div>
+</div>
 
 <script>
 window.addEventListener('load', () => { setTimeout(() => { document.body.classList.add('loaded'); }, 500); });
@@ -1039,28 +1013,27 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 // ── TAG CLOUD ──
 const tags1 = ['IFVG', 'CISD', 'True Opens', 'CRT', 'FVG', 'Fractal Model', 'Continuous CISD', 'TTFM', 'Protraction', 'HTF Candles'];
 const tags2 = ['PO3', 'TTFM', 'AMD', 'CISD', 'True Opens', 'C2 Closure Alert', 'Sweeps', 'IFVG', 'CRT', 'Protraction'];
-document.getElementById('tagTrack1').innerHTML = [...tags1, ...tags1, ...tags1].map(t=>`<div class="feature-tag">${t}</div>`).join('');
-document.getElementById('tagTrack2').innerHTML = [...tags2, ...tags2, ...tags2].map(t=>`<div class="feature-tag">${t}</div>`).join('');
+document.getElementById('tagTrack1').innerHTML = [...tags1, ...tags1, ...tags1, ...tags1].map(t=>`<div class="feature-tag">${t}</div>`).join('');
+document.getElementById('tagTrack2').innerHTML = [...tags2, ...tags2, ...tags2, ...tags2].map(t=>`<div class="feature-tag">${t}</div>`).join('');
 
-// ── HIGH-CONVERTING & REALISTIC REVIEWS ──
+// ── HERO REVIEWS ──
 const heroRevLeft = [
   {t: "Always bringing the highest quality to indicators", a: "Lethality"},
   {t: "If you trade GxT style trading it is a must have indicator!", a: "Chris"},
   {t: "This might be the best indicator I've ever used.", a: "Wolf"},
-  {t: "The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone.", a: "Marcus K."},
-  {t: "SMT Pro+ is an absolute weapon. Automatic and clean. Divergence alerts alone saved me from two bad trades.", a: "Sophie L."},
-  {t: "Rashik's community is genuinely one of the best trading spaces on the internet.", a: "Amir T."}
+  {t: "The Reversal Pro+ has completely changed how I read the market.", a: "Marcus K."},
+  {t: "SMT Pro+ is an absolute weapon. Divergence alerts saved me.", a: "Sophie L."},
+  {t: "Rashik's community is genuinely one of the best spaces online.", a: "Amir T."}
 ];
 const heroRevRight = [
   {t: "Well I have to say that this indicator is built different", a: "Rvlsy"},
   {t: "PO3 is the best out there by far... chef's kiss", a: "Boyd"},
-  {t: "Passed my $100k prop firm challenge using the SMT divergence filter alone. Setups are clean.", a: "Liam D."},
-  {t: "POI Pro+ maps entries I would have missed completely. Automation is insane.", a: "Jamie R."},
-  {t: "I've tried 12 indicator suites. Nothing comes close. PO3 alone is worth 10x.", a: "Daniel W."},
-  {t: "The Session Pro+ saves me 2 hours a day mapping killzones. The accuracy is frightening.", a: "Emma R."}
+  {t: "Passed my $100k prop firm challenge using the SMT filter alone.", a: "Liam D."},
+  {t: "POI Pro+ maps entries I would have missed completely.", a: "Jamie R."},
+  {t: "I've tried 12 indicator suites. Nothing comes close.", a: "Daniel W."},
+  {t: "The Session Pro+ saves me 2 hours a day mapping killzones.", a: "Emma R."}
 ];
 
-// Populate Hero Reviews
 const buildHeroRev = (arr) => arr.map(r => `<div class="float-card"><i class="fas fa-quote-left"></i><div class="float-text">"${r.t}"</div><div class="float-author">~ ${r.a}</div></div>`).join('');
 document.getElementById('heroTrackLeft').innerHTML = buildHeroRev([...heroRevLeft, ...heroRevLeft, ...heroRevLeft]);
 document.getElementById('heroTrackRight').innerHTML = buildHeroRev([...heroRevRight, ...heroRevRight, ...heroRevRight]);
@@ -1075,6 +1048,54 @@ function copyText(btn,text){
 }
 
 function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+
+// ── DYNAMIC COUNTER (EVERY TIME IN VIEW) ──
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const target = entry.target;
+    const endValue = parseInt(target.getAttribute('data-target'));
+    const suffix = target.getAttribute('data-suffix') !== null ? target.getAttribute('data-suffix') : '';
+    
+    if (entry.isIntersecting) {
+      if (target.dataset.animating === 'true') return;
+      target.dataset.animating = 'true';
+      const duration = 2000, stepTime = 16;
+      let currentValue = 0;
+      const updateCounter = setInterval(() => {
+        currentValue += (endValue / (duration / stepTime));
+        if (currentValue >= endValue) {
+          target.innerText = endValue.toLocaleString() + suffix;
+          clearInterval(updateCounter);
+          target.dataset.animating = 'false';
+        } else {
+          target.innerText = Math.floor(currentValue).toLocaleString() + suffix;
+        }
+      }, stepTime);
+    } else {
+      target.innerText = '0' + suffix;
+      target.dataset.animating = 'false';
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.dynamic-counter').forEach(c => counterObserver.observe(c));
+
+// ── MODAL LOGIC ──
+function openModal(type) {
+  const title = document.getElementById('modalTitle');
+  const body = document.getElementById('modalBody');
+  if(type === 'refund') {
+    title.innerText = 'Refund Policy';
+    body.innerHTML = '<p><strong>100% Digital Access - All Sales Final.</strong><br><br>Due to the digital nature of the RTC Indicator Suite, once access is granted, we cannot offer refunds, exchanges, or cancellations under any circumstances.</p>';
+  } else if(type === 'privacy') {
+    title.innerText = 'Privacy Policy';
+    body.innerHTML = '<p>Your privacy is important to us. RTC Indicator Suite strictly protects your data. We do not sell your personal information to third parties. Payments are processed securely via encrypted platforms.</p>';
+  }
+  document.getElementById('policyModal').classList.add('active');
+}
+function closeModal() { document.getElementById('policyModal').classList.remove('active'); }
+document.getElementById('policyModal').addEventListener('click', (e) => {
+  if(e.target === document.getElementById('policyModal')) closeModal();
+});
 
 // ── ULTIMATE RISK CALCULATOR LOGIC ──
 const assets = {
