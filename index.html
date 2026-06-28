@@ -272,6 +272,74 @@
   .testi-text { font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:20px; font-style:italic; font-weight: 400;}
   .testi-author { font-weight:700; font-size:0.85rem; color:var(--text-dark); }
 
+  /* ── DISCORD JOIN SECTION (UPDATED TO WHITE THEME) ── */
+  #discord-join { padding: 80px 5%; background: #ffffff; border-top: 1px solid var(--border); text-align: center; }
+  .discord-wrapper {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 60px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--text-dark);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .discord-wrapper:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: rgba(88, 101, 242, 0.2);
+  }
+  .discord-wrapper .fa-discord { 
+    font-size: 5rem; 
+    margin-bottom: 20px; 
+    color: #5865F2; /* Discord Color */
+  }
+  .discord-wrapper h2 { 
+    font-family: 'Outfit', sans-serif; 
+    font-size: clamp(2rem, 4vw, 3rem); 
+    font-weight: 900; 
+    margin-bottom: 16px; 
+    letter-spacing: -0.02em;
+  }
+  .discord-wrapper p { 
+    font-size: 1.1rem; 
+    color: var(--text-muted); 
+    margin-bottom: 32px; 
+    font-weight: 500;
+  }
+  .discord-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #5865F2; /* Discord Color */
+    color: #ffffff;
+    padding: 16px 40px;
+    border-radius: 100px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 20px rgba(88, 101, 242, 0.25);
+  }
+  .discord-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(88, 101, 242, 0.4);
+    background: #4752C4; /* Darker Discord Color on hover */
+    color: #ffffff;
+  }
+  .discord-btn i.fa-arrow-right {
+    font-size: 1rem;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+  }
+  .discord-btn:hover i.fa-arrow-right {
+    transform: translateX(4px);
+  }
+
   /* ── SOCIAL MARQUEE (COMMUNITY) ── */
   #community { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; width: 100vw; max-width: 100%;}
   #community .inner { padding: 0 5%; margin-bottom: 30px; text-align: center; }
@@ -414,6 +482,7 @@
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center;}
     .crypto-item { flex-direction: column; gap: 16px; align-items: flex-start; }
     .copy-btn { width: 100%; text-align: center; }
+    .discord-wrapper { padding: 40px 20px; }
   }
 </style>
 </head>
@@ -421,7 +490,6 @@
 
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ── NAVBAR ── -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
     <span class="logo-black">Rashik</span><span class="logo-orange">Trades</span>
@@ -437,7 +505,6 @@
   <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </nav>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#architecture" onclick="toggleMenu()">Features</a>
   <a href="#indicators" onclick="toggleMenu()">Indicators</a>
@@ -446,9 +513,7 @@
   <a href="#riskCalc" onclick="toggleMenu()">Calculator</a>
 </div>
 
-<!-- ── HERO SECTION ── -->
 <section id="hero">
-  <!-- Rounded/Angled Reviews -->
   <div class="hero-reviews-wrapper">
     <div class="side-reviews left">
       <div class="review-track" id="heroTrackLeft"></div>
@@ -463,7 +528,6 @@
       <span style="color: var(--whop-orange); font-size: 1.1rem;">★★★★★</span> 4.9 / 5 <span style="margin: 0 4px; color: rgba(0,0,0,0.1);">|</span> Trusted by Traders
     </div>
     
-    <!-- Forced 2 Lines -->
     <h1 class="hero-title reveal">
       <span>Execute Every Trade</span>
       <span><span class="light">with</span> Confidence</span>
@@ -484,7 +548,6 @@
   </div>
 </section>
 
-<!-- ── TAG CLOUD ── -->
 <div class="tag-cloud-section">
   <div class="inner" style="text-align: center;">
     <div class="section-label reveal"><i class="fas fa-layer-group"></i> Features</div>
@@ -498,7 +561,6 @@
   </div>
 </div>
 
-<!-- ── ADVANCED TRADING AUTOMATION ── -->
 <section id="architecture">
   <div class="inner">
     <div class="section-label reveal">Architecture</div>
@@ -529,7 +591,6 @@
   </div>
 </section>
 
-<!-- ── MAIN INDICATORS ── -->
 <section id="indicators">
   <div class="inner">
     <div class="section-label reveal">The Arsenal</div>
@@ -570,7 +631,6 @@
   </div>
 </section>
 
-<!-- ── PRICING ── -->
 <div class="pricing-wrapper" id="pricing">
   <section>
     <div class="inner">
@@ -583,7 +643,6 @@
       </div>
       
       <div class="pricing-grid reveal">
-        <!-- Basic -->
         <div class="price-card">
           <div class="price-tier">Basic <span style="background: var(--text-dark); color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; font-family: 'Inter', sans-serif;">Free</span></div>
           <div class="price-crossed" style="visibility:hidden;">$0</div>
@@ -601,7 +660,6 @@
           <a href="https://whop.com/rtcheroclub/free-indicator-access/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Claim Access</a>
         </div>
 
-        <!-- Starter -->
         <div class="price-card">
           <div class="price-tier">Starter</div>
           <div class="price-crossed" style="visibility:hidden;">$0</div>
@@ -619,7 +677,6 @@
           <a href="https://whop.com/rtcheroclub/rtc-hero-membership-monthly/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Get Started</a>
         </div>
 
-        <!-- Advanced -->
         <div class="price-card">
           <div class="price-tier">Advanced</div>
           <div class="price-crossed">$30</div>
@@ -637,7 +694,6 @@
           <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-3month/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Select Plan</a>
         </div>
 
-        <!-- Pro -->
         <div class="price-card popular">
           <div class="price-tier">Pro <span class="popular-badge">Most Popular</span></div>
           <div class="price-crossed">$60</div>
@@ -656,7 +712,6 @@
           <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-6month/" target="_blank" class="price-btn btn-filled" style="margin-top: auto;">Secure Premium</a>
         </div>
 
-        <!-- Elite -->
         <div class="price-card">
           <div class="price-tier">Elite</div>
           <div class="price-crossed">$120</div>
@@ -680,7 +735,6 @@
   </section>
 </div>
 
-<!-- ── CENTRALIZED CRYPTO PAYMENT ── -->
 <section id="payment">
   <div class="inner">
     <div class="section-label reveal">Alternative Payments</div>
@@ -731,7 +785,6 @@
   </div>
 </section>
 
-<!-- ── TESTIMONIALS (MARQUEE 3 LINES) ── -->
 <section id="testimonials">
   <div class="inner reveal">
     <div class="section-label">Social Proof</div>
@@ -745,7 +798,19 @@
   </div>
 </section>
 
-<!-- ── SOCIAL MARQUEE (COMMUNITY) ── -->
+<section id="discord-join">
+  <div class="inner reveal">
+    <div class="discord-wrapper">
+      <i class="fab fa-discord"></i>
+      <h2>Join our server get more discount</h2>
+      <p>Connect directly with Admin Rashik, access live voice trading rooms, and get exclusive community-only deals.</p>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="discord-btn">
+        Join Discord Now <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section id="community">
   <div class="inner reveal">
     <div class="section-label">Join The Network</div>
@@ -758,7 +823,6 @@
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
       <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
-      <!-- Duplicate -->
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
@@ -770,7 +834,6 @@
       <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
       <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
-      <!-- Duplicate -->
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
@@ -779,7 +842,6 @@
   </div>
 </section>
 
-<!-- ── MASTERCLASS ── -->
 <section id="masterclass">
   <div class="inner">
     <div class="section-label reveal">Masterclass Series</div>
@@ -900,7 +962,6 @@
   </div>
 </section>
 
-<!-- ── RISK CALCULATOR ── -->
 <section id="riskCalc">
   <div class="inner">
     <div class="section-label reveal">Free Tool</div>
@@ -998,7 +1059,6 @@
   </div>
 </section>
 
-<!-- ── BIG TEXT PRE-FOOTER, WATERMARK & DISCLAIMER ── -->
 <div class="pre-footer-text">
   <div class="pre-footer-title reveal">
     Your mind is built for precision and execution,<br><span>not for chasing every setup.</span>
@@ -1012,7 +1072,6 @@
   <strong>HIGH RISK WARNING:</strong> Trading foreign exchange, cryptocurrencies, indices, and other margin-based assets carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite. There is a possibility that you could sustain a loss of some or all of your initial investment. Past performance is not indicative of future results. The RTC Indicator Suite and all content provided by Rashik Trades is strictly for educational purposes and should not be construed as financial advice.
 </div>
 
-<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-grid">
     <div>
@@ -1044,7 +1103,6 @@
   </div>
 </footer>
 
-<!-- ── POLICY MODAL ── -->
 <div class="modal-overlay" id="policyModal">
   <div class="modal-content">
     <div class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></div>
