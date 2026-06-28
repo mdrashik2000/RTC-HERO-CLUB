@@ -272,7 +272,7 @@
   .testi-text { font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:20px; font-style:italic; font-weight: 400;}
   .testi-author { font-weight:700; font-size:0.85rem; color:var(--text-dark); }
 
-  /* ── DISCORD JOIN SECTION (UPDATED TO WHITE THEME) ── */
+  /* ── DISCORD JOIN SECTION ── */
   #discord-join { padding: 80px 5%; background: #ffffff; border-top: 1px solid var(--border); text-align: center; }
   .discord-wrapper {
     background: #ffffff;
@@ -368,8 +368,20 @@
   .mc-body { padding: 24px; flex: 1; display: flex; flex-direction: column;}
   .ind-number-mc { position: absolute; top: 16px; left: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; color: #fff; background: rgba(17,17,17,0.8); backdrop-filter: blur(8px); padding: 6px 16px; border-radius: 100px; z-index: 2;}
 
+  /* ── FAQ SECTION ── */
+  #faq { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 80px 5%; }
+  .faq-list { display: flex; flex-direction: column; gap: 16px; max-width: 800px; margin: 0 auto; text-align: left; }
+  .faq-item { background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.3s; box-shadow: var(--shadow-sm); }
+  .faq-item:hover { border-color: rgba(255, 90, 0, 0.3); box-shadow: var(--shadow-md);}
+  .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text-dark); transition: color 0.2s; gap: 16px; }
+  .faq-q:hover { color: var(--whop-orange); }
+  .faq-icon { width: 32px; height: 32px; background: #fff; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--text-dark); flex-shrink: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-sm); }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--whop-orange); color: #fff; border-color: var(--whop-orange); }
+  .faq-a { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 24px; }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 24px; }
+
   /* ── RISK CALCULATOR ── */
-  #riskCalc { background: var(--bg-sec); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
+  #riskCalc { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
   .calc-wrapper { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 48px; box-shadow: var(--shadow-md); text-align: left; max-width: 1000px; margin: 0 auto; transition: box-shadow 0.3s;}
   .calc-wrapper:hover { box-shadow: var(--shadow-lg); }
   
@@ -381,7 +393,9 @@
   .calc-form { display: flex; flex-direction: column; gap: 24px;}
   .form-group { display: flex; flex-direction: column; gap: 10px; }
   .form-label { font-size: 0.8rem; font-weight: 700; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
-  .form-input { width: 100%; padding: 16px 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; background: var(--bg-sec); color: var(--text-dark); outline: none; transition: all 0.3s; }
+  
+  /* MIN 16px to prevent iOS Safari Zoom Bug */
+  .form-input { width: 100%; padding: 16px 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; background: var(--bg-sec); color: var(--text-dark); outline: none; transition: all 0.3s; }
   .form-input:focus { border-color: var(--whop-orange); background: #fff; box-shadow: 0 0 0 4px rgba(255,90,0,0.1);}
   
   .calc-pair-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px; }
@@ -412,8 +426,8 @@
     font-size: 11vw; 
     font-weight: 900; 
     font-style: italic; 
-    color: #555555; 
-    opacity: 0.40; 
+    color: #000000; 
+    opacity: 0.03; 
     text-align: center; 
     line-height: 1; 
     margin-top: 40px; 
@@ -499,6 +513,7 @@
     <li><a href="#indicators">Indicators</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#masterclass">Masterclass</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#riskCalc">Calculator</a></li>
   </ul>
   <a href="#pricing" class="nav-cta">Start for free <i class="fas fa-arrow-right"></i></a>
@@ -510,6 +525,7 @@
   <a href="#indicators" onclick="toggleMenu()">Indicators</a>
   <a href="#pricing" onclick="toggleMenu()">Pricing</a>
   <a href="#masterclass" onclick="toggleMenu()">Masterclass</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="#riskCalc" onclick="toggleMenu()">Calculator</a>
 </div>
 
@@ -842,6 +858,41 @@
   </div>
 </section>
 
+<section id="faq">
+  <div class="inner">
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="section-title reveal">Common Questions</h2>
+    <p class="section-desc reveal">Everything you need to know before joining the RTC community.</p>
+    
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I trade any market with these indicators?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>Absolutely. The RTC Indicator Suite is universally designed to work flawlessly across <strong>ALL</strong> markets and asset classes. Whether you trade global equities, forex pairs, crypto assets, or futures/indices, our algorithms adapt to any price action and time frame seamlessly.<br><br></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What platform does the RTC Indicator Suite work on?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>The RTC Indicator Suite is built for TradingView. You'll need a TradingView account (free or paid) to access and use the indicators. Once your membership is verified, you'll receive an invite link to add the tools directly to your charts.<br><br></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I get access after payment?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>After payment via Whop, access is granted automatically within minutes. For crypto or bank transfers, join our Discord and message Admin Rashik with your proof of payment. Access is typically verified within a few hours.<br><br></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is there a refund policy?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>Due to the digital nature of the RTC Indicator Suite, all sales are final once access is granted. We cannot offer refunds, exchanges, or cancellations under any circumstances.<br><br></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need to know ICT concepts to use the suite?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>Some familiarity with ICT concepts like FVGs, CISD, and order blocks will help. However, our 10-part masterclass series on YouTube covers everything you need to configure and use the indicators from scratch.<br><br></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my payment information secure?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>Absolutely. Whop payments are processed via Stripe and are fully encrypted. For crypto payments, we use standard verification procedures to ensure safety.<br><br></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="masterclass">
   <div class="inner">
     <div class="section-label reveal">Masterclass Series</div>
@@ -1129,10 +1180,10 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 // ── TAG CLOUD ──
 const tags1 = ['IFVG', 'CISD', 'True Opens', 'CRT', 'FVG', 'Fractal Model', 'Continuous CISD', 'TTFM', 'Protraction', 'HTF Candles', 'GxT', 'Quarterly', 'QT', 'Expansion Model', 'Order Block'];
 const tags2 = ['PO3', 'TTFM', 'AMD', 'CISD', 'True Opens', 'C2 Closure Alert', 'Sweeps', 'IFVG', 'CRT', 'Protraction', '7H Candle', 'Swing Point', 'Inner Circle Trader', 'ICT'];
-document.getElementById('tagTrack1').innerHTML = [...tags1, ...tags1, ...tags1].map(t=>`<div class="feature-tag">${t}</div>`).join('');
-document.getElementById('tagTrack2').innerHTML = [...tags2, ...tags2, ...tags2].map(t=>`<div class="feature-tag">${t}</div>`).join('');
+document.getElementById('tagTrack1').innerHTML = [...tags1, ...tags1, ...tags1, ...tags1].map(t=>`<div class="feature-tag">${t}</div>`).join('');
+document.getElementById('tagTrack2').innerHTML = [...tags2, ...tags2, ...tags2, ...tags2].map(t=>`<div class="feature-tag">${t}</div>`).join('');
 
-// ── HIGH-CONVERTING HERO REVIEWS WITH NORMAL NAMES ──
+// ── HERO REVIEWS ──
 const heroRevLeft = [
   {t: "Hands down the best TTFM indicator in the trading industry right now. Spot on!", a: "Alex"},
   {t: "Your TTFM indicator is very affordable, thanks Rashik! Paid itself back in one session.", a: "Rahul"},
@@ -1163,6 +1214,13 @@ function copyText(btn,text){
 
 function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
 
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
 // ── MAIN TESTIMONIALS (Marquee 3 Lines) ──
 const mainRev1 = [
   {pnl: "+$4,200 this week", t: "The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade.", a: "Marcus K."},
@@ -1188,7 +1246,8 @@ document.getElementById('testiTrack1').innerHTML = buildTesti([...mainRev1, ...m
 document.getElementById('testiTrack2').innerHTML = buildTesti([...mainRev2, ...mainRev2]);
 document.getElementById('testiTrack3').innerHTML = buildTesti([...mainRev3, ...mainRev3]);
 
-// ── DYNAMIC COUNTER ──
+
+// ── DYNAMIC COUNTER (EVERY TIME IN VIEW) ──
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     const target = entry.target;
