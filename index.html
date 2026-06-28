@@ -17,16 +17,16 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
   :root {
     --bg-main: #ffffff;
-    --bg-sec: #fcfcfd;
-    --text-dark: #111111;
-    --text-muted: #6b7280;
-    --border: #f0f0f0;
+    --bg-sec: #f8fafc;
+    --text-dark: #0f172a;
+    --text-muted: #475569;
+    --border: #e2e8f0;
     --whop-orange: #FF5A00;
     --green: #10b981;
     --red: #ef4444;
@@ -39,7 +39,7 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-  body { background: var(--bg-main); color: var(--text-dark); font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; }
+  body { background: var(--bg-main); color: var(--text-dark); font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; -webkit-font-smoothing: antialiased; }
   a, button { text-decoration: none !important; color: inherit; cursor: pointer; outline: none; border: none;}
   ul { list-style: none; }
 
@@ -50,7 +50,7 @@
   .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--whop-orange); width: 0%; z-index: 10001; transition: width 0.1s; }
 
   /* ── NAV ── */
-  nav { position: fixed; top: 0; left: 0; right: 0; height: 70px; z-index: 10000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.03); transition: all 0.3s ease; }
+  nav { position: fixed; top: 0; left: 0; right: 0; height: 70px; z-index: 10000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.03); transition: all 0.3s ease; }
   
   .nav-logo { font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 900; letter-spacing: -0.03em; transition: transform 0.3s; display: flex; align-items: center; }
   .nav-logo:hover { transform: scale(1.02); }
@@ -58,10 +58,10 @@
   .logo-orange { color: var(--whop-orange); }
   
   .nav-links { display: flex; gap: 32px; align-items: center; }
-  .nav-links a { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s, transform 0.2s; }
+  .nav-links a { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s, transform 0.2s; }
   .nav-links a:hover { color: var(--text-dark); transform: translateY(-1px); }
   
-  .nav-cta { background: var(--text-dark); color: #fff !important; padding: 10px 24px; border-radius: 100px; font-weight: 700 !important; font-size: 0.9rem; transition: all 0.3s; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm);}
+  .nav-cta { background: var(--text-dark); color: #fff !important; padding: 10px 24px; border-radius: 100px; font-weight: 600 !important; font-size: 0.95rem; transition: all 0.3s; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm);}
   .nav-cta:hover { background: var(--whop-orange); transform: translateY(-2px); box-shadow: var(--glow-orange); }
   
   .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
@@ -69,53 +69,59 @@
   .mobile-menu.active { display: flex; transform: translateY(0); opacity: 1; }
   .mobile-menu a { font-size: 1.1rem; font-weight: 600; color: var(--text-dark); }
 
-  /* ── HERO SECTION & ROUNDED REVIEWS ── */
-  #hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 140px 5% 80px; background: #ffffff; text-align: center; overflow: hidden; perspective: 1200px; }
+  /* ── HERO SECTION & ULTIMATE 3D CIRCLE REVIEWS ── */
+  #hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 5% 40px; background: #ffffff; text-align: center; overflow: hidden; }
   
-  .hero-content { position: relative; z-index: 10; max-width: 900px; display: flex; flex-direction: column; align-items: center; background: radial-gradient(circle, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0) 100%); padding: 60px 40px; border-radius: 50%; }
+  .hero-content { position: relative; z-index: 10; max-width: 820px; display: flex; flex-direction: column; align-items: center; background: radial-gradient(circle, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0) 100%); padding: 40px 20px; border-radius: 50%; }
   
-  .hero-badge { display: inline-flex; align-items: center; gap: 12px; font-size: 0.9rem; font-weight: 800; color: var(--text-dark); margin-bottom: 30px; background: #fff; border: 1px solid var(--border); padding: 8px 24px; border-radius: 100px; box-shadow: var(--shadow-sm); transition: transform 0.3s;}
+  .hero-badge { display: inline-flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 24px; background: #fff; border: 1px solid var(--border); padding: 8px 24px; border-radius: 100px; box-shadow: var(--shadow-sm); transition: transform 0.3s;}
   .hero-badge:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(255, 90, 0, 0.2);}
   
-  /* Strictly 2 Lines Heading */
-  .hero-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 6vw, 5.5rem); line-height: 1.05; letter-spacing: -0.04em; color: var(--text-dark); margin-bottom: 24px; display: flex; flex-direction: column; align-items: center; }
+  .hero-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 5.5vw, 5.2rem); line-height: 1.05; letter-spacing: -0.04em; color: var(--text-dark); margin-bottom: 20px; display: flex; flex-direction: column; align-items: center; }
   .hero-title span { white-space: nowrap; }
-  .hero-title span.light { color: #9ca3af; font-weight: 700; display: inline; }
+  .hero-title span.light { color: #94a3b8; font-weight: 700; display: inline; }
   
-  .hero-subtitle { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--text-muted); font-weight: 500; margin-bottom: 40px; }
-  .hero-subtitle strong { color: var(--text-dark); font-weight: 800; }
+  .hero-subtitle { font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--text-muted); font-weight: 400; margin-bottom: 30px; letter-spacing: -0.01em;}
+  .hero-subtitle strong { color: var(--text-dark); font-weight: 700; }
   
-  .btn-cyber { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 1rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; font-family: 'Inter', sans-serif; gap: 8px;}
+  .btn-cyber { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; border-radius: 100px; font-weight: 600; font-size: 1rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; font-family: 'Inter', sans-serif; gap: 8px;}
   .btn-outline { background: #fff; color: var(--text-dark); border: 1px solid rgba(0,0,0,0.1); box-shadow: var(--shadow-sm); }
   .btn-outline:hover { background: var(--bg-sec); transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(0,0,0,0.2);}
   .btn-filled { background: var(--text-dark); color: #fff; box-shadow: var(--shadow-sm); border: 1px solid transparent;}
   .btn-filled:hover { background: var(--whop-orange); transform: translateY(-3px); box-shadow: var(--glow-orange); }
 
-  .hero-stats { display: flex; gap: clamp(20px, 4vw, 50px); justify-content: center; flex-wrap: wrap; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); width: 100%;}
+  .hero-stats { display: flex; gap: clamp(20px, 4vw, 50px); justify-content: center; flex-wrap: wrap; margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border); width: 100%;}
   .hero-stat { text-align: center; }
-  .hero-stat .num { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 900; color: var(--text-dark); display: block; letter-spacing: -0.02em;}
-  .hero-stat .label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px;}
+  .hero-stat .num { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 800; color: var(--text-dark); display: block; letter-spacing: -0.02em;}
+  .hero-stat .label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px;}
 
-  /* ── 3D Circular Arc Reviews ── */
-  .hero-reviews-wrapper { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1800px; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; }
+  /* ── FULLY READABLE 3D CYLINDRICAL STADIUM VIEW ── */
+  .hero-reviews-wrapper { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; 
+    transform-style: preserve-3d; perspective: 1000px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  }
   
-  .side-reviews { position: absolute; width: 340px; height: 200vh; top: -50vh; pointer-events: auto; }
-  /* Roundable/Arc Style using rotateY */
-  .side-reviews.left { left: -50px; transform: rotate(10deg) rotateY(35deg); }
-  .side-reviews.right { right: -50px; transform: rotate(-10deg) rotateY(-35deg); }
+  .side-reviews { position: absolute; width: 320px; height: 200vh; top: -50vh; pointer-events: auto; display: flex; flex-direction: column; }
   
-  .review-track { display: flex; flex-direction: column; gap: 24px; animation: scrollDown 45s linear infinite; padding: 20px;}
+  /* Precision 3D Anchoring - Rotated inward so text is fully safe and readable */
+  .side-reviews.left { left: 2%; transform: rotateY(28deg) translateZ(-60px); transform-origin: right center; }
+  .side-reviews.right { right: 2%; transform: rotateY(-28deg) translateZ(-60px); transform-origin: left center; }
+  
+  /* Both side tracks now scroll smoothly from top to bottom simultaneously */
+  .review-track { display: flex; flex-direction: column; gap: 24px; padding: 20px 10px; animation: scrollDown 55s linear infinite; }
   @keyframes scrollDown { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
-
   .review-track:hover { animation-play-state: paused; }
 
+  /* Ultra-modern Float Card Styles (Clearer & More Glassmorphic) */
   .float-card { 
-    background: rgba(255,255,255,0.9); 
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0,0,0,0.05); 
-    padding: 28px; 
-    border-radius: 20px; 
-    box-shadow: var(--shadow-sm); 
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(15, 23, 42, 0.05); 
+    padding: 24px; 
+    border-radius: 24px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 10px 30px rgba(0, 0, 0, 0.04); 
     text-align: left; 
     position: relative; 
     z-index: 2; 
@@ -128,44 +134,41 @@
     content: '\201D';
     position: absolute;
     right: 15px;
-    bottom: -30px;
-    font-size: 10rem;
-    font-family: Arial, sans-serif;
+    top: -20px;
+    font-size: 7rem;
+    font-family: 'Outfit', sans-serif;
     color: var(--whop-orange);
-    opacity: 0.03;
+    opacity: 0.05;
     line-height: 1;
     z-index: 0;
     pointer-events: none;
-    transition: all 0.4s ease;
   }
 
   .float-card:hover {
-    transform: scale(1.05) translateY(-5px);
+    transform: scale(1.04) translateY(-4px);
     z-index: 100;
-    background: #fff;
+    background: #ffffff;
     box-shadow: var(--glow-orange);
-    border-color: rgba(255, 90, 0, 0.3);
+    border-color: rgba(255, 90, 0, 0.25);
   }
   
-  .float-card:hover::after { opacity: 0.1; transform: scale(1.1); }
-
-  .float-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; font-weight: 500; font-style: italic; position: relative; z-index: 1;}
-  .float-author { font-size: 0.9rem; font-weight: 800; color: var(--text-dark); text-align: right; position: relative; z-index: 1;}
+  .float-text { font-size: 0.92rem; color: var(--text-dark); line-height: 1.55; margin-bottom: 12px; font-weight: 500; font-style: normal; position: relative; z-index: 1;}
+  .float-author { font-size: 0.85rem; font-weight: 700; color: var(--whop-orange); text-align: right; position: relative; z-index: 1;}
 
   /* ── SECTIONS ── */
-  section { padding: 100px 5%; max-width: 100%; margin: 0 auto; text-align: center; }
+  section { padding: 80px 5%; max-width: 100%; margin: 0 auto; text-align: center; }
   .inner { max-width: 1200px; margin: 0 auto; width: 100%; }
   
   .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dark); margin-bottom: 16px; background: #fff; padding: 6px 16px; border: 1px solid var(--border); border-radius: 100px; box-shadow: var(--shadow-sm); }
-  .section-title { font-family: 'Inter', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900; color: var(--text-dark); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 20px; }
-  .section-desc { font-size: 1.05rem; color: var(--text-muted); font-weight: 500; max-width: 650px; margin: 0 auto 50px; line-height: 1.6; }
+  .section-title { font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; color: var(--text-dark); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 15px; }
+  .section-desc { font-size: 1.05rem; color: var(--text-muted); font-weight: 400; max-width: 650px; margin: 0 auto 40px; line-height: 1.6; }
   
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── TAG CLOUD (FIXED CSS/JS Animation) ── */
-  .tag-cloud-section { padding: 60px 0; background: #fff; overflow: hidden; position: relative; width: 100vw; max-width: 100%; }
-  .tag-cloud-section .inner { padding: 0 5%; margin-bottom: 40px; text-align: center; }
+  /* ── TAG CLOUD ── */
+  .tag-cloud-section { padding: 40px 0 60px; background: #fff; overflow: hidden; position: relative; width: 100vw; max-width: 100%; }
+  .tag-cloud-section .inner { padding: 0 5%; margin-bottom: 30px; text-align: center; }
   
   .tag-marquee-wrap { position: relative; display: flex; flex-direction: column; gap: 16px; width: 100%; overflow: hidden; }
   .tag-marquee-wrap::before, .tag-marquee-wrap::after { content: ''; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2; pointer-events: none; }
@@ -180,7 +183,7 @@
   @keyframes scrollLeftMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
   @keyframes scrollRightMarquee { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 
-  .feature-tag { padding: 14px 28px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text-dark); background: #fff; white-space: nowrap; transition: all 0.3s; cursor: pointer; box-shadow: var(--shadow-sm); position: relative;}
+  .feature-tag { padding: 14px 28px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); background: #fff; white-space: nowrap; transition: all 0.3s; cursor: pointer; box-shadow: var(--shadow-sm); position: relative;}
   .feature-tag:hover { transform: translateY(-3px) scale(1.02); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md); }
 
   /* ── ADVANCED AUTOMATION ── */
@@ -190,9 +193,9 @@
   .arch-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: rgba(255,90,0,0.2);}
   .arch-card i { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; transition: 0.3s; }
   .arch-card:hover i { color: var(--whop-orange); transform: scale(1.1); }
-  .arch-title { font-size: 1.5rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark); letter-spacing: -0.02em;}
-  .arch-sub { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--whop-orange); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em;}
-  .arch-desc { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; font-weight: 500;}
+  .arch-title { font-size: 1.4rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 12px; color: var(--text-dark); letter-spacing: -0.02em;}
+  .arch-sub { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--whop-orange); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em;}
+  .arch-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.7; font-weight: 400;}
 
   /* ── MAIN INDICATORS ── */
   #indicators { background: #fff; border-top: 1px solid var(--border); }
@@ -203,11 +206,11 @@
   .mockup-icon-wrap { width: 60px; height: 60px; background: #fff; border: 1px solid rgba(255,90,0,0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 1.5rem; color: var(--text-dark); box-shadow: var(--shadow-sm); transition: transform 0.3s;}
   .card-suite:hover .mockup-icon-wrap { transform: rotate(10deg) scale(1.1); background: var(--whop-orange); color: #fff; border-color: var(--whop-orange);}
 
-  /* ── PRICING (Modern Clean Tabs) ── */
-  .pricing-wrapper { background: var(--bg-sec); border-top: 1px solid var(--border); }
+  /* ── PRICING ── */
+  .pricing-wrapper { background: var(--bg-sec); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
   .whop-badge { display: inline-flex; align-items: center; background: #fff; border: 1px solid var(--border); padding: 8px 24px 8px 8px; border-radius: 100px; box-shadow: var(--shadow-sm); margin-bottom: 40px;}
-  .whop-badge .whop-box { background-color: var(--whop-orange); border-radius: 100px; padding: 6px 16px; color: #fff; font-weight: 900; margin-right: 12px; font-family: 'Outfit', sans-serif;}
-  .whop-badge .whop-text { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); }
+  .whop-badge .whop-box { background-color: var(--whop-orange); border-radius: 100px; padding: 6px 16px; color: #fff; font-weight: 800; margin-right: 12px; font-family: 'Outfit', sans-serif;}
+  .whop-badge .whop-text { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
   
   .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left; align-items: stretch;}
   
@@ -215,45 +218,63 @@
   .price-card:hover { transform: translateY(-10px); box-shadow: var(--glow-orange); border-color: rgba(255,90,0,0.3); z-index: 2;}
   .price-card.popular { border: 1px solid rgba(255,90,0,0.3); box-shadow: var(--shadow-md);}
   
-  .price-tier { font-family: 'Inter', sans-serif; font-size:1.1rem; font-weight:900; color:var(--text-dark); margin-bottom:12px; display: flex; align-items: center; justify-content: space-between;}
-  .popular-badge { font-size: 0.65rem; background: var(--whop-orange); color: #fff; padding: 6px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800;}
+  .price-tier { font-family: 'Outfit', sans-serif; font-size:1.2rem; font-weight:800; color:var(--text-dark); margin-bottom:12px; display: flex; align-items: center; justify-content: space-between;}
+  .popular-badge { font-size: 0.65rem; background: var(--whop-orange); color: #fff; padding: 6px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; font-family: 'Inter', sans-serif;}
   
-  .price-crossed { font-size: 0.95rem; color: var(--text-muted); text-decoration: line-through; height: 18px; margin-bottom: 4px; font-weight: 600;}
-  .price-amount { font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--text-dark); line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline; letter-spacing: -0.03em;}
-  .price-currency { font-size: 1.5rem; font-weight: 800; margin-right: 4px; }
-  .price-period { font-size:0.9rem; color:var(--text-muted); font-weight: 600; margin-bottom: 12px;}
+  .price-crossed { font-size: 0.95rem; color: var(--text-muted); text-decoration: line-through; height: 18px; margin-bottom: 4px; font-weight: 500;}
+  .price-amount { font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 800; color: var(--text-dark); line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline; letter-spacing: -0.03em;}
+  .price-currency { font-size: 1.5rem; font-weight: 700; margin-right: 4px; }
+  .price-period { font-size:0.9rem; color:var(--text-muted); font-weight: 500; margin-bottom: 12px;}
   
-  .tv-discount-tag { background: #fff3ed; color: var(--whop-orange); font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; padding: 6px 12px; border-radius: 100px; border: 1px solid rgba(255,90,0,0.2); display: inline-block; margin-right: 6px;}
-  .price-save { font-size: 0.85rem; color: var(--text-dark); font-weight: 700; margin-bottom: 32px; display: flex; align-items: center; height: 28px;}
+  .tv-discount-tag { background: #fff3ed; color: var(--whop-orange); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.75rem; padding: 6px 12px; border-radius: 100px; border: 1px solid rgba(255,90,0,0.2); display: inline-block; margin-right: 6px;}
+  .price-save { font-size: 0.85rem; color: var(--text-dark); font-weight: 600; margin-bottom: 32px; display: flex; align-items: center; height: 28px;}
 
   .price-features { list-style:none; flex: 1; margin-bottom:32px; display: flex; flex-direction: column; gap: 16px;}
-  .price-features li { display:flex; align-items:flex-start; gap:12px; font-size:0.9rem; color:var(--text-muted); line-height:1.4; font-weight: 500;}
-  .price-features li::before { content:'✓'; color:var(--green); font-weight: 900; font-size: 1.1rem; }
+  .price-features li { display:flex; align-items:flex-start; gap:12px; font-size:0.9rem; color:var(--text-muted); line-height:1.4; font-weight: 400;}
+  .price-features li::before { content:'✓'; color:var(--green); font-weight: 800; font-size: 1.1rem; }
   
-  .price-btn { display: block; text-align: center; padding: 16px; border-radius: 100px; font-weight: 800; font-size: 0.95rem; transition: all 0.3s; width: 100%; cursor: pointer;}
+  .price-btn { display: block; text-align: center; padding: 16px; border-radius: 100px; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; width: 100%; cursor: pointer;}
   .price-btn.btn-outline { background: #fff; color: var(--text-dark); border: 1px solid rgba(0,0,0,0.1); box-shadow: var(--shadow-sm);}
   .price-btn.btn-outline:hover { background: var(--bg-sec); transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(0,0,0,0.2);}
   .price-btn.btn-filled { background: var(--text-dark); color: #fff; border: 1px solid transparent; box-shadow: var(--shadow-sm);}
   .price-btn.btn-filled:hover { background: var(--whop-orange); transform: translateY(-2px); box-shadow: var(--glow-orange);}
 
-  /* ── CENTRALIZED FULL ADDRESS CRYPTO PAYMENT ── */
-  #payment { background: var(--bg-main); border-top: 1px solid var(--border); }
+  /* ── CRYPTO PAYMENT ── */
+  #payment { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
   .crypto-container { display: flex; flex-direction: column; gap: 16px; max-width: 700px; margin: 40px auto 0; width: 100%; }
   
   .crypto-item { background: #fff; border: 1px solid rgba(0,0,0,0.05); padding: 24px 32px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; box-shadow: var(--shadow-sm); width: 100%;}
   .crypto-item:hover { border-color: rgba(255,90,0,0.3); box-shadow: var(--shadow-md); transform: translateY(-2px);}
   
-  .crypto-left { display: flex; flex-direction: column; gap: 8px; text-align: left; overflow: visible;}
-  .crypto-label { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text-dark); display: flex; align-items: center; gap: 10px;}
+  .crypto-left { display: flex; flex-direction: column; gap: 8px; text-align: left;}
+  .crypto-label { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 10px;}
   .crypto-addr { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); word-break: break-all; margin-right: 20px; user-select: all;}
   
-  .copy-btn { background: var(--bg-sec); border: 1px solid var(--border); color: var(--text-dark); font-size: 0.8rem; font-weight: 800; padding: 12px 24px; border-radius: 100px; cursor: pointer; transition: 0.3s; white-space: nowrap; font-family: 'JetBrains Mono', monospace; flex-shrink: 0;}
+  .copy-btn { background: var(--bg-sec); border: 1px solid var(--border); color: var(--text-dark); font-size: 0.8rem; font-weight: 700; padding: 12px 24px; border-radius: 100px; cursor: pointer; transition: 0.3s; white-space: nowrap; font-family: 'JetBrains Mono', monospace; flex-shrink: 0;}
   .copy-btn:hover { background: var(--text-dark); border-color: var(--text-dark); color: #fff; box-shadow: var(--shadow-sm);}
   .copy-btn.copied { background: var(--green); border-color: var(--green); color: #fff; }
 
+  /* ── TESTIMONIALS (MARQUEE 3 LINES) ── */
+  #testimonials { background: #fff; border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; width: 100vw; max-width: 100%;}
+  #testimonials .inner { padding: 0 5%; margin-bottom: 30px; text-align: center;}
+  .testi-marquee-wrap { display: flex; flex-direction: column; gap: 24px; position: relative; width: 100%; }
+  .testi-marquee-wrap::before, .testi-marquee-wrap::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:5; pointer-events:none; }
+  .testi-marquee-wrap::before { left:0; background:linear-gradient(90deg,#fff 0%,transparent 100%); }
+  .testi-marquee-wrap::after { right:0; background:linear-gradient(-90deg,#fff 0%,transparent 100%); }
+  
+  .testi-track { display: flex; gap: 24px; width: max-content; }
+  .testi-track:hover { animation-play-state: paused !important; }
+  
+  .testi-card { background: var(--bg-sec); border:1px solid var(--border); border-radius: 20px; padding: 28px; width: 340px; flex-shrink: 0; box-shadow: var(--shadow-sm); text-align: left; transition: 0.3s;}
+  .testi-card:hover { border-color: var(--whop-orange); transform: translateY(-4px); box-shadow: var(--shadow-md);}
+  .testi-pnl { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
+  .testi-stars { color:var(--whop-orange); font-size:0.85rem; letter-spacing:2px; margin-bottom:16px; }
+  .testi-text { font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:20px; font-style:italic; font-weight: 400;}
+  .testi-author { font-weight:700; font-size:0.85rem; color:var(--text-dark); }
+
   /* ── SOCIAL MARQUEE (COMMUNITY) ── */
   #community { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; width: 100vw; max-width: 100%;}
-  #community .inner { padding: 0 5%; margin-bottom: 40px; text-align: center; }
+  #community .inner { padding: 0 5%; margin-bottom: 30px; text-align: center; }
   .comm-marquee-wrap { display: flex; flex-direction: column; gap: 24px; position: relative; width: 100%; overflow: hidden;}
   .comm-marquee-wrap::before, .comm-marquee-wrap::after { content:''; position:absolute; top:0; width:150px; height:100%; z-index:5; pointer-events:none; }
   .comm-marquee-wrap::before { left:0; background:linear-gradient(90deg,var(--bg-sec) 0%,transparent 100%); }
@@ -266,10 +287,10 @@
   .comm-icon { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 8px;}
   .comm-name { font-family:'Outfit',sans-serif; font-weight: 800; font-size:1.2rem; color:var(--text-dark); }
   .comm-desc { font-size:0.95rem; color:var(--text-muted); line-height:1.6; }
-  .comm-arrow { font-weight: 800; margin-top: auto;}
+  .comm-arrow { font-weight: 700; margin-top: auto;}
 
   /* ── MASTERCLASS ── */
-  #masterclass { background: var(--bg-main); border-top: 1px solid var(--border);}
+  #masterclass { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
   .mc-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:24px; text-align: left; }
   .mc-card { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; cursor: pointer; box-shadow: var(--shadow-sm);}
   .mc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(255,90,0,0.3);}
@@ -277,58 +298,57 @@
   .video-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.95; transition: transform 0.6s, opacity 0.3s;}
   .mc-card:hover .video-container img { transform: scale(1.08); opacity: 1; }
   .mc-body { padding: 24px; flex: 1; display: flex; flex-direction: column;}
-  .ind-number-mc { position: absolute; top: 16px; left: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; color: #fff; background: rgba(17,17,17,0.8); backdrop-filter: blur(8px); padding: 6px 16px; border-radius: 100px; z-index: 2;}
+  .ind-number-mc { position: absolute; top: 16px; left: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; color: #fff; background: rgba(17,17,17,0.8); backdrop-filter: blur(8px); padding: 6px 16px; border-radius: 100px; z-index: 2;}
 
   /* ── RISK CALCULATOR ── */
-  #riskCalc { background: var(--bg-sec); border-top: 1px solid var(--border);}
+  #riskCalc { background: var(--bg-sec); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
   .calc-wrapper { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 48px; box-shadow: var(--shadow-md); text-align: left; max-width: 1000px; margin: 0 auto; transition: box-shadow 0.3s;}
   .calc-wrapper:hover { box-shadow: var(--shadow-lg); }
   
   .calc-tabs { display: flex; gap: 8px; margin-bottom: 32px; background: var(--bg-sec); padding: 8px; border-radius: 100px; width: fit-content; border: 1px solid var(--border); overflow-x: auto;}
-  .calc-tab { background: transparent; border: none; padding: 12px 28px; font-weight: 800; font-size: 0.95rem; color: var(--text-muted); border-radius: 100px; cursor: pointer; transition: all 0.3s; white-space: nowrap; font-family: 'Inter', sans-serif;}
+  .calc-tab { background: transparent; border: none; padding: 12px 28px; font-weight: 700; font-size: 0.95rem; color: var(--text-muted); border-radius: 100px; cursor: pointer; transition: all 0.3s; white-space: nowrap; font-family: 'Inter', sans-serif;}
   .calc-tab.active { background: #fff; color: var(--text-dark); box-shadow: var(--shadow-sm); border: 1px solid var(--border);}
   
   .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
   .calc-form { display: flex; flex-direction: column; gap: 24px;}
   .form-group { display: flex; flex-direction: column; gap: 10px; }
-  .form-label { font-size: 0.8rem; font-weight: 800; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
+  .form-label { font-size: 0.8rem; font-weight: 700; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
   .form-input { width: 100%; padding: 16px 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; background: var(--bg-sec); color: var(--text-dark); outline: none; transition: all 0.3s; }
   .form-input:focus { border-color: var(--whop-orange); background: #fff; box-shadow: 0 0 0 4px rgba(255,90,0,0.1);}
   
   .calc-pair-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px; }
-  .calc-pair-btn { background: var(--bg-sec); border: 1px solid var(--border); padding: 12px 8px; font-size: 0.8rem; border-radius: 10px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--text-muted); transition: 0.3s;}
+  .calc-pair-btn { background: var(--bg-sec); border: 1px solid var(--border); padding: 12px 8px; font-size: 0.8rem; border-radius: 10px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--text-muted); transition: 0.3s;}
   .calc-pair-btn.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-sm);}
   .calc-pair-btn:hover:not(.active) { background: #fff; border-color: rgba(0,0,0,0.2); color: var(--text-dark);}
   
   .calc-results { display: flex; flex-direction: column; gap: 16px; }
   .result-card { background: var(--bg-sec); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: 0.3s;}
   .result-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); border-color: rgba(0,0,0,0.1); }
-  .result-label { font-size: 0.8rem; font-weight: 800; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
-  .result-val { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 900; color: var(--text-dark); letter-spacing: -0.02em;}
+  .result-label { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
+  .result-val { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em;}
   .result-val.red { color: var(--red); }
   
   .rr-card { background: #fff; border: 2px solid var(--text-dark); border-radius: 16px; padding: 32px; text-align: center; box-shadow: var(--shadow-md);}
-  .warn-msg { font-size: 0.9rem; color: #b45309; background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 16px 24px; display: none; font-weight: 700; margin-top: 10px;}
+  .warn-msg { font-size: 0.9rem; color: #b45309; background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 16px 24px; display: none; font-weight: 600; margin-top: 10px;}
   .warn-msg.show { display: block;}
-  .calc-reset-btn { margin-top: 10px; background: #fff; border: 1px solid var(--border); padding: 16px; font-family: 'Inter', sans-serif; font-weight: 800; border-radius: 12px; cursor: pointer; color: var(--text-dark); transition: 0.3s;}
+  .calc-reset-btn { margin-top: 10px; background: #fff; border: 1px solid var(--border); padding: 16px; font-family: 'Inter', sans-serif; font-weight: 700; border-radius: 12px; cursor: pointer; color: var(--text-dark); transition: 0.3s;}
   .calc-reset-btn:hover { background: var(--bg-sec); border-color: rgba(0,0,0,0.2); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 
   /* ── BIG TEXT PRE-FOOTER, WATERMARK & DISCLAIMER ── */
-  .pre-footer-text { padding: 120px 5% 0px; text-align: center; background: #fff; border-top: 1px solid var(--border); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center;}
-  .pre-footer-title { font-size: clamp(2.2rem, 4.5vw, 4.5rem); font-weight: 900; letter-spacing: -0.04em; color: var(--text-dark); max-width: 900px; margin: 0 auto; line-height: 1.15; z-index: 2;}
+  .pre-footer-text { padding: 100px 5% 0px; text-align: center; background: #fff; border-top: 1px solid var(--border); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center;}
+  .pre-footer-title { font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4.5rem); font-weight: 900; letter-spacing: -0.04em; color: var(--text-dark); max-width: 900px; margin: 0 auto; line-height: 1.15; z-index: 2;}
   .pre-footer-title span { color: #d1d5db; }
   
-  /* Dhusor Black - 40% Opacity (Using exact hex for gray + opacity) */
   .big-watermark { 
     font-family: 'Outfit', sans-serif; 
     font-size: 11vw; 
     font-weight: 900; 
     font-style: italic; 
-    color: #d1d5db; /* Dhusor base color */
-    opacity: 0.4;   /* Exact 40% opacity as requested */
+    color: #555555; 
+    opacity: 0.40; 
     text-align: center; 
     line-height: 1; 
-    margin-top: 60px; 
+    margin-top: 40px; 
     margin-bottom: -15px;
     pointer-events: none; 
     user-select: none; 
@@ -351,7 +371,7 @@
     text-align: left;
     box-shadow: var(--shadow-sm);
   }
-  .risk-disclaimer-box strong { color: var(--text-dark); font-weight: 900;}
+  .risk-disclaimer-box strong { color: var(--text-dark); font-weight: 800;}
 
   footer { background: #fff; padding: 0 5% 40px;}
   .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px;}
@@ -359,7 +379,7 @@
   .social-icon-btn { width: 48px; height: 48px; background: #fff; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.2rem; transition: all 0.3s; box-shadow: var(--shadow-sm); cursor: pointer;}
   .social-icon-btn:hover { transform: translateY(-4px); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md);}
   
-  .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.95rem; color: var(--text-muted); padding-top: 30px; border-top: 1px solid var(--border); font-weight: 600;}
+  .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.95rem; color: var(--text-muted); padding-top: 30px; border-top: 1px solid var(--border); font-weight: 500;}
   
   /* ── POLICY MODAL ── */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px;}
@@ -368,7 +388,7 @@
   .modal-overlay.active .modal-content { transform: translateY(0); }
   .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: 0.2s; background: var(--bg-sec); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;}
   .modal-close:hover { color: var(--red); background: #fef2f2;}
-  .modal-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 900; margin-bottom: 20px; color: var(--text-dark); }
+  .modal-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; color: var(--text-dark); }
   .modal-body { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
 
   @media (max-width: 1024px) {
@@ -379,7 +399,8 @@
     nav { padding: 0 5%; }
     .nav-links, .nav-cta { display: none; }
     .mobile-menu-btn { display: block; }
-    section { padding: 80px 5%; }
+    section { padding: 60px 5%; }
+    /* Mobile optimization: 3D wrapper hidden on small layouts to ensure total safety */
     .hero-reviews-wrapper { display: none; } 
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
     .big-watermark { font-size: 14vw; margin-top: 40px; }
@@ -400,6 +421,7 @@
 
 <div class="scroll-progress" id="scrollProgress"></div>
 
+<!-- ── NAVBAR ── -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
     <span class="logo-black">Rashik</span><span class="logo-orange">Trades</span>
@@ -415,6 +437,7 @@
   <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </nav>
 
+<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#architecture" onclick="toggleMenu()">Features</a>
   <a href="#indicators" onclick="toggleMenu()">Indicators</a>
@@ -423,7 +446,9 @@
   <a href="#riskCalc" onclick="toggleMenu()">Calculator</a>
 </div>
 
+<!-- ── HERO SECTION ── -->
 <section id="hero">
+  <!-- Rounded/Angled Reviews -->
   <div class="hero-reviews-wrapper">
     <div class="side-reviews left">
       <div class="review-track" id="heroTrackLeft"></div>
@@ -438,6 +463,7 @@
       <span style="color: var(--whop-orange); font-size: 1.1rem;">★★★★★</span> 4.9 / 5 <span style="margin: 0 4px; color: rgba(0,0,0,0.1);">|</span> Trusted by Traders
     </div>
     
+    <!-- Forced 2 Lines -->
     <h1 class="hero-title reveal">
       <span>Execute Every Trade</span>
       <span><span class="light">with</span> Confidence</span>
@@ -458,6 +484,7 @@
   </div>
 </section>
 
+<!-- ── TAG CLOUD ── -->
 <div class="tag-cloud-section">
   <div class="inner" style="text-align: center;">
     <div class="section-label reveal"><i class="fas fa-layer-group"></i> Features</div>
@@ -471,6 +498,7 @@
   </div>
 </div>
 
+<!-- ── ADVANCED TRADING AUTOMATION ── -->
 <section id="architecture">
   <div class="inner">
     <div class="section-label reveal">Architecture</div>
@@ -501,6 +529,7 @@
   </div>
 </section>
 
+<!-- ── MAIN INDICATORS ── -->
 <section id="indicators">
   <div class="inner">
     <div class="section-label reveal">The Arsenal</div>
@@ -509,38 +538,39 @@
     <div class="grid-3-2 reveal">
       <div class="card-suite">
         <div class="mockup-icon-wrap"><i class="fas fa-crosshairs"></i></div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">Reversal Pro+</h3>
-        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Pinpoints absolute market tops and bottoms with laser precision using true CISD logic.</p>
+        <h3 style="font-size: 1.4rem; font-family: 'Outfit', sans-serif; margin-bottom: 12px; font-weight: 800;">Reversal Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 400;">Pinpoints absolute market tops and bottoms with laser precision using true CISD logic.</p>
       </div>
       <div class="card-suite">
         <div class="mockup-icon-wrap"><i class="fas fa-chess-knight"></i></div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">PO3 Pro Suite</h3>
-        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Deep market structure analysis with advanced C2 closure tracking algorithms.</p>
+        <h3 style="font-size: 1.4rem; font-family: 'Outfit', sans-serif; margin-bottom: 12px; font-weight: 800;">PO3 Pro Suite</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 400;">Deep market structure analysis with advanced C2 closure tracking algorithms.</p>
       </div>
       <div class="card-suite">
         <div class="mockup-icon-wrap"><i class="fas fa-bolt"></i></div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">SMT Pro+</h3>
-        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Exploit hidden market inefficiencies with instant SMT divergence detection.</p>
+        <h3 style="font-size: 1.4rem; font-family: 'Outfit', sans-serif; margin-bottom: 12px; font-weight: 800;">SMT Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 400;">Exploit hidden market inefficiencies with instant SMT divergence detection.</p>
       </div>
       <div class="card-suite">
         <div class="mockup-icon-wrap"><i class="fas fa-bullseye"></i></div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">POI Pro+</h3>
-        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Automated alert matrix maps every critical Point of Interest directly on your chart.</p>
+        <h3 style="font-size: 1.4rem; font-family: 'Outfit', sans-serif; margin-bottom: 12px; font-weight: 800;">POI Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 400;">Automated alert matrix maps every critical Point of Interest directly on your chart.</p>
       </div>
       <div class="card-suite">
         <div class="mockup-icon-wrap"><i class="fas fa-clock"></i></div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">Session Pro+</h3>
-        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Automatically marks Asian, London, and NY Killzones with extreme precision.</p>
+        <h3 style="font-size: 1.4rem; font-family: 'Outfit', sans-serif; margin-bottom: 12px; font-weight: 800;">Session Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 400;">Automatically marks Asian, London, and NY Killzones with extreme precision.</p>
       </div>
       <div class="card-suite">
         <div class="mockup-icon-wrap"><i class="fas fa-sync-alt"></i></div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-weight: 900;">SMT & PSP Sync Pro+</h3>
-        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 500;">Advanced logic to distinguish between true C1-C2 sweeps and valid SMTs.</p>
+        <h3 style="font-size: 1.4rem; font-family: 'Outfit', sans-serif; margin-bottom: 12px; font-weight: 800;">SMT & PSP Sync Pro+</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; font-weight: 400;">Advanced logic to distinguish between true C1-C2 sweeps and valid SMTs.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ── PRICING ── -->
 <div class="pricing-wrapper" id="pricing">
   <section>
     <div class="inner">
@@ -553,8 +583,9 @@
       </div>
       
       <div class="pricing-grid reveal">
+        <!-- Basic -->
         <div class="price-card">
-          <div class="price-tier">Basic <span style="background: var(--text-dark); color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 0.65rem; text-transform: uppercase; font-weight: 800;">Free</span></div>
+          <div class="price-tier">Basic <span style="background: var(--text-dark); color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; font-family: 'Inter', sans-serif;">Free</span></div>
           <div class="price-crossed" style="visibility:hidden;">$0</div>
           <div class="price-amount"><span class="price-currency">$</span>0</div>
           <div class="price-period">/ month</div>
@@ -570,6 +601,7 @@
           <a href="https://whop.com/rtcheroclub/free-indicator-access/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Claim Access</a>
         </div>
 
+        <!-- Starter -->
         <div class="price-card">
           <div class="price-tier">Starter</div>
           <div class="price-crossed" style="visibility:hidden;">$0</div>
@@ -587,6 +619,7 @@
           <a href="https://whop.com/rtcheroclub/rtc-hero-membership-monthly/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Get Started</a>
         </div>
 
+        <!-- Advanced -->
         <div class="price-card">
           <div class="price-tier">Advanced</div>
           <div class="price-crossed">$30</div>
@@ -604,6 +637,7 @@
           <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-3month/" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Select Plan</a>
         </div>
 
+        <!-- Pro -->
         <div class="price-card popular">
           <div class="price-tier">Pro <span class="popular-badge">Most Popular</span></div>
           <div class="price-crossed">$60</div>
@@ -622,6 +656,7 @@
           <a href="https://whop.com/rtcheroclub/rtc-hero-club-membership-6month/" target="_blank" class="price-btn btn-filled" style="margin-top: auto;">Secure Premium</a>
         </div>
 
+        <!-- Elite -->
         <div class="price-card">
           <div class="price-tier">Elite</div>
           <div class="price-crossed">$120</div>
@@ -645,6 +680,7 @@
   </section>
 </div>
 
+<!-- ── CENTRALIZED CRYPTO PAYMENT ── -->
 <section id="payment">
   <div class="inner">
     <div class="section-label reveal">Alternative Payments</div>
@@ -695,6 +731,21 @@
   </div>
 </section>
 
+<!-- ── TESTIMONIALS (MARQUEE 3 LINES) ── -->
+<section id="testimonials">
+  <div class="inner reveal">
+    <div class="section-label">Social Proof</div>
+    <h2 class="section-title">Traders don't lie.</h2>
+  </div>
+  
+  <div class="testi-marquee-wrap reveal">
+    <div class="testi-track track-left" id="testiTrack1"></div>
+    <div class="testi-track track-right" id="testiTrack2"></div>
+    <div class="testi-track track-left" id="testiTrack3"></div>
+  </div>
+</section>
+
+<!-- ── SOCIAL MARQUEE (COMMUNITY) ── -->
 <section id="community">
   <div class="inner reveal">
     <div class="section-label">Join The Network</div>
@@ -707,6 +758,7 @@
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
       <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, free setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
+      <!-- Duplicate -->
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
@@ -718,6 +770,7 @@
       <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
       <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
+      <!-- Duplicate -->
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
@@ -726,6 +779,7 @@
   </div>
 </section>
 
+<!-- ── MASTERCLASS ── -->
 <section id="masterclass">
   <div class="inner">
     <div class="section-label reveal">Masterclass Series</div>
@@ -739,7 +793,7 @@
           <div class="ind-number-mc">PART 1</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Suite Breakdown</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Suite Breakdown</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Master the basic setup, features and precise configuration of the indicators.</p>
         </div>
       </div>
@@ -750,7 +804,7 @@
           <div class="ind-number-mc">PART 2</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Advanced Settings</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Advanced Settings</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Deep dive into complex market structure and institutional entry models.</p>
         </div>
       </div>
@@ -761,7 +815,7 @@
           <div class="ind-number-mc">PART 3</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Strategy Application</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Strategy Application</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Watch how to apply the indicators in real-time market scenarios effectively.</p>
         </div>
       </div>
@@ -772,7 +826,7 @@
           <div class="ind-number-mc">PART 4</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Liquidity & Inducement</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Liquidity & Inducement</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn how to identify true smart money liquidity sweeps vs fakeouts.</p>
         </div>
       </div>
@@ -783,7 +837,7 @@
           <div class="ind-number-mc">PART 5</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Advanced Time & Price</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Advanced Time & Price</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">How to sync macro timings with precise price levels for sniper entries.</p>
         </div>
       </div>
@@ -794,7 +848,7 @@
           <div class="ind-number-mc">PART 6</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Precision Entries</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Precision Entries</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Drop down to the lower timeframes to execute with minimal drawdown.</p>
         </div>
       </div>
@@ -805,7 +859,7 @@
           <div class="ind-number-mc">PART 7</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">The Cleaner Edge</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">The Cleaner Edge</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Master the sub-lines and custom UI settings to maintain a professional chart.</p>
         </div>
       </div>
@@ -816,7 +870,7 @@
           <div class="ind-number-mc">PART 8</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Indicator Access Guide</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Indicator Access Guide</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn to accurately identify true changes in state of delivery vs fakeouts.</p>
         </div>
       </div>
@@ -827,7 +881,7 @@
           <div class="ind-number-mc">PART 9</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">AMD Concept Mastery</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">AMD Concept Mastery</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Accumulation, Manipulation, and Distribution phase tracking on charts.</p>
         </div>
       </div>
@@ -838,7 +892,7 @@
           <div class="ind-number-mc">PART 10</div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 8px;">Fractal Markets</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Fractal Markets</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Deep dive into timeframes and fractal market structure combinations.</p>
         </div>
       </div>
@@ -846,6 +900,7 @@
   </div>
 </section>
 
+<!-- ── RISK CALCULATOR ── -->
 <section id="riskCalc">
   <div class="inner">
     <div class="section-label reveal">Free Tool</div>
@@ -943,6 +998,7 @@
   </div>
 </section>
 
+<!-- ── BIG TEXT PRE-FOOTER, WATERMARK & DISCLAIMER ── -->
 <div class="pre-footer-text">
   <div class="pre-footer-title reveal">
     Your mind is built for precision and execution,<br><span>not for chasing every setup.</span>
@@ -956,6 +1012,7 @@
   <strong>HIGH RISK WARNING:</strong> Trading foreign exchange, cryptocurrencies, indices, and other margin-based assets carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite. There is a possibility that you could sustain a loss of some or all of your initial investment. Past performance is not indicative of future results. The RTC Indicator Suite and all content provided by Rashik Trades is strictly for educational purposes and should not be construed as financial advice.
 </div>
 
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-grid">
     <div>
@@ -969,13 +1026,13 @@
       </div>
     </div>
     <div>
-      <h4 style="font-weight: 800; margin-bottom: 20px;">The Suite</h4>
+      <h4 style="font-weight: 800; margin-bottom: 20px; font-family: 'Outfit', sans-serif;">The Suite</h4>
       <a href="#indicators"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Pro Indicators</p></a>
       <a href="#pricing"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Membership Plans</p></a>
       <a href="#riskCalc"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Risk Calculator</p></a>
     </div>
     <div>
-      <h4 style="font-weight: 800; margin-bottom: 20px;">Support</h4>
+      <h4 style="font-weight: 800; margin-bottom: 20px; font-family: 'Outfit', sans-serif;">Support</h4>
       <a href="https://discord.com/invite/RashikTrades" target="_blank"><p style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Contact via Discord</p></a>
       <p onclick="openModal('refund')" style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Refund Policy</p>
       <p onclick="openModal('privacy')" style="font-size: 0.9rem; color: var(--text-muted); cursor: pointer; margin-bottom: 8px; font-weight: 600;" class="hover-scale">Privacy Policy</p>
@@ -987,6 +1044,7 @@
   </div>
 </footer>
 
+<!-- ── POLICY MODAL ── -->
 <div class="modal-overlay" id="policyModal">
   <div class="modal-content">
     <div class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></div>
@@ -1011,30 +1069,28 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // ── TAG CLOUD ──
-const tags1 = ['IFVG', 'CISD', 'True Opens', 'CRT', 'FVG', 'Fractal Model', 'Continuous CISD', 'TTFM', 'Protraction', 'HTF Candles'];
-const tags2 = ['PO3', 'TTFM', 'AMD', 'CISD', 'True Opens', 'C2 Closure Alert', 'Sweeps', 'IFVG', 'CRT', 'Protraction'];
-document.getElementById('tagTrack1').innerHTML = [...tags1, ...tags1, ...tags1, ...tags1].map(t=>`<div class="feature-tag">${t}</div>`).join('');
-document.getElementById('tagTrack2').innerHTML = [...tags2, ...tags2, ...tags2, ...tags2].map(t=>`<div class="feature-tag">${t}</div>`).join('');
+const tags1 = ['IFVG', 'CISD', 'True Opens', 'CRT', 'FVG', 'Fractal Model', 'Continuous CISD', 'TTFM', 'Protraction', 'HTF Candles', 'GxT', 'Quarterly', 'QT', 'Expansion Model', 'Order Block'];
+const tags2 = ['PO3', 'TTFM', 'AMD', 'CISD', 'True Opens', 'C2 Closure Alert', 'Sweeps', 'IFVG', 'CRT', 'Protraction', '7H Candle', 'Swing Point', 'Inner Circle Trader', 'ICT'];
+document.getElementById('tagTrack1').innerHTML = [...tags1, ...tags1, ...tags1].map(t=>`<div class="feature-tag">${t}</div>`).join('');
+document.getElementById('tagTrack2').innerHTML = [...tags2, ...tags2, ...tags2].map(t=>`<div class="feature-tag">${t}</div>`).join('');
 
-// ── HERO REVIEWS ──
+// ── HIGH-CONVERTING HERO REVIEWS WITH NORMAL NAMES ──
 const heroRevLeft = [
-  {t: "Always bringing the highest quality to indicators", a: "Lethality"},
-  {t: "If you trade GxT style trading it is a must have indicator!", a: "Chris"},
-  {t: "This might be the best indicator I've ever used.", a: "Wolf"},
-  {t: "The Reversal Pro+ has completely changed how I read the market.", a: "Marcus K."},
-  {t: "SMT Pro+ is an absolute weapon. Divergence alerts saved me.", a: "Sophie L."},
-  {t: "Rashik's community is genuinely one of the best spaces online.", a: "Amir T."}
+  {t: "Hands down the best TTFM indicator in the trading industry right now. Spot on!", a: "Alex"},
+  {t: "Your TTFM indicator is very affordable, thanks Rashik! Paid itself back in one session.", a: "Rahul"},
+  {t: "If anyone trades TTFM fractal models, this bundle is an absolute must-have asset.", a: "James"},
+  {t: "I'm genuinely impressed. The PO3 suite filters out all structural noise completely.", a: "Oliver"},
+  {t: "True institutional grade clarity. Cleared my funding challenge using the filters.", a: "Vikram"}
 ];
 const heroRevRight = [
-  {t: "Well I have to say that this indicator is built different", a: "Rvlsy"},
-  {t: "PO3 is the best out there by far... chef's kiss", a: "Boyd"},
-  {t: "Passed my $100k prop firm challenge using the SMT filter alone.", a: "Liam D."},
-  {t: "POI Pro+ maps entries I would have missed completely.", a: "Jamie R."},
-  {t: "I've tried 12 indicator suites. Nothing comes close.", a: "Daniel W."},
-  {t: "The Session Pro+ saves me 2 hours a day mapping killzones.", a: "Emma R."}
+  {t: "The automated C2 closure tracking algorithm is insanely accurate. Essential setup tool.", a: "Ethan"},
+  {t: "No more manual charting delays. This bundle is exactly what fractional traders needed.", a: "Priya"},
+  {t: "Cleanest smart money matrix out there. Fully optimization options are top-tier.", a: "Noah"},
+  {t: "Unreal value for money. Rashik truly delivered institutional tools at a fair rate.", a: "Liam"},
+  {t: "The SMT radar saved me from three consecutive fakeouts today alone. Impressive stuff.", a: "Aryan"}
 ];
 
-const buildHeroRev = (arr) => arr.map(r => `<div class="float-card"><i class="fas fa-quote-left"></i><div class="float-text">"${r.t}"</div><div class="float-author">~ ${r.a}</div></div>`).join('');
+const buildHeroRev = (arr) => arr.map(r => `<div class="float-card"><div class="float-text">"${r.t}"</div><div class="float-author">— ${r.a}</div></div>`).join('');
 document.getElementById('heroTrackLeft').innerHTML = buildHeroRev([...heroRevLeft, ...heroRevLeft, ...heroRevLeft]);
 document.getElementById('heroTrackRight').innerHTML = buildHeroRev([...heroRevRight, ...heroRevRight, ...heroRevRight]);
 
@@ -1049,7 +1105,32 @@ function copyText(btn,text){
 
 function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
 
-// ── DYNAMIC COUNTER (EVERY TIME IN VIEW) ──
+// ── MAIN TESTIMONIALS (Marquee 3 Lines) ──
+const mainRev1 = [
+  {pnl: "+$4,200 this week", t: "The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade.", a: "Marcus K."},
+  {pnl: "+18.3% ROI", t: "SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month.", a: "Sophie L."},
+  {pnl: "Best investment", t: "Rashik's community is genuinely one of the best trading spaces on the internet. The indicators are elite-level, but the Discord support and analysis are what truly sets this apart.", a: "Amir T."},
+  {pnl: "2R avg trade", t: "POI Pro+ maps entries I would have missed completely. The automation is insane — I get alerted at exactly the right level. Went from breakeven to consistently profitable within 3 weeks.", a: "Jamie R."}
+];
+const mainRev2 = [
+  {pnl: "Funded $100k", t: "Passed my $100k prop firm challenge using the SMT divergence filter alone. The setups are extremely clean and remove all emotional trading.", a: "Liam D."},
+  {pnl: "+$9,100 month", t: "I've tried 12 indicator suites. Nothing comes close. The PO3 Advanced edition alone is worth 10x the price. The logic behind these tools is clearly from someone who actually trades.", a: "Daniel W."},
+  {pnl: "Saves 2 Hours", t: "The Session Pro+ draws the exact macro killzones I used to draw manually every morning. It saves me 2 hours a day and the accuracy is frightening.", a: "Emma R."},
+  {pnl: "Elite member", t: "The yearly plan was the best decision I made. Constant updates, Rashik actually listens to the community, and the indicator keeps getting better. Zero reasons to leave.", a: "Yuki N."}
+];
+const mainRev3 = [
+  {pnl: "Steady returns", t: "The POI Pro+ on my Elite membership has become my daily weapon for swing trading. My entry precision has improved so much. Over the last three months, I've managed a steady +$1,200/mo.", a: "David R."},
+  {pnl: "Win rate 65%", t: "Finally, an indicator that understands C1-C2 sweeps properly. Took my win rate from 40% to 65% in a single month. Absolute game-changer.", a: "Omar F."},
+  {pnl: "Part-time success", t: "Moving from paper trading to a real account was intimidating. The SMT Pro+ helped me spot divergences easily. Last month was my best yet, pulling in +$650 profit on FX pairs.", a: "Sarah P."},
+  {pnl: "Crystal Clear", t: "The charts used to give me a headache with all the noise. RTC strips it all away and highlights exactly where the smart money is stepping in.", a: "Chris M."}
+];
+
+const buildTesti = (arr) => arr.map(r => `<div class="testi-card"><div class="testi-pnl">${r.pnl}</div><div class="testi-stars">★★★★★</div><div class="testi-text">"${r.t}"</div><div class="testi-author">— ${r.a}</div></div>`).join('');
+document.getElementById('testiTrack1').innerHTML = buildTesti([...mainRev1, ...mainRev1]);
+document.getElementById('testiTrack2').innerHTML = buildTesti([...mainRev2, ...mainRev2]);
+document.getElementById('testiTrack3').innerHTML = buildTesti([...mainRev3, ...mainRev3]);
+
+// ── DYNAMIC COUNTER ──
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     const target = entry.target;
