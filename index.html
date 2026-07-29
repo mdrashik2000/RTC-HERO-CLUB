@@ -38,19 +38,47 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-  body { background: var(--bg-main); color: var(--text-dark); font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+  body { background: var(--bg-main); color: var(--text-dark); font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; -webkit-font-smoothing: antialiased; padding-top: 40px;}
   a, button { text-decoration: none !important; color: inherit; cursor: pointer; outline: none; border: none;}
   ul { list-style: none; }
 
   .hover-scale { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
   .hover-scale:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 
+  /* ── DYNAMIC PROMO BANNER ── */
+  .promo-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 10005;
+    background: linear-gradient(90deg, #FF5A00, #ff007f, #8a2be2, #FF5A00);
+    background-size: 300% 300%;
+    animation: promoGlow 6s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 15px rgba(255, 90, 0, 0.3);
+  }
+  .promo-banner .bold-text { font-size: 0.95rem; font-weight: 800; letter-spacing: 0.02em; }
+  .promo-banner .light-badge { background: rgba(0,0,0,0.25); padding: 4px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; backdrop-filter: blur(5px);}
+  
+  @keyframes promoGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
   /* ── SCROLL PROGRESS ── */
-  .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--whop-orange); width: 0%; z-index: 10001; transition: width 0.1s; }
+  .scroll-progress { position: fixed; top: 40px; left: 0; height: 3px; background: var(--text-dark); width: 0%; z-index: 10001; transition: width 0.1s; }
 
   /* ── NAV ── */
-  nav { position: fixed; top: 0; left: 0; right: 0; height: 70px; z-index: 10000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.03); transition: all 0.3s ease; }
+  nav { position: fixed; top: 40px; left: 0; right: 0; height: 70px; z-index: 10000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.03); transition: all 0.3s ease; }
   
   .nav-logo { font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 900; letter-spacing: -0.03em; transition: transform 0.3s; display: flex; align-items: center; }
   .nav-logo:hover { transform: scale(1.02); }
@@ -65,12 +93,12 @@
   .nav-cta:hover { background: var(--whop-orange); transform: translateY(-2px); box-shadow: var(--glow-orange); }
   
   .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
-  .mobile-menu { position: fixed; top: 70px; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); flex-direction: column; padding: 20px 5%; gap: 20px; box-shadow: var(--shadow-md); z-index: 9998; display: none; transform: translateY(-10px); opacity: 0; transition: all 0.3s;}
+  .mobile-menu { position: fixed; top: 110px; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); flex-direction: column; padding: 20px 5%; gap: 20px; box-shadow: var(--shadow-md); z-index: 9998; display: none; transform: translateY(-10px); opacity: 0; transition: all 0.3s;}
   .mobile-menu.active { display: flex; transform: translateY(0); opacity: 1; }
   .mobile-menu a { font-size: 1.1rem; font-weight: 600; color: var(--text-dark); }
 
   /* ── HERO SECTION & ULTIMATE 3D CIRCLE REVIEWS ── */
-  #hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 5% 40px; background: #ffffff; text-align: center; overflow: hidden; }
+  #hero { position: relative; min-height: calc(100svh - 40px); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 5% 40px; background: #ffffff; text-align: center; overflow: hidden; }
   
   .hero-content { position: relative; z-index: 10; max-width: 820px; display: flex; flex-direction: column; align-items: center; background: radial-gradient(circle, rgba(255,255,255,1) 50%, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0) 100%); padding: 40px 20px; border-radius: 50%; }
   
@@ -105,16 +133,13 @@
   
   .side-reviews { position: absolute; width: 320px; height: 200vh; top: -50vh; pointer-events: auto; display: flex; flex-direction: column; }
   
-  /* Precision 3D Anchoring - Rotated inward so text is fully safe and readable */
   .side-reviews.left { left: 2%; transform: rotateY(28deg) translateZ(-60px); transform-origin: right center; }
   .side-reviews.right { right: 2%; transform: rotateY(-28deg) translateZ(-60px); transform-origin: left center; }
   
-  /* Both side tracks now scroll smoothly from top to bottom simultaneously */
   .review-track { display: flex; flex-direction: column; gap: 24px; padding: 20px 10px; animation: scrollDown 55s linear infinite; }
   @keyframes scrollDown { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
   .review-track:hover { animation-play-state: paused; }
 
-  /* Ultra-modern Float Card Styles (Clearer & More Glassmorphic) */
   .float-card { 
     background: rgba(255, 255, 255, 0.85); 
     backdrop-filter: blur(20px);
@@ -130,28 +155,8 @@
     overflow: hidden; 
   }
 
-  .float-card::after {
-    content: '\201D';
-    position: absolute;
-    right: 15px;
-    top: -20px;
-    font-size: 7rem;
-    font-family: 'Outfit', sans-serif;
-    color: var(--whop-orange);
-    opacity: 0.05;
-    line-height: 1;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .float-card:hover {
-    transform: scale(1.04) translateY(-4px);
-    z-index: 100;
-    background: #ffffff;
-    box-shadow: var(--glow-orange);
-    border-color: rgba(255, 90, 0, 0.25);
-  }
-  
+  .float-card::after { content: '\201D'; position: absolute; right: 15px; top: -20px; font-size: 7rem; font-family: 'Outfit', sans-serif; color: var(--whop-orange); opacity: 0.05; line-height: 1; z-index: 0; pointer-events: none;}
+  .float-card:hover { transform: scale(1.04) translateY(-4px); z-index: 100; background: #ffffff; box-shadow: var(--glow-orange); border-color: rgba(255, 90, 0, 0.25); }
   .float-text { font-size: 0.92rem; color: var(--text-dark); line-height: 1.55; margin-bottom: 12px; font-weight: 500; font-style: normal; position: relative; z-index: 1;}
   .float-author { font-size: 0.85rem; font-weight: 700; color: var(--whop-orange); text-align: right; position: relative; z-index: 1;}
 
@@ -169,20 +174,16 @@
   /* ── TAG CLOUD ── */
   .tag-cloud-section { padding: 40px 0 60px; background: #fff; overflow: hidden; position: relative; width: 100vw; max-width: 100%; }
   .tag-cloud-section .inner { padding: 0 5%; margin-bottom: 30px; text-align: center; }
-  
   .tag-marquee-wrap { position: relative; display: flex; flex-direction: column; gap: 16px; width: 100%; overflow: hidden; }
   .tag-marquee-wrap::before, .tag-marquee-wrap::after { content: ''; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2; pointer-events: none; }
   .tag-marquee-wrap::before { left: 0; background: linear-gradient(90deg, #fff 0%, transparent 100%); }
   .tag-marquee-wrap::after { right: 0; background: linear-gradient(-90deg, #fff 0%, transparent 100%); }
-
   .tag-track { display: flex; gap: 16px; width: max-content; }
   .track-left { animation: scrollLeftMarquee 40s linear infinite; }
   .track-right { animation: scrollRightMarquee 40s linear infinite; }
   .tag-track:hover { animation-play-state: paused; }
-
   @keyframes scrollLeftMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
   @keyframes scrollRightMarquee { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-
   .feature-tag { padding: 14px 28px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); background: #fff; white-space: nowrap; transition: all 0.3s; cursor: pointer; box-shadow: var(--shadow-sm); position: relative;}
   .feature-tag:hover { transform: translateY(-3px) scale(1.02); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md); }
 
@@ -202,16 +203,62 @@
   .grid-3-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; text-align: left; }
   .card-suite { background: var(--bg-main); border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 40px; transition: all 0.4s ease; display: flex; flex-direction: column; position: relative; overflow: hidden; z-index: 1; box-shadow: var(--shadow-sm);}
   .card-suite:hover { transform: translateY(-6px); box-shadow: var(--glow-orange); border-color: rgba(255,90,0,0.3);}
-  
   .mockup-icon-wrap { width: 60px; height: 60px; background: #fff; border: 1px solid rgba(255,90,0,0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 1.5rem; color: var(--text-dark); box-shadow: var(--shadow-sm); transition: transform 0.3s;}
   .card-suite:hover .mockup-icon-wrap { transform: rotate(10deg) scale(1.1); background: var(--whop-orange); color: #fff; border-color: var(--whop-orange);}
 
-  /* ── PRICING ── */
+  /* ── PRICING & PAYMENT HEADERS ── */
   .pricing-wrapper { background: var(--bg-sec); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
-  .whop-badge { display: inline-flex; align-items: center; background: #fff; border: 1px solid var(--border); padding: 8px 24px 8px 8px; border-radius: 100px; box-shadow: var(--shadow-sm); margin-bottom: 40px;}
-  .whop-badge .whop-box { background-color: var(--whop-orange); border-radius: 100px; padding: 6px 16px; color: #fff; font-weight: 800; margin-right: 12px; font-family: 'Outfit', sans-serif;}
-  .whop-badge .whop-text { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
   
+  .payment-methods-header {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+  .pay-method {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border: 2px solid var(--border);
+    padding: 20px 24px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 280px;
+  }
+  .pay-method:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+  
+  .card-method:hover { border-color: #3b82f6; }
+  .card-method .pay-icon { color: #3b82f6; }
+  .card-method .pay-badge { background: var(--bg-sec); color: var(--text-muted); border: 1px solid var(--border);}
+  
+  .crypto-method { border-color: rgba(16, 185, 129, 0.4); background: #f0fdf4;}
+  .crypto-method:hover { border-color: var(--green); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2); }
+  .crypto-method .pay-icon { color: var(--green); }
+  .crypto-method .pay-badge { 
+    background: var(--green); 
+    color: #fff; 
+    animation: pulseBadge 2s infinite; 
+    border: 1px solid var(--green);
+  }
+
+  .pay-icon { font-size: 2.2rem; }
+  .pay-text { text-align: left; flex: 1; }
+  .pay-text h3 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 4px;}
+  .pay-text p { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;}
+  .pay-badge { font-size: 0.8rem; font-weight: 800; padding: 6px 12px; border-radius: 100px; font-family: 'JetBrains Mono', monospace;}
+
+  @keyframes pulseBadge {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+
   .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left; align-items: stretch;}
   
   .price-card { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 36px 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; position: relative; box-shadow: var(--shadow-sm);}
@@ -233,7 +280,7 @@
   .price-features li { display:flex; align-items:flex-start; gap:12px; font-size:0.9rem; color:var(--text-muted); line-height:1.4; font-weight: 400;}
   .price-features li::before { content:'✓'; color:var(--green); font-weight: 800; font-size: 1.1rem; }
   
-  .price-btn { display: block; text-align: center; padding: 16px; border-radius: 100px; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; width: 100%; cursor: pointer;}
+  .price-btn { display: block; text-align: center; padding: 16px 12px; border-radius: 100px; font-weight: 700; font-size: 0.85rem; transition: all 0.3s; width: 100%; cursor: pointer; line-height: 1.4;}
   .price-btn.btn-outline { background: #fff; color: var(--text-dark); border: 1px solid rgba(0,0,0,0.1); box-shadow: var(--shadow-sm);}
   .price-btn.btn-outline:hover { background: var(--bg-sec); transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(0,0,0,0.2);}
   .price-btn.btn-filled { background: var(--text-dark); color: #fff; border: 1px solid transparent; box-shadow: var(--shadow-sm);}
@@ -490,6 +537,11 @@
     .crypto-addr { font-size: 0.75rem; margin-right: 0;}
   }
   @media (max-width: 600px) {
+    .promo-banner { flex-direction: column; height: 55px; padding: 6px; gap: 4px; font-size: 0.8rem;}
+    body { padding-top: 55px; }
+    nav, .scroll-progress { top: 55px; }
+    .mobile-menu { top: 125px; }
+    
     .hero-title { font-size: 2.2rem; }
     .footer-grid { grid-template-columns: 1fr; text-align: center;}
     .social-icon-btn { margin: 0 5px; }
@@ -501,6 +553,12 @@
 </style>
 </head>
 <body>
+
+<!-- DYNAMIC TOP PROMO BANNER -->
+<div class="promo-banner">
+  <span class="bold-text"><i class="fas fa-bolt"></i> ALWAYS CRYPTO PAYMENT 10% EXTRA DISCOUNT!</span>
+  <span class="light-badge"><i class="fas fa-credit-card"></i> Card Payment Also Supported</span>
+</div>
 
 <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -653,11 +711,29 @@
       <div class="section-label reveal">Claim Access</div>
       <h2 class="section-title reveal">Choose Your Plan</h2>
       
-      <div class="whop-badge reveal">
-        <div class="whop-box">whop</div>
-        <span class="whop-text">Secure Payment Processing</span>
+      <!-- PAYMENT METHODS HEADER -->
+      <div class="payment-methods-header reveal">
+        <!-- Card Method -->
+        <div class="pay-method card-method">
+          <div class="pay-icon"><i class="fas fa-credit-card"></i></div>
+          <div class="pay-text">
+            <h3>Card Payment</h3>
+            <p>Standard Processing</p>
+          </div>
+          <div class="pay-badge card-badge">0% Discount</div>
+        </div>
+        
+        <!-- Crypto Method -->
+        <a href="#payment" class="pay-method crypto-method">
+          <div class="pay-icon"><i class="fab fa-bitcoin"></i></div>
+          <div class="pay-text">
+            <h3>Crypto Payment</h3>
+            <p>Direct Transfer</p>
+          </div>
+          <div class="pay-badge crypto-badge">10% Extra Discount</div>
+        </a>
       </div>
-      
+
       <div class="pricing-grid reveal">
         <div class="price-card">
           <div class="price-tier">Basic <span style="background: var(--text-dark); color: #fff; padding: 6px 12px; border-radius: 100px; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; font-family: 'Inter', sans-serif;">Free</span></div>
@@ -673,7 +749,7 @@
             <li>Community Support</li>
             <li>Real-time Alerts Preview</li>
           </ul>
-          <a href="" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Claim Access</a>
+          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
         </div>
 
         <div class="price-card">
@@ -690,7 +766,7 @@
             <li>Live trade alerts</li>
             <li>Cancel anytime</li>
           </ul>
-          <a href="" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Get Started</a>
+          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
         </div>
 
         <div class="price-card">
@@ -707,7 +783,7 @@
             <li>Live trade alerts + analysis</li>
             <li>Indicator update access</li>
           </ul>
-          <a href="" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Select Plan</a>
+          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
         </div>
 
         <div class="price-card popular">
@@ -725,7 +801,7 @@
             <li>Indicator update access</li>
             <li>Masterclass video series</li>
           </ul>
-          <a href="" target="_blank" class="price-btn btn-filled" style="margin-top: auto;">Secure Premium</a>
+          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-filled" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
         </div>
 
         <div class="price-card">
@@ -744,7 +820,7 @@
             <li>Masterclass series access</li>
             <li>1-on-1 onboarding session</li>
           </ul>
-          <a href="" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Claim Elite</a>
+          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
         </div>
       </div>
     </div>
@@ -849,11 +925,9 @@
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
-      <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
-      <a href="https://whop.com/rtcheroclub/" target="_blank" class="comm-card"><i class="fas fa-bolt comm-icon"></i><div class="comm-name">Whop Portal</div><p class="comm-desc">Manage your subscription, upgrade tiers, and claim your free bonuses.</p><div class="comm-arrow">→</div></a>
     </div>
   </div>
 </section>
@@ -875,7 +949,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">How do I get access after payment?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
-        <div class="faq-a"><br>After payment via Whop, access is granted automatically within minutes. For crypto or bank transfers, join our Discord and message Admin Rashik with your proof of payment. Access is typically verified within a few hours.<br><br></div>
+        <div class="faq-a"><br>After payment, access is granted automatically within minutes. For crypto or bank transfers, join our Discord and message Admin Rashik with your proof of payment. Access is typically verified within a few hours.<br><br></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Is there a refund policy?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
@@ -887,7 +961,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Is my payment information secure?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
-        <div class="faq-a"><br>Absolutely. Whop payments are processed via Stripe and are fully encrypted. For crypto payments, we use standard verification procedures to ensure safety.<br><br></div>
+        <div class="faq-a"><br>Absolutely. All payments are securely processed and fully encrypted. For crypto payments, we use standard verification procedures to ensure safety.<br><br></div>
       </div>
     </div>
   </div>
