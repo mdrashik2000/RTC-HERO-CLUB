@@ -280,11 +280,38 @@
   .price-features li { display:flex; align-items:flex-start; gap:12px; font-size:0.9rem; color:var(--text-muted); line-height:1.4; font-weight: 400;}
   .price-features li::before { content:'✓'; color:var(--green); font-weight: 800; font-size: 1.1rem; }
   
-  .price-btn { display: block; text-align: center; padding: 16px 12px; border-radius: 100px; font-weight: 700; font-size: 0.85rem; transition: all 0.3s; width: 100%; cursor: pointer; line-height: 1.4;}
-  .price-btn.btn-outline { background: #fff; color: var(--text-dark); border: 1px solid rgba(0,0,0,0.1); box-shadow: var(--shadow-sm);}
-  .price-btn.btn-outline:hover { background: var(--bg-sec); transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(0,0,0,0.2);}
-  .price-btn.btn-filled { background: var(--text-dark); color: #fff; border: 1px solid transparent; box-shadow: var(--shadow-sm);}
-  .price-btn.btn-filled:hover { background: var(--whop-orange); transform: translateY(-2px); box-shadow: var(--glow-orange);}
+  /* ── DYNAMIC GLOW BUTTON ── */
+  .btn-glowing {
+    display: block; 
+    text-align: center; 
+    padding: 16px 12px; 
+    border-radius: 100px; 
+    font-weight: 700; 
+    font-size: 0.85rem; 
+    width: 100%; 
+    cursor: pointer; 
+    line-height: 1.4;
+    background: linear-gradient(90deg, #FF5A00, #ff007f, #FF5A00);
+    background-size: 200% auto;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 0 15px rgba(255, 90, 0, 0.6);
+    animation: pulseGlow 2s infinite, gradientMove 3s linear infinite;
+    transition: all 0.3s ease;
+  }
+  .btn-glowing:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 90, 0, 0.8);
+  }
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px rgba(255, 90, 0, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(255, 0, 127, 0.8); }
+    100% { box-shadow: 0 0 10px rgba(255, 90, 0, 0.4); }
+  }
+  @keyframes gradientMove {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
 
   /* ── CRYPTO PAYMENT ── */
   #payment { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
@@ -763,7 +790,7 @@
             <li>Community Support</li>
             <li>Real-time Alerts Preview</li>
           </ul>
-          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
+          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="btn-glowing" style="margin-top: auto;">Open a support ticket then get free access</a>
         </div>
 
         <div class="price-card">
@@ -780,7 +807,7 @@
             <li>Live trade alerts</li>
             <li>Cancel anytime</li>
           </ul>
-          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
+          <a href="https://whop.com/checkout/plan_UUR01EtlqqdOu" target="_blank" class="btn-glowing" style="margin-top: auto;">Subscribe Now</a>
         </div>
 
         <div class="price-card">
@@ -797,7 +824,7 @@
             <li>Live trade alerts + analysis</li>
             <li>Indicator update access</li>
           </ul>
-          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
+          <a href="https://whop.com/checkout/plan_FinpVJduG1Kx4" target="_blank" class="btn-glowing" style="margin-top: auto;">Subscribe Now</a>
         </div>
 
         <div class="price-card popular">
@@ -815,7 +842,7 @@
             <li>Indicator update access</li>
             <li>Masterclass video series</li>
           </ul>
-          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-filled" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
+          <a href="https://whop.com/checkout/plan_j7Tbi8ekroGjo" target="_blank" class="btn-glowing" style="margin-top: auto;">Subscribe Now</a>
         </div>
 
         <div class="price-card">
@@ -835,7 +862,7 @@
             <li>Masterclass series access</li>
             <li>1-on-1 onboarding session</li>
           </ul>
-          <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="price-btn btn-outline" style="margin-top: auto;">Open a support ticket then get secure payment link</a>
+          <a href="https://whop.com/checkout/plan_XDDbSfEyv0lwx" target="_blank" class="btn-glowing" style="margin-top: auto;">Subscribe Now</a>
         </div>
       </div>
     </div>
