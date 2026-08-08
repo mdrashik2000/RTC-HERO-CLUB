@@ -134,6 +134,7 @@
     overflow: hidden; 
   }
 
+  /* QUOTE LOGO FIX */
   .float-card::after { content: '"'; position: absolute; right: 15px; top: -10px; font-size: 7rem; font-family: 'Outfit', sans-serif; color: var(--whop-orange); opacity: 0.05; line-height: 1; z-index: 0; pointer-events: none;}
   
   .float-card:hover { transform: scale(1.04) translateY(-4px); z-index: 100; background: #ffffff; box-shadow: var(--glow-orange); border-color: rgba(255, 90, 0, 0.25); }
@@ -161,6 +162,7 @@
   
   .showcase-header { text-align: center; margin-bottom: 50px; }
   
+  /* Massive Top Image Styling with Subtle Elegant Glow */
   .showcase-image-main {
     max-width: 1100px;
     margin: 0 auto 60px auto;
@@ -168,22 +170,44 @@
     border-radius: 20px;
     padding: 8px;
     background: #fff;
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    border: 1px solid rgba(255, 90, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(255, 90, 0, 0.1);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+    z-index: 10;
+  }
+  .showcase-image-main::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(90deg, #FF5A00, #ff007f, #FF5A00);
+    background-size: 200% auto;
+    filter: blur(15px);
+    opacity: 0.25;
+    z-index: -1;
+    border-radius: 24px;
+    animation: gradientMove 5s linear infinite;
+    transition: all 0.5s ease;
   }
   .showcase-image-main:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(255, 90, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 90, 0, 0.25);
     border-color: rgba(255, 90, 0, 0.3);
+  }
+  .showcase-image-main:hover::before {
+    filter: blur(25px);
+    opacity: 0.45;
+    inset: -4px;
   }
   .showcase-image-main img {
     width: 100%;
     height: auto;
     border-radius: 14px;
     display: block;
+    position: relative;
+    z-index: 2;
   }
   
+  /* UPDATED VERSION Dynamic Badge */
   .premium-badge-updated {
     position: absolute;
     top: -20px;
@@ -280,6 +304,7 @@
     line-height: 1.4;
   }
 
+  /* COLORFUL BANNER */
   .showcase-banner {
     margin-top: 60px;
     background: linear-gradient(135deg, #FF5A00 0%, #ff007f 100%);
@@ -416,17 +441,17 @@
   .satellite-node {
     position: absolute;
     top: 0; left: 280px;
-    width: 145px; /* Increased size so text doesn't break */
+    width: 145px; 
     height: 145px; 
-    background: #fff;
-    border: 2px solid var(--border);
+    background: #ffffff;
+    border: 2px solid rgba(255, 90, 0, 0.5);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 15px;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 0 15px rgba(255, 90, 0, 0.25); /* Permanent soft glow */
     font-size: 0.82rem; 
     font-weight: 600;
     color: var(--text-dark);
@@ -435,7 +460,7 @@
     cursor: default;
     line-height: 1.4;
   }
-  .satellite-node strong { font-weight: 800; color: var(--whop-orange); font-size: 0.9rem; display: block; margin: 3px 0; }
+  .satellite-node strong { font-weight: 900; color: var(--whop-orange); font-size: 0.95rem; display: block; margin: 3px 0; letter-spacing: 0.5px; transition: color 0.4s;}
 
   .satellite-wrapper:hover .satellite-link {
     background: var(--whop-orange);
@@ -444,13 +469,17 @@
     box-shadow: 0 0 10px rgba(255,90,0,0.5);
   }
   .satellite-wrapper:hover .satellite-link::after {
-    display: none; /* Hide animation on hover for cleaner look */
+    display: none; 
   }
   .satellite-wrapper:hover .satellite-node {
-    border-color: var(--whop-orange);
-    box-shadow: var(--shadow-md), 0 0 25px rgba(255,90,0,0.25);
-    color: var(--text-dark);
-    transform: translate(-50%, -50%) scale(1.05) !important;
+    background: linear-gradient(135deg, #FF5A00 0%, #ff007f 100%);
+    border: 2px solid #fff;
+    box-shadow: 0 15px 40px rgba(255, 90, 0, 0.6);
+    color: #fff;
+    transform: translate(-50%, -50%) scale(1.1) !important;
+  }
+  .satellite-wrapper:hover .satellite-node strong {
+    color: #fff;
   }
 
   /* ── PRICING & PAYMENT HEADERS ── */
@@ -799,7 +828,7 @@
     <div class="hero-stats reveal">
       <div class="hero-stat"><span class="num dynamic-counter" data-target="5000" data-suffix="+">0+</span><span class="label">Active Members</span></div>
       <div class="hero-stat"><span class="num dynamic-counter" data-target="9" data-suffix="">0</span><span class="label">Elite Indicators</span></div>
-      <div class="hero-stat"><span class="num dynamic-counter" data-target="100%" data-suffix="%">0%</span><span class="label">Satisfaction Rate</span></div>
+      <div class="hero-stat"><span class="num dynamic-counter" data-target="100" data-suffix="%">0%</span><span class="label">Satisfaction Rate</span></div>
     </div>
   </div>
 </section>
@@ -875,7 +904,7 @@
 
       <div class="feature-card-premium">
         <div class="feature-icon-box"><i class="fas fa-shield-alt"></i></div>
-        <div class="feature-text-premium">Protected Swing Point Tracking</div>
+        <div class="feature-text-premium">Precision Swing Point Tracking</div>
       </div>
 
       <div class="feature-card-premium">
