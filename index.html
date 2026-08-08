@@ -1,4 +1,4 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -134,7 +134,9 @@ html_content = """<!DOCTYPE html>
     overflow: hidden; 
   }
 
+  /* QUOTE LOGO FIX */
   .float-card::after { content: '"'; position: absolute; right: 15px; top: -10px; font-size: 7rem; font-family: 'Outfit', sans-serif; color: var(--whop-orange); opacity: 0.05; line-height: 1; z-index: 0; pointer-events: none;}
+  
   .float-card:hover { transform: scale(1.04) translateY(-4px); z-index: 100; background: #ffffff; box-shadow: var(--glow-orange); border-color: rgba(255, 90, 0, 0.25); }
   .float-text { font-size: 0.92rem; color: var(--text-dark); line-height: 1.55; margin-bottom: 12px; font-weight: 500; font-style: normal; position: relative; z-index: 1;}
   .float-author { font-size: 0.85rem; font-weight: 700; color: var(--whop-orange); text-align: right; position: relative; z-index: 1;}
@@ -160,6 +162,7 @@ html_content = """<!DOCTYPE html>
   
   .showcase-header { text-align: center; margin-bottom: 50px; }
   
+  /* Massive Top Image Styling */
   .showcase-image-main {
     max-width: 1100px;
     margin: 0 auto 60px auto;
@@ -183,6 +186,7 @@ html_content = """<!DOCTYPE html>
     display: block;
   }
   
+  /* UPDATED VERSION Dynamic Badge */
   .premium-badge-updated {
     position: absolute;
     top: -20px;
@@ -314,9 +318,9 @@ html_content = """<!DOCTYPE html>
   .tag-track { display: flex; gap: 16px; width: max-content; }
   .track-left { animation: scrollLeftMarquee 40s linear infinite; }
   .track-right { animation: scrollRightMarquee 40s linear infinite; }
-  .tag-track:hover { animation-play-state: paused; }
-  @keyframes scrollLeftMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-  @keyframes scrollRightMarquee { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+  
+  @keyframes scrollLeftMarquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+  @keyframes scrollRightMarquee { 0% { transform: translate3d(-50%, 0, 0); } 100% { transform: translate3d(0, 0, 0); } }
   .feature-tag { padding: 14px 28px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); background: #fff; white-space: nowrap; transition: all 0.3s; cursor: pointer; box-shadow: var(--shadow-sm); position: relative;}
   .feature-tag:hover { transform: translateY(-3px) scale(1.02); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md); }
 
@@ -331,7 +335,7 @@ html_content = """<!DOCTYPE html>
   .arch-sub { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--whop-orange); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em;}
   .arch-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.7; font-weight: 400;}
 
-  /* ── MAIN INDICATORS (PURE ORANGE 2 LINES) ── */
+  /* ── MAIN INDICATORS (PURE ORANGE 1 LINE) ── */
   #indicators { background: #fff; border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; width: 100%;}
   #indicators .inner { padding: 0 5%; margin-bottom: 40px; text-align: center; }
   
@@ -341,9 +345,8 @@ html_content = """<!DOCTYPE html>
   .indicator-marquee-wrap::after { right:0; background:linear-gradient(-90deg,#fff 0%,transparent 100%); }
 
   .indicator-track { display: flex; gap: 30px; width: max-content; }
-  .indicator-track.track-left { animation: scrollLeftMarquee 50s linear infinite; }
-  .indicator-track.track-right { animation: scrollRightMarquee 50s linear infinite; }
-  .indicator-track:hover { animation-play-state: paused !important; }
+  .indicator-track.track-left { animation: scrollLeftMarquee 60s linear infinite; }
+  
 
   /* Fully orange box, white text, dynamic & sharp */
   .card-suite-orange {
@@ -479,7 +482,7 @@ html_content = """<!DOCTYPE html>
   .testi-marquee-wrap::before { left:0; background:linear-gradient(90deg,var(--bg-sec) 0%,transparent 100%); }
   .testi-marquee-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg-sec) 0%,transparent 100%); }
   .testi-track { display: flex; gap: 24px; width: max-content; }
-  .testi-track:hover { animation-play-state: paused !important; }
+  
   .testi-card { background: #fff; border:1px solid var(--border); border-radius: 20px; padding: 28px; width: 340px; flex-shrink: 0; box-shadow: var(--shadow-sm); text-align: left; transition: 0.3s;}
   .testi-card:hover { border-color: var(--whop-orange); transform: translateY(-4px); box-shadow: var(--shadow-md);}
   .testi-pnl { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
@@ -507,7 +510,7 @@ html_content = """<!DOCTYPE html>
   .comm-marquee-wrap::before { left:0; background:linear-gradient(90deg,var(--bg-sec) 0%,transparent 100%); }
   .comm-marquee-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg-sec) 0%,transparent 100%); }
   .comm-track { display: flex; gap: 24px; width: max-content; }
-  .comm-track:hover { animation-play-state: paused !important; }
+  
   .comm-card { background: #fff; border:1px solid var(--border); border-radius: 20px; padding:32px; display:flex; flex-direction: column; gap: 16px; width: 320px; flex-shrink: 0; transition:all 0.3s; text-align: left; box-shadow: var(--shadow-sm);}
   .comm-card:hover { border-color: rgba(255,90,0,0.3); box-shadow: var(--shadow-md); transform:translateY(-4px);}
   .comm-icon { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 8px;}
@@ -626,11 +629,11 @@ html_content = """<!DOCTYPE html>
     .testi-card, .comm-card { width: 280px; }
   }
   @media (max-width: 600px) {
+    .footer-socials { justify-content: center !important; }
     .hero-badge { font-size: 0.75rem; padding: 6px 14px; gap: 6px; margin-bottom: 20px; }
     .hero-badge span { font-size: 0.85rem !important; }
     .hero-title { font-size: 2.2rem; }
     .footer-grid { grid-template-columns: 1fr; text-align: center;}
-    .footer-socials { justify-content: center !important; }
     .social-icon-btn { margin: 0 5px; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center;}
     .crypto-item { flex-direction: column; gap: 16px; align-items: flex-start; }
@@ -645,6 +648,24 @@ html_content = """<!DOCTYPE html>
     .showcase-banner { padding: 40px 20px; }
     .card-suite-orange { width: 300px; padding: 30px; }
   }
+
+  /* GPU ACCELERATION FOR SMOOTH MOBILE SCROLLING */
+  .tag-track, .testi-track, .comm-track, .indicator-track {
+    will-change: transform;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+  }
+  
+  /* PREVENT MOBILE TAP FREEZE BUG */
+  @media (hover: hover) and (pointer: fine) {
+    .tag-track:hover, .testi-track:hover, .comm-track:hover, .indicator-track:hover {
+      animation-play-state: paused !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -688,7 +709,7 @@ html_content = """<!DOCTYPE html>
 
   <div class="hero-content">
     <div class="hero-badge reveal">
-      <span style="color: var(--whop-orange); font-size: 1.1rem;">★★★★★</span> 5.0 / 5.0 <span style="margin: 0 4px; color: rgba(0,0,0,0.1);">|</span> Trusted by Traders
+      <span style="color: var(--whop-orange); font-size: 1.1rem;">★★★★★</span> 5.0 / 5 <span style="margin: 0 4px; color: rgba(0,0,0,0.1);">|</span> Trusted by Traders
     </div>
     
     <h1 class="hero-title reveal">
@@ -1479,11 +1500,11 @@ html_content = """<!DOCTYPE html>
       <div style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 900; margin-bottom: 16px;"><span class="logo-black">Rashik</span><span class="logo-orange">Trades</span></div>
       <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; font-weight: 500;">The ultimate indicator suite engineered for institutional-grade market clarity.</p>
       <div class="footer-socials" style="display:flex; gap:12px;">
-  <a href="https://discord.com/invite/RashikTrades" target="_blank" class="social-icon-btn"><i class="fab fa-discord"></i></a>
-  <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="social-icon-btn"><i class="fab fa-youtube"></i></a>
-  <a href="https://twitter.com/rashiktrades" target="_blank" class="social-icon-btn"><i class="fab fa-x-twitter"></i></a>
-  <a href="https://t.me/RashikTradesCommunity" target="_blank" class="social-icon-btn"><i class="fab fa-telegram-plane"></i></a>
-</div>
+        <a href="https://discord.com/invite/RashikTrades" target="_blank" class="social-icon-btn"><i class="fab fa-discord"></i></a>
+        <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="social-icon-btn"><i class="fab fa-youtube"></i></a>
+        <a href="https://twitter.com/rashiktrades" target="_blank" class="social-icon-btn"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://t.me/RashikTradesCommunity" target="_blank" class="social-icon-btn"><i class="fab fa-telegram-plane"></i></a>
+      </div>
     </div>
     <div>
       <h4 style="font-weight: 800; margin-bottom: 20px; font-family: 'Outfit', sans-serif;">The Suite</h4>
