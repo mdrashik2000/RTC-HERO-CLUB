@@ -147,101 +147,137 @@
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── FLAGSHIP SHOWCASE SECTION (DYNAMIC STICKY SCROLL) ── */
-  #showcase { background: linear-gradient(180deg, #ffffff 0%, var(--bg-sec) 100%); padding-top: 120px; padding-bottom: 120px; border-bottom: 1px solid var(--border); position: relative; }
-  .showcase-header { text-align: center; margin-bottom: 80px; max-width: 800px; margin-left: auto; margin-right: auto; }
-  
-  .showcase-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: start; max-width: 1400px; margin: 0 auto; text-align: left; }
-  
-  /* Large Sticky Image Setup */
-  .showcase-sticky-wrap { position: sticky; top: 100px; }
-  .showcase-image-premium { 
-    background: #fff; 
-    border-radius: 24px; 
-    padding: 12px; 
-    border: 1px solid rgba(0,0,0,0.06); 
-    box-shadow: var(--shadow-lg); 
-    position: relative; 
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s;
+  /* ── FLAGSHIP SHOWCASE SECTION (DYNAMIC TOP IMAGE & 2 COLUMN GRID) ── */
+  #showcase { 
+    background: radial-gradient(circle at top, #ffffff 0%, var(--bg-sec) 100%); 
+    padding-top: 100px; 
+    padding-bottom: 100px; 
+    border-bottom: 1px solid var(--border); 
   }
-  .showcase-image-premium:hover { 
-    transform: translateY(-5px); 
-    box-shadow: 0 30px 60px rgba(255, 90, 0, 0.12); 
-    border-color: rgba(255, 90, 0, 0.2); 
-  }
-  .showcase-image-premium img { width: 100%; height: auto; border-radius: 16px; display: block; }
   
-  .premium-badge { 
-    position: absolute; 
-    top: -15px; right: -15px; 
-    background: var(--text-dark); 
-    color: #fff; 
-    padding: 10px 24px; 
-    border-radius: 100px; 
-    font-weight: 800; 
-    font-family: 'Outfit', sans-serif; 
-    font-size: 0.95rem; 
-    box-shadow: var(--glow-orange); 
-    border: 2px solid var(--whop-orange); 
-    z-index: 20; 
-    animation: floatBadge 3s ease-in-out infinite; 
+  .showcase-header { text-align: center; margin-bottom: 50px; }
+  
+  /* Massive Top Image Styling */
+  .showcase-image-main {
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+    position: relative;
+    border-radius: 20px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
   }
-  @keyframes floatBadge {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0px); }
+  .showcase-image-main:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(255, 90, 0, 0.15);
+    border-color: rgba(255, 90, 0, 0.3);
+  }
+  .showcase-image-main img {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    display: block;
+  }
+  
+  /* UPDATED VERSION Dynamic Badge */
+  .premium-badge-updated {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: linear-gradient(90deg, #ff007f, #FF5A00, #ff007f);
+    background-size: 200% auto;
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 25px rgba(255, 90, 0, 0.5);
+    z-index: 20;
+    animation: gradientGlow 3s linear infinite, floatUpdate 3s ease-in-out infinite;
+    border: 2px solid #fff;
+  }
+  @keyframes gradientGlow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes floatUpdate {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-8px) scale(1.03); box-shadow: 0 15px 35px rgba(255, 0, 127, 0.6); }
+    100% { transform: translateY(0px) scale(1); }
   }
 
-  /* Ultra-Premium Feature Cards */
-  .showcase-features-container { display: flex; flex-direction: column; gap: 16px; padding-bottom: 20px; }
+  /* 2-Column Features Grid Below Image */
+  .showcase-features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+  }
   
-  .feature-card-premium { 
-    background: #fff; 
-    border: 1px solid rgba(0,0,0,0.04); 
-    padding: 20px 24px; 
-    border-radius: 16px; 
-    display: flex; 
-    align-items: center; 
-    gap: 18px; 
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02); 
-    position: relative; 
-    overflow: hidden; 
+  .feature-card-premium {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 20px 24px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
     cursor: default;
   }
-  .feature-card-premium::before { 
-    content: ''; 
-    position: absolute; 
-    left: 0; top: 0; 
-    height: 100%; width: 4px; 
-    background: var(--whop-orange); 
-    opacity: 0; 
-    transition: 0.3s; 
+  .feature-card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(120deg, rgba(255,90,0,0.06), transparent);
+    z-index: -1;
+    opacity: 0;
+    transition: 0.4s;
   }
-  .feature-card-premium:hover { 
-    transform: translateX(8px); 
-    box-shadow: var(--shadow-md); 
-    border-color: rgba(255,90,0,0.2); 
+  .feature-card-premium:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(255,90,0,0.3);
   }
   .feature-card-premium:hover::before { opacity: 1; }
   
-  .feature-icon-box { 
-    width: 44px; height: 44px; 
-    background: var(--bg-sec); 
-    border-radius: 12px; 
-    display: flex; align-items: center; justify-content: center; 
-    color: var(--text-dark); font-size: 1.2rem; 
-    flex-shrink: 0; transition: 0.4s; 
-    border: 1px solid var(--border); 
+  .feature-icon-box {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    color: var(--text-dark);
+    display: flex; justify-content: center; align-items: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: 0.4s;
+    border: 1px solid var(--border);
   }
-  .feature-card-premium:hover .feature-icon-box { 
-    background: var(--whop-orange); 
-    color: #fff; 
-    border-color: var(--whop-orange); 
-    transform: rotate(10deg) scale(1.1); 
+  .feature-card-premium:hover .feature-icon-box {
+    background: linear-gradient(135deg, #FF5A00, #ff007f);
+    color: #fff;
+    border-color: transparent;
+    transform: rotate(10deg);
+    box-shadow: 0 8px 20px rgba(255,90,0,0.3);
   }
   
-  .feature-text-premium { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); line-height: 1.4; }
+  .feature-text-premium {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.4;
+  }
 
   /* ── TAG CLOUD ── */
   .tag-cloud-section { padding: 40px 0 60px; background: #fff; overflow: hidden; position: relative; width: 100%; }
@@ -475,8 +511,7 @@
     .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   }
   @media (max-width: 900px) {
-    .calc-layout, .showcase-layout { grid-template-columns: 1fr; }
-    .showcase-sticky-wrap { position: relative; top: 0; margin-bottom: 40px;}
+    .calc-layout, .showcase-features-grid { grid-template-columns: 1fr; }
     nav { padding: 0 5%; }
     .nav-links, .nav-cta { display: none; }
     .mobile-menu-btn { display: block; }
@@ -500,6 +535,8 @@
     .pricing-grid { grid-template-columns: 1fr; }
     .btn-cyber { width: 100%; max-width: none;}
     .hero-stats { gap: 15px; }
+    .showcase-image-main { padding: 6px; }
+    .premium-badge-updated { font-size: 0.85rem; padding: 10px 20px; top: -15px; right: -10px; }
   }
 </style>
 </head>
@@ -567,26 +604,24 @@
   </div>
 </section>
 
-<!-- ── FLAGSHIP INDICATOR SHOWCASE (PREMIUM STICKY LAYOUT) ── -->
+<!-- ── FLAGSHIP INDICATOR SHOWCASE (IMAGE TOP, 2-COLUMN BOTTOM) ── -->
 <section id="showcase">
-  <div class="showcase-header reveal">
-    <div class="section-label"><i class="fas fa-star" style="color: var(--whop-orange);"></i> Flagship Tool</div>
-    <h2 class="section-title">RTC [PO3 Pro Suite] Advanced</h2>
-    <p class="section-desc">The ultimate institutional toolkit. Everything you need mapped out automatically with absolute precision.</p>
-  </div>
-
-  <div class="showcase-layout inner">
+  <div class="inner">
     
-    <!-- Left: Massive Sticky Image -->
-    <div class="showcase-sticky-wrap reveal">
-      <div class="showcase-image-premium">
-        <div class="premium-badge">V 3.0 Live</div>
-        <img src="rtc-indicator.png" alt="RTC PO3 Pro Suite Advanced Visual">
-      </div>
+    <div class="showcase-header reveal">
+      <div class="section-label"><i class="fas fa-star" style="color: var(--whop-orange);"></i> Flagship Tool</div>
+      <h2 class="section-title">RTC [PO3 Pro Suite] Advanced</h2>
+      <p class="section-desc">The ultimate institutional toolkit. Everything you need mapped out automatically with absolute precision.</p>
     </div>
 
-    <!-- Right: Scrollable Premium Feature Cards -->
-    <div class="showcase-features-container reveal">
+    <!-- Massive Top Centered Image -->
+    <div class="showcase-image-main reveal">
+      <div class="premium-badge-updated">Updated Version</div>
+      <img src="rtc-indicator.png" alt="RTC PO3 Pro Suite Advanced Visual">
+    </div>
+
+    <!-- 2 Column Dynamic Feature Grid -->
+    <div class="showcase-features-grid reveal">
       
       <div class="feature-card-premium">
         <div class="feature-icon-box"><i class="fas fa-bell"></i></div>
@@ -625,7 +660,12 @@
 
       <div class="feature-card-premium">
         <div class="feature-icon-box"><i class="fas fa-exclamation-triangle"></i></div>
-        <div class="feature-text-premium">Reversal CISD Alerts</div>
+        <div class="feature-text-premium">Reversal & Continuous CISD Alerts</div>
+      </div>
+
+      <div class="feature-card-premium">
+        <div class="feature-icon-box"><i class="fas fa-broom"></i></div>
+        <div class="feature-text-premium">C2 Sweep Visualization</div>
       </div>
 
       <div class="feature-card-premium">
@@ -633,7 +673,6 @@
         <div class="feature-text-premium">STDV Projection Levels</div>
       </div>
 
-      <!-- UPDATED FEATURE AS REQUESTED -->
       <div class="feature-card-premium">
         <div class="feature-icon-box"><i class="fas fa-shield-alt"></i></div>
         <div class="feature-text-premium">Protected Swing Point Tracking</div>
@@ -654,13 +693,11 @@
         <div class="feature-text-premium">Auto-Aligned HTF Fair Value Gaps (FVG)</div>
       </div>
 
-      <!-- UPDATED FEATURE AS REQUESTED -->
       <div class="feature-card-premium">
         <div class="feature-icon-box"><i class="fas fa-filter"></i></div>
         <div class="feature-text-premium">Session Alert Filter</div>
       </div>
 
-      <!-- UPDATED FEATURE AS REQUESTED -->
       <div class="feature-card-premium">
         <div class="feature-icon-box"><i class="fas fa-search-dollar"></i></div>
         <div class="feature-text-premium">SMT+PSP Detection</div>
