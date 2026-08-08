@@ -162,7 +162,7 @@
   
   .showcase-header { text-align: center; margin-bottom: 50px; }
   
-  /* Massive Top Image Styling with Subtle Elegant Glow */
+  /* Massive Top Image Styling */
   .showcase-image-main {
     max-width: 1100px;
     margin: 0 auto 60px auto;
@@ -170,41 +170,20 @@
     border-radius: 20px;
     padding: 8px;
     background: #fff;
-    border: 1px solid rgba(255, 90, 0, 0.15);
-    box-shadow: 0 10px 30px rgba(255, 90, 0, 0.1);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
-    z-index: 10;
-  }
-  .showcase-image-main::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(90deg, #FF5A00, #ff007f, #FF5A00);
-    background-size: 200% auto;
-    filter: blur(15px);
-    opacity: 0.25;
-    z-index: -1;
-    border-radius: 24px;
-    animation: gradientMove 5s linear infinite;
-    transition: all 0.5s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
   }
   .showcase-image-main:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 90, 0, 0.25);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(255, 90, 0, 0.15);
     border-color: rgba(255, 90, 0, 0.3);
-  }
-  .showcase-image-main:hover::before {
-    filter: blur(25px);
-    opacity: 0.45;
-    inset: -4px;
   }
   .showcase-image-main img {
     width: 100%;
     height: auto;
     border-radius: 14px;
     display: block;
-    position: relative;
-    z-index: 2;
   }
   
   /* UPDATED VERSION Dynamic Badge */
@@ -824,7 +803,7 @@
 
       <div class="feature-card-premium">
         <div class="feature-icon-box"><i class="fas fa-shield-alt"></i></div>
-        <div class="feature-text-premium">Precision Swing Point Tracking</div>
+        <div class="feature-text-premium">Protected Swing Point Tracking</div>
       </div>
 
       <div class="feature-card-premium">
