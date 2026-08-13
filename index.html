@@ -767,6 +767,36 @@
     }
   }
 
+  /* ── CRYPTO POPUP & DISCOUNT BADGE ── */
+  .crypto-popup-overlay {
+    position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px);
+    z-index: 100000; display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: all 0.4s ease; padding: 20px;
+  }
+  .crypto-popup-overlay.active { opacity: 1; pointer-events: auto; }
+  
+  .crypto-popup-content {
+    background: #fff; max-width: 480px; width: 100%; border-radius: 24px; padding: 40px;
+    position: relative; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center; box-shadow: 0 20px 40px rgba(255, 90, 0, 0.2); border: 2px solid var(--whop-orange);
+  }
+  .crypto-popup-overlay.active .crypto-popup-content { transform: translateY(0) scale(1); }
+  
+  /* HIGHLIGHTED RED CLOSE BUTTON */
+  .crypto-popup-close {
+    position: absolute; top: 12px; right: 12px; font-size: 1.5rem; color: #fff; 
+    cursor: pointer; width: 44px; height: 44px; border-radius: 50%; background: var(--red);
+    display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); z-index: 100001; border: 2px solid #fff;
+  }
+  .crypto-popup-close:hover { transform: scale(1.1) rotate(90deg); background: #dc2626; box-shadow: 0 6px 15px rgba(239, 68, 68, 0.6); }
+
+  .crypto-badge-side {
+    position: absolute; top: -15px; right: -15px; background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.75rem; 
+    padding: 8px 16px; border-radius: 100px; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+    transform: rotate(5deg); z-index: 10; border: 2px solid #fff; animation: pulseBadge 2s infinite;
+  }
 </style>
 </head>
 <body>
@@ -827,7 +857,7 @@
 
     <div class="hero-stats reveal">
       <div class="hero-stat"><span class="num dynamic-counter" data-target="5000" data-suffix="+">0+</span><span class="label">Active Members</span></div>
-      <div class="hero-stat"><span class="num dynamic-counter" data-target="9" data-suffix="">0</span><span class="label">Elite Indicators</span></div>
+      <div class="hero-stat"><span class="num dynamic-counter" data-target="11" data-suffix="">0</span><span class="label">Elite Indicators</span></div>
       <div class="hero-stat"><span class="num dynamic-counter" data-target="100" data-suffix="%">0%</span><span class="label">Satisfaction Rate</span></div>
     </div>
   </div>
@@ -1000,7 +1030,7 @@
       <p>Indicator Bundle</p>
     </div>
 
-    <!-- 9 Satellites connected to the hub -->
+    <!-- 11 Satellites connected to the hub -->
     <div class="satellite-wrapper" style="transform: rotate(0deg); --delay: 0s;">
       <div class="satellite-link"></div>
       <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(0deg);">
@@ -1008,59 +1038,73 @@
       </div>
     </div>
     
-    <div class="satellite-wrapper" style="transform: rotate(40deg); --delay: 0.2s;">
+    <div class="satellite-wrapper" style="transform: rotate(32.7deg); --delay: 0.2s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-40deg);">
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-32.7deg);">
         RTC<br><strong>[Reversal Pro+]</strong>
       </div>
     </div>
     
-    <div class="satellite-wrapper" style="transform: rotate(80deg); --delay: 0.4s;">
+    <div class="satellite-wrapper" style="transform: rotate(65.4deg); --delay: 0.4s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-80deg);">
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-65.4deg);">
         RTC<br><strong>[SMT Pro+]</strong>
       </div>
     </div>
     
-    <div class="satellite-wrapper" style="transform: rotate(120deg); --delay: 0.6s;">
+    <div class="satellite-wrapper" style="transform: rotate(98.1deg); --delay: 0.6s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-120deg);">
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-98.1deg);">
         RTC<br><strong>[POI Pro+]</strong>
       </div>
     </div>
     
-    <div class="satellite-wrapper" style="transform: rotate(160deg); --delay: 0.8s;">
+    <div class="satellite-wrapper" style="transform: rotate(130.9deg); --delay: 0.8s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-160deg);">
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-130.9deg);">
         RTC<br><strong>[Session Pro+]</strong>
       </div>
     </div>
     
-    <div class="satellite-wrapper" style="transform: rotate(200deg); --delay: 1.0s;">
+    <div class="satellite-wrapper" style="transform: rotate(163.6deg); --delay: 1.0s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-200deg);">
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-163.6deg);">
         RTC<br><strong>[PO3 Pro Suite]</strong><br>Advanced
       </div>
     </div>
     
-    <div class="satellite-wrapper" style="transform: rotate(240deg); --delay: 1.2s;">
+    <div class="satellite-wrapper" style="transform: rotate(196.3deg); --delay: 1.2s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-240deg);">
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-196.3deg);">
         RTC<br><strong>[SMT & PSP Sync Pro+]</strong>
       </div>
     </div>
     
-    <div class="satellite-wrapper" style="transform: rotate(280deg); --delay: 1.4s;">
+    <div class="satellite-wrapper" style="transform: rotate(229deg); --delay: 1.4s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-280deg);">
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-229deg);">
         RTC<br><strong>[V-Shape CISD Pro+]</strong>
       </div>
     </div>
     
-    <div class="satellite-wrapper" style="transform: rotate(320deg); --delay: 1.6s;">
+    <div class="satellite-wrapper" style="transform: rotate(261.8deg); --delay: 1.6s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-320deg);">
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-261.8deg);">
         RTC<br><strong>[iFVG Pro Suite]</strong>
+      </div>
+    </div>
+
+    <div class="satellite-wrapper" style="transform: rotate(294.5deg); --delay: 1.8s;">
+      <div class="satellite-link"></div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-294.5deg);">
+        RTC<br><strong>[Advanced CRT Plus]</strong>
+      </div>
+    </div>
+
+    <div class="satellite-wrapper" style="transform: rotate(327.2deg); --delay: 2.0s;">
+      <div class="satellite-link"></div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-327.2deg);">
+        RTC<br><strong>[Session Sweep &<br>CISD Plus]</strong>
       </div>
     </div>
 
@@ -1149,6 +1193,7 @@
         </div>
 
         <div class="price-card popular">
+          <div class="crypto-badge-side"><i class="fab fa-bitcoin"></i> 10% Crypto Discount</div>
           <div class="price-tier">Pro <span class="popular-badge">Most Popular</span></div>
           <div class="price-crossed">$60</div>
           <div class="price-amount"><span class="price-currency">$</span>50</div>
@@ -1167,6 +1212,7 @@
         </div>
 
         <div class="price-card">
+          <div class="crypto-badge-side"><i class="fab fa-bitcoin"></i> 10% Crypto Discount</div>
           <div class="price-tier">Elite</div>
           <div class="price-crossed">$120</div>
           <div class="price-amount"><span class="price-currency">$</span>99</div>
@@ -1614,6 +1660,42 @@
     <div class="modal-body" id="modalBody">Loading...</div>
   </div>
 </div>
+
+<!-- CRYPTO PROMO POPUP -->
+<div class="crypto-popup-overlay" id="cryptoPromoPopup">
+  <div class="crypto-popup-content">
+    <div class="crypto-popup-close" onclick="closeCryptoPopup()"><i class="fas fa-times"></i></div>
+    <i class="fab fa-bitcoin" style="font-size: 3.5rem; color: var(--whop-orange); margin-bottom: 16px; filter: drop-shadow(0 10px 15px rgba(255,90,0,0.3));"></i>
+    <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark); line-height: 1.1;">Limited Time Offer!</h2>
+    <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; font-weight: 500;">
+      Get an extra <strong style="color: var(--green);">10% Discount</strong> on <strong style="color: var(--text-dark);">Pro & Elite</strong> plans when you pay directly via Crypto Transfer.
+    </p>
+    <a href="#payment" class="btn-cyber btn-filled" onclick="closeCryptoPopup()" style="width: 100%; display: block; font-size: 1.1rem; padding: 18px;">
+      View Crypto Options <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div>
+
+<script>
+  // Show popup exactly 5 seconds after page load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('cryptoPromoPopup').classList.add('active');
+    }, 5000);
+  });
+
+  // Close popup function
+  function closeCryptoPopup() {
+    document.getElementById('cryptoPromoPopup').classList.remove('active');
+  }
+
+  // Close if clicked outside the box
+  document.getElementById('cryptoPromoPopup').addEventListener('click', (e) => {
+    if(e.target === document.getElementById('cryptoPromoPopup')) {
+      closeCryptoPopup();
+    }
+  });
+</script>
 
 <script>
 window.addEventListener('load', () => { setTimeout(() => { document.body.classList.add('loaded'); }, 500); });
