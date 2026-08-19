@@ -152,6 +152,24 @@
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* ── ALERTS SHOWCASE (NEW) ── */
+  .alerts-section { background: var(--bg-sec); border-top: 1px solid var(--border); padding-top: 100px; padding-bottom: 100px; text-align: center; overflow: hidden; }
+  .alerts-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 50px; }
+  .alert-mockup { max-width: 280px; width: 100%; height: auto; border-radius: 30px; box-shadow: var(--shadow-lg); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: 6px solid #fff; object-fit: contain; background: #000; }
+  .alert-mockup:hover { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+  .alert-features-list { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+  .alert-feature-tag { background: #fff; padding: 12px 24px; border-radius: 100px; font-weight: 700; font-size: 0.95rem; color: var(--text-dark); box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.05); display: flex; align-items: center; gap: 8px; transition: 0.3s;}
+  .alert-feature-tag:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--whop-orange); color: var(--whop-orange); }
+
+  /* ── PAYMENT BUNDLE LIST (NEW) ── */
+  .payment-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; margin-top: 50px; align-items: start; }
+  .bundle-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 24px; padding: 40px; text-align: left; box-shadow: var(--shadow-lg); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);}
+  .bundle-box::before { content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255,90,0,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;}
+  .bundle-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 24px; color: #fff; display: flex; align-items: center; gap: 12px;}
+  .bundle-list { list-style: none; display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 2; }
+  .bundle-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 1.05rem; font-weight: 500; color: #e2e8f0; line-height: 1.4;}
+  .bundle-list li i { color: var(--whop-orange); font-size: 1.2rem; margin-top: 2px;}
+
   /* ── FLAGSHIP SHOWCASE SECTION ── */
   #showcase { 
     background: radial-gradient(circle at top, #ffffff 0%, var(--bg-sec) 100%); 
@@ -162,7 +180,6 @@
   
   .showcase-header { text-align: center; margin-bottom: 50px; }
   
-  /* Massive Top Image Styling with Subtle Elegant Glow */
   .showcase-image-main {
     max-width: 1100px;
     margin: 0 auto 60px auto;
@@ -176,156 +193,39 @@
     z-index: 10;
   }
   .showcase-image-main::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(90deg, #FF5A00, #ff007f, #FF5A00);
-    background-size: 200% auto;
-    filter: blur(15px);
-    opacity: 0.25;
-    z-index: -1;
-    border-radius: 24px;
-    animation: gradientMove 5s linear infinite;
-    transition: all 0.5s ease;
+    content: ''; position: absolute; inset: -2px;
+    background: linear-gradient(90deg, #FF5A00, #ff007f, #FF5A00); background-size: 200% auto;
+    filter: blur(15px); opacity: 0.25; z-index: -1; border-radius: 24px; animation: gradientMove 5s linear infinite; transition: all 0.5s ease;
   }
-  .showcase-image-main:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 90, 0, 0.25);
-    border-color: rgba(255, 90, 0, 0.3);
-  }
-  .showcase-image-main:hover::before {
-    filter: blur(25px);
-    opacity: 0.45;
-    inset: -4px;
-  }
-  .showcase-image-main img {
-    width: 100%;
-    height: auto;
-    border-radius: 14px;
-    display: block;
-    position: relative;
-    z-index: 2;
-  }
+  .showcase-image-main:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255, 90, 0, 0.25); border-color: rgba(255, 90, 0, 0.3); }
+  .showcase-image-main:hover::before { filter: blur(25px); opacity: 0.45; inset: -4px; }
+  .showcase-image-main img { width: 100%; height: auto; border-radius: 14px; display: block; position: relative; z-index: 2; }
   
-  /* UPDATED VERSION Dynamic Badge */
   .premium-badge-updated {
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    background: linear-gradient(90deg, #ff007f, #FF5A00, #ff007f);
-    background-size: 200% auto;
-    color: #fff;
-    padding: 12px 32px;
-    border-radius: 100px;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 10px 25px rgba(255, 90, 0, 0.5);
-    z-index: 20;
-    animation: gradientGlow 3s linear infinite, floatUpdate 3s ease-in-out infinite;
-    border: 2px solid #fff;
+    position: absolute; top: -20px; right: -20px;
+    background: linear-gradient(90deg, #ff007f, #FF5A00, #ff007f); background-size: 200% auto; color: #fff;
+    padding: 12px 32px; border-radius: 100px; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.1rem;
+    text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 25px rgba(255, 90, 0, 0.5); z-index: 20;
+    animation: gradientGlow 3s linear infinite, floatUpdate 3s ease-in-out infinite; border: 2px solid #fff;
   }
-  @keyframes gradientGlow {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
-  }
-  @keyframes floatUpdate {
-    0% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-8px) scale(1.03); box-shadow: 0 15px 35px rgba(255, 0, 127, 0.6); }
-    100% { transform: translateY(0px) scale(1); }
-  }
+  @keyframes gradientGlow { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+  @keyframes floatUpdate { 0% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-8px) scale(1.03); box-shadow: 0 15px 35px rgba(255, 0, 127, 0.6); } 100% { transform: translateY(0px) scale(1); } }
 
-  .showcase-features-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: left;
-  }
+  .showcase-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; text-align: left; }
   
-  .feature-card-premium {
-    background: #fff;
-    border: 1px solid rgba(0,0,0,0.06);
-    padding: 20px 24px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    cursor: default;
-  }
-  .feature-card-premium::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(120deg, rgba(255,90,0,0.06), transparent);
-    z-index: -1;
-    opacity: 0;
-    transition: 0.4s;
-  }
-  .feature-card-premium:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: var(--shadow-md);
-    border-color: rgba(255,90,0,0.3);
-  }
+  .feature-card-premium { background: #fff; border: 1px solid rgba(0,0,0,0.06); padding: 20px 24px; border-radius: 20px; display: flex; align-items: center; gap: 20px; box-shadow: var(--shadow-sm); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; z-index: 1; cursor: default; }
+  .feature-card-premium::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(120deg, rgba(255,90,0,0.06), transparent); z-index: -1; opacity: 0; transition: 0.4s; }
+  .feature-card-premium:hover { transform: translateY(-5px) scale(1.02); box-shadow: var(--shadow-md); border-color: rgba(255,90,0,0.3); }
   .feature-card-premium:hover::before { opacity: 1; }
   
-  .feature-icon-box {
-    width: 48px; height: 48px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-    color: var(--text-dark);
-    display: flex; justify-content: center; align-items: center;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-    transition: 0.4s;
-    border: 1px solid var(--border);
-  }
-  .feature-card-premium:hover .feature-icon-box {
-    background: linear-gradient(135deg, #FF5A00, #ff007f);
-    color: #fff;
-    border-color: transparent;
-    transform: rotate(10deg);
-    box-shadow: 0 8px 20px rgba(255,90,0,0.3);
-  }
+  .feature-icon-box { width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, #f8fafc, #e2e8f0); color: var(--text-dark); display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0; transition: 0.4s; border: 1px solid var(--border); }
+  .feature-card-premium:hover .feature-icon-box { background: linear-gradient(135deg, #FF5A00, #ff007f); color: #fff; border-color: transparent; transform: rotate(10deg); box-shadow: 0 8px 20px rgba(255,90,0,0.3); }
   
-  .feature-text-premium {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1.4;
-  }
+  .feature-text-premium { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); line-height: 1.4; }
 
-  /* COLORFUL BANNER */
-  .showcase-banner {
-    margin-top: 60px;
-    background: linear-gradient(135deg, #FF5A00 0%, #ff007f 100%);
-    padding: 50px 30px;
-    border-radius: 24px;
-    color: #fff;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(255, 90, 0, 0.3);
-    position: relative;
-    overflow: hidden;
-  }
-  .showcase-banner::before {
-    content: ''; position: absolute; top: -50%; left: -10%; width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .showcase-banner::after {
-    content: ''; position: absolute; bottom: -50%; right: -10%; width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-  }
+  .showcase-banner { margin-top: 60px; background: linear-gradient(135deg, #FF5A00 0%, #ff007f 100%); padding: 50px 30px; border-radius: 24px; color: #fff; text-align: center; box-shadow: 0 20px 40px rgba(255, 90, 0, 0.3); position: relative; overflow: hidden; }
+  .showcase-banner::before { content: ''; position: absolute; top: -50%; left: -10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); border-radius: 50%; }
+  .showcase-banner::after { content: ''; position: absolute; bottom: -50%; right: -10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%); border-radius: 50%; }
   .showcase-banner h3 { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 15px; letter-spacing: -0.02em; text-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; z-index: 2;}
   .showcase-banner p { font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 500; opacity: 0.95; max-width: 800px; margin: 0 auto; line-height: 1.6; position: relative; z-index: 2;}
 
@@ -345,7 +245,7 @@
   .feature-tag { padding: 14px 28px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); background: #fff; white-space: nowrap; transition: all 0.3s; cursor: pointer; box-shadow: var(--shadow-sm); position: relative;}
   .feature-tag:hover { transform: translateY(-3px) scale(1.02); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md); }
 
-  /* ── CORE FEATURES (SIMPLIFIED TEXT) ── */
+  /* ── CORE FEATURES ── */
   #architecture { background: var(--bg-sec); border-top: 1px solid var(--border); }
   .arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; text-align: left; }
   .arch-card { background: #fff; border: 1px solid var(--border); border-radius: 24px; padding: 40px; box-shadow: var(--shadow-sm); transition: all 0.4s ease;}
@@ -360,192 +260,66 @@
   #indicators { background: #fff; border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; width: 100%;}
   #indicators .inner { padding: 0 5%; margin-bottom: 40px; text-align: center; }
 
-  .arsenal-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    height: 750px; 
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .center-hub {
-    position: absolute;
-    z-index: 10;
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(135deg, #FF5A00 0%, #ff007f 100%);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(255, 90, 0, 0.4);
-    border: 6px solid #fff;
-    animation: pulseHub 3s infinite;
-  }
-  @keyframes pulseHub {
-    0% { box-shadow: 0 0 0 0 rgba(255,90,0, 0.4); }
-    70% { box-shadow: 0 0 0 20px rgba(255,90,0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255,90,0, 0); }
-  }
+  .arsenal-container { position: relative; width: 100%; max-width: 800px; height: 750px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+  .center-hub { position: absolute; z-index: 10; width: 200px; height: 200px; background: linear-gradient(135deg, #FF5A00 0%, #ff007f 100%); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; box-shadow: 0 15px 35px rgba(255, 90, 0, 0.4); border: 6px solid #fff; animation: pulseHub 3s infinite; }
+  @keyframes pulseHub { 0% { box-shadow: 0 0 0 0 rgba(255,90,0, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(255,90,0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255,90,0, 0); } }
   .center-hub h3 { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 900; margin-bottom: 5px; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.2);}
   .center-hub p { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.9); margin-top: 4px; }
 
-  .satellite-wrapper {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 0; height: 0;
-    z-index: 5;
-  }
-  
-  .satellite-link {
-    position: absolute;
-    top: -1px; left: 0;
-    width: 280px; 
-    height: 2px;
-    background: rgba(0,0,0,0.06);
-    z-index: 1;
-    transition: all 0.4s ease;
-  }
+  .satellite-wrapper { position: absolute; top: 50%; left: 50%; width: 0; height: 0; z-index: 5; }
+  .satellite-link { position: absolute; top: -1px; left: 0; width: 280px; height: 2px; background: rgba(0,0,0,0.06); z-index: 1; transition: all 0.4s ease; }
+  .satellite-link::after { content: ''; position: absolute; top: -1.5px; left: 0; width: 45px; height: 5px; background: #FF5A00; box-shadow: 0 0 15px #FF5A00, 0 0 30px #ff007f, 0 0 40px rgba(255, 90, 0, 0.8); border-radius: 10px; opacity: 0; animation: dataFlow 3.5s infinite cubic-bezier(0.4, 0, 0.2, 1); animation-delay: var(--delay, 0s); z-index: 2; }
+  @keyframes dataFlow { 0% { left: 0%; opacity: 0; transform: scaleX(0.2); } 10% { opacity: 1; transform: scaleX(1); } 80% { opacity: 1; transform: scaleX(1); } 100% { left: 100%; opacity: 0; transform: scaleX(0.2); } }
 
-  /* 🔥 PREMIUM MOTION EFFECT 🔥 */
-  .satellite-link::after {
-    content: '';
-    position: absolute;
-    top: -1.5px;
-    left: 0;
-    width: 45px;
-    height: 5px;
-    background: #FF5A00;
-    box-shadow: 0 0 15px #FF5A00, 0 0 30px #ff007f, 0 0 40px rgba(255, 90, 0, 0.8);
-    border-radius: 10px;
-    opacity: 0;
-    animation: dataFlow 3.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
-    /* Delay dynamically assigned via inline CSS in HTML */
-    animation-delay: var(--delay, 0s); 
-    z-index: 2;
-  }
-
-  @keyframes dataFlow {
-    0% { left: 0%; opacity: 0; transform: scaleX(0.2); }
-    10% { opacity: 1; transform: scaleX(1); }
-    80% { opacity: 1; transform: scaleX(1); }
-    100% { left: 100%; opacity: 0; transform: scaleX(0.2); }
-  }
-
-  /* Fixed breaking lines by increasing width/height and adjusting font */
-  .satellite-node {
-    position: absolute;
-    top: 0; left: 280px;
-    width: 145px; 
-    height: 145px; 
-    background: #ffffff;
-    border: 2px solid rgba(255, 90, 0, 0.5);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 15px;
-    box-shadow: 0 0 15px rgba(255, 90, 0, 0.25); /* Permanent soft glow */
-    font-size: 0.82rem; 
-    font-weight: 600;
-    color: var(--text-dark);
-    z-index: 5;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: default;
-    line-height: 1.4;
-  }
+  .satellite-node { position: absolute; top: 0; left: 280px; width: 145px; height: 145px; background: #ffffff; border: 2px solid rgba(255, 90, 0, 0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; padding: 15px; box-shadow: 0 0 15px rgba(255, 90, 0, 0.25); font-size: 0.82rem; font-weight: 600; color: var(--text-dark); z-index: 5; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: default; line-height: 1.4; }
   .satellite-node strong { font-weight: 900; color: var(--whop-orange); font-size: 0.95rem; display: block; margin: 3px 0; letter-spacing: 0.5px; transition: color 0.4s;}
-
-  .satellite-wrapper:hover .satellite-link {
-    background: var(--whop-orange);
-    height: 3px;
-    top: -1.5px;
-    box-shadow: 0 0 10px rgba(255,90,0,0.5);
-  }
-  .satellite-wrapper:hover .satellite-link::after {
-    display: none; 
-  }
-  .satellite-wrapper:hover .satellite-node {
-    background: linear-gradient(135deg, #FF5A00 0%, #ff007f 100%);
-    border: 2px solid #fff;
-    box-shadow: 0 15px 40px rgba(255, 90, 0, 0.6);
-    color: #fff;
-    transform: translate(-50%, -50%) scale(1.1) !important;
-  }
-  .satellite-wrapper:hover .satellite-node strong {
-    color: #fff;
-  }
+  .satellite-wrapper:hover .satellite-link { background: var(--whop-orange); height: 3px; top: -1.5px; box-shadow: 0 0 10px rgba(255,90,0,0.5); }
+  .satellite-wrapper:hover .satellite-link::after { display: none; }
+  .satellite-wrapper:hover .satellite-node { background: linear-gradient(135deg, #FF5A00 0%, #ff007f 100%); border: 2px solid #fff; box-shadow: 0 15px 40px rgba(255, 90, 0, 0.6); color: #fff; transform: translate(-50%, -50%) scale(1.1) !important; }
+  .satellite-wrapper:hover .satellite-node strong { color: #fff; }
 
   /* ── PRICING & PAYMENT HEADERS ── */
   .pricing-wrapper { background: var(--bg-sec); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
-  
   .payment-methods-header { display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; flex-wrap: wrap; }
   .pay-method { display: flex; align-items: center; gap: 16px; background: #fff; border: 2px solid var(--border); padding: 20px 24px; border-radius: 20px; box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; min-width: 260px; flex: 1; max-width: 320px; }
   .pay-method:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-  
   .card-method:hover { border-color: #3b82f6; }
   .card-method .pay-icon { color: #3b82f6; }
   .card-method .pay-badge { background: var(--bg-sec); color: var(--text-muted); border: 1px solid var(--border);}
-  
   .crypto-method { border-color: rgba(16, 185, 129, 0.4); background: #f0fdf4;}
   .crypto-method:hover { border-color: var(--green); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2); }
   .crypto-method .pay-icon { color: var(--green); }
   .crypto-method .pay-badge { background: var(--green); color: #fff; animation: pulseBadge 2s infinite; border: 1px solid var(--green); }
-
   .pay-icon { font-size: 2.2rem; }
   .pay-text { text-align: left; flex: 1; }
   .pay-text h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text-dark); margin-bottom: 4px;}
   .pay-text p { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;}
   .pay-badge { font-size: 0.75rem; font-weight: 800; padding: 6px 10px; border-radius: 100px; font-family: 'JetBrains Mono', monospace;}
 
-  @keyframes pulseBadge {
-    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-  }
+  @keyframes pulseBadge { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
   .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left; align-items: stretch;}
-  
   .price-card { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 36px 24px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; position: relative; box-shadow: var(--shadow-sm);}
   .price-card:hover { transform: translateY(-10px); box-shadow: var(--glow-orange); border-color: rgba(255,90,0,0.3); z-index: 2;}
   .price-card.popular { border: 1px solid rgba(255,90,0,0.3); box-shadow: var(--shadow-md);}
-  
   .price-tier { font-family: 'Outfit', sans-serif; font-size:1.2rem; font-weight:800; color:var(--text-dark); margin-bottom:12px; display: flex; align-items: center; justify-content: space-between;}
   .popular-badge { font-size: 0.65rem; background: var(--whop-orange); color: #fff; padding: 6px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; font-family: 'Inter', sans-serif;}
-  
   .price-crossed { font-size: 0.95rem; color: var(--text-muted); text-decoration: line-through; height: 18px; margin-bottom: 4px; font-weight: 500;}
   .price-amount { font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 800; color: var(--text-dark); line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline; letter-spacing: -0.03em;}
   .price-currency { font-size: 1.5rem; font-weight: 700; margin-right: 4px; }
   .price-period { font-size:0.9rem; color:var(--text-muted); font-weight: 500; margin-bottom: 12px;}
-  
   .tv-discount-tag { background: #fff3ed; color: var(--whop-orange); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.75rem; padding: 6px 12px; border-radius: 100px; border: 1px solid rgba(255,90,0,0.2); display: inline-block; margin-right: 6px;}
   .price-save { font-size: 0.85rem; color: var(--text-dark); font-weight: 600; margin-bottom: 32px; display: flex; align-items: center; height: 28px;}
-
   .price-features { list-style:none; flex: 1; margin-bottom:32px; display: flex; flex-direction: column; gap: 16px;}
   .price-features li { display:flex; align-items:flex-start; gap:12px; font-size:0.9rem; color:var(--text-muted); line-height:1.4; font-weight: 400;}
   .price-features li::before { content:'✓'; color:var(--green); font-weight: 800; font-size: 1.1rem; }
   
-  /* ── DYNAMIC GLOW BUTTON ── */
-  .btn-glowing {
-    display: block; text-align: center; padding: 16px 12px; border-radius: 100px; font-weight: 700; font-size: 0.85rem; width: 100%; cursor: pointer; line-height: 1.4;
-    background: linear-gradient(90deg, #FF5A00, #ff007f, #FF5A00);
-    background-size: 200% auto; color: #fff !important; border: none !important;
-    box-shadow: 0 0 15px rgba(255, 90, 0, 0.6);
-    animation: pulseGlow 2s infinite, gradientMove 3s linear infinite; transition: all 0.3s ease;
-  }
+  .btn-glowing { display: block; text-align: center; padding: 16px 12px; border-radius: 100px; font-weight: 700; font-size: 0.85rem; width: 100%; cursor: pointer; line-height: 1.4; background: linear-gradient(90deg, #FF5A00, #ff007f, #FF5A00); background-size: 200% auto; color: #fff !important; border: none !important; box-shadow: 0 0 15px rgba(255, 90, 0, 0.6); animation: pulseGlow 2s infinite, gradientMove 3s linear infinite; transition: all 0.3s ease; }
   .btn-glowing:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 25px rgba(255, 90, 0, 0.8); }
-  @keyframes pulseGlow { 0% { box-shadow: 0 0 10px rgba(255, 90, 0, 0.4); } 50% { box-shadow: 0 0 25px rgba(255, 0, 127, 0.8); } 100% { box-shadow: 0 0 10px rgba(255, 90, 0, 0.4); } }
-  @keyframes gradientMove { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
 
   /* ── CRYPTO PAYMENT ── */
-  #payment { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
-  .crypto-container { display: flex; flex-direction: column; gap: 16px; max-width: 700px; margin: 40px auto 0; width: 100%; }
+  #payment { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 100px;}
+  .crypto-container { display: flex; flex-direction: column; gap: 16px; width: 100%; }
   .crypto-item { background: #fff; border: 1px solid rgba(0,0,0,0.05); padding: 24px 32px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; box-shadow: var(--shadow-sm); width: 100%;}
   .crypto-item:hover { border-color: rgba(255,90,0,0.3); box-shadow: var(--shadow-md); transform: translateY(-2px);}
   .crypto-left { display: flex; flex-direction: column; gap: 8px; text-align: left; overflow: hidden; width: 100%;}
@@ -555,7 +329,7 @@
   .copy-btn:hover { background: var(--text-dark); border-color: var(--text-dark); color: #fff; box-shadow: var(--shadow-sm);}
   .copy-btn.copied { background: var(--green); border-color: var(--green); color: #fff; }
 
-  /* ── TESTIMONIALS (MARQUEE 3 LINES) ── */
+  /* ── TESTIMONIALS & OTHER SECTIONS (KEPT SAME AS BEFORE) ── */
   #testimonials { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; width: 100%;}
   #testimonials .inner { padding: 0 5%; margin-bottom: 30px; text-align: center;}
   .testi-marquee-wrap { display: flex; flex-direction: column; gap: 24px; position: relative; width: 100%; }
@@ -563,7 +337,6 @@
   .testi-marquee-wrap::before { left:0; background:linear-gradient(90deg,var(--bg-sec) 0%,transparent 100%); }
   .testi-marquee-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg-sec) 0%,transparent 100%); }
   .testi-track { display: flex; gap: 24px; width: max-content; }
-  
   .testi-card { background: #fff; border:1px solid var(--border); border-radius: 20px; padding: 28px; width: 340px; flex-shrink: 0; box-shadow: var(--shadow-sm); text-align: left; transition: 0.3s;}
   .testi-card:hover { border-color: var(--whop-orange); transform: translateY(-4px); box-shadow: var(--shadow-md);}
   .testi-pnl { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
@@ -571,7 +344,6 @@
   .testi-text { font-size:0.9rem; line-height:1.6; color:var(--text-muted); margin-bottom:20px; font-style:italic; font-weight: 400;}
   .testi-author { font-weight:700; font-size:0.85rem; color:var(--text-dark); }
 
-  /* ── DISCORD JOIN SECTION ── */
   #discord-join { padding: 80px 5%; background: #ffffff; border-top: 1px solid var(--border); text-align: center; }
   .discord-wrapper { background: var(--bg-sec); border: 1px solid var(--border); border-radius: 24px; padding: 60px 40px; max-width: 900px; margin: 0 auto; color: var(--text-dark); box-shadow: var(--shadow-md); position: relative; overflow: hidden; transition: box-shadow 0.3s, transform 0.3s;}
   .discord-wrapper:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: rgba(88, 101, 242, 0.2);}
@@ -580,10 +352,7 @@
   .discord-wrapper p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px; font-weight: 500;}
   .discord-btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: #5865F2; color: #ffffff; padding: 16px 40px; border-radius: 100px; font-weight: 800; font-size: 1.1rem; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 20px rgba(88, 101, 242, 0.25);}
   .discord-btn:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(88, 101, 242, 0.4); background: #4752C4; color: #ffffff;}
-  .discord-btn i.fa-arrow-right { font-size: 1rem; transition: transform 0.3s; display: flex; align-items: center;}
-  .discord-btn:hover i.fa-arrow-right { transform: translateX(4px);}
 
-  /* ── SOCIAL MARQUEE (COMMUNITY) ── */
   #community { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 80px 0; overflow: hidden; width: 100%;}
   #community .inner { padding: 0 5%; margin-bottom: 30px; text-align: center; }
   .comm-marquee-wrap { display: flex; flex-direction: column; gap: 24px; position: relative; width: 100%; overflow: hidden;}
@@ -591,15 +360,12 @@
   .comm-marquee-wrap::before { left:0; background:linear-gradient(90deg,var(--bg-sec) 0%,transparent 100%); }
   .comm-marquee-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg-sec) 0%,transparent 100%); }
   .comm-track { display: flex; gap: 24px; width: max-content; }
-  
   .comm-card { background: #fff; border:1px solid var(--border); border-radius: 20px; padding:32px; display:flex; flex-direction: column; gap: 16px; width: 320px; flex-shrink: 0; transition:all 0.3s; text-align: left; box-shadow: var(--shadow-sm);}
   .comm-card:hover { border-color: rgba(255,90,0,0.3); box-shadow: var(--shadow-md); transform:translateY(-4px);}
   .comm-icon { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 8px;}
   .comm-name { font-family:'Outfit',sans-serif; font-weight: 800; font-size:1.2rem; color:var(--text-dark); }
   .comm-desc { font-size:0.95rem; color:var(--text-muted); line-height:1.6; }
-  .comm-arrow { font-weight: 700; margin-top: auto;}
 
-  /* ── MASTERCLASS ── */
   #masterclass { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
   .mc-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:24px; text-align: left; }
   .mc-card { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; cursor: pointer; box-shadow: var(--shadow-sm);}
@@ -610,7 +376,6 @@
   .mc-body { padding: 24px; flex: 1; display: flex; flex-direction: column;}
   .ind-number-mc { position: absolute; top: 16px; left: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; color: #fff; background: rgba(17,17,17,0.8); backdrop-filter: blur(8px); padding: 6px 16px; border-radius: 100px; z-index: 2;}
 
-  /* ── FAQ SECTION ── */
   #faq { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 80px 5%; }
   .faq-list { display: flex; flex-direction: column; gap: 16px; max-width: 800px; margin: 0 auto; text-align: left; }
   .faq-item { background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.3s; box-shadow: var(--shadow-sm); }
@@ -622,7 +387,6 @@
   .faq-a { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 24px; }
   .faq-item.open .faq-a { max-height: 300px; padding-bottom: 24px; }
 
-  /* ── RISK CALCULATOR ── */
   #riskCalc { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
   .calc-wrapper { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 48px; box-shadow: var(--shadow-md); text-align: left; max-width: 1000px; margin: 0 auto; transition: box-shadow 0.3s;}
   .calc-wrapper:hover { box-shadow: var(--shadow-lg); }
@@ -649,34 +413,15 @@
   .warn-msg { font-size: 0.9rem; color: #b45309; background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 16px 24px; display: none; font-weight: 600; margin-top: 10px;}
   .warn-msg.show { display: block;}
   .calc-reset-btn { margin-top: 10px; background: #fff; border: 1px solid var(--border); padding: 16px; font-family: 'Inter', sans-serif; font-weight: 700; border-radius: 12px; cursor: pointer; color: var(--text-dark); transition: 0.3s;}
-  .calc-reset-btn:hover { background: var(--bg-sec); border-color: rgba(0,0,0,0.2); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 
-  /* ── BIG TEXT PRE-FOOTER & DISCLAIMER ── */
   .pre-footer-text { padding: 100px 5% 40px; text-align: center; background: #fff; border-top: 1px solid var(--border); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center;}
   .pre-footer-title { font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4.5rem); font-weight: 900; letter-spacing: -0.04em; color: var(--text-dark); max-width: 900px; margin: 0 auto; line-height: 1.15; z-index: 2;}
   
   .risk-disclaimer-box { max-width: 1200px; margin: 20px auto 60px; padding: 40px; background: var(--bg-sec); border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; text-align: left; box-shadow: var(--shadow-sm); }
   .risk-disclaimer-box strong { color: var(--text-dark); font-weight: 800;}
 
-  /* ── BOTTOM WATERMARK FIXED (NEVER CUT OFF) ── */
   .bottom-watermark-wrap { background: #fff; position: relative; overflow: hidden; text-align: center; padding-bottom: 20px; width: 100%; display: flex; justify-content: center; }
-  .big-watermark { 
-    font-family: 'Outfit', sans-serif; 
-    font-size: clamp(2rem, 9vw, 160px); 
-    font-weight: 900; 
-    font-style: italic; 
-    color: rgba(0, 0, 0, 0.6); 
-    text-align: center; 
-    line-height: 1; 
-    margin-top: 40px; 
-    pointer-events: none; 
-    user-select: none; 
-    white-space: nowrap; 
-    width: 100%; 
-    z-index: 1; 
-    text-transform: uppercase; 
-    letter-spacing: 0;
-  }
+  .big-watermark { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 9vw, 160px); font-weight: 900; font-style: italic; color: rgba(0, 0, 0, 0.6); text-align: center; line-height: 1; margin-top: 40px; pointer-events: none; user-select: none; white-space: nowrap; width: 100%; z-index: 1; text-transform: uppercase; letter-spacing: 0;}
 
   footer { background: #fff; padding: 0 5% 40px;}
   .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px;}
@@ -684,28 +429,25 @@
   .social-icon-btn:hover { transform: translateY(-4px); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md);}
   .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.95rem; color: var(--text-muted); padding-top: 30px; border-top: 1px solid var(--border); font-weight: 500;}
   
-  /* ── POLICY MODAL ── */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px;}
   .modal-overlay.active { opacity: 1; pointer-events: auto; }
   .modal-content { background: #fff; width: 100%; max-width: 600px; border-radius: 24px; padding: 40px; position: relative; transform: translateY(20px); transition: 0.3s; max-height: 80vh; overflow-y: auto; box-shadow: var(--shadow-lg);}
   .modal-overlay.active .modal-content { transform: translateY(0); }
   .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: 0.2s; background: var(--bg-sec); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;}
-  .modal-close:hover { color: var(--red); background: #fef2f2;}
   .modal-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; color: var(--text-dark); }
   .modal-body { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
 
   @media (max-width: 1024px) {
     .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .payment-layout { grid-template-columns: 1fr; }
   }
 
-  /* ── RESPONSIVE ARSENAL CIRCLE MAP ── */
   @media (max-width: 900px) {
     .arsenal-container { height: 600px; max-width: 600px;}
     .satellite-link { width: 220px; }
     .satellite-node { left: 220px; width: 115px; height: 115px; font-size: 0.72rem; padding: 10px; }
     .center-hub { width: 160px; height: 160px; }
     .center-hub h3 { font-size: 1.3rem; }
-    
     .calc-layout, .showcase-features-grid { grid-template-columns: 1fr; }
     nav { padding: 0 5%; }
     .nav-links, .nav-cta { display: none; }
@@ -713,9 +455,6 @@
     section { padding: 60px 5%; }
     .hero-reviews-wrapper { display: none; } 
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-    .crypto-label { font-size: 0.85rem; }
-    .crypto-addr { font-size: 0.75rem; margin-right: 0;}
-    .testi-card, .comm-card { width: 280px; }
   }
 
   @media (max-width: 600px) {
@@ -726,92 +465,19 @@
     .center-hub { width: 130px; height: 130px; border-width: 4px; }
     .center-hub h3 { font-size: 1rem; }
     .center-hub p { font-size: 0.65rem; }
-    
-    .footer-socials { justify-content: center !important; }
-    .hero-badge { font-size: 0.75rem; padding: 6px 14px; gap: 6px; margin-bottom: 20px; }
-    .hero-badge span { font-size: 0.85rem !important; }
-    .hero-title { font-size: 2.2rem; }
     .footer-grid { grid-template-columns: 1fr; text-align: center;}
-    .social-icon-btn { margin: 0 5px; }
-    .footer-bottom { flex-direction: column; gap: 16px; text-align: center;}
     .crypto-item { flex-direction: column; gap: 16px; align-items: flex-start; }
     .copy-btn { width: 100%; text-align: center; }
-    .discord-wrapper { padding: 40px 20px; }
-    .calc-wrapper { padding: 24px; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    .btn-cyber { width: 100%; max-width: none;}
-    .hero-stats { gap: 15px; }
-    .showcase-image-main { padding: 6px; }
-    .premium-badge-updated { font-size: 0.85rem; padding: 10px 20px; top: -15px; right: -10px; }
-    .showcase-banner { padding: 40px 20px; }
   }
 
-  @media (max-width: 400px) {
-    .arsenal-container { height: 400px; transform: scale(0.9); }
-  }
-
-  /* GPU ACCELERATION FOR SMOOTH MOBILE SCROLLING */
-  .tag-track, .testi-track, .comm-track {
-    will-change: transform;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    display: flex;
-    flex-wrap: nowrap;
-    width: max-content;
-  }
-  
-  /* PREVENT MOBILE TAP FREEZE BUG */
-  @media (hover: hover) and (pointer: fine) {
-    .tag-track:hover, .testi-track:hover, .comm-track:hover {
-      animation-play-state: paused !important;
-    }
-  }
-
-  /* ── CRYPTO POPUP & DISCOUNT BADGE ── */
-  .crypto-popup-overlay {
-    position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px);
-    z-index: 100000; display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: all 0.4s ease; padding: 20px;
-  }
+  .crypto-popup-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px); z-index: 100000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.4s ease; padding: 20px; }
   .crypto-popup-overlay.active { opacity: 1; pointer-events: auto; }
-  
-  .crypto-popup-content {
-    background: #fff; max-width: 480px; width: 100%; border-radius: 24px; padding: 40px;
-    position: relative; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    text-align: center; box-shadow: 0 20px 40px rgba(255, 90, 0, 0.2); border: 2px solid var(--whop-orange);
-  }
+  .crypto-popup-content { background: #fff; max-width: 480px; width: 100%; border-radius: 24px; padding: 40px; position: relative; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; box-shadow: 0 20px 40px rgba(255, 90, 0, 0.2); border: 2px solid var(--whop-orange); }
   .crypto-popup-overlay.active .crypto-popup-content { transform: translateY(0) scale(1); }
-  
-  /* HIGHLIGHTED RED CLOSE BUTTON */
-  .crypto-popup-close {
-    position: absolute; top: 12px; right: 12px; font-size: 1.5rem; color: #fff; 
-    cursor: pointer; width: 44px; height: 44px; border-radius: 50%; background: var(--red);
-    display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); z-index: 100001; border: 2px solid #fff;
-  }
+  .crypto-popup-close { position: absolute; top: 12px; right: 12px; font-size: 1.5rem; color: #fff; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); z-index: 100001; border: 2px solid #fff; }
   .crypto-popup-close:hover { transform: scale(1.1) rotate(90deg); background: #dc2626; box-shadow: 0 6px 15px rgba(239, 68, 68, 0.6); }
+  .crypto-badge-side { position: absolute; top: -14px; right: 20px; background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.75rem; padding: 6px 14px; border-radius: 100px; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35); z-index: 10; border: 2px solid #fff; animation: pulseBadge 2s infinite; display: inline-flex; align-items: center; gap: 6px; }
 
-  /* STRAIGHT & CLEAN TOP-RIGHT POSITIONED BADGE */
-  .crypto-badge-side {
-    position: absolute; 
-    top: -14px; 
-    right: 20px; 
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: #fff; 
-    font-family: 'Outfit', sans-serif; 
-    font-weight: 800; 
-    font-size: 0.75rem; 
-    padding: 6px 14px; 
-    border-radius: 100px; 
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
-    transform: none; 
-    z-index: 10; 
-    border: 2px solid #fff; 
-    animation: pulseBadge 2s infinite;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
 </style>
 </head>
 <body>
@@ -878,113 +544,43 @@
   </div>
 </section>
 
-<!-- ── FLAGSHIP INDICATOR SHOWCASE (IMAGE TOP, 2-COLUMN BOTTOM) ── -->
+<!-- ── FLAGSHIP INDICATOR SHOWCASE ── -->
 <section id="showcase">
   <div class="inner">
-    
     <div class="showcase-header reveal">
       <div class="section-label"><i class="fas fa-star" style="color: var(--whop-orange);"></i> Flagship Tool</div>
       <h2 class="section-title">RTC [PO3 Pro Suite] Advanced</h2>
       <p class="section-desc">The ultimate trading toolkit. Everything you need is drawn on your chart automatically.</p>
     </div>
 
-    <!-- Massive Top Centered Image -->
     <div class="showcase-image-main reveal">
       <div class="premium-badge-updated">Updated Version</div>
       <img src="rtc-indicator.png" alt="RTC PO3 Pro Suite Advanced Visual">
     </div>
 
-    <!-- 2 Column Dynamic Feature Grid -->
     <div class="showcase-features-grid reveal">
-      
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-bell"></i></div>
-        <div class="feature-text-premium">Key Level to C2 Closure Alert</div>
-      </div>
-      
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-layer-group"></i></div>
-        <div class="feature-text-premium">Automatic Timeframe Alignment</div>
-      </div>
-      
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-clock"></i></div>
-        <div class="feature-text-premium">AM Model (7H-15m) Alignment</div>
-      </div>
-      
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-th-large"></i></div>
-        <div class="feature-text-premium">Multi-HTF Panel (Up to 5 Timeframes)</div>
-      </div>
-      
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-sliders-h"></i></div>
-        <div class="feature-text-premium">Custom 7H, 6H & 90m HTF Panels</div>
-      </div>
-      
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-vector-square"></i></div>
-        <div class="feature-text-premium">EQ Box & T-Spot Visualization</div>
-      </div>
-      
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-project-diagram"></i></div>
-        <div class="feature-text-premium">Continuous CISD & IC-CISD Detection</div>
-      </div>
-
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-exclamation-triangle"></i></div>
-        <div class="feature-text-premium">Reversal & Continuous CISD Alerts</div>
-      </div>
-
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-broom"></i></div>
-        <div class="feature-text-premium">C2 Sweep Visualization</div>
-      </div>
-
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-chart-line"></i></div>
-        <div class="feature-text-premium">STDV Projection Levels</div>
-      </div>
-
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-shield-alt"></i></div>
-        <div class="feature-text-premium">Protected Swing Point Tracking</div>
-      </div>
-
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-ruler-horizontal"></i></div>
-        <div class="feature-text-premium">HTF Candle Open & Auto 50% Midline</div>
-      </div>
-
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-tags"></i></div>
-        <div class="feature-text-premium">Dynamic Liquidity Labels (PDL, PWL)</div>
-      </div>
-
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-align-center"></i></div>
-        <div class="feature-text-premium">Auto-Aligned HTF Fair Value Gaps (FVG)</div>
-      </div>
-
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-filter"></i></div>
-        <div class="feature-text-premium">Session Alert Filter</div>
-      </div>
-
-      <div class="feature-card-premium">
-        <div class="feature-icon-box"><i class="fas fa-search-dollar"></i></div>
-        <div class="feature-text-premium">SMT+PSP Detection</div>
-      </div>
-
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-bell"></i></div><div class="feature-text-premium">Key Level to C2 Closure Alert</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-layer-group"></i></div><div class="feature-text-premium">Automatic Timeframe Alignment</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-clock"></i></div><div class="feature-text-premium">AM Model (7H-15m) Alignment</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-th-large"></i></div><div class="feature-text-premium">Multi-HTF Panel (Up to 5 Timeframes)</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-sliders-h"></i></div><div class="feature-text-premium">Custom 7H, 6H & 90m HTF Panels</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-vector-square"></i></div><div class="feature-text-premium">EQ Box & T-Spot Visualization</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-project-diagram"></i></div><div class="feature-text-premium">Continuous CISD & IC-CISD Detection</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-exclamation-triangle"></i></div><div class="feature-text-premium">Reversal & Continuous CISD Alerts</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-broom"></i></div><div class="feature-text-premium">C2 Sweep Visualization</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-chart-line"></i></div><div class="feature-text-premium">STDV Projection Levels</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-shield-alt"></i></div><div class="feature-text-premium">Protected Swing Point Tracking</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-ruler-horizontal"></i></div><div class="feature-text-premium">HTF Candle Open & Auto 50% Midline</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-tags"></i></div><div class="feature-text-premium">Dynamic Liquidity Labels (PDL, PWL)</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-align-center"></i></div><div class="feature-text-premium">Auto-Aligned HTF Fair Value Gaps (FVG)</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-filter"></i></div><div class="feature-text-premium">Session Alert Filter</div></div>
+      <div class="feature-card-premium"><div class="feature-icon-box"><i class="fas fa-search-dollar"></i></div><div class="feature-text-premium">SMT+PSP Detection</div></div>
     </div>
 
-    <!-- NEW COLORFUL BIG BANNER -->
     <div class="showcase-banner reveal">
       <h3>Unlock More Pro Features</h3>
       <p>Smart alerts that help you automate your trades and stay on the winning side of the market.</p>
     </div>
-
   </div>
 </section>
 
@@ -1031,7 +627,7 @@
   </div>
 </section>
 
-<!-- ── ARSENAL CIRCLE (HUB & SPOKE MAP WITH DATA FLOW) ── -->
+<!-- ── ARSENAL CIRCLE ── -->
 <section id="indicators">
   <div class="inner" style="margin-bottom: 0;">
     <div class="section-label reveal">The Arsenal</div>
@@ -1039,90 +635,65 @@
   </div>
   
   <div class="arsenal-container reveal">
-    <!-- Center Hub -->
     <div class="center-hub">
       <h3>RTC Hero Club</h3>
       <p>Indicator Bundle</p>
     </div>
 
-    <!-- 11 Satellites connected to the hub -->
     <div class="satellite-wrapper" style="transform: rotate(0deg); --delay: 0s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(0deg);">
-        RTC<br><strong>[PO3 Pro Suite]</strong><br>lite (v3.8)
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(0deg);">RTC<br><strong>[PO3 Pro Suite]</strong><br>lite (v3.8)</div>
     </div>
     
     <div class="satellite-wrapper" style="transform: rotate(32.7deg); --delay: 0.2s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-32.7deg);">
-        RTC<br><strong>[Reversal Pro+]</strong>
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-32.7deg);">RTC<br><strong>[Reversal Pro+]</strong></div>
     </div>
     
     <div class="satellite-wrapper" style="transform: rotate(65.4deg); --delay: 0.4s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-65.4deg);">
-        RTC<br><strong>[SMT Pro+]</strong>
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-65.4deg);">RTC<br><strong>[SMT Pro+]</strong></div>
     </div>
     
     <div class="satellite-wrapper" style="transform: rotate(98.1deg); --delay: 0.6s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-98.1deg);">
-        RTC<br><strong>[POI Pro+]</strong>
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-98.1deg);">RTC<br><strong>[POI Pro+]</strong></div>
     </div>
     
     <div class="satellite-wrapper" style="transform: rotate(130.9deg); --delay: 0.8s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-130.9deg);">
-        RTC<br><strong>[Session Pro+]</strong>
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-130.9deg);">RTC<br><strong>[Session Pro+]</strong></div>
     </div>
     
     <div class="satellite-wrapper" style="transform: rotate(163.6deg); --delay: 1.0s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-163.6deg);">
-        RTC<br><strong>[PO3 Pro Suite]</strong><br>Advanced
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-163.6deg);">RTC<br><strong>[PO3 Pro Suite]</strong><br>Advanced</div>
     </div>
     
     <div class="satellite-wrapper" style="transform: rotate(196.3deg); --delay: 1.2s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-196.3deg);">
-        RTC<br><strong>[SMT & PSP Sync Pro+]</strong>
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-196.3deg);">RTC<br><strong>[SMT & PSP Sync Pro+]</strong></div>
     </div>
     
     <div class="satellite-wrapper" style="transform: rotate(229deg); --delay: 1.4s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-229deg);">
-        RTC<br><strong>[V-Shape CISD Pro+]</strong>
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-229deg);">RTC<br><strong>[V-Shape CISD Pro+]</strong></div>
     </div>
     
     <div class="satellite-wrapper" style="transform: rotate(261.8deg); --delay: 1.6s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-261.8deg);">
-        RTC<br><strong>[iFVG Pro Suite]</strong>
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-261.8deg);">RTC<br><strong>[iFVG Pro Suite]</strong></div>
     </div>
 
     <div class="satellite-wrapper" style="transform: rotate(294.5deg); --delay: 1.8s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-294.5deg);">
-        RTC<br><strong>[Advanced CRT Plus]</strong>
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-294.5deg);">RTC<br><strong>[Advanced CRT Plus]</strong></div>
     </div>
 
     <div class="satellite-wrapper" style="transform: rotate(327.2deg); --delay: 2.0s;">
       <div class="satellite-link"></div>
-      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-327.2deg);">
-        RTC<br><strong>[Session Sweep &<br>CISD Plus]</strong>
-      </div>
+      <div class="satellite-node" style="transform: translate(-50%, -50%) rotate(-327.2deg);">RTC<br><strong>[Session Sweep &<br>CISD Plus]</strong></div>
     </div>
-
   </div>
 </section>
 
@@ -1233,56 +804,98 @@
   </section>
 </div>
 
+<!-- ── NEW ALERTS SHOWCASE (IPHONE MOCKUPS) ── -->
+<section id="alerts-showcase" class="alerts-section">
+  <div class="inner">
+    <div class="section-label reveal"><i class="fas fa-bell" style="color: var(--whop-orange);"></i> Smart Alerts</div>
+    <h2 class="section-title reveal">Never Miss a Setup</h2>
+    
+    <div class="alert-features-list reveal">
+      <div class="alert-feature-tag"><i class="fas fa-bolt" style="color:var(--whop-orange)"></i> Key level to C2 Closure</div>
+      <div class="alert-feature-tag"><i class="fas fa-check-circle" style="color:var(--green)"></i> C2 Confirmed</div>
+      <div class="alert-feature-tag"><i class="fas fa-layer-group" style="color:#3b82f6"></i> IC-CISD Formed</div>
+      <div class="alert-feature-tag"><i class="fas fa-chart-line" style="color:#8b5cf6"></i> Continuous CISD Formed</div>
+    </div>
+
+    <div class="alerts-grid reveal">
+      <img src="C40AED24-D79C-480C-855E-58E885049CD7.PNG" alt="Alert Screen 1" class="alert-mockup">
+      <img src="3AE7EDE5-9EAD-48A4-B73C-1D1D86729B23.PNG" alt="Alert Screen 2" class="alert-mockup">
+      <img src="BCB453A6-1AC0-4432-AC7D-A41AA22B2A4B.PNG" alt="Alert Screen 3" class="alert-mockup">
+    </div>
+  </div>
+</section>
+
+<!-- ── PAYMENT & PACKAGE DETAILS ── -->
 <section id="payment">
   <div class="inner">
-    <div class="section-label reveal">Alternative Payments</div>
-    <h2 class="section-title reveal">Direct Crypto Transfer</h2>
+    <div class="section-label reveal">Checkout & Delivery</div>
+    <h2 class="section-title reveal">Complete Your Transfer</h2>
     <p class="section-desc reveal">Bypass automated systems with direct crypto transfer. Verified and secure. Send a screenshot to Discord for verification.</p>
     
-    <div class="crypto-container reveal">
-      <div class="crypto-item">
-        <div class="crypto-left">
-          <div class="crypto-label"><i class="fas fa-coins" style="color:var(--green)"></i> Binance Pay</div>
-          <div class="crypto-addr">Pay ID: 133010319</div>
-        </div>
-        <button class="copy-btn" onclick="copyText(this,'133010319')">COPY</button>
+    <div class="payment-layout">
+      <!-- ── PACKAGE DETAILS (LEFT) ── -->
+      <div class="bundle-box reveal">
+        <div class="bundle-title"><i class="fas fa-box-open" style="color: var(--whop-orange);"></i> What You Get In The Suite</div>
+        <ul class="bundle-list">
+          <li><i class="fas fa-check-circle"></i> RTC [PO3 Pro Suite] lite (v3.8)</li>
+          <li><i class="fas fa-check-circle"></i> RTC [PO3 Pro Suite] Advanced</li>
+          <li><i class="fas fa-check-circle"></i> RTC [Reversal Pro+]</li>
+          <li><i class="fas fa-check-circle"></i> RTC [SMT Pro+]</li>
+          <li><i class="fas fa-check-circle"></i> RTC [POI Pro+]</li>
+          <li><i class="fas fa-check-circle"></i> RTC [Session Pro+]</li>
+          <li><i class="fas fa-check-circle"></i> RTC [SMT & PSP Sync Pro+]</li>
+          <li><i class="fas fa-check-circle"></i> RTC [V-Shape CISD Pro+]</li>
+          <li><i class="fas fa-check-circle"></i> RTC [iFVG Pro Suite]</li>
+        </ul>
       </div>
-      
-      <div class="crypto-item">
-        <div class="crypto-left">
-          <div class="crypto-label"><i class="fas fa-chart-pie" style="color:var(--whop-orange)"></i> Bybit</div>
-          <div class="crypto-addr">UID: 107261338</div>
+
+      <!-- ── CRYPTO CONTAINER (RIGHT) ── -->
+      <div class="crypto-container reveal" style="margin-top: 0;">
+        <div class="crypto-item">
+          <div class="crypto-left">
+            <div class="crypto-label"><i class="fas fa-coins" style="color:var(--green)"></i> Binance Pay</div>
+            <div class="crypto-addr">Pay ID: 133010319</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this,'133010319')">COPY</button>
         </div>
-        <button class="copy-btn" onclick="copyText(this,'107261338')">COPY</button>
-      </div>
-      
-      <div class="crypto-item">
-        <div class="crypto-left">
-          <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (BEP-20)</div>
-          <div class="crypto-addr">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</div>
+        
+        <div class="crypto-item">
+          <div class="crypto-left">
+            <div class="crypto-label"><i class="fas fa-chart-pie" style="color:var(--whop-orange)"></i> Bybit</div>
+            <div class="crypto-addr">UID: 107261338</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this,'107261338')">COPY</button>
         </div>
-        <button class="copy-btn" onclick="copyText(this,'0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973')">COPY</button>
-      </div>
-      
-      <div class="crypto-item">
-        <div class="crypto-left">
-          <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (TRC-20)</div>
-          <div class="crypto-addr">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</div>
+        
+        <div class="crypto-item">
+          <div class="crypto-left">
+            <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (BEP-20)</div>
+            <div class="crypto-addr">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this,'0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973')">COPY</button>
         </div>
-        <button class="copy-btn" onclick="copyText(this,'TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9')">COPY</button>
-      </div>
-      
-      <div class="crypto-item">
-        <div class="crypto-left">
-          <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDC (SOL)</div>
-          <div class="crypto-addr">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</div>
+        
+        <div class="crypto-item">
+          <div class="crypto-left">
+            <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (TRC-20)</div>
+            <div class="crypto-addr">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this,'TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9')">COPY</button>
         </div>
-        <button class="copy-btn" onclick="copyText(this,'FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH')">COPY</button>
+        
+        <div class="crypto-item">
+          <div class="crypto-left">
+            <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDC (SOL)</div>
+            <div class="crypto-addr">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this,'FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH')">COPY</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- TESTIMONIALS (MARQUEE 3 LINES) -->
 <section id="testimonials">
   <div class="inner reveal">
     <div class="section-label">Social Proof</div>
@@ -1322,16 +935,9 @@
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
       <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, daily setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
-      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
-      <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
-      <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
-      <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, daily setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
     </div>
 
     <div class="comm-track track-right" id="commTrack2">
-      <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
-      <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
-      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.tradingview.com/u/Rashik_Archive/" target="_blank" class="comm-card"><i class="fas fa-chart-line comm-icon"></i><div class="comm-name">TradingView</div><p class="comm-desc">Follow our official scripts, precise market breakdowns, and public ideas.</p><div class="comm-arrow">→</div></a>
       <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
@@ -1347,127 +953,49 @@
     
     <div class="mc-grid reveal">
       <div class="mc-card" onclick="window.open('https://youtu.be/uL51FufvU6Q', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/uL51FufvU6Q/maxresdefault.jpg" alt="Part 1">
-          <div class="ind-number-mc">PART 1</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Suite Breakdown</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Master the basic setup, features and precise configuration of the indicators.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/uL51FufvU6Q/maxresdefault.jpg" alt="Part 1"><div class="ind-number-mc">PART 1</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Suite Breakdown</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Master the basic setup, features and precise configuration of the indicators.</p></div>
       </div>
-      
       <div class="mc-card" onclick="window.open('https://youtu.be/oyZyEIKUix4', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg" alt="Part 2">
-          <div class="ind-number-mc">PART 2</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Advanced Settings</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn step-by-step how to read market structure and enter trades like a pro.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg" alt="Part 2"><div class="ind-number-mc">PART 2</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Advanced Settings</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn step-by-step how to read market structure and enter trades like a pro.</p></div>
       </div>
-      
       <div class="mc-card" onclick="window.open('https://youtu.be/Dbz-iNeU9t8', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/Dbz-iNeU9t8/maxresdefault.jpg" alt="Part 3">
-          <div class="ind-number-mc">PART 3</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Strategy Application</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">See how to use the indicators in live markets to find the best setups.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/Dbz-iNeU9t8/maxresdefault.jpg" alt="Part 3"><div class="ind-number-mc">PART 3</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Strategy Application</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">See how to use the indicators in live markets to find the best setups.</p></div>
       </div>
-
       <div class="mc-card" onclick="window.open('https://youtu.be/zaJeKmR_r_Y', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/zaJeKmR_r_Y/maxresdefault.jpg" alt="Part 4">
-          <div class="ind-number-mc">PART 4</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Liquidity & Inducement</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn how to identify true smart money liquidity sweeps vs fakeouts.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/zaJeKmR_r_Y/maxresdefault.jpg" alt="Part 4"><div class="ind-number-mc">PART 4</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Liquidity & Inducement</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn how to identify true smart money liquidity sweeps vs fakeouts.</p></div>
       </div>
-
       <div class="mc-card" onclick="window.open('https://youtu.be/G0yAnMUdXqE', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/G0yAnMUdXqE/maxresdefault.jpg" alt="Part 5">
-          <div class="ind-number-mc">PART 5</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Advanced Time & Price</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">How to sync macro timings with precise price levels for sniper entries.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/G0yAnMUdXqE/maxresdefault.jpg" alt="Part 5"><div class="ind-number-mc">PART 5</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Advanced Time & Price</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">How to sync macro timings with precise price levels for sniper entries.</p></div>
       </div>
-
       <div class="mc-card" onclick="window.open('https://youtu.be/rMoZ21e0lNQ', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/rMoZ21e0lNQ/maxresdefault.jpg" alt="Part 6">
-          <div class="ind-number-mc">PART 6</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Precision Entries</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Drop down to the lower timeframes to execute with minimal drawdown.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/rMoZ21e0lNQ/maxresdefault.jpg" alt="Part 6"><div class="ind-number-mc">PART 6</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Precision Entries</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Drop down to the lower timeframes to execute with minimal drawdown.</p></div>
       </div>
-
       <div class="mc-card" onclick="window.open('https://youtu.be/gAUBNhJn9cY', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/gAUBNhJn9cY/maxresdefault.jpg" alt="Part 7">
-          <div class="ind-number-mc">PART 7</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">The Cleaner Edge</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Master the sub-lines and custom UI settings to maintain a professional chart.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/gAUBNhJn9cY/maxresdefault.jpg" alt="Part 7"><div class="ind-number-mc">PART 7</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">The Cleaner Edge</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Master the sub-lines and custom UI settings to maintain a professional chart.</p></div>
       </div>
-
       <div class="mc-card" onclick="window.open('https://youtu.be/w7n4nix0SQU', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/w7n4nix0SQU/maxresdefault.jpg" alt="Part 8">
-          <div class="ind-number-mc">PART 8</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Indicator Access Guide</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn to accurately identify true changes in state of delivery vs fakeouts.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/w7n4nix0SQU/maxresdefault.jpg" alt="Part 8"><div class="ind-number-mc">PART 8</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Indicator Access Guide</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn to accurately identify true changes in state of delivery vs fakeouts.</p></div>
       </div>
-
       <div class="mc-card" onclick="window.open('https://youtu.be/jSlO-DnZe1M', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/jSlO-DnZe1M/maxresdefault.jpg" alt="Part 9">
-          <div class="ind-number-mc">PART 9</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">AMD Concept Mastery</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Accumulation, Manipulation, and Distribution phase tracking on charts.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/jSlO-DnZe1M/maxresdefault.jpg" alt="Part 9"><div class="ind-number-mc">PART 9</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">AMD Concept Mastery</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Accumulation, Manipulation, and Distribution phase tracking on charts.</p></div>
       </div>
-
       <div class="mc-card" onclick="window.open('https://youtu.be/AQ0oolftL_g', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/AQ0oolftL_g/maxresdefault.jpg" alt="Part 10">
-          <div class="ind-number-mc">PART 10</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Fractal Markets</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Deep dive into timeframes and fractal market structure combinations.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/AQ0oolftL_g/maxresdefault.jpg" alt="Part 10"><div class="ind-number-mc">PART 10</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Fractal Markets</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Deep dive into timeframes and fractal market structure combinations.</p></div>
       </div>
-
-      <!-- NEWLY ADDED SECRET FEATURES VIDEO -->
       <div class="mc-card" onclick="window.open('https://youtu.be/G9i-n4T3Lkk', '_blank')">
-        <div class="video-container">
-          <img src="https://img.youtube.com/vi/G9i-n4T3Lkk/maxresdefault.jpg" alt="Secret Features Revealed">
-          <div class="ind-number-mc" style="background: var(--whop-orange);">BONUS</div>
-        </div>
-        <div class="mc-body">
-          <h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Indicator Secret Features Revealed</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn secret settings and pro tips to get the most out of your trades.</p>
-        </div>
+        <div class="video-container"><img src="https://img.youtube.com/vi/G9i-n4T3Lkk/maxresdefault.jpg" alt="Secret Features Revealed"><div class="ind-number-mc" style="background: var(--whop-orange);">BONUS</div></div>
+        <div class="mc-body"><h4 style="font-size: 1.1rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 8px;">Indicator Secret Features Revealed</h4><p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn secret settings and pro tips to get the most out of your trades.</p></div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1659,7 +1187,6 @@
   </div>
 </div>
 
-<!-- CRYPTO PROMO POPUP -->
 <div class="crypto-popup-overlay" id="cryptoPromoPopup">
   <div class="crypto-popup-content">
     <div class="crypto-popup-close" onclick="closeCryptoPopup()"><i class="fas fa-times"></i></div>
@@ -1675,23 +1202,12 @@
 </div>
 
 <script>
-  // Show popup exactly 5 seconds after page load
   window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('cryptoPromoPopup').classList.add('active');
-    }, 5000);
+    setTimeout(() => { document.getElementById('cryptoPromoPopup').classList.add('active'); }, 5000);
   });
-
-  // Close popup function
-  function closeCryptoPopup() {
-    document.getElementById('cryptoPromoPopup').classList.remove('active');
-  }
-
-  // Close if clicked outside the box
+  function closeCryptoPopup() { document.getElementById('cryptoPromoPopup').classList.remove('active'); }
   document.getElementById('cryptoPromoPopup').addEventListener('click', (e) => {
-    if(e.target === document.getElementById('cryptoPromoPopup')) {
-      closeCryptoPopup();
-    }
+    if(e.target === document.getElementById('cryptoPromoPopup')) closeCryptoPopup();
   });
 </script>
 
@@ -1754,7 +1270,7 @@ function toggleFaq(el) {
   if (!wasOpen) item.classList.add('open');
 }
 
-// ── MAIN TESTIMONIALS (Marquee 3 Lines) ──
+// ── MAIN TESTIMONIALS ──
 const mainRev1 = [
   {pnl: "+$4,200 this week", t: "The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade.", a: "Marcus K."},
   {pnl: "+18.3% ROI", t: "SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month.", a: "Sophie L."},
@@ -1780,7 +1296,7 @@ document.getElementById('testiTrack2').innerHTML = buildTesti([...mainRev2, ...m
 document.getElementById('testiTrack3').innerHTML = buildTesti([...mainRev3, ...mainRev3]);
 
 
-// ── DYNAMIC COUNTER (EVERY TIME IN VIEW) ──
+// ── DYNAMIC COUNTER ──
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     const target = entry.target;
@@ -1828,7 +1344,7 @@ document.getElementById('policyModal').addEventListener('click', (e) => {
   if(e.target === document.getElementById('policyModal')) closeModal();
 });
 
-// ── ULTIMATE RISK CALCULATOR LOGIC ──
+// ── RISK CALCULATOR LOGIC ──
 const assets = {
   forex: [
     {id:'xauusd', label:'XAU/USD', entry:2341.50, sl:2335.00, tp:2362.00, mult:10},
