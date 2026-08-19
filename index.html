@@ -97,7 +97,6 @@
   .side-reviews.left { left: 2%; transform: rotateY(28deg) translateZ(-60px); transform-origin: right center; }
   .side-reviews.right { right: 2%; transform: rotateY(-28deg) translateZ(-60px); transform-origin: left center; }
   
-  /* Restored Auto-Scroll Animations */
   .review-track { display: flex; flex-direction: column; gap: 24px; padding: 20px 10px; }
   .left-track { animation: scrollDown 45s linear infinite; }
   .right-track { animation: scrollUp 45s linear infinite; }
@@ -198,6 +197,7 @@
     position: relative; height: 600px; max-width: 900px; margin: 0 auto; 
     display: flex; justify-content: center; align-items: center; perspective: 1000px;
   }
+  /* Bounding box shadow fix: Remove box shadow from .iphone-item */
   .iphone-item {
     position: absolute; display: flex; flex-direction: column; align-items: center; gap: 20px;
     transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
@@ -205,21 +205,24 @@
   .iphone-label {
     background: rgba(15, 23, 42, 0.95); color: #fff; padding: 10px 24px; border-radius: 100px;
     font-weight: 700; font-size: 0.9rem; white-space: nowrap; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); z-index: 10;
   }
   
   /* FIXED IPHONE BACKGROUND - PURE BLACK, STRICT MASKING */
   .iphone-mockup {
-    position: relative; width: 260px; height: 550px; border: 12px solid #111; border-radius: 40px; background: #000; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    position: relative; width: 260px; height: 550px; border: 12px solid #111; border-radius: 45px; background: #000; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.3);
     -webkit-mask-image: -webkit-radial-gradient(white, black); /* This removes any background bleed on corners */
+    transform: translateZ(0); /* Hardware acceleration to prevent corner bleeding */
   }
   .iphone-notch { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 110px; height: 28px; background: #111; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; z-index: 10; }
   .iphone-notch::after { content: ''; position: absolute; top: 50%; right: 20px; transform: translateY(-50%); width: 10px; height: 10px; border-radius: 50%; background: #222; box-shadow: inset -2px -2px 4px rgba(0,0,0,0.8); }
-  .iphone-mockup img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; border-radius: 28px;}
+  .iphone-mockup img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; border-radius: 32px;}
   .iphone-mockup::after { content: ''; position: absolute; top: 0; left: -150%; width: 150%; height: 100%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0) 100%); transform: skewX(-20deg); animation: glare 5s infinite; z-index: 5; pointer-events: none; }
 
+  /* Apply glow exactly on the mockup, not the wrapper */
   .pos-left { transform: translateX(-120%) scale(0.85); opacity: 0.5; z-index: 1; filter: blur(3px); }
-  .pos-center { transform: translateX(0) scale(1.05); opacity: 1; z-index: 10; filter: blur(0); box-shadow: 0 35px 60px rgba(255,90,0,0.15); }
+  .pos-center { transform: translateX(0) scale(1.05); opacity: 1; z-index: 10; filter: blur(0); }
+  .pos-center .iphone-mockup { box-shadow: 0 35px 70px rgba(255, 90, 0, 0.25); border-color: #1e293b; }
   .pos-right { transform: translateX(120%) scale(0.85); opacity: 0.5; z-index: 1; filter: blur(3px); }
 
   /* ── ARSENAL CIRCLE MAP (ORIGINAL ORANGE GLOW RESTORED) ── */
@@ -366,53 +369,52 @@
   .faq-item:hover { border-color: rgba(255, 90, 0, 0.3); box-shadow: var(--shadow-md);}
   .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text-dark); transition: color 0.2s; gap: 16px; }
   .faq-q:hover { color: var(--whop-orange); }
-  .faq-icon { width: 32px; height: 32px; background: #fff; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--text-dark); flex-shrink: 0; transition: all 0.3s; box-shadow: var(--shadow-sm); }
+  .faq-icon { width: 32px; height: 32px; background: #fff; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--text-dark); flex-shrink: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-sm); }
   .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--whop-orange); color: #fff; border-color: var(--whop-orange); }
   .faq-a { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 24px; }
   .faq-item.open .faq-a { max-height: 300px; padding-bottom: 24px; }
 
   /* ── FULL RISK CALCULATOR ── */
-  #riskCalc { background: #fff; border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
-  .calc-wrapper { background: var(--bg-sec); border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 48px; box-shadow: var(--shadow-md); text-align: left; max-width: 1000px; margin: 0 auto; transition: box-shadow 0.3s;}
+  #riskCalc { background: var(--bg-main); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
+  .calc-wrapper { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 48px; box-shadow: var(--shadow-md); text-align: left; max-width: 1000px; margin: 0 auto; transition: box-shadow 0.3s;}
   .calc-wrapper:hover { box-shadow: var(--shadow-lg); }
-  .calc-tabs { display: flex; gap: 8px; margin-bottom: 32px; background: #fff; padding: 8px; border-radius: 100px; width: fit-content; border: 1px solid var(--border); overflow-x: auto; max-width: 100%;}
+  .calc-tabs { display: flex; gap: 8px; margin-bottom: 32px; background: var(--bg-sec); padding: 8px; border-radius: 100px; width: fit-content; border: 1px solid var(--border); overflow-x: auto; max-width: 100%;}
   .calc-tab { background: transparent; border: none; padding: 12px 28px; font-weight: 700; font-size: 0.95rem; color: var(--text-muted); border-radius: 100px; cursor: pointer; transition: all 0.3s; white-space: nowrap; font-family: 'Inter', sans-serif;}
-  .calc-tab.active { background: var(--text-dark); color: #fff; box-shadow: var(--shadow-sm); border: 1px solid var(--text-dark);}
+  .calc-tab.active { background: #fff; color: var(--text-dark); box-shadow: var(--shadow-sm); border: 1px solid var(--border);}
   .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
   .calc-form { display: flex; flex-direction: column; gap: 24px;}
   .form-group { display: flex; flex-direction: column; gap: 10px; }
   .form-label { font-size: 0.8rem; font-weight: 700; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
-  .form-input { width: 100%; padding: 16px 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; background: #fff; color: var(--text-dark); outline: none; transition: all 0.3s; }
+  .form-input { width: 100%; padding: 16px 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; background: var(--bg-sec); color: var(--text-dark); outline: none; transition: all 0.3s; }
   .form-input:focus { border-color: var(--whop-orange); background: #fff; box-shadow: 0 0 0 4px rgba(255,90,0,0.1);}
   .calc-pair-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px; }
-  .calc-pair-btn { background: #fff; border: 1px solid var(--border); padding: 12px 8px; font-size: 0.8rem; border-radius: 10px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--text-muted); transition: 0.3s;}
+  .calc-pair-btn { background: var(--bg-sec); border: 1px solid var(--border); padding: 12px 8px; font-size: 0.8rem; border-radius: 10px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--text-muted); transition: 0.3s;}
   .calc-pair-btn.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-sm);}
-  .calc-pair-btn:hover:not(.active) { background: #f8fafc; border-color: rgba(0,0,0,0.2); color: var(--text-dark);}
+  .calc-pair-btn:hover:not(.active) { background: #fff; border-color: rgba(0,0,0,0.2); color: var(--text-dark);}
   .calc-results { display: flex; flex-direction: column; gap: 16px; }
-  .result-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: 0.3s;}
+  .result-card { background: var(--bg-sec); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: 0.3s;}
   .result-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); border-color: rgba(0,0,0,0.1); }
   .result-label { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
   .result-val { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; word-break: break-all;}
   .result-val.red { color: var(--red); }
-  .rr-card { background: var(--text-dark); border: 2px solid var(--text-dark); border-radius: 16px; padding: 32px; text-align: center; box-shadow: var(--shadow-md);}
-  .rr-card .result-label { color: rgba(255,255,255,0.7); }
-  .rr-card .result-val { color: #fff; }
+  .rr-card { background: #fff; border: 2px solid var(--text-dark); border-radius: 16px; padding: 32px; text-align: center; box-shadow: var(--shadow-md);}
   .warn-msg { font-size: 0.9rem; color: #b45309; background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 16px 24px; display: none; font-weight: 600; margin-top: 10px;}
   .warn-msg.show { display: block;}
   .calc-reset-btn { margin-top: 10px; background: #fff; border: 1px solid var(--border); padding: 16px; font-family: 'Inter', sans-serif; font-weight: 700; border-radius: 12px; cursor: pointer; color: var(--text-dark); transition: 0.3s;}
-  .calc-reset-btn:hover { background: var(--bg-main); border-color: rgba(0,0,0,0.2); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+  .calc-reset-btn:hover { background: var(--bg-sec); border-color: rgba(0,0,0,0.2); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 
   /* ── BIG TEXT PRE-FOOTER & DISCLAIMER ── */
-  .pre-footer-text { padding: 100px 5% 40px; text-align: center; background: var(--bg-sec); border-top: 1px solid var(--border); position: relative; display: flex; flex-direction: column; align-items: center;}
-  .pre-footer-title { font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4.5rem); font-weight: 900; letter-spacing: -0.04em; color: var(--text-dark); max-width: 900px; line-height: 1.15; z-index: 2;}
-  .risk-disclaimer-box { max-width: 1200px; margin: 20px auto 60px; padding: 40px; background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; text-align: left; box-shadow: var(--shadow-sm); }
+  .pre-footer-text { padding: 100px 5% 40px; text-align: center; background: #fff; border-top: 1px solid var(--border); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center;}
+  .pre-footer-title { font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4.5rem); font-weight: 900; letter-spacing: -0.04em; color: var(--text-dark); max-width: 900px; margin: 0 auto; line-height: 1.15; z-index: 2;}
+  
+  .risk-disclaimer-box { max-width: 1200px; margin: 20px auto 60px; padding: 40px; background: var(--bg-sec); border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; text-align: left; box-shadow: var(--shadow-sm); }
   .risk-disclaimer-box strong { color: var(--text-dark); font-weight: 800;}
 
   /* ── BOTTOM WATERMARK FIXED (OPACITY REDUCED) ── */
-  .bottom-watermark-wrap { background: var(--bg-sec); text-align: center; padding-bottom: 20px; display: flex; justify-content: center; overflow: hidden; }
-  .big-watermark { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 9vw, 160px); font-weight: 900; font-style: italic; color: rgba(15, 23, 42, 0.015); text-align: center; line-height: 1; margin-top: 40px; user-select: none; white-space: nowrap; width: 100%; z-index: 1;}
+  .bottom-watermark-wrap { background: #fff; position: relative; overflow: hidden; text-align: center; padding-bottom: 20px; width: 100%; display: flex; justify-content: center; }
+  .big-watermark { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 9vw, 160px); font-weight: 900; font-style: italic; color: rgba(15, 23, 42, 0.02); text-align: center; line-height: 1; margin-top: 40px; pointer-events: none; user-select: none; white-space: nowrap; width: 100%; z-index: 1;}
 
-  footer { background: var(--bg-sec); padding: 0 5% 40px;}
+  footer { background: #fff; padding: 0 5% 40px;}
   .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px;}
   .social-icon-btn { width: 48px; height: 48px; background: #fff; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.2rem; transition: all 0.3s; box-shadow: var(--shadow-sm); cursor: pointer;}
   .social-icon-btn:hover { transform: translateY(-4px); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md);}
@@ -489,7 +491,6 @@
     <li><a href="#bundle-inclusion">Bundle Details</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#riskCalc">Calculator</a></li>
   </ul>
   <a href="#pricing" class="nav-cta">Get Access Now <i class="fas fa-arrow-right"></i></a>
   <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
@@ -638,7 +639,7 @@
       <div class="alert-feature-tag"><i class="fas fa-sync" style="color:var(--text-dark)"></i> Continuous CISD Formed</div>
     </div>
 
-    <!-- 3D SWAPPING iPHONE CAROUSEL (PURE BLACK BEZEL) -->
+    <!-- 3D SWAPPING iPHONE CAROUSEL (PURE BLACK BEZEL & SHADOW FIX) -->
     <div class="iphone-showcase-container reveal" id="iphoneCarousel">
       <!-- Item 1 -->
       <div class="iphone-item pos-center" id="phone1">
@@ -669,7 +670,7 @@
   </div>
 </section>
 
-<!-- ── 3. ARSENAL CIRCLE MAP (RESTORED ORIGINAL ORANGE GLOW) ── -->
+<!-- ── 3. ARSENAL CIRCLE MAP ── -->
 <section id="indicators">
   <div class="inner" style="margin-bottom: 0;">
     <div class="section-label reveal">The Arsenal</div>
@@ -697,7 +698,7 @@
   </div>
 </section>
 
-<!-- ── 4. BIG BUNDLE INCLUSION (PROFESSIONAL MARKETING STYLE) ── -->
+<!-- ── 4. BIG BUNDLE INCLUSION ── -->
 <section id="bundle-inclusion">
   <div class="inner">
     <div class="section-label reveal"><i class="fas fa-box-open"></i> Full Arsenal Access</div>
@@ -823,7 +824,7 @@
   </div>
 </div>
 
-<!-- ── 6. DIRECT CRYPTO PAYMENT SECTION (RESTORED ORIGINAL ICONS & COLOR) ── -->
+<!-- ── 6. DIRECT CRYPTO PAYMENT SECTION ── -->
 <section id="payment">
   <div class="inner">
     <div class="section-label reveal">Checkout & Delivery</div>
@@ -1276,7 +1277,7 @@
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('cryptoPromoPopup').classList.add('active');
-    }, 10000); // Updated to 10 seconds
+    }, 10000); // 10 seconds exactly
   });
   function closeCryptoPopup() { document.getElementById('cryptoPromoPopup').classList.remove('active'); }
   document.getElementById('cryptoPromoPopup').addEventListener('click', (e) => {
@@ -1359,7 +1360,7 @@
     if (!wasOpen) item.classList.add('open');
   }
 
-  // ── MAIN TESTIMONIALS ──
+  // ── MAIN TESTIMONIALS (Marquee 3 Lines) ──
   const mainRev1 = [
     {pnl: "+$4,200 this week", t: "The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade.", a: "Marcus K."},
     {pnl: "+18.3% ROI", t: "SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month.", a: "Sophie L."},
@@ -1383,6 +1384,7 @@
   document.getElementById('testiTrack1').innerHTML = buildTesti([...mainRev1, ...mainRev1]);
   document.getElementById('testiTrack2').innerHTML = buildTesti([...mainRev2, ...mainRev2]);
   document.getElementById('testiTrack3').innerHTML = buildTesti([...mainRev3, ...mainRev3]);
+
 
   // ── DYNAMIC COUNTER ──
   const counterObserver = new IntersectionObserver((entries) => {
