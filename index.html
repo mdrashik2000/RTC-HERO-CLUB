@@ -436,7 +436,7 @@
   .modal-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; color: var(--text-dark); }
   .modal-body { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
 
-  /* ── CRYPTO POPUP ── */
+  /* ── CRYPTO POPUP (20 SECOND DELAY) ── */
   .crypto-popup-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px); z-index: 100000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.4s ease; padding: 20px; }
   .crypto-popup-overlay.active { opacity: 1; pointer-events: auto; }
   .crypto-popup-content { background: #fff; max-width: 480px; width: 100%; border-radius: 24px; padding: 40px; position: relative; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; box-shadow: 0 20px 40px rgba(255, 90, 0, 0.2); border: 2px solid var(--whop-orange); }
@@ -469,7 +469,7 @@
   }
   @media (max-width: 600px) {
     .hero-content { padding: 40px 20px 20px; box-shadow: 0 0 60px 60px #ffffff; }
-    .hero-reviews-wrapper { display: none; } /* Perfect for mobile viewing */
+    .hero-reviews-wrapper { display: none; }
     .dynamic-alert-hero { padding: 12px 20px; gap: 15px; border-radius: 20px;}
     .ticker-item { font-size: 0.95rem; margin-right: 25px; }
     .iphone-showcase-container { height: 500px; perspective: none;}
@@ -1278,14 +1278,17 @@
   </div>
 </div>
 
-<!-- ── CRYPTO POPUP (10 SECOND DELAY) ── -->
+<!-- ── CRYPTO POPUP (20 SECOND DELAY) ── -->
 <div class="crypto-popup-overlay" id="cryptoPromoPopup">
   <div class="crypto-popup-content">
     <div class="crypto-popup-close" onclick="closeCryptoPopup()"><i class="fas fa-times"></i></div>
     <i class="fab fa-bitcoin" style="font-size: 3.5rem; color: var(--whop-orange); margin-bottom: 16px; filter: drop-shadow(0 10px 15px rgba(255,90,0,0.3));"></i>
     <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark); line-height: 1.1;">Limited Time Offer!</h2>
-    <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; font-weight: 500;">
+    <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; font-weight: 500;">
       Get an extra <strong style="color: var(--green);">10% Discount</strong> on <strong style="color: var(--text-dark);">Pro & Elite</strong> plans when you pay directly via Crypto Transfer.
+    </p>
+    <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.6; margin-bottom: 24px; font-weight: 700;">
+      ✨ Card Payment Also Available
     </p>
     <a href="#payment" class="btn-cyber btn-filled" onclick="closeCryptoPopup()" style="width: 100%; display: block; font-size: 1.1rem; padding: 18px;">
       View Crypto Options <i class="fas fa-arrow-right"></i>
@@ -1297,7 +1300,7 @@
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('cryptoPromoPopup').classList.add('active');
-    }, 10000); 
+    }, 20000); 
   });
   function closeCryptoPopup() { document.getElementById('cryptoPromoPopup').classList.remove('active'); }
   document.getElementById('cryptoPromoPopup').addEventListener('click', (e) => {
