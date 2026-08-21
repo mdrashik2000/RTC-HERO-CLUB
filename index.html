@@ -247,7 +247,6 @@
   .bundle-card-pro p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; font-weight: 500;}
 
   /* ── PRICING & PLAN SELECTION ── */
-  /* FIX: Adjusted padding for better responsiveness */
   .pricing-wrapper { background: #fff; border-top: 1px solid var(--border); padding: 100px 5%; text-align: center;}
   .payment-methods-header { display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; flex-wrap: wrap; }
 
@@ -448,40 +447,30 @@
   .crypto-popup-close { position: absolute; top: 12px; right: 12px; font-size: 1.5rem; color: #fff; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); z-index: 100001; border: 2px solid #fff; }
   .crypto-popup-close:hover { transform: scale(1.1) rotate(90deg); background: #dc2626; box-shadow: 0 6px 15px rgba(239, 68, 68, 0.6); }
 
-  /* ── WHOP EMBEDDED MODAL & CHECKOUT STYLES ── */
-  #accessModal {
-    display: none; position: fixed; inset: 0;
-    background: rgba(15,23,42,0.7); backdrop-filter: blur(8px);
-    z-index: 999999; align-items: center; justify-content: center; padding: 20px;
+  /* ── CUSTOM HOURGLASS LOADER ── */
+  .hourglass-loader {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
   }
-  .access-modal-box {
-    background: #fff; max-width: 460px; width: 100%;
-    border-radius: 24px; padding: 36px 32px; position: relative;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.15); text-align: left;
+  .hourglass-loader:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 26px solid var(--whop-orange);
+    border-color: var(--whop-orange) transparent var(--whop-orange) transparent;
+    animation: hourglass-spin 1.2s infinite;
   }
-  .access-modal-close {
-    position: absolute; top: 16px; right: 16px;
-    background: #f1f5f9; border: none; width: 36px; height: 36px;
-    border-radius: 50%; font-size: 1.3rem; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; color: #64748b;
-    transition: 0.3s;
+  @keyframes hourglass-spin {
+    0% { transform: rotate(0); animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+    50% { transform: rotate(900deg); animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+    100% { transform: rotate(1800deg); }
   }
-  .access-modal-close:hover { background: #e2e8f0; color: var(--red); }
-  .access-modal-box h3 {
-    font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; color: var(--text-dark);
-  }
-  .access-modal-box p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
-  .access-form-group { margin-bottom: 18px; }
-  .access-form-group label {
-    display: block; font-size: 0.78rem; font-weight: 700;
-    letter-spacing: 0.04em; margin-bottom: 7px; color: var(--text-dark); font-family: 'JetBrains Mono', monospace;
-  }
-  .access-form-group input {
-    width: 100%; padding: 14px 16px; border: 1.5px solid var(--border);
-    border-radius: 12px; font-size: 1rem; outline: none; transition: 0.2s;
-    background: var(--bg-sec); color: var(--text-dark); font-family: 'Inter', sans-serif; font-weight: 600;
-  }
-  .access-form-group input:focus { border-color: var(--whop-orange); background: #fff; box-shadow: 0 0 0 3px rgba(255,90,0,0.1); }
 
   /* ── FIXED CHECKOUT AREA HEIGHT & WHOP HIDER ── */
   #checkoutArea {
@@ -911,7 +900,7 @@
           <li><i class="fas fa-check"></i> Discord Community Access</li>
           <li><i class="fas fa-check"></i> Cancel anytime</li>
         </ul>
-        <button class="btn-glowing" onclick="openAccessModal('plan_UUR01EtlqqdOu', 'Starter - Monthly ($10)')">Subscribe Now</button>
+        <button class="btn-glowing" onclick="openWhopCheckout('plan_UUR01EtlqqdOu', 'Starter - Monthly ($10)')">Subscribe Now</button>
       </div>
 
       <div class="price-card">
@@ -934,7 +923,7 @@
           <li><i class="fas fa-check"></i> Discord Community Access</li>
           <li><i class="fas fa-check"></i> Indicator update access</li>
         </ul>
-        <button class="btn-glowing" onclick="openAccessModal('plan_FinpVJduG1Kx4', 'Advanced - 3 Months ($24.99)')">Subscribe Now</button>
+        <button class="btn-glowing" onclick="openWhopCheckout('plan_FinpVJduG1Kx4', 'Advanced - 3 Months ($24.99)')">Subscribe Now</button>
       </div>
 
       <div class="price-card popular">
@@ -958,7 +947,7 @@
           <li><i class="fas fa-check"></i> Priority Discord Support</li>
           <li><i class="fas fa-check"></i> Masterclass video series</li>
         </ul>
-        <button class="btn-glowing" onclick="openAccessModal('plan_j7Tbi8ekroGjo', 'Pro - 6 Months ($50)')">Subscribe Now</button>
+        <button class="btn-glowing" onclick="openWhopCheckout('plan_j7Tbi8ekroGjo', 'Pro - 6 Months ($50)')">Subscribe Now</button>
       </div>
 
       <div class="price-card">
@@ -983,7 +972,7 @@
           <li><i class="fas fa-check"></i> Lifetime indicator updates</li>
           <li><i class="fas fa-check"></i> 1-on-1 onboarding session</li>
         </ul>
-        <button class="btn-glowing" onclick="openAccessModal('plan_XDDbSfEyv0lwx', 'Elite - 12 Months ($99)')">Subscribe Now</button>
+        <button class="btn-glowing" onclick="openWhopCheckout('plan_XDDbSfEyv0lwx', 'Elite - 12 Months ($99)')">Subscribe Now</button>
       </div>
     </div>
   </div>
@@ -994,9 +983,9 @@
   <h3>Complete Your Payment</h3>
   <p>100% Secure & Encrypted Payment</p>
 
-  <div id="checkoutLoading" style="text-align: center; padding: 40px 0;">
-    <i class="fas fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--whop-orange);"></i>
-    <p style="margin-top: 10px; font-weight: 600; color: var(--text-muted);">Initializing Secure Checkout...</p>
+  <div id="checkoutLoading" style="text-align: center; padding: 50px 0 100px 0; background: #fff; position: relative; z-index: 105;">
+    <div class="hourglass-loader"></div>
+    <p style="margin-top: 20px; font-weight: 700; color: var(--text-dark); font-size: 1.1rem;">Initializing Secure Checkout...</p>
   </div>
 
   <div id="whop-checkout-container" style="display: none;"></div>
@@ -1013,7 +1002,7 @@
     <h2>Welcome to the <span class="highlight-text">RTC Hero Club!</span></h2>
     <p class="congrats-text">Congratulations! Your payment was successfully processed.</p>
     <p class="info-text">
-      We are thrilled to have you as an elite member of our trading community. We have securely received your TradingView username.<br><br>
+      We are thrilled to have you as an elite member of our trading community.<br><br>
       <strong>Next Step:</strong> Please open a support ticket in our Discord server to get your indicators instantly activated.
     </p>
     <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="discord-btn" style="width: 100%;">
@@ -1447,24 +1436,6 @@
   </div>
 </footer>
 
-<!-- ── ACCESS DETAILS MODAL ── -->
-<div id="accessModal">
-  <div class="access-modal-box">
-    <button class="access-modal-close" onclick="closeAccessModal()">&times;</button>
-    <h3>Complete Your Details</h3>
-    <p>Please enter your TradingView username so we can grant your indicator access after payment.</p>
-
-    <div class="access-form-group">
-      <label>TRADINGVIEW USERNAME</label>
-      <input type="text" id="tvUsername" placeholder="Enter your TradingView username">
-    </div>
-
-    <button class="btn-glowing" style="width:100%; padding:16px; margin-top:8px; font-size:1rem;" onclick="submitAccessForm()">
-      Continue to Secure Checkout <i class="fas fa-arrow-right"></i>
-    </button>
-  </div>
-</div>
-
 <!-- ── POLICY MODAL ── -->
 <div class="modal-overlay" id="policyModal">
   <div class="modal-content">
@@ -1474,7 +1445,7 @@
   </div>
 </div>
 
-<!-- ── CRYPTO PROMO POPUP (20S DELAY) ── -->
+<!-- ── CRYPTO POPUP (20S DELAY) ── -->
 <div class="crypto-popup-overlay" id="cryptoPromoPopup">
   <div class="crypto-popup-content">
     <div class="crypto-popup-close" onclick="closeCryptoPopup()"><i class="fas fa-times"></i></div>
@@ -1495,46 +1466,32 @@
 <!-- ── SCRIPTS ── -->
 <script>
   // ── WHOP CHECKOUT LOGIC ──
-  let selectedPlanId = "";
-  let selectedPlanName = "";
 
-  function openAccessModal(planId, planName) {
-    selectedPlanId = planId;
-    selectedPlanName = planName;
-    document.getElementById('accessModal').style.display = 'flex';
-    document.getElementById('tvUsername').value = "";
-  }
+  function openWhopCheckout(planId, planName) {
+    // 1. সরাসরি চেকআউট এরিয়াতে স্ক্রল করে চলে যাবে
+    const checkoutArea = document.getElementById('checkoutArea');
+    checkoutArea.style.display = 'block';
+    checkoutArea.scrollIntoView({ behavior: 'smooth' });
 
-  function closeAccessModal() {
-    document.getElementById('accessModal').style.display = 'none';
-  }
+    // 2. সুন্দর লোডিং আইকনটা দেখাবে, Whop ফর্মটা একটু লুকিয়ে রাখবে
+    const container = document.getElementById('whop-checkout-container');
+    const loader = document.getElementById('checkoutLoading');
+    container.style.display = 'none';
+    loader.style.display = 'block';
 
-  document.getElementById('accessModal').addEventListener('click', function(e) {
-    if (e.target === this) closeAccessModal();
-  });
-
-  async function submitAccessForm() {
-    const tvUser = document.getElementById('tvUsername').value.trim();
-
-    if (!tvUser) {
-      alert("Please enter your TradingView Username.");
-      return;
-    }
-
-    // Send notification to Discord Webhook
+    // 3. ডিসকর্ডে শুধু পেমেন্ট শুরু করার নোটিফিকেশন পাঠানো (ইচ্ছে হলে রাখতে পারেন)
     try {
-      await fetch("https://discord.com/api/webhooks/1540246750705483780/5eiYCAiXhQUdyOhBkOLuY0xmR5-ciUdvYccxxVBuAJeZ4hKFfd_2AO-BmzPhzdBUOYXV", {
+      fetch("https://discord.com/api/webhooks/1540246750705483780/5eiYCAiXhQUdyOhBkOLuY0xmR5-ciUdvYccxxVBuAJeZ4hKFfd_2AO-BmzPhzdBUOYXV", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           embeds: [{
-            title: "🆕 New Access Request (Initiating Checkout)",
+            title: "🛒 Checkout Initiated",
             color: 16744192,
             fields: [
-              { name: "Plan", value: selectedPlanName, inline: false },
-              { name: "TradingView Username", value: "`" + tvUser + "`", inline: true }
+              { name: "Plan", value: planName, inline: false }
             ],
-            footer: { text: "RTC Hero Club • Access System" },
+            footer: { text: "RTC Hero Club • Checkout Bypass" },
             timestamp: new Date().toISOString()
           }]
         })
@@ -1543,28 +1500,16 @@
       console.log("Webhook error:", err);
     }
 
-    closeAccessModal();
-
-    // Show Whop Checkout Container directly on page
-    const checkoutArea = document.getElementById('checkoutArea');
-    checkoutArea.style.display = 'block';
-    checkoutArea.scrollIntoView({ behavior: 'smooth' });
-
-    // Simulate small loading delay for smoother UX before iframe pops up
-    const container = document.getElementById('whop-checkout-container');
-    const loader = document.getElementById('checkoutLoading');
-    container.style.display = 'none';
-    loader.style.display = 'block';
-
+    // 4. ১.২ সেকেন্ড পর লোডিং আইকন সরিয়ে Whop ফর্মটা আনবে
     setTimeout(() => {
         loader.style.display = 'none';
         container.style.display = 'block';
 
-        // Added data-whop-checkout-color & primary color attribute for dynamic branding
+        // Whop Checkout ইনজেক্ট করা
         container.innerHTML = `
           <div 
             style="width: 100%; min-height: 1100px !important; height: 1100px !important;"
-            data-whop-checkout-plan-id="${selectedPlanId}"
+            data-whop-checkout-plan-id="${planId}"
             data-whop-checkout-return-url="${window.location.origin}${window.location.pathname}#thankYouSection"
             data-whop-checkout-theme="light"
             data-whop-checkout-color="#FF5A00"
@@ -1575,7 +1520,7 @@
         if (window.Whop && typeof window.Whop.render === 'function') {
           window.Whop.render();
         }
-    }, 1200); // 1.2 second loading simulation
+    }, 1200); 
   }
 
   // Handle post-payment Thank You state
