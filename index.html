@@ -49,6 +49,8 @@
 
   .hover-scale { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
   .hover-scale:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  
+  img { max-width: 100%; height: auto; } /* Added global image fix */
 
   /* ── SCROLL PROGRESS ── */
   .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--text-dark); width: 0%; z-index: 10001; transition: width 0.1s; }
@@ -430,7 +432,7 @@
   /* ── POLICY MODAL ── */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px;}
   .modal-overlay.active { opacity: 1; pointer-events: auto; }
-  .modal-content { background: #fff; width: 100%; max-width: 600px; border-radius: 24px; padding: 40px; position: relative; transform: translateY(20px); transition: 0.3s; max-height: 80vh; overflow-y: auto; box-shadow: var(--shadow-lg);}
+  .modal-content { background: #fff; width: 90%; max-width: 600px; border-radius: 24px; padding: 40px; position: relative; transform: translateY(20px); transition: 0.3s; max-height: 80vh; overflow-y: auto; box-shadow: var(--shadow-lg); margin: 0 auto; }
   .modal-overlay.active .modal-content { transform: translateY(0); }
   .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: 0.2s; background: var(--bg-sec); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;}
   .modal-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; color: var(--text-dark); }
@@ -439,7 +441,7 @@
   /* ── CRYPTO POPUP (20 SECOND DELAY) ── */
   .crypto-popup-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px); z-index: 100000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.4s ease; padding: 20px; }
   .crypto-popup-overlay.active { opacity: 1; pointer-events: auto; }
-  .crypto-popup-content { background: #fff; max-width: 480px; width: 100%; border-radius: 24px; padding: 40px; position: relative; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; box-shadow: 0 20px 40px rgba(255, 90, 0, 0.2); border: 2px solid var(--whop-orange); }
+  .crypto-popup-content { background: #fff; max-width: 480px; width: 95%; border-radius: 24px; padding: 40px; position: relative; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; box-shadow: 0 20px 40px rgba(255, 90, 0, 0.2); border: 2px solid var(--whop-orange); margin: 0 auto; }
   .crypto-popup-overlay.active .crypto-popup-content { transform: translateY(0) scale(1); }
   .crypto-popup-close { position: absolute; top: 12px; right: 12px; font-size: 1.5rem; color: #fff; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); z-index: 100001; border: 2px solid #fff; }
   .crypto-popup-close:hover { transform: scale(1.1) rotate(90deg); background: #dc2626; box-shadow: 0 6px 15px rgba(239, 68, 68, 0.6); }
@@ -468,6 +470,9 @@
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
   }
   @media (max-width: 600px) {
+    .hero-badge { white-space: normal !important; flex-wrap: wrap; justify-content: center; font-size: 0.85rem; padding: 8px 15px; text-align: center; }
+    .hero-title { font-size: clamp(2rem, 8vw, 3rem); text-align: center; }
+    .hero-title span { white-space: normal; display: inline-block; word-break: break-word; }
     .hero-content { padding: 40px 20px 20px; box-shadow: 0 0 60px 60px #ffffff; }
     .hero-reviews-wrapper { display: none; }
     .dynamic-alert-hero { padding: 12px 20px; gap: 15px; border-radius: 20px;}
@@ -484,6 +489,12 @@
     .crypto-item { flex-direction: column; gap: 16px; align-items: flex-start; }
     .copy-btn { width: 100%; text-align: center; }
     .pricing-grid { grid-template-columns: 1fr; }
+    .bundle-grid-premium { grid-template-columns: 1fr; }
+    .mc-grid { grid-template-columns: 1fr; }
+    .calc-wrapper { padding: 24px; }
+    .payment-methods-header { flex-direction: column; align-items: center; }
+    .pay-method { width: 100%; max-width: 100%; }
+    .premium-badge-updated { right: 10px; top: -15px; font-size: 0.75rem; padding: 6px 14px; }
   }
 </style>
 </head>
@@ -1394,7 +1405,7 @@
     {pnl: "Steady returns", t: "The POI Pro+ on my Elite membership has become my daily weapon for swing trading. My entry precision has improved so much. Over the last three months, I've managed a steady +$1,200/mo.", a: "David R."},
     {pnl: "Win rate 65%", t: "Finally, an indicator that understands C1-C2 sweeps properly. Took my win rate from 40% to 65% in a single month. Absolute game-changer.", a: "Omar F."},
     {pnl: "Part-time success", t: "Moving from paper trading to a real account was intimidating. The SMT Pro+ helped me spot divergences easily. Last month was my best yet, pulling in +$650 profit on FX pairs.", a: "Sarah P."},
-    {pnl: "Crystal Clear", t: "The charts used to give me a headache with all the noise. RTC strips it all away and highlights exactly where the smart money is stepping in.", a: "Chris M."}
+    {pnl: "Crystal Clear", t: "The charts used to give me a headache with all the noise. RTC strips it all away and highlights exactly where smart money is stepping in.", a: "Chris M."}
   ];
 
   const buildTesti = (arr) => arr.map(r => `<div class="testi-card"><div class="testi-pnl">${r.pnl}</div><div class="testi-stars">★★★★★</div><div class="testi-text">"${r.t}"</div><div class="testi-author">— ${r.a}</div></div>`).join('');
