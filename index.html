@@ -37,7 +37,7 @@
     --whop-orange: #FF5A00;
     --green: #10b981;
     --red: #ef4444;
-    
+
     --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.03);
     --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
     --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
@@ -52,7 +52,7 @@
 
   .hover-scale { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
   .hover-scale:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-  
+
   img { max-width: 100%; height: auto; }
 
   /* ── SCROLL PROGRESS ── */
@@ -64,18 +64,18 @@
   .nav-logo:hover { transform: scale(1.02); }
   .logo-black { color: var(--text-dark); }
   .logo-orange { color: var(--whop-orange); }
-  
+
   .nav-links { display: flex; gap: 20px; align-items: center; }
   .nav-links a { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s, transform 0.2s; white-space: nowrap;}
   .nav-links a:hover { color: var(--text-dark); transform: translateY(-1px); }
-  
+
   .calc-nav-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff !important; padding: 6px 16px; border-radius: 100px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700 !important; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); transition: all 0.3s ease; }
   .calc-nav-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4); color: #fff !important; }
 
   .nav-cta { background: var(--text-dark); color: #fff !important; padding: 10px 24px; border-radius: 100px; font-weight: 600 !important; font-size: 0.95rem; transition: all 0.3s; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); white-space: nowrap;}
   .nav-cta:hover { background: var(--whop-orange); transform: translateY(-2px); box-shadow: var(--glow-orange); }
   .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
-  
+
   .mobile-menu { position: fixed; top: 70px; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); flex-direction: column; padding: 20px 5%; gap: 20px; box-shadow: var(--shadow-md); z-index: 9998; display: none; transform: translateY(-10px); opacity: 0; transition: all 0.3s;}
   .mobile-menu.active { display: flex; transform: translateY(0); opacity: 1; }
   .mobile-menu a { font-size: 1.1rem; font-weight: 600; color: var(--text-dark); }
@@ -83,14 +83,14 @@
   /* ── HERO SECTION ── */
   #hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 120px 5% 40px; background: #ffffff; text-align: center; overflow: hidden; }
   .hero-content { position: relative; z-index: 10; max-width: 820px; display: flex; flex-direction: column; align-items: center; background: #ffffff; padding: 40px 20px; border-radius: 50%; width: 100%; box-shadow: 0 0 120px 120px #ffffff; }
-  
+
   .hero-badge { display: inline-flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 24px; background: #fff; border: 1px solid var(--border); padding: 8px 24px; border-radius: 100px; box-shadow: var(--shadow-sm); transition: transform 0.3s; white-space: nowrap !important; max-width: 100%;}
   .hero-badge:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(255, 90, 0, 0.2);}
   .hero-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 5vw, 5.2rem); line-height: 1.05; letter-spacing: -0.04em; color: var(--text-dark); margin-bottom: 20px; display: flex; flex-direction: column; align-items: center; }
   .hero-title span { white-space: nowrap; }
   .hero-subtitle { font-size: clamp(1rem, 2vw, 1.3rem); color: var(--text-muted); font-weight: 400; margin-bottom: 30px; letter-spacing: -0.01em;}
   .hero-subtitle strong { color: var(--text-dark); font-weight: 700; }
-  
+
   .btn-cyber { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; border-radius: 100px; font-weight: 600; font-size: 1rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; font-family: 'Inter', sans-serif; gap: 8px; width: 100%; max-width: 250px;}
   .btn-outline { background: #fff; color: var(--text-dark); border: 1px solid rgba(0,0,0,0.1); box-shadow: var(--shadow-sm); }
   .btn-outline:hover { background: var(--bg-sec); transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: rgba(0,0,0,0.2);}
@@ -107,7 +107,7 @@
   .side-reviews { position: absolute; width: 320px; height: 200vh; top: -50vh; pointer-events: auto; display: flex; flex-direction: column; }
   .side-reviews.left { left: 2%; transform: rotateY(28deg) translateZ(-60px); transform-origin: right center; }
   .side-reviews.right { right: 2%; transform: rotateY(-28deg) translateZ(-60px); transform-origin: left center; }
-  
+
   .review-track { display: flex; flex-direction: column; gap: 24px; padding: 20px 10px; }
   .left-track { animation: scrollDown 45s linear infinite; }
   .right-track { animation: scrollUp 45s linear infinite; }
@@ -137,25 +137,25 @@
   .tag-marquee-wrap::before, .tag-marquee-wrap::after { content: ''; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2; pointer-events: none; }
   .tag-marquee-wrap::before { left: 0; background: linear-gradient(90deg, #fff 0%, transparent 100%); }
   .tag-marquee-wrap::after { right: 0; background: linear-gradient(-90deg, #fff 0%, transparent 100%); }
-  
+
   .tag-track { display: flex; flex-wrap: nowrap; align-items: center; gap: 16px; width: max-content; }
   .track-left { animation: scrollLeftMarquee 40s linear infinite; will-change: transform; transform: translateZ(0);}
   .track-right { animation: scrollRightMarquee 40s linear infinite; will-change: transform; transform: translateZ(0);}
-  
+
   @keyframes scrollLeftMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
   @keyframes scrollRightMarquee { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-  
+
   .feature-tag { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); background: #fff; white-space: nowrap; transition: all 0.3s; cursor: pointer; box-shadow: var(--shadow-sm); }
   .feature-tag:hover { transform: translateY(-3px) scale(1.02); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md); }
 
   /* ── DYNAMIC ALERTS SHOWCASE ── */
   .alerts-section { background: var(--bg-sec); border-top: 1px solid var(--border); padding-top: 100px; padding-bottom: 120px; text-align: center; overflow: hidden; }
-  
+
   .dynamic-alert-hero { display: flex; align-items: center; gap: 20px; background: #fff; border: 1px solid var(--border); padding: 16px 30px; border-radius: 100px; max-width: 600px; margin: 0 auto 50px; box-shadow: 0 15px 35px rgba(255, 90, 0, 0.1); position: relative; overflow: hidden; }
   .bell-container { position: relative; font-size: 2rem; color: var(--whop-orange); flex-shrink: 0; animation: ring 2.5s infinite; transform-origin: top center; }
   @keyframes ring { 0% { transform: rotate(0); } 10% { transform: rotate(15deg); } 20% { transform: rotate(-10deg); } 30% { transform: rotate(5deg); } 40% { transform: rotate(-5deg); } 50%, 100% { transform: rotate(0); } }
   .bell-badge { position: absolute; top: -2px; right: -5px; background: var(--red); color: #fff; width: 20px; height: 20px; border-radius: 50%; font-size: 0.75rem; font-weight: 800; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; border: 2px solid #fff; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); }
-  
+
   .ticker-container { flex: 1; overflow: hidden; position: relative; white-space: nowrap; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
   .ticker-track { display: inline-block; animation: scrollTicker 20s linear infinite; }
   .ticker-item { font-weight: 700; font-size: 1.05rem; color: var(--text-dark); margin-right: 40px; display: inline-flex; align-items: center; gap: 8px; }
@@ -169,7 +169,7 @@
   .iphone-showcase-container { position: relative; height: 600px; max-width: 900px; margin: 0 auto; display: flex; justify-content: center; align-items: center; perspective: 1000px; }
   .iphone-item { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 20px; transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); background: transparent; }
   .iphone-label { background: rgba(15, 23, 42, 0.95); color: #fff; padding: 10px 24px; border-radius: 100px; font-weight: 700; font-size: 0.9rem; white-space: nowrap; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); z-index: 10; }
-  
+
   .iphone-mockup { position: relative; width: 260px; height: 550px; border: 12px solid #111; border-radius: 40px; background: #000; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.4); transform: translateZ(0); }
   .iphone-notch { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 110px; height: 28px; background: #111; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; z-index: 10; }
   .iphone-notch::after { content: ''; position: absolute; top: 50%; right: 20px; transform: translateY(-50%); width: 10px; height: 10px; border-radius: 50%; background: #222; box-shadow: inset -2px -2px 4px rgba(0,0,0,0.8); }
@@ -189,7 +189,7 @@
   .showcase-image-main:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255, 90, 0, 0.25); border-color: rgba(255, 90, 0, 0.3); }
   .showcase-image-main:hover::before { filter: blur(25px); opacity: 0.45; inset: -4px; }
   .showcase-image-main img { width: 100%; height: auto; border-radius: 14px; display: block; position: relative; z-index: 2; }
-  
+
   .premium-badge-updated { position: absolute; top: -12px; right: -12px; background: linear-gradient(90deg, #ff007f, #FF5A00, #ff007f); background-size: 200% auto; color: #fff; padding: 6px 18px; border-radius: 100px; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 6px 15px rgba(255, 90, 0, 0.4); z-index: 20; border: 2px solid #fff; animation: gradientGlow 3s linear infinite, floatUpdate 3s ease-in-out infinite;}
   @keyframes gradientGlow { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
   @keyframes floatUpdate { 0% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-8px) scale(1.03); box-shadow: 0 15px 35px rgba(255, 0, 127, 0.6); } 100% { transform: translateY(0px) scale(1); } }
@@ -227,7 +227,7 @@
   .satellite-wrapper { position: absolute; top: 50%; left: 50%; width: 0; height: 0; z-index: 5; }
   .satellite-link { position: absolute; top: -1px; left: 0; width: 280px; height: 2px; background: rgba(0,0,0,0.06); z-index: 1; transition: all 0.4s ease; }
   .satellite-link::after { content: ''; position: absolute; top: -1.5px; left: 0; width: 45px; height: 5px; background: #FF5A00; box-shadow: 0 0 15px #FF5A00, 0 0 30px #ff007f, 0 0 40px rgba(255, 90, 0, 0.8); border-radius: 10px; opacity: 0; animation: dataFlow 3.5s infinite cubic-bezier(0.4, 0, 0.2, 1); animation-delay: var(--delay, 0s); z-index: 2; }
-  
+
   .satellite-node { position: absolute; top: 0; left: 280px; width: 145px; height: 145px; background: #ffffff; border: 2px solid rgba(255, 90, 0, 0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; padding: 15px; box-shadow: 0 0 15px rgba(255, 90, 0, 0.25); font-size: 0.82rem; font-weight: 600; color: var(--text-dark); z-index: 5; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: default; line-height: 1.4; }
   .satellite-node strong { font-weight: 900; color: var(--whop-orange); font-size: 0.95rem; display: block; margin: 3px 0; letter-spacing: 0.5px; transition: color 0.4s;}
   .satellite-wrapper:hover .satellite-link { background: var(--whop-orange); height: 3px; top: -1.5px; box-shadow: 0 0 10px rgba(255,90,0,0.5); }
@@ -247,20 +247,21 @@
   .bundle-card-pro p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; font-weight: 500;}
 
   /* ── PRICING & PLAN SELECTION ── */
-  .pricing-wrapper { background: #fff; border-top: 1px solid var(--border); padding: 100px; text-align: center;}
+  /* FIX: Adjusted padding for better responsiveness */
+  .pricing-wrapper { background: #fff; border-top: 1px solid var(--border); padding: 100px 5%; text-align: center;}
   .payment-methods-header { display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; flex-wrap: wrap; }
-  
+
   .pay-method { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--border); padding: 18px 24px; border-radius: 16px; cursor: pointer; transition: all 0.3s ease; min-width: 280px; text-decoration: none;}
   .pay-method:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-  
+
   .card-method { border-color: #e2e8f0; }
   .card-method .pay-icon { color: #3b82f6; }
   .card-method .pay-badge { background: #f1f5f9; color: #64748b; font-size: 0.7rem; font-weight: 800; padding: 6px 12px; border-radius: 100px; }
-  
+
   .crypto-method { background: #f0fdf4; border-color: #10b981; }
   .crypto-method .pay-icon { color: #10b981; }
   .crypto-method .pay-badge { background: #10b981; color: #fff; font-size: 0.7rem; font-weight: 800; padding: 6px 12px; border-radius: 100px; animation: pulseBadge 2s infinite; }
-  
+
   .pay-icon { font-size: 1.8rem; }
   .pay-text { text-align: left; flex: 1; }
   .pay-text h3 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 800; color: #0f172a; margin-bottom: 4px;}
@@ -269,29 +270,29 @@
   @keyframes pulseBadge { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
   .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; justify-content: center; align-items: stretch; max-width: 1200px; margin: 0 auto;}
-  
+
   .price-card { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 35px 25px; transition: all 0.4s ease; display: flex; flex-direction: column; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.03); text-align: left;}
   .price-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: rgba(255,90,0,0.3); z-index: 2;}
   .price-card.popular { border: 1px solid #FF5A00; box-shadow: 0 15px 35px rgba(255,90,0,0.1);}
-  
+
   .price-tier { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 900; color: #000; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;}
   .popular-badge { font-size: 0.65rem; background: #FF5A00; color: #fff; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800; font-family: 'Inter', sans-serif;}
-  
+
   .price-crossed { font-size: 0.95rem; color: #888; text-decoration: line-through; height: 18px; margin-bottom: 4px; font-weight: 600;}
   .price-amount { font-family: 'Outfit', sans-serif; font-size: 3.2rem; font-weight: 900; color: #000; line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline; letter-spacing: -0.03em;}
   .price-currency { font-size: 1.5rem; font-weight: 700; margin-right: 4px; }
   .price-period { font-size: 0.9rem; color: #666; font-weight: 500; margin-bottom: 12px;}
-  
+
   .discount-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; height: 28px; }
   .tv-discount-tag { background: #fff4ed; color: #FF5A00; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.75rem; padding: 4px 8px; border-radius: 6px; display: inline-block; }
   .price-save { font-size: 0.85rem; color: #000; font-weight: 800; }
-  
+
   .crypto-badge-side { position: absolute; top: -12px; right: 20px; background: #10b981; color: #fff; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 0.7rem; padding: 6px 12px; border-radius: 100px; z-index: 10; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);}
-  
+
   .price-features { list-style:none; flex: 1; margin-bottom: 32px; display: flex; flex-direction: column; gap: 14px; padding-top: 20px; border-top: 1px solid #f1f5f9;}
   .price-features li { display:flex; align-items:flex-start; gap:10px; font-size: 0.85rem; color: #555; line-height:1.4; font-weight: 500;}
   .price-features li i { color: #10b981; font-size: 1rem; margin-top: 2px;}
-  
+
   .btn-glowing { display: block; text-align: center; padding: 14px 12px; border-radius: 100px; font-weight: 700; font-size: 0.9rem; width: 100%; cursor: pointer; background: linear-gradient(90deg, #FF5A00, #ff007f); color: #fff !important; transition: all 0.3s ease; border: none; box-shadow: 0 10px 20px rgba(255, 90, 0, 0.25); margin-top: auto;}
   .btn-glowing:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 25px rgba(255, 90, 0, 0.4); }
 
@@ -312,27 +313,27 @@
   #riskCalc .section-label { background: rgba(255,255,255,0.1); color: #fff; border: none; box-shadow: none;}
   #riskCalc .section-title { color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,0.2);}
   #riskCalc .section-desc { color: rgba(255,255,255,0.8); font-weight: 500;}
-  
+
   .calc-wrapper { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 48px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); text-align: left; max-width: 1000px; margin: 0 auto; transition: box-shadow 0.3s;}
   .calc-wrapper:hover { box-shadow: 0 25px 60px rgba(0,0,0,0.3); }
-  
+
   .calc-tabs { display: flex; gap: 8px; margin-bottom: 32px; background: var(--bg-sec); padding: 8px; border-radius: 100px; width: fit-content; border: 1px solid var(--border); overflow-x: auto; max-width: 100%;}
   .calc-tab { background: transparent; border: none; padding: 12px 28px; font-weight: 700; font-size: 0.95rem; color: var(--text-muted); border-radius: 100px; cursor: pointer; transition: all 0.3s; white-space: nowrap; font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 8px;}
   .calc-tab.active { background: #fff; color: var(--text-dark); box-shadow: var(--shadow-sm); border: 1px solid var(--border);}
   .calc-tab i { font-size: 1.1rem; color: var(--whop-orange);}
-  
+
   .calc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
   .calc-form { display: flex; flex-direction: column; gap: 24px;}
   .form-group { display: flex; flex-direction: column; gap: 10px; }
   .form-label { font-size: 0.8rem; font-weight: 700; color: var(--text-dark); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
   .form-input { width: 100%; padding: 16px 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; background: var(--bg-sec); color: var(--text-dark); outline: none; transition: all 0.3s; }
   .form-input:focus { border-color: var(--whop-orange); background: #fff; box-shadow: 0 0 0 4px rgba(255,90,0,0.1);}
-  
+
   .calc-pair-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px; }
   .calc-pair-btn { background: var(--bg-sec); border: 1px solid var(--border); padding: 12px 8px; font-size: 0.8rem; border-radius: 10px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--text-muted); transition: 0.3s;}
   .calc-pair-btn.active { background: linear-gradient(135deg, #FF5A00 0%, #ff007f 100%); color: #fff; border-color: transparent; box-shadow: 0 4px 15px rgba(255,90,0,0.3);}
   .calc-pair-btn:hover:not(.active) { background: #fff; border-color: rgba(0,0,0,0.2); color: var(--text-dark);}
-  
+
   .calc-results { display: flex; flex-direction: column; gap: 16px; }
   .result-card { background: var(--bg-sec); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: 0.3s; position: relative; overflow: hidden;}
   .result-card::before { content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: var(--text-dark); opacity: 0.2; transition: 0.3s; }
@@ -341,11 +342,11 @@
   .result-label { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace;}
   .result-val { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text-dark); letter-spacing: -0.02em; word-break: break-all;}
   .result-val.red { color: var(--red); }
-  
+
   .rr-card { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 16px; padding: 32px; text-align: center; box-shadow: 0 10px 25px rgba(15,23,42,0.3);}
   .rr-card .result-label { color: rgba(255,255,255,0.7); }
   .rr-card .result-val { color: #fff; }
-  
+
   .warn-msg { font-size: 0.9rem; color: #b45309; background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 16px 24px; display: none; font-weight: 600; margin-top: 10px;}
   .warn-msg.show { display: block;}
   .calc-reset-btn { margin-top: 10px; background: #fff; border: 1px solid var(--border); padding: 16px; font-family: 'Inter', sans-serif; font-weight: 700; border-radius: 12px; cursor: pointer; color: var(--text-dark); transition: 0.3s;}
@@ -416,7 +417,7 @@
   /* ── BIG TEXT PRE-FOOTER & DISCLAIMER ── */
   .pre-footer-text { padding: 100px 5% 40px; text-align: center; background: var(--bg-sec); border-top: 1px solid var(--border); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center;}
   .pre-footer-title { font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4.5rem); font-weight: 900; letter-spacing: -0.04em; color: var(--text-dark); max-width: 900px; margin: 0 auto; line-height: 1.15; z-index: 2;}
-  
+
   .risk-disclaimer-box { max-width: 1200px; margin: 20px auto 60px; padding: 40px; background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; text-align: left; box-shadow: var(--shadow-sm); }
   .risk-disclaimer-box strong { color: var(--text-dark); font-weight: 800;}
 
@@ -429,7 +430,7 @@
   .social-icon-btn { width: 48px; height: 48px; background: var(--bg-sec); border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.2rem; transition: all 0.3s; box-shadow: var(--shadow-sm); cursor: pointer;}
   .social-icon-btn:hover { transform: translateY(-4px); background: var(--text-dark); color: #fff; border-color: var(--text-dark); box-shadow: var(--shadow-md);}
   .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.95rem; color: var(--text-muted); padding-top: 30px; border-top: 1px solid var(--border); font-weight: 500;}
-  
+
   /* ── POLICY MODAL ── */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px;}
   .modal-overlay.active { opacity: 1; pointer-events: auto; }
@@ -496,13 +497,12 @@
     position: relative; 
     overflow: hidden !important; 
   }
-  
+
   #whop-checkout-container {
     width: 100%;
     min-height: 1100px;
   }
-  
-  /* Whop এর ভেতরের iframe কে ফোর্স করে বড় করা হলো যাতে Pay বাটন দেখা যায় */
+
   #whop-checkout-container iframe {
     min-height: 1100px !important;
     height: 1100px !important;
@@ -517,11 +517,11 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 78px; /* উচ্চতা আরও বাড়িয়ে দেওয়া হয়েছে যাতে একদম পারফেক্টলি ঢাকা পড়ে */
+    height: 78px; 
     background: #ffffff;
     z-index: 100;
   }
-  
+
   #checkoutArea h3 {
     text-align: center; font-family: 'Outfit', sans-serif;
     font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; color: var(--text-dark);
@@ -582,6 +582,7 @@
     .calc-layout { grid-template-columns: 1fr; gap: 30px; }
   }
   @media (max-width: 900px) {
+    .pricing-wrapper { padding: 80px 5%; }
     .iphone-showcase-container { height: 550px; }
     .iphone-mockup { width: 230px; height: 490px; }
     .pos-left { transform: translateX(-90%) scale(0.85); }
@@ -596,6 +597,7 @@
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
   }
   @media (max-width: 600px) {
+    .pricing-wrapper { padding: 60px 5%; }
     .hero-badge { white-space: normal !important; flex-wrap: wrap; justify-content: center; font-size: 0.85rem; padding: 8px 15px; text-align: center; }
     .hero-title { font-size: clamp(2rem, 8vw, 3rem); text-align: center; }
     .hero-title span { white-space: normal; display: inline-block; word-break: break-word; }
@@ -615,6 +617,7 @@
     .crypto-item { flex-direction: column; gap: 16px; align-items: flex-start; }
     .copy-btn { width: 100%; text-align: center; }
     .pricing-grid { grid-template-columns: 1fr; }
+    .price-card { padding: 25px 20px; }
     .bundle-grid-premium { grid-template-columns: 1fr; }
     .mc-grid { grid-template-columns: 1fr; }
     .calc-wrapper { padding: 24px; }
@@ -698,7 +701,7 @@
   <div class="inner">
     <div class="section-label reveal">Smart Notifications</div>
     <h2 class="section-title reveal">Never Miss a Setup</h2>
-    
+
     <div class="dynamic-alert-hero reveal">
       <div class="bell-container">
         <i class="fas fa-bell"></i>
@@ -710,7 +713,7 @@
           <span class="ticker-item"><i class="fas fa-bullseye" style="color:#3b82f6"></i> Key level to C2 closure</span>
           <span class="ticker-item"><i class="fas fa-check-circle" style="color:var(--green)"></i> IC-CISD / Continuous CISD Formed</span>
           <span class="ticker-item"><i class="fas fa-gem" style="color:#8b5cf6"></i> High Probability Setup Ready</span>
-          
+
           <span class="ticker-item"><i class="fas fa-bolt" style="color:var(--whop-orange)"></i> Reversal CISD Confirm Alert</span>
           <span class="ticker-item"><i class="fas fa-bullseye" style="color:#3b82f6"></i> Key level to C2 closure</span>
           <span class="ticker-item"><i class="fas fa-check-circle" style="color:var(--green)"></i> IC-CISD / Continuous CISD Formed</span>
@@ -820,7 +823,7 @@
     <div class="section-label reveal">The Arsenal</div>
     <h2 class="section-title reveal" style="margin-bottom: 20px;">The Complete Suite</h2>
   </div>
-  
+
   <div class="arsenal-container reveal">
     <div class="center-hub">
       <h3>RTC Hero Club</h3>
@@ -847,7 +850,7 @@
     <div class="section-label reveal"><i class="fas fa-box-open"></i> Full Arsenal Access</div>
     <h2 class="section-title reveal">Everything Included in Your Bundle</h2>
     <p class="section-desc reveal">When you unlock access, you don't just get one tool. You get the entire institutional framework directly on your TradingView.</p>
-    
+
     <div class="bundle-grid-premium reveal">
       <div class="bundle-card-pro"><h4><i class="fas fa-layer-group"></i> RTC [PO3 Pro Suite] lite</h4><p>The foundational framework for daily structural mapping and core Po3 detection.</p></div>
       <div class="bundle-card-pro"><h4><i class="fas fa-star"></i> RTC [PO3 Pro Suite] Advanced</h4><p>The flagship tool. Advanced multi-timeframe arrays, liquidity tracking, and precision alignments.</p></div>
@@ -867,7 +870,7 @@
   <div class="inner">
     <div class="section-label reveal">Claim Access</div>
     <h2 class="section-title reveal">Choose Your Plan</h2>
-    
+
     <div class="payment-methods-header reveal">
       <div class="pay-method card-method">
         <div class="pay-icon"><i class="fas fa-credit-card"></i></div>
@@ -877,7 +880,7 @@
         </div>
         <div class="pay-badge card-badge">Secure Checkout</div>
       </div>
-      
+
       <a href="#payment" class="pay-method crypto-method">
         <div class="pay-icon"><i class="fab fa-bitcoin"></i></div>
         <div class="pay-text">
@@ -894,7 +897,7 @@
         <div class="price-crossed" style="visibility:hidden;">$0</div>
         <div class="price-amount"><span class="price-currency">$</span>10</div>
         <div class="price-period">/ month</div>
-        
+
         <div class="discount-wrap">
            <div class="price-save" style="color: #64748b;">Standard rate</div>
         </div>
@@ -916,7 +919,7 @@
         <div class="price-crossed">$30</div>
         <div class="price-amount"><span class="price-currency">$</span>24.99</div>
         <div class="price-period">/ 3 months</div>
-        
+
         <div class="discount-wrap">
           <span class="tv-discount-tag">-17% OFF</span>
           <span class="price-save">Save $5.01</span>
@@ -940,7 +943,7 @@
         <div class="price-crossed">$60</div>
         <div class="price-amount"><span class="price-currency">$</span>50</div>
         <div class="price-period">/ 6 months</div>
-        
+
         <div class="discount-wrap">
           <span class="tv-discount-tag">-17% OFF</span>
           <span class="price-save">Save $10</span>
@@ -964,7 +967,7 @@
         <div class="price-crossed">$120</div>
         <div class="price-amount"><span class="price-currency">$</span>99</div>
         <div class="price-period">/ 12 months</div>
-        
+
         <div class="discount-wrap">
           <span class="tv-discount-tag">-17% OFF</span>
           <span class="price-save">Save $20.01</span>
@@ -990,15 +993,14 @@
 <div id="checkoutArea">
   <h3>Complete Your Payment</h3>
   <p>100% Secure & Encrypted Payment</p>
-  
+
   <div id="checkoutLoading" style="text-align: center; padding: 40px 0;">
     <i class="fas fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--whop-orange);"></i>
     <p style="margin-top: 10px; font-weight: 600; color: var(--text-muted);">Initializing Secure Checkout...</p>
   </div>
-  
+
   <div id="whop-checkout-container" style="display: none;"></div>
-  
-  <!-- এই div টাই হলো সেই সাদা বক্স যা নিচের Whop এর লোগো ঢেকে দেবে -->
+
   <div class="whop-hider"></div> 
 </div>
 
@@ -1029,7 +1031,7 @@
     <div class="section-label reveal">Checkout & Delivery</div>
     <h2 class="section-title reveal">Direct Crypto Transfer</h2>
     <p class="section-desc reveal">Bypass automated systems with direct crypto transfer. Verified and secure. Send a screenshot to Discord for verification.</p>
-    
+
     <div class="crypto-container reveal">
       <div class="crypto-item">
         <div class="crypto-left">
@@ -1038,7 +1040,7 @@
         </div>
         <button class="copy-btn" onclick="copyText(this,'133010319')">COPY</button>
       </div>
-      
+
       <div class="crypto-item">
         <div class="crypto-left">
           <div class="crypto-label"><i class="fas fa-chart-pie" style="color:var(--whop-orange)"></i> Bybit</div>
@@ -1046,7 +1048,7 @@
         </div>
         <button class="copy-btn" onclick="copyText(this,'107261338')">COPY</button>
       </div>
-      
+
       <div class="crypto-item">
         <div class="crypto-left">
           <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (BEP-20)</div>
@@ -1054,7 +1056,7 @@
         </div>
         <button class="copy-btn" onclick="copyText(this,'0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973')">COPY</button>
       </div>
-      
+
       <div class="crypto-item">
         <div class="crypto-left">
           <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (TRC-20)</div>
@@ -1062,7 +1064,7 @@
         </div>
         <button class="copy-btn" onclick="copyText(this,'TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9')">COPY</button>
       </div>
-      
+
       <div class="crypto-item">
         <div class="crypto-left">
           <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDC (SOL)</div>
@@ -1080,7 +1082,7 @@
     <div class="section-label reveal" style="background: #fff; color: var(--whop-orange); font-weight: 800; border: none;"><i class="fas fa-calculator"></i> Essential Tool</div>
     <h2 class="section-title reveal" style="color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,0.2);">Precision Calculator</h2>
     <p class="section-desc reveal" style="color: rgba(255,255,255,0.9); font-weight: 500;">Calculate exact position size, risk/reward, and margin across Forex, Indices, and Crypto.</p>
-    
+
     <div class="calc-wrapper reveal">
       <div class="calc-tabs">
         <button class="calc-tab active" onclick="switchAssetClass('forex', this)"><i class="fas fa-coins"></i> Forex & Metals</button>
@@ -1151,7 +1153,7 @@
             <div class="result-label">Risk : Reward Ratio</div>
             <div class="result-val" id="rrLabel" style="font-size: 2.2rem;">1 : 3.15</div>
           </div>
-          
+
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px; margin-top: 16px;">
             <div class="result-card">
               <div class="result-label" id="valLabel">Value per Pip</div>
@@ -1234,7 +1236,7 @@
     <div class="section-label reveal">Masterclass Series</div>
     <h2 class="section-title reveal">Indicator Breakdown</h2>
     <p class="section-desc reveal">Watch these visual guides to master the RTC Suite and execute perfectly.</p>
-    
+
     <div class="mc-grid reveal">
       <div class="mc-card" onclick="window.open('https://youtu.be/uL51FufvU6Q', '_blank')">
         <div class="video-container">
@@ -1246,7 +1248,7 @@
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Master the basic setup, features and precise configuration of the indicators.</p>
         </div>
       </div>
-      
+
       <div class="mc-card" onclick="window.open('https://youtu.be/oyZyEIKUix4', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/oyZyEIKUix4/maxresdefault.jpg" alt="Part 2">
@@ -1257,7 +1259,7 @@
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">Learn step-by-step how to read market structure and enter trades like a pro.</p>
         </div>
       </div>
-      
+
       <div class="mc-card" onclick="window.open('https://youtu.be/Dbz-iNeU9t8', '_blank')">
         <div class="video-container">
           <img src="https://img.youtube.com/vi/Dbz-iNeU9t8/maxresdefault.jpg" alt="Part 3">
@@ -1366,7 +1368,7 @@
     <div class="section-label reveal">FAQ</div>
     <h2 class="section-title reveal">Common Questions</h2>
     <p class="section-desc reveal">Everything you need to know before joining the RTC community.</p>
-    
+
     <div class="faq-list reveal">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Can I trade any market with these indicators?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
@@ -1450,7 +1452,7 @@
   <div class="access-modal-box">
     <button class="access-modal-close" onclick="closeAccessModal()">&times;</button>
     <h3>Complete Your Details</h3>
-    <p>Please enter your TradingView username so we can grant your indicator access immediately after payment.</p>
+    <p>Please enter your TradingView username so we can grant your indicator access after payment.</p>
 
     <div class="access-form-group">
       <label>TRADINGVIEW USERNAME</label>
@@ -1557,13 +1559,16 @@
     setTimeout(() => {
         loader.style.display = 'none';
         container.style.display = 'block';
-        
+
+        // Added data-whop-checkout-color & primary color attribute for dynamic branding
         container.innerHTML = `
           <div 
             style="width: 100%; min-height: 1100px !important; height: 1100px !important;"
             data-whop-checkout-plan-id="${selectedPlanId}"
             data-whop-checkout-return-url="${window.location.origin}${window.location.pathname}#thankYouSection"
-            data-whop-checkout-theme="light">
+            data-whop-checkout-theme="light"
+            data-whop-checkout-color="#FF5A00"
+            data-whop-checkout-primary-color="#FF5A00">
           </div>
         `;
 
@@ -1579,7 +1584,7 @@
       document.getElementById('thankYouSection').style.display = 'block';
       document.getElementById('checkoutArea').style.display = 'none';
       document.getElementById('thankYouSection').scrollIntoView({ behavior: 'smooth' });
-      
+
       // Remove hash from URL to keep it clean after landing
       history.replaceState(null, null, ' ');
     }
@@ -1698,7 +1703,7 @@
       const target = entry.target;
       const endValue = parseInt(target.getAttribute('data-target'));
       const suffix = target.getAttribute('data-suffix') !== null ? target.getAttribute('data-suffix') : '';
-      
+
       if (entry.isIntersecting) {
         if (target.dataset.animating === 'true') return;
         target.dataset.animating = 'true';
