@@ -439,14 +439,6 @@
   .modal-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; color: var(--text-dark); }
   .modal-body { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
 
-  /* ── CRYPTO POPUP (20S DELAY) ── */
-  .crypto-popup-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px); z-index: 100000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.4s ease; padding: 20px; }
-  .crypto-popup-overlay.active { opacity: 1; pointer-events: auto; }
-  .crypto-popup-content { background: #fff; max-width: 480px; width: 95%; border-radius: 24px; padding: 40px; position: relative; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; box-shadow: 0 20px 40px rgba(255, 90, 0, 0.2); border: 2px solid var(--whop-orange); margin: 0 auto; }
-  .crypto-popup-overlay.active .crypto-popup-content { transform: translateY(0) scale(1); }
-  .crypto-popup-close { position: absolute; top: 12px; right: 12px; font-size: 1.5rem; color: #fff; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4); z-index: 100001; border: 2px solid #fff; }
-  .crypto-popup-close:hover { transform: scale(1.1) rotate(90deg); background: #dc2626; box-shadow: 0 6px 15px rgba(239, 68, 68, 0.6); }
-
   /* ── CUSTOM HOURGLASS LOADER ── */
   .hourglass-loader {
     display: inline-block;
@@ -865,7 +857,7 @@
         <div class="pay-icon"><i class="fas fa-credit-card"></i></div>
         <div class="pay-text">
           <h3>Card Payment</h3>
-          <p>Instant Embedded Checkout</p>
+          <p>-17% OFF (Advanced, Pro & Elite Package)</p>
         </div>
         <div class="pay-badge card-badge">Secure Checkout</div>
       </div>
@@ -876,7 +868,7 @@
           <h3>Crypto Payment</h3>
           <p>Direct Transfer</p>
         </div>
-        <div class="pay-badge crypto-badge">10% Extra Discount</div>
+        <div class="pay-badge crypto-badge">Available</div>
       </a>
     </div>
 
@@ -927,7 +919,6 @@
       </div>
 
       <div class="price-card popular">
-        <div class="crypto-badge-side"><i class="fab fa-bitcoin"></i> 10% Crypto Discount</div>
         <div class="price-tier">Pro <span class="popular-badge">Most Popular</span></div>
         <div class="price-crossed">$60</div>
         <div class="price-amount"><span class="price-currency">$</span>50</div>
@@ -951,7 +942,6 @@
       </div>
 
       <div class="price-card">
-        <div class="crypto-badge-side"><i class="fab fa-bitcoin"></i> 10% Crypto Discount</div>
         <div class="price-tier">Elite</div>
         <div class="price-crossed">$120</div>
         <div class="price-amount"><span class="price-currency">$</span>99</div>
@@ -1014,7 +1004,7 @@
   </div>
 </section>
 
-<!-- ── 7. DIRECT CRYPTO PAYMENT SECTION ── -->
+<!-- ── 7. DIRECT CRYPTO PAYMENT SECTION (RESTORED) ── -->
 <section id="payment">
   <div class="inner">
     <div class="section-label reveal">Checkout & Delivery</div>
@@ -1445,41 +1435,20 @@
   </div>
 </div>
 
-<!-- ── CRYPTO POPUP (20S DELAY) ── -->
-<div class="crypto-popup-overlay" id="cryptoPromoPopup">
-  <div class="crypto-popup-content">
-    <div class="crypto-popup-close" onclick="closeCryptoPopup()"><i class="fas fa-times"></i></div>
-    <i class="fab fa-bitcoin" style="font-size: 3.5rem; color: var(--whop-orange); margin-bottom: 16px; filter: drop-shadow(0 10px 15px rgba(255,90,0,0.3));"></i>
-    <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark); line-height: 1.1;">Limited Time Offer!</h2>
-    <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; font-weight: 500;">
-      Get an extra <strong style="color: var(--green);">10% Discount</strong> on <strong style="color: var(--text-dark);">Pro & Elite</strong> plans when you pay directly via Crypto Transfer.
-    </p>
-    <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.6; margin-bottom: 24px; font-weight: 700;">
-      ✨ Instant Card Payment Also Available
-    </p>
-    <a href="#payment" class="btn-cyber btn-filled" onclick="closeCryptoPopup()" style="width: 100%; display: block; font-size: 1.1rem; padding: 18px;">
-      View Crypto Options <i class="fas fa-arrow-right"></i>
-    </a>
-  </div>
-</div>
-
 <!-- ── SCRIPTS ── -->
 <script>
   // ── WHOP CHECKOUT LOGIC ──
 
   function openWhopCheckout(planId, planName) {
-    // 1. সরাসরি চেকআউট এরিয়াতে স্ক্রল করে চলে যাবে
     const checkoutArea = document.getElementById('checkoutArea');
     checkoutArea.style.display = 'block';
     checkoutArea.scrollIntoView({ behavior: 'smooth' });
 
-    // 2. সুন্দর লোডিং আইকনটা দেখাবে, Whop ফর্মটা একটু লুকিয়ে রাখবে
     const container = document.getElementById('whop-checkout-container');
     const loader = document.getElementById('checkoutLoading');
     container.style.display = 'none';
     loader.style.display = 'block';
 
-    // 3. ডিসকর্ডে শুধু পেমেন্ট শুরু করার নোটিফিকেশন পাঠানো (ইচ্ছে হলে রাখতে পারেন)
     try {
       fetch("https://discord.com/api/webhooks/1540246750705483780/5eiYCAiXhQUdyOhBkOLuY0xmR5-ciUdvYccxxVBuAJeZ4hKFfd_2AO-BmzPhzdBUOYXV", {
         method: "POST",
@@ -1500,12 +1469,10 @@
       console.log("Webhook error:", err);
     }
 
-    // 4. ১.২ সেকেন্ড পর লোডিং আইকন সরিয়ে Whop ফর্মটা আনবে
     setTimeout(() => {
         loader.style.display = 'none';
         container.style.display = 'block';
 
-        // Whop Checkout ইনজেক্ট করা
         container.innerHTML = `
           <div 
             style="width: 100%; min-height: 1100px !important; height: 1100px !important;"
@@ -1523,31 +1490,18 @@
     }, 1200); 
   }
 
-  // Handle post-payment Thank You state
   function checkThankYou() {
     if (window.location.hash === '#thankYouSection') {
       document.getElementById('thankYouSection').style.display = 'block';
       document.getElementById('checkoutArea').style.display = 'none';
       document.getElementById('thankYouSection').scrollIntoView({ behavior: 'smooth' });
-
-      // Remove hash from URL to keep it clean after landing
       history.replaceState(null, null, ' ');
     }
   }
   window.addEventListener('hashchange', checkThankYou);
   window.addEventListener('load', checkThankYou);
 
-  // ── POPUPS & MODALS ──
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('cryptoPromoPopup').classList.add('active');
-    }, 20000); 
-  });
-  function closeCryptoPopup() { document.getElementById('cryptoPromoPopup').classList.remove('active'); }
-  document.getElementById('cryptoPromoPopup').addEventListener('click', (e) => {
-    if(e.target === document.getElementById('cryptoPromoPopup')) { closeCryptoPopup(); }
-  });
-
+  // ── MISC SCRIPTS ──
   const badgeCounts = ['1', '2', '3', '3+'];
   let bIdx = 0;
   setInterval(() => {
