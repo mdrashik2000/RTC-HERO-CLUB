@@ -75,7 +75,7 @@
   .banner-track {
     display: flex;
     width: max-content;
-    animation: scrollBannerLTR 20s linear infinite;
+    animation: scrollBannerLTR 30s linear infinite;
   }
   .banner-item {
     font-family: 'Outfit', sans-serif;
@@ -313,6 +313,43 @@
   @keyframes pulseBadge { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
   @keyframes pulseBadgeBlue { 0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); } }
 
+  .pricing-toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 100px;
+    width: fit-content;
+    margin: 0 auto 50px auto;
+    border: 2px solid rgba(255, 90, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(255, 90, 0, 0.1);
+  }
+
+  .pricing-toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 14px 36px;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+  }
+  .pricing-toggle-btn.active {
+    background: linear-gradient(90deg, #FF5A00, #ff007f, #FF5A00);
+    background-size: 200% auto;
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(255, 90, 0, 0.4);
+    animation: gradientMove 3s linear infinite;
+  }
+  .pricing-toggle-btn:not(.active):hover {
+    color: var(--text-dark);
+    background: var(--bg-sec);
+  }
+
   .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; justify-content: center; align-items: stretch; max-width: 1200px; margin: 0 auto;}
 
   .price-card { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; padding: 35px 25px; transition: all 0.4s ease; display: flex; flex-direction: column; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.03); text-align: left;}
@@ -436,7 +473,7 @@
   .comm-desc { font-size:0.95rem; color:var(--text-muted); line-height:1.6; }
 
   /* ── MASTERCLASS ── */
-  #masterclass { background: var(--bg-sec); border-top: 1px solid var(--border); padding-top: 80px; padding-bottom: 80px;}
+  #masterclass { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 80px 0; padding-bottom: 80px;}
   .mc-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:24px; text-align: left; }
   .mc-card { background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; cursor: pointer; box-shadow: var(--shadow-sm);}
   .mc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(15, 23, 42, 0.2);}
@@ -634,6 +671,7 @@
   }
   @media (max-width: 1024px) {
     .pricing-grid { grid-template-columns: repeat(2, 1fr); max-width: 700px;}
+    #lifetime-plan { grid-template-columns: 1fr; }
     .calc-layout { grid-template-columns: 1fr; gap: 30px; }
   }
   @media (max-width: 900px) {
@@ -690,9 +728,11 @@
 <div class="top-banner">
   <div class="banner-track">
     <div class="banner-item">🚀 RTC Hero Club bundle now includes 12 advanced indicators! 🚀</div>
+    <div class="banner-item">⚠️ All sales close permanently on October 30th! No new memberships will be accepted. ⚠️</div>
+    <div class="banner-item">💎 RTC Hero Club Lifetime Package is now officially available! 💎</div>
     <div class="banner-item">🚀 RTC Hero Club bundle now includes 12 advanced indicators! 🚀</div>
-    <div class="banner-item">🚀 RTC Hero Club bundle now includes 12 advanced indicators! 🚀</div>
-    <div class="banner-item">🚀 RTC Hero Club bundle now includes 12 advanced indicators! 🚀</div>
+    <div class="banner-item">⚠️ All sales close permanently on October 30th! No new memberships will be accepted. ⚠️</div>
+    <div class="banner-item">💎 RTC Hero Club Lifetime Package is now officially available! 💎</div>
   </div>
 </div>
 
@@ -941,6 +981,12 @@
     <div class="section-label reveal">Claim Access</div>
     <h2 class="section-title reveal">Choose Your Plan</h2>
 
+    <!-- TOGGLE BUTTONS FOR SUBSCRIPTION VS LIFETIME -->
+    <div class="pricing-toggle-wrapper reveal">
+      <button class="pricing-toggle-btn active" id="btn-subscription" onclick="togglePricing('subscription')">Subscription</button>
+      <button class="pricing-toggle-btn" id="btn-lifetime" onclick="togglePricing('lifetime')">Lifetime (One-Time)</button>
+    </div>
+
     <div class="payment-methods-header reveal">
       <div class="pay-method card-method">
         <div class="pay-icon"><i class="fas fa-credit-card"></i></div>
@@ -961,7 +1007,8 @@
       </a>
     </div>
 
-    <div class="pricing-grid reveal">
+    <!-- SUBSCRIPTION PLANS -->
+    <div class="pricing-grid reveal" id="subscription-plans">
       <div class="price-card">
         <div class="price-tier">Starter</div>
         <div class="price-crossed" style="visibility:hidden;">$0</div>
@@ -1076,6 +1123,39 @@
           <li><i class="fas fa-check"></i> VIP Role + 1-on-1 Session</li>
         </ul>
         <button class="btn-glowing" onclick="openWhopCheckout('plan_XDDbSfEyv0lwx', 'Elite - 12 Months ($99)')">Subscribe Now</button>
+      </div>
+    </div>
+
+    <!-- LIFETIME PLAN (Hidden by default) -->
+    <div class="pricing-grid reveal" id="lifetime-plan" style="display: none; grid-template-columns: 1fr; max-width: 450px; margin: 0 auto;">
+      <div class="price-card popular" style="width: 100%;">
+        <div class="price-tier">Lifetime Access <span class="popular-badge">One-Time Payment</span></div>
+        <div class="price-crossed">$480.72</div>
+        <div class="price-amount"><span class="price-currency">$</span>399</div>
+        <div class="price-period">/ lifetime</div>
+
+        <div class="discount-wrap">
+          <span class="tv-discount-tag">-17% OFF</span>
+          <span class="price-save">Save $81.72</span>
+        </div>
+
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] lite</li>
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] Advanced</li>
+          <li><i class="fas fa-check"></i> RTC [Reversal Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [POI Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT & PSP Sync Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [V-Shape CISD Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [iFVG Pro Suite]</li>
+          <li><i class="fas fa-check"></i> RTC [Advanced CRT Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Sweep & CISD Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
+          <li><i class="fas fa-check"></i> VIP Role + 1-on-1 Session</li>
+          <li><i class="fas fa-check"></i> Lifetime Updates Included</li>
+        </ul>
+        <button class="btn-glowing" onclick="openWhopCheckout('plan_me0zrhBHa9Exl', 'Lifetime Access ($399)')">Get Lifetime Access</button>
       </div>
     </div>
   </div>
@@ -1565,6 +1645,21 @@
 
 <!-- ── SCRIPTS ── -->
 <script>
+  // ── PRICING TOGGLE LOGIC ──
+  function togglePricing(type) {
+    if(type === 'subscription') {
+      document.getElementById('btn-subscription').classList.add('active');
+      document.getElementById('btn-lifetime').classList.remove('active');
+      document.getElementById('subscription-plans').style.display = 'grid';
+      document.getElementById('lifetime-plan').style.display = 'none';
+    } else {
+      document.getElementById('btn-lifetime').classList.add('active');
+      document.getElementById('btn-subscription').classList.remove('active');
+      document.getElementById('subscription-plans').style.display = 'none';
+      document.getElementById('lifetime-plan').style.display = 'grid';
+    }
+  }
+
   // ── WHOP CHECKOUT LOGIC ──
 
   function openWhopCheckout(planId, planName) {
