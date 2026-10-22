@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -19,9 +19,6 @@
 <!-- Whop Pixel Code -->
 <script>!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_aFW7r7jeR8qdRo");whop.track("page");</script>
 <!-- End Whop Pixel Code -->
-
-<!-- Whop Embedded Checkout Loader -->
-<script async defer src="https://js.whop.com/static/checkout/loader.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1378,6 +1375,7 @@
     transition: all 0.3s ease;
     box-shadow: var(--glow-orange);
     margin-top: auto;
+    border: none;
   }
   .btn-glowing:hover {
     transform: translateY(-3px);
@@ -1898,88 +1896,6 @@
   .modal-title { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 16px; color: var(--text-dark); }
   .modal-body { font-size: 0.94rem; color: var(--text-muted); line-height: 1.7; }
 
-  /* ── CHECKOUT & THANK YOU ── */
-  .hourglass-loader { display: inline-block; position: relative; width: 64px; height: 64px; }
-  .hourglass-loader:after {
-    content: " ";
-    display: block;
-    border-radius: 50%;
-    width: 0;
-    height: 0;
-    margin: 8px;
-    box-sizing: border-box;
-    border: 26px solid var(--whop-orange);
-    border-color: var(--whop-orange) transparent var(--whop-orange) transparent;
-    animation: hourglass-spin 1.2s infinite;
-  }
-  @keyframes hourglass-spin {
-    0% { transform: rotate(0); }
-    50% { transform: rotate(900deg); }
-    100% { transform: rotate(1800deg); }
-  }
-
-  #checkoutArea {
-    display: none;
-    width: 100%;
-    max-width: 580px;
-    margin: 40px auto;
-    padding: 30px 20px 0;
-    background: #ffffff;
-    color: #0f172a;
-    border: 2px solid var(--whop-orange);
-    border-radius: 24px;
-    box-shadow: var(--glow-orange);
-    position: relative;
-    overflow: hidden;
-  }
-  #whop-checkout-container { width: 100%; min-height: 1100px; }
-  #whop-checkout-container iframe { min-height: 1100px !important; height: 1100px !important; border: none !important; }
-  #checkoutArea h3 { text-align: center; font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; color: #0f172a; }
-  #checkoutArea p { text-align: center; color: #475569; margin-bottom: 24px; font-size: 0.95rem; }
-
-  .payment-ticker-wrapper {
-    width: calc(100% + 40px);
-    margin-left: -20px;
-    margin-top: 15px;
-    overflow: hidden;
-    background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
-    padding: 14px 0;
-    display: flex;
-    align-items: center;
-  }
-  .payment-ticker-track { display: flex; width: max-content; animation: scrollPaymentTicker 18s linear infinite; white-space: nowrap; }
-  .payment-ticker-item { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; color: #0f172a; padding: 0 25px; }
-  @keyframes scrollPaymentTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-  #thankYouSection { display: none; padding: 100px 5%; background: var(--bg-sec); border-top: 1px solid var(--border); }
-  .thank-box {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--bg-card-solid);
-    padding: 50px 40px;
-    border-radius: 24px;
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border);
-    text-align: center;
-  }
-  .thank-icon-wrapper { position: relative; width: 75px; height: 75px; margin: 0 auto 24px; }
-  .thank-icon {
-    width: 75px;
-    height: 75px;
-    background: var(--green);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.2rem;
-  }
-  .thank-box h2 { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 900; margin-bottom: 12px; color: var(--text-dark); }
-  .thank-box .highlight-text { color: var(--whop-orange); }
-  .thank-box p.congrats-text { font-size: 1.1rem; color: var(--text-dark); font-weight: 600; margin-bottom: 20px; }
-  .thank-box p.info-text { color: var(--text-muted); margin-bottom: 32px; line-height: 1.6; font-size: 0.95rem; }
-
   /* ── RESPONSIVE ── */
   @media (max-width: 1200px) {
     .nav-links, .nav-cta { display: none; }
@@ -2046,7 +1962,7 @@
   </ul>
   <div class="nav-actions">
     <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" title="Switch Dark/Light Mode">
-      <i class="fas fa-sun" id="themeIcon"></i>
+      <i class="fas fa-moon" id="themeIcon"></i>
     </button>
     <a href="#pricing" class="nav-cta">Get Access Now <i class="fas fa-arrow-right"></i></a>
     <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
@@ -2343,7 +2259,7 @@
           <li><i class="fas fa-check"></i> Discord Community Access</li>
           <li><i class="fas fa-check"></i> Cancel anytime</li>
         </ul>
-        <button class="btn-glowing" onclick="openWhopCheckout('plan_UUR01EtlqqdOu', 'Starter - Monthly ($10)')">Subscribe Now</button>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_UUR01EtlqqdOu">Subscribe Now</a>
       </div>
 
       <div class="price-card">
@@ -2372,7 +2288,7 @@
           <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
           <li><i class="fas fa-check"></i> Discord Access + Updates</li>
         </ul>
-        <button class="btn-glowing" onclick="openWhopCheckout('plan_FinpVJduG1Kx4', 'Advanced - 3 Months ($24.99)')">Subscribe Now</button>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_FinpVJduG1Kx4">Subscribe Now</a>
       </div>
 
       <div class="price-card popular">
@@ -2401,7 +2317,7 @@
           <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
           <li><i class="fas fa-check"></i> Priority Support & Videos</li>
         </ul>
-        <button class="btn-glowing" onclick="openWhopCheckout('plan_j7Tbi8ekroGjo', 'Pro - 6 Months ($50)')">Subscribe Now</button>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_j7Tbi8ekroGjo">Subscribe Now</a>
       </div>
 
       <div class="price-card">
@@ -2430,7 +2346,7 @@
           <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
           <li><i class="fas fa-check"></i> VIP Role + 1-on-1 Session</li>
         </ul>
-        <button class="btn-glowing" onclick="openWhopCheckout('plan_XDDbSfEyv0lwx', 'Elite - 12 Months ($99)')">Subscribe Now</button>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_XDDbSfEyv0lwx">Subscribe Now</a>
       </div>
     </div>
 
@@ -2463,60 +2379,11 @@
           <li><i class="fas fa-check"></i> VIP Role + 1-on-1 Session</li>
           <li><i class="fas fa-check"></i> Lifetime Updates Included</li>
         </ul>
-        <button class="btn-glowing" onclick="openWhopCheckout('plan_me0zrhBHa9Exl', 'Lifetime Access ($399)')">Get Lifetime Access</button>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_me0zrhBHa9Exl">Get Lifetime Access</a>
       </div>
     </div>
   </div>
 </div>
-
-<!-- ── WHOP EMBEDDED CHECKOUT SECTION ── -->
-<div id="checkoutArea">
-  <h3>Complete Your Payment</h3>
-  <p>100% Secure & Encrypted Payment</p>
-
-  <div id="checkoutLoading" style="text-align: center; padding: 50px 0 100px 0; background: #fff; position: relative; z-index: 105;">
-    <div class="hourglass-loader"></div>
-    <p style="margin-top: 20px; font-weight: 700; color: #0f172a; font-size: 1.1rem;">Initializing Secure Checkout...</p>
-  </div>
-
-  <div id="whop-checkout-container" style="display: none;"></div>
-
-  <!-- ── SECURE PAYMENT TICKER ── -->
-  <div class="payment-ticker-wrapper">
-    <div class="payment-ticker-track">
-      <div class="payment-ticker-item"><i class="fas fa-lock" style="color:var(--green)"></i> 256-bit Encrypted Checkout</div>
-      <div class="payment-ticker-item"><i class="fas fa-shield-alt" style="color:#3b82f6"></i> 100% Secure Payments</div>
-      <div class="payment-ticker-item"><i class="fas fa-bolt" style="color:var(--whop-orange)"></i> Instant Automated Access</div>
-      <div class="payment-ticker-item"><i class="fas fa-check-circle" style="color:var(--green)"></i> Hassle-Free Transaction</div>
-
-      <div class="payment-ticker-item"><i class="fas fa-lock" style="color:var(--green)"></i> 256-bit Encrypted Checkout</div>
-      <div class="payment-ticker-item"><i class="fas fa-shield-alt" style="color:#3b82f6"></i> 100% Secure Payments</div>
-      <div class="payment-ticker-item"><i class="fas fa-bolt" style="color:var(--whop-orange)"></i> Instant Automated Access</div>
-      <div class="payment-ticker-item"><i class="fas fa-check-circle" style="color:var(--green)"></i> Hassle-Free Transaction</div>
-    </div>
-  </div>
-</div>
-
-<!-- ── PREMIUM THANK YOU SECTION (AFTER PAYMENT) ── -->
-<section id="thankYouSection">
-  <div class="thank-box">
-    <div class="thank-icon-wrapper">
-      <div class="thank-icon"><i class="fas fa-check"></i></div>
-    </div>
-    <h2>Welcome to the <span class="highlight-text">RTC Hero Club!</span></h2>
-    <p class="congrats-text">Congratulations! Your payment was successfully processed.</p>
-    <p class="info-text">
-      We are thrilled to have you as an elite member of our trading community.<br><br>
-      <strong>Next Step:</strong> Please open a support ticket in our Discord server to get your indicators instantly activated.
-    </p>
-    <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="discord-btn" style="width: 100%;">
-      <i class="fab fa-discord"></i> Open Discord Support Ticket
-    </a>
-    <p style="margin-top:24px; font-size:0.85rem; color:var(--text-muted); font-weight: 500;">
-      <i class="fas fa-clock"></i> Access is typically granted within a few minutes to a few hours.
-    </p>
-  </div>
-</section>
 
 <!-- ── 7. DIRECT CRYPTO PAYMENT SECTION ── -->
 <section id="payment">
@@ -3020,69 +2887,6 @@
       document.getElementById('lifetime-plan').style.display = 'grid';
     }
   }
-
-  // ── WHOP CHECKOUT LOGIC ──
-  function openWhopCheckout(planId, planName) {
-    const checkoutArea = document.getElementById('checkoutArea');
-    checkoutArea.style.display = 'block';
-    checkoutArea.scrollIntoView({ behavior: 'smooth' });
-
-    const container = document.getElementById('whop-checkout-container');
-    const loader = document.getElementById('checkoutLoading');
-    container.style.display = 'none';
-    loader.style.display = 'block';
-
-    try {
-      fetch("https://discord.com/api/webhooks/1540246750705483780/5eiYCAiXhQUdyOhBkOLuY0xmR5-ciUdvYccxxVBuAJeZ4hKFfd_2AO-BmzPhzdBUOYXV", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          embeds: [{
-            title: "🛒 Checkout Initiated",
-            color: 16744192,
-            fields: [
-              { name: "Plan", value: planName, inline: false }
-            ],
-            footer: { text: "RTC Hero Club • Checkout Bypass" },
-            timestamp: new Date().toISOString()
-          }]
-        })
-      });
-    } catch (err) {
-      console.log("Webhook error:", err);
-    }
-
-    setTimeout(() => {
-        loader.style.display = 'none';
-        container.style.display = 'block';
-
-        container.innerHTML = `
-          <div 
-            style="width: 100%; min-height: 1100px !important; height: 1100px !important;"
-            data-whop-checkout-plan-id="${planId}"
-            data-whop-checkout-return-url="${window.location.origin}${window.location.pathname}#thankYouSection"
-            data-whop-checkout-theme="light"
-            data-whop-checkout-color="#FF5A00"
-            data-whop-checkout-primary-color="#FF5A00">
-          </div>
-        `;
-
-        if (window.Whop && typeof window.Whop.render === 'function') {
-          window.Whop.render();
-        }
-    }, 1200); 
-  }
-
-  function checkThankYou() {
-    if (window.location.hash === '#thankYouSection') {
-      document.getElementById('thankYouSection').style.display = 'block';
-      document.getElementById('checkoutArea').style.display = 'none';
-      document.getElementById('thankYouSection').scrollIntoView({ behavior: 'smooth' });
-      history.replaceState(null, null, ' ');
-    }
-  }
-  window.addEventListener('hashchange', checkThankYou);
-  window.addEventListener('load', checkThankYou);
 
   // ── ALERT BADGE & IPHONE CAROUSEL ──
   const badgeCounts = ['1', '2', '3', '3+'];
