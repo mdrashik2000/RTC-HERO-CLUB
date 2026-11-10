@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>RTC Indicator Suite | RashikTrades</title>
 
-<meta name="description" content="Official informational showcase for the RTC Indicator Suite by RashikTrades.">
+<meta name="description" content="Unlock institutional-grade market clarity with the RTC Indicator Suite.">
 
 <link rel="icon" type="image/png" href="favicon.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKS84XRWQ9"></script>
@@ -16,13 +16,17 @@
   gtag('config', 'G-HKS84XRWQ9');
 </script>
 
+<!-- Whop Pixel Code -->
+<script>!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_aFW7r7jeR8qdRo");whop.track("page");</script>
+<!-- End Whop Pixel Code -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-  :root, :root[data-theme="dark"] {
+  :root[data-theme="dark"] {
     --bg-main: #050507;
     --bg-sec: #0a0a0e;
     --bg-card: #101015;
@@ -30,13 +34,12 @@
     --bg-card-inner: #16161d;
     --bg-glass: rgba(5, 5, 7, 0.85);
     --text-dark: #ffffff;
-    --text-muted: #a1a7b5;
+    --text-muted: #9498a6;
     --border: rgba(255, 255, 255, 0.08);
     --border-hover: rgba(255, 85, 20, 0.55);
     --whop-orange: #FF5514;
     --whop-orange-hover: #ff6a30;
     --grad-orange: linear-gradient(135deg, #FF5514 0%, #FF2A6D 100%);
-    --grad-red-alert: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #ea580c 100%);
     --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.0) 100%);
     --icon-bg: linear-gradient(135deg, rgba(255, 85, 20, 0.16) 0%, rgba(255, 42, 109, 0.06) 100%);
     --icon-border: rgba(255, 85, 20, 0.32);
@@ -47,17 +50,10 @@
     --shadow-md: 0 14px 40px rgba(0, 0, 0, 0.7);
     --shadow-lg: 0 25px 65px rgba(0, 0, 0, 0.85);
     --glow-orange: 0 10px 30px rgba(255, 85, 20, 0.35);
-    --glow-red: 0 15px 45px rgba(220, 38, 38, 0.3);
     --tag-bg: #101015;
     --input-bg: #0b0b0f;
     --watermark: rgba(255, 255, 255, 0.025);
     --dot-color: rgba(255, 255, 255, 0.16);
-    /* Alert Box Specific Variables (Dark Mode) */
-    --alert-card-bg: #111118;
-    --alert-text-main: #ffffff;
-    --alert-text-sub: #d1d5db;
-    --alert-info-bg: #191924;
-    --alert-info-border: rgba(255, 255, 255, 0.12);
   }
 
   :root[data-theme="light"] {
@@ -68,34 +64,26 @@
     --bg-card-inner: #f5f7fb;
     --bg-glass: rgba(255, 255, 255, 0.88);
     --text-dark: #090a0f;
-    --text-muted: #4b5563;
+    --text-muted: #5a6070;
     --border: #e2e6ef;
     --border-hover: rgba(255, 85, 20, 0.45);
     --whop-orange: #FF5514;
     --whop-orange-hover: #e04307;
     --grad-orange: linear-gradient(135deg, #FF5514 0%, #FF2A6D 100%);
-    --grad-red-alert: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #ea580c 100%);
     --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
     --icon-bg: linear-gradient(135deg, rgba(255, 85, 20, 0.12) 0%, rgba(255, 42, 109, 0.05) 100%);
     --icon-border: rgba(255, 85, 20, 0.25);
     --green: #10b981;
-    --red: #dc2626;
+    --red: #ef4444;
     --blue: #3b82f6;
     --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.05);
     --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.08);
     --shadow-lg: 0 24px 48px rgba(15, 23, 42, 0.12);
     --glow-orange: 0 10px 28px rgba(255, 85, 20, 0.25);
-    --glow-red: 0 15px 40px rgba(220, 38, 38, 0.18);
     --tag-bg: #ffffff;
     --input-bg: #f1f4f9;
     --watermark: rgba(15, 23, 42, 0.04);
     --dot-color: rgba(15, 23, 42, 0.14);
-    /* Alert Box Specific Variables (Light Mode) */
-    --alert-card-bg: #ffffff;
-    --alert-text-main: #0f172a;
-    --alert-text-sub: #334155;
-    --alert-info-bg: #fef2f2;
-    --alert-info-border: #fecaca;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -218,7 +206,7 @@
   }
 
   .nav-cta {
-    background: var(--grad-red-alert);
+    background: var(--grad-orange);
     color: #fff !important;
     padding: 10px 22px;
     border-radius: 10px;
@@ -229,7 +217,7 @@
     align-items: center;
     gap: 8px;
     white-space: nowrap;
-    box-shadow: var(--glow-red);
+    box-shadow: var(--glow-orange);
   }
   .nav-cta:hover { transform: translateY(-2px); filter: brightness(1.08); }
 
@@ -278,7 +266,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 130px 5% 60px;
+    padding: 130px 5% 80px;
     overflow: hidden;
     text-align: left;
   }
@@ -437,276 +425,6 @@
     display: block;
   }
 
-  /* ── HIGH-CONTRAST PROFESSIONAL RED ALERT SECTION ── */
-  #sales-closed-notice {
-    padding: 20px 5% 85px;
-    position: relative;
-    z-index: 10;
-  }
-  .red-alert-container {
-    max-width: 1180px;
-    margin: 0 auto;
-    border-radius: 26px;
-    padding: 3px;
-    background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f97316 100%);
-    box-shadow: 0 20px 55px rgba(220, 38, 38, 0.25);
-    position: relative;
-  }
-  .red-alert-inner {
-    background-color: var(--alert-card-bg);
-    border-radius: 23px;
-    padding: 48px 42px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  /* Subtle top accent bar inside card */
-  .red-alert-inner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-    background: linear-gradient(90deg, #dc2626, #f97316, #dc2626);
-  }
-  .alert-badge-top {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #dc2626;
-    color: #ffffff !important;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 9px 22px;
-    border-radius: 100px;
-    margin-bottom: 24px;
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
-  }
-  .red-dot-blink {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #ffffff;
-    box-shadow: 0 0 8px #ffffff;
-    animation: blinkRed 1.2s infinite;
-  }
-  @keyframes blinkRed {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.35; transform: scale(0.8); }
-  }
-  .red-alert-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: clamp(1.85rem, 3.6vw, 2.75rem);
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.03em;
-    color: var(--alert-text-main);
-    margin-bottom: 20px;
-  }
-  .red-alert-date-highlight {
-    display: inline-block;
-    background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
-    color: #ffffff !important;
-    padding: 2px 16px;
-    border-radius: 10px;
-    margin-left: 4px;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-  }
-  .red-alert-desc {
-    font-size: clamp(1rem, 1.3vw, 1.12rem);
-    color: var(--alert-text-sub);
-    max-width: 820px;
-    margin: 0 auto 28px;
-    line-height: 1.7;
-    font-weight: 500;
-  }
-  .red-alert-desc strong {
-    color: var(--alert-text-main);
-    font-weight: 700;
-  }
-  .info-only-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    background: var(--alert-info-bg);
-    border: 1.5px solid var(--alert-info-border);
-    padding: 14px 24px;
-    border-radius: 14px;
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--alert-text-main);
-    margin-bottom: 34px;
-    max-width: 880px;
-    line-height: 1.5;
-  }
-  .info-only-pill i {
-    color: #dc2626;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-  }
-
-  /* Support Ticket Button with High Contrast */
-  .support-ticket-cta-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-  .support-ticket-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
-    color: #ffffff !important;
-    padding: 14px 30px 14px 16px;
-    border-radius: 16px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
-    font-size: 1.05rem;
-    box-shadow: 0 12px 30px rgba(220, 38, 38, 0.35);
-    transition: all 0.25s ease;
-    position: relative;
-  }
-  .support-ticket-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 38px rgba(220, 38, 38, 0.5);
-    filter: brightness(1.06);
-  }
-  .ticket-icon-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.35rem;
-    color: #ffffff !important;
-    flex-shrink: 0;
-  }
-  .ticket-btn-text {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    line-height: 1.3;
-    color: #ffffff !important;
-  }
-  .ticket-btn-sub {
-    font-size: 0.72rem;
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-weight: 700;
-  }
-  .ticket-btn-main {
-    font-size: 1.06rem;
-    font-weight: 800;
-    color: #ffffff !important;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* ── 5-SECOND AUTO POPUP MODAL (HIGH CONTRAST) ── */
-  .auto-popup-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 100000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease;
-  }
-  .auto-popup-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .auto-popup-box {
-    width: 100%;
-    max-width: 640px;
-    border-radius: 24px;
-    padding: 3px;
-    background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
-    box-shadow: 0 25px 75px rgba(0, 0, 0, 0.65);
-    transform: translateY(20px) scale(0.96);
-    transition: transform 0.35s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .auto-popup-overlay.active .auto-popup-box {
-    transform: translateY(0) scale(1);
-  }
-  .auto-popup-inner {
-    background-color: var(--alert-card-bg);
-    border-radius: 21px;
-    padding: 40px 32px 30px;
-    text-align: center;
-    position: relative;
-  }
-  .popup-close-btn {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    background: var(--alert-info-bg);
-    border: 1px solid var(--alert-info-border);
-    color: var(--alert-text-main);
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .popup-close-btn:hover {
-    background: #dc2626;
-    color: #ffffff;
-    border-color: #dc2626;
-  }
-  .popup-timer-bar-wrap {
-    width: 100%;
-    height: 6px;
-    background: var(--alert-info-bg);
-    border-radius: 100px;
-    overflow: hidden;
-    margin-top: 26px;
-  }
-  .popup-timer-bar {
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg, #dc2626, #ea580c);
-    transform-origin: left;
-  }
-  .auto-popup-overlay.active .popup-timer-bar {
-    animation: countdownShrink 5s linear forwards;
-  }
-  @keyframes countdownShrink {
-    from { width: 100%; }
-    to { width: 0%; }
-  }
-  .popup-timer-text {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.76rem;
-    font-weight: 600;
-    color: var(--alert-text-sub);
-    margin-top: 8px;
-    display: block;
-  }
-
   /* ── HERO RIGHT: DYNAMIC ANIMATED FEED + GLOBE + CURVE ── */
   .hero-right {
     position: relative;
@@ -755,6 +473,7 @@
     100% { filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.85)); }
   }
 
+  /* Dynamic Floating Live Pills on Globe */
   .globe-pill {
     position: absolute;
     background: rgba(16, 16, 22, 0.92);
@@ -788,6 +507,7 @@
     50% { transform: translateY(-8px); }
   }
 
+  /* Dynamic Cycling 3D Stack Container */
   .hero-stack-wrap {
     position: relative;
     z-index: 4;
@@ -815,6 +535,7 @@
     cursor: pointer;
   }
 
+  /* 4 Dynamic Stack Positions */
   .stack-card.pos-0 {
     top: 0px;
     width: 82%;
@@ -1344,6 +1065,7 @@
     justify-content: center;
   }
 
+  /* Ambient Orbit Rings */
   .orbit-guide-ring {
     position: absolute;
     width: 560px;
@@ -1391,6 +1113,7 @@
     opacity: 0.92;
   }
 
+  /* Rotating Wheel Wrapper */
   .orbit-wheel {
     position: absolute;
     inset: 0;
@@ -1475,6 +1198,7 @@
     transition: color 0.3s ease;
   }
 
+  /* Active Touch State (Both Auto-Sequential & Hover) */
   .satellite-wrapper.active-touch .satellite-link,
   .satellite-wrapper:hover .satellite-link {
     background: var(--grad-orange);
@@ -1494,7 +1218,7 @@
     color: #ffffff;
   }
 
-  /* ── BUNDLE INCLUSION (INFORMATIONAL) ── */
+  /* ── BUNDLE INCLUSION ── */
   #bundle-inclusion {
     background: var(--bg-main);
     border-top: 1px solid var(--border);
@@ -1556,9 +1280,222 @@
     line-height: 1.6;
   }
 
+  /* ── PRICING & MEMBERSHIP PLANS (5 PLANS ON ONE PAGE) ── */
+  .pricing-wrapper {
+    background: var(--bg-sec);
+    border-top: 1px solid var(--border);
+    padding: 100px 5%;
+    text-align: center;
+  }
+  .payment-methods-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 44px;
+  }
+  .pay-method.crypto-exclusive {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--bg-card);
+    border: 1.5px solid rgba(16, 185, 129, 0.45);
+    padding: 18px 28px;
+    border-radius: 18px;
+    max-width: 680px;
+    width: 100%;
+    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.14);
+    transition: all 0.25s ease;
+  }
+  .pay-method.crypto-exclusive:hover {
+    transform: translateY(-2px);
+    border-color: var(--green);
+    box-shadow: 0 16px 40px rgba(16, 185, 129, 0.22);
+  }
+  .crypto-exclusive .pay-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: var(--green);
+    font-size: 1.55rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .pay-text { text-align: left; flex: 1; }
+  .pay-text h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pay-text p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    line-height: 1.45;
+  }
+  .crypto-exclusive .pay-badge {
+    background: rgba(16, 185, 129, 0.16);
+    color: var(--green);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 7px 13px;
+    border-radius: 100px;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+  .price-card {
+    background: var(--bg-card-solid);
+    background-image: var(--grad-surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 28px 20px;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: left;
+  }
+  .price-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--icon-border);
+    box-shadow: var(--shadow-md);
+  }
+  .price-card.popular {
+    border: 1.5px solid var(--whop-orange);
+    box-shadow: var(--glow-orange);
+  }
+  .price-card.lifetime-highlight {
+    border: 1.5px solid var(--green);
+    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.18);
+  }
+
+  .price-tier {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .popular-badge {
+    font-size: 0.62rem;
+    background: var(--grad-orange);
+    color: #fff;
+    padding: 4px 9px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .lifetime-badge {
+    font-size: 0.62rem;
+    background: var(--green);
+    color: #fff;
+    padding: 4px 9px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .price-crossed {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    height: 20px;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .price-amount {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.65rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: baseline;
+    letter-spacing: -0.04em;
+  }
+  .price-currency { font-size: 1.35rem; font-weight: 700; margin-right: 3px; color: var(--whop-orange); }
+  .price-period { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; margin-bottom: 14px; }
+
+  .discount-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; height: 26px; flex-wrap: wrap; }
+  .tv-discount-tag {
+    background: rgba(255, 85, 20, 0.14);
+    color: var(--whop-orange);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  .price-save { font-size: 0.78rem; color: var(--green); font-weight: 600; }
+
+  .price-features {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .price-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.38;
+  }
+  .price-features li i { color: var(--green); font-size: 0.82rem; margin-top: 2px; }
+
+  .btn-glowing {
+    display: block;
+    text-align: center;
+    padding: 13px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    width: 100%;
+    cursor: pointer;
+    background: var(--grad-orange);
+    color: #fff !important;
+    transition: all 0.25s ease;
+    margin-top: auto;
+    box-shadow: var(--glow-orange);
+  }
+  .btn-glowing:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+  }
+
   /* ── FULL RISK CALCULATOR ── */
   #riskCalc {
-    background: var(--bg-sec);
+    background: var(--bg-main);
     border-top: 1px solid var(--border);
   }
   .calc-wrapper {
@@ -1699,7 +1636,7 @@
 
   /* ── TESTIMONIALS ── */
   #testimonials {
-    background: var(--bg-main);
+    background: var(--bg-sec);
     border-top: 1px solid var(--border);
     padding: 90px 0;
     overflow: hidden;
@@ -1742,7 +1679,7 @@
   .testi-author { font-weight: 600; font-size: 0.84rem; color: var(--text-dark); }
 
   /* ── DISCORD JOIN SECTION ── */
-  #discord-join { background: var(--bg-sec); border-top: 1px solid var(--border); }
+  #discord-join { background: var(--bg-main); border-top: 1px solid var(--border); }
   .discord-wrapper {
     background: linear-gradient(135deg, rgba(88, 101, 242, 0.14) 0%, var(--bg-card) 100%);
     border: 1px solid rgba(88, 101, 242, 0.35);
@@ -1772,7 +1709,7 @@
   .discord-btn:hover { transform: translateY(-2px); background: #4752C4; }
 
   /* ── COMMUNITY MARQUEE ── */
-  #community { background: var(--bg-main); border-top: 1px solid var(--border); padding: 90px 0; overflow: hidden; }
+  #community { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 90px 0; overflow: hidden; }
   .comm-marquee-wrap {
     display: flex;
     flex-direction: column;
@@ -1804,7 +1741,7 @@
   .comm-arrow { font-weight: 700; color: var(--whop-orange); margin-top: auto; }
 
   /* ── MASTERCLASS ── */
-  #masterclass { background: var(--bg-sec); border-top: 1px solid var(--border); }
+  #masterclass { background: var(--bg-main); border-top: 1px solid var(--border); }
   .mc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left; }
   .mc-card {
     background: var(--bg-card-solid);
@@ -1860,7 +1797,7 @@
   }
 
   /* ── FAQ ── */
-  #faq { background: var(--bg-main); border-top: 1px solid var(--border); }
+  #faq { background: var(--bg-sec); border-top: 1px solid var(--border); }
   .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 780px; margin: 0 auto; text-align: left; }
   .faq-item {
     background: var(--bg-card);
@@ -1904,7 +1841,7 @@
   .pre-footer-text {
     padding: 90px 5% 40px;
     text-align: center;
-    background: var(--bg-sec);
+    background: var(--bg-main);
     border-top: 1px solid var(--border);
     display: flex;
     flex-direction: column;
@@ -2022,6 +1959,9 @@
   .modal-body { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; }
 
   /* ── RESPONSIVE ── */
+  @media (max-width: 1280px) {
+    .pricing-grid { grid-template-columns: repeat(3, 1fr); max-width: 980px; }
+  }
   @media (max-width: 1100px) {
     .nav-links, .nav-cta { display: none; }
     .mobile-menu-btn { display: inline-flex; }
@@ -2029,10 +1969,9 @@
     .hero-left { align-items: center; }
     .hero-btn-group { justify-content: center; }
   }
-  @media (max-width: 1024px) {
-    .calc-layout { grid-template-columns: 1fr; gap: 28px; }
-  }
   @media (max-width: 900px) {
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); max-width: 720px; }
+    .calc-layout { grid-template-columns: 1fr; gap: 28px; }
     .arsenal-container { height: 600px; max-width: 600px; }
     .orbit-guide-ring { width: 440px; height: 440px; }
     .satellite-link { width: 220px; }
@@ -2047,9 +1986,10 @@
     .hero-stats { grid-template-columns: 1fr; gap: 18px; text-align: center; }
     .dotted-globe { width: 320px; height: 320px; }
     .globe-pill { display: none; }
-    .red-alert-inner { padding: 34px 20px; }
-    .auto-popup-inner { padding: 32px 18px 24px; }
-    .support-ticket-btn { width: 100%; justify-content: center; padding: 12px 18px; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pay-method.crypto-exclusive { flex-direction: column; text-align: center; gap: 12px; }
+    .pay-text { text-align: center; }
+    .pay-text h3 { justify-content: center; }
     .arsenal-container { height: 460px; }
     .orbit-guide-ring { width: 310px; height: 310px; }
     .satellite-link { width: 155px; }
@@ -2069,124 +2009,84 @@
 
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ── 5-SECOND AUTO POPUP MODAL (HIGH CONTRAST) ── -->
-<div class="auto-popup-overlay" id="autoAlertPopup" onclick="if(event.target===this) closeAutoPopup()">
-  <div class="auto-popup-box">
-    <div class="auto-popup-inner">
-      <button class="popup-close-btn" onclick="closeAutoPopup()" title="Close Notice">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <div class="alert-badge-top">
-        <span class="red-dot-blink"></span>
-        <span>IMPORTANT NOTICE • SALES CLOSED</span>
-      </div>
-
-      <h3 class="red-alert-title" style="font-size: clamp(1.45rem, 2.8vw, 2.05rem); margin-bottom: 16px;">
-        All Membership Sales Closed on <span class="red-alert-date-highlight">October 30</span>
-      </h3>
-
-      <p class="red-alert-desc" style="font-size: 0.95rem; margin-bottom: 22px;">
-        We have officially closed all membership sales as of <strong>October 30</strong>. Payments and purchases are no longer accepted on this website. All content displayed here is <strong>strictly for informational and educational showcase purposes only</strong>—nothing on this site is for sale.
-        <br><br>
-        If you need any assistance or have any questions, <strong>Rashik</strong> is happy to help you personally! Please click the support ticket icon below to open a ticket on Discord.
-      </p>
-
-      <div class="support-ticket-cta-wrap">
-        <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="support-ticket-btn">
-          <div class="ticket-icon-circle">
-            <i class="fas fa-ticket-alt"></i>
-          </div>
-          <div class="ticket-btn-text">
-            <span class="ticket-btn-sub">Direct Personal Assistance</span>
-            <span class="ticket-btn-main">Open a Support Ticket with Rashik <i class="fas fa-external-link-alt" style="font-size: 0.82rem;"></i></span>
-          </div>
-        </a>
-      </div>
-
-      <div class="popup-timer-bar-wrap">
-        <div class="popup-timer-bar" id="popupTimerBar"></div>
-      </div>
-      <span class="popup-timer-text">Auto-closing in <span id="popupCountdownNum">5</span>s...</span>
-    </div>
-  </div>
-</div>
-
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
     <span class="logo-dot"></span>
     <span class="logo-black">Rashik</span><span class="logo-orange">Trades</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#sales-closed-notice" style="color: #ef4444; font-weight: 700;"><i class="fas fa-exclamation-circle"></i> Important Notice</a></li>
     <li><a href="#alerts-showcase">Alert Features</a></li>
     <li><a href="#showcase">Flagship Tool</a></li>
     <li><a href="#architecture">Core Features</a></li>
     <li><a href="#indicators">The Arsenal</a></li>
+    <li><a href="#pricing">Membership</a></li>
     <li><a href="#riskCalc" class="calc-nav-btn"><i class="fas fa-calculator"></i> Calculator</a></li>
   </ul>
   <div class="nav-actions">
     <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" title="Switch Dark/Light Mode">
       <i class="fas fa-sun" id="themeIcon"></i>
     </button>
-    <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="nav-cta"><i class="fas fa-ticket-alt"></i> Support Ticket</a>
+    <a href="#pricing" class="nav-cta">Get Access Now <i class="fas fa-arrow-right"></i></a>
     <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#sales-closed-notice" onclick="toggleMenu()" style="color: #ef4444;">Important Notice</a>
   <a href="#alerts-showcase" onclick="toggleMenu()">Alert Features</a>
   <a href="#showcase" onclick="toggleMenu()">Flagship Tool</a>
   <a href="#architecture" onclick="toggleMenu()">Core Features</a>
   <a href="#indicators" onclick="toggleMenu()">The Arsenal</a>
+  <a href="#pricing" onclick="toggleMenu()">Membership</a>
   <a href="#riskCalc" onclick="toggleMenu()">Calculator</a>
   <a href="#faq" onclick="toggleMenu()">FAQ</a>
-  <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" onclick="toggleMenu()" style="color: var(--whop-orange);">Open Support Ticket</a>
 </div>
 
 <!-- ── SPLIT HERO SECTION WITH DYNAMIC LIVE FEED ── -->
 <section id="hero">
   <div class="hero-ambient"></div>
   <div class="hero-split-container">
+    <!-- Left Column: Bold Typography & CTA -->
     <div class="hero-left">
       <div class="hero-pill-badge reveal">
         <span class="live-pulse"></span>
-        <span>Institutional Trading Intelligence • Informational Overview</span>
+        <span>Institutional Trading Intelligence</span>
       </div>
       <h1 class="hero-title reveal">
         The fastest path to <span class="orange-accent">institutional precision.</span>
       </h1>
       <p class="hero-subtitle reveal">
-        <strong>RTC Hero Club Suite</strong> is an algorithmic chart-mapping system designed to visualize Smart Money structure, PO3 arrays, and real-time CISD triggers across every timeframe.
+        <strong>RTC Hero Club Bundle</strong> is a decision-making algorithmic system that maps Smart Money structure, PO3 arrays, and real-time CISD triggers at every timeframe.
       </p>
       <div class="hero-btn-group reveal">
-        <a href="#sales-closed-notice" class="btn-cyber btn-filled"><i class="fas fa-headset"></i> Contact Rashik & Support</a>
+        <a href="#pricing" class="btn-cyber btn-filled">Get Instant Access <i class="fas fa-bolt"></i></a>
         <a href="#masterclass" class="btn-cyber btn-outline"><i class="fas fa-play" style="color:var(--whop-orange); font-size:0.8rem;"></i> Watch Masterclass</a>
       </div>
       <div class="hero-stats reveal">
         <div class="hero-stat">
           <span class="num dynamic-counter" data-target="4500" data-suffix="+">0+</span>
-          <span class="label">Community Traders</span>
+          <span class="label">Active Members</span>
         </div>
         <div class="hero-stat">
           <span class="num dynamic-counter" data-target="12" data-suffix="">0</span>
-          <span class="label">Proprietary Algorithms</span>
+          <span class="label">Elite Indicators</span>
         </div>
         <div class="hero-stat">
           <span class="num dynamic-counter" data-target="100" data-suffix="%">0%</span>
-          <span class="label">Educational Showcase</span>
+          <span class="label">Satisfaction Rate</span>
         </div>
       </div>
     </div>
 
+    <!-- Right Column: Spinning Dotted Globe + Live Cycling Notification Stack -->
     <div class="hero-right reveal">
       <div class="dotted-globe"></div>
 
+      <!-- Green Animated Equity Curve Line -->
       <svg class="equity-curve-svg" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path class="equity-path" d="M0 175 C 120 170, 160 125, 280 125 C 400 125, 450 45, 600 15" stroke="#10b981" stroke-width="2.5" stroke-opacity="0.8" fill="none"/>
       </svg>
 
+      <!-- Dynamic Live Activity Pills -->
       <div class="globe-pill pill-top" id="globePillTop">
         <span class="dot" style="background: #10b981; color: #10b981;"></span>
         <span id="pillTopText">MNQ 15m Bullish CISD Confirmed</span>
@@ -2196,6 +2096,7 @@
         <span id="pillBottomText">MGC Key Level Sweep + SMT Sync</span>
       </div>
 
+      <!-- 4 Dynamic Auto-Cycling Alert Cards -->
       <div class="hero-stack-wrap" id="heroAlertStack">
         <div class="stack-card pos-0">
           <div class="stack-icon-box" style="color: #3b82f6;"><i class="fas fa-layer-group"></i></div>
@@ -2233,51 +2134,12 @@
   </div>
 </section>
 
-<!-- ── HIGH-CONTRAST PROFESSIONAL RED ALERT SECTION ── -->
-<section id="sales-closed-notice">
-  <div class="red-alert-container reveal">
-    <div class="red-alert-inner">
-      <div class="alert-badge-top">
-        <span class="red-dot-blink"></span>
-        <span>OFFICIAL RED ALERT • MEMBERSHIP SALES CLOSED</span>
-      </div>
-
-      <h2 class="red-alert-title">
-        All Membership Sales Have Officially Closed as of <span class="red-alert-date-highlight">October 30</span>
-      </h2>
-
-      <p class="red-alert-desc">
-        Please be advised that we have permanently closed all membership sales and disabled website payments as of <strong>October 30</strong>. You can no longer make any payments or purchase access through this website.
-        <br><br>
-        If you need assistance with anything, <strong>Rashik</strong> is available to help you personally regarding any matter. Simply click the support ticket icon below to open a direct support ticket on Discord.
-      </p>
-
-      <div class="info-only-pill">
-        <i class="fas fa-info-circle"></i>
-        <span><strong>Informational Showcase Only:</strong> Everything displayed on this website is strictly for informational & educational documentation. We are not offering or selling any products here.</span>
-      </div>
-
-      <div class="support-ticket-cta-wrap">
-        <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="support-ticket-btn">
-          <div class="ticket-icon-circle">
-            <i class="fas fa-ticket-alt"></i>
-          </div>
-          <div class="ticket-btn-text">
-            <span class="ticket-btn-sub">Need Help? Talk to Rashik Personally</span>
-            <span class="ticket-btn-main">Click Here to Open a Support Ticket <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ── TAG CLOUD (EVERYTHING SMART MONEY) ── -->
 <div class="tag-cloud-section">
   <div class="inner" style="text-align: center;">
     <div class="section-label reveal"><i class="fas fa-layer-group"></i> Institutional Engine</div>
     <h2 class="section-title reveal" style="font-size: clamp(1.9rem, 3.6vw, 2.5rem); margin-bottom: 10px;">Everything Smart Money.</h2>
-    <p class="section-desc reveal" style="margin-bottom: 15px;">An informational overview of the algorithmic concepts integrated into the RTC Suite.</p>
+    <p class="section-desc reveal" style="margin-bottom: 15px;">The RTC Suite has every algorithmic model a Smart Money Trader needs.</p>
   </div>
   <div class="tag-marquee-wrap reveal">
     <div class="tag-track track-left" id="tagTrack1"></div>
@@ -2290,7 +2152,7 @@
   <div class="inner">
     <div class="section-label reveal"><i class="fas fa-bell"></i> Smart Notifications</div>
     <h2 class="section-title reveal">Never miss a setup.</h2>
-    <p class="section-desc reveal">How our real-time algorithmic webhook & mobile push alerts trigger the exact millisecond structural criteria align.</p>
+    <p class="section-desc reveal">Real-time algorithmic webhook & mobile push alerts the exact millisecond structural criteria align.</p>
 
     <div class="dynamic-alert-hero reveal">
       <div class="bell-container">
@@ -2350,12 +2212,12 @@
 <section id="showcase">
   <div class="inner">
     <div class="showcase-header reveal">
-      <div class="section-label"><i class="fas fa-star"></i> Flagship Tool Specification</div>
+      <div class="section-label"><i class="fas fa-star"></i> Flagship Tool</div>
       <h2 class="section-title">RTC [PO3 Pro Suite] Advanced.</h2>
-      <p class="section-desc">Technical overview of our flagship charting architecture and automated structural drawing modules.</p>
+      <p class="section-desc">The ultimate trading toolkit. Everything you need is drawn on your chart automatically.</p>
     </div>
     <div class="showcase-image-main reveal">
-      <div class="premium-badge-updated">System Architecture</div>
+      <div class="premium-badge-updated">Updated Version</div>
       <img src="rtc-indicator.png" alt="RTC PO3 Pro Suite Advanced Visual" onerror="this.src='https://placehold.co/1200x675/111115/FF5514?text=RTC+%5BPO3+Pro+Suite%5D+Advanced+Terminal'">
     </div>
     <div class="showcase-features-grid reveal">
@@ -2383,8 +2245,8 @@
 <section id="architecture">
   <div class="inner">
     <div class="section-label reveal"><i class="fas fa-microchip"></i> Core Architecture</div>
-    <h2 class="section-title reveal">Engineered for structural clarity.</h2>
-    <p class="section-desc reveal">Built for speed, structural precision, and multi-timeframe analytical clarity.</p>
+    <h2 class="section-title reveal">Thrive in competitive markets.</h2>
+    <p class="section-desc reveal">Built for speed, structural precision, and multi-timeframe clarity.</p>
     <div class="arch-grid reveal">
       <div class="bento-card">
         <div class="bento-preview">
@@ -2402,8 +2264,8 @@
           </div>
         </div>
         <div>
-          <div class="arch-title">Auto Fractal Mapping</div>
-          <div class="arch-desc">Automated detection for C1, C2, C3, Reversal, and EQ setups based on Power of 3 and higher-timeframe trends.</div>
+          <div class="arch-title">Auto Fractal Trading</div>
+          <div class="arch-desc">Get automated alerts for C1, C2, C3, Reversal, and EQ setups based on Power of 3 and high-timeframe trends.</div>
         </div>
       </div>
 
@@ -2424,7 +2286,7 @@
         </div>
         <div>
           <div class="arch-title">Multi HTF View</div>
-          <div class="arch-desc">Visualizes up to five Higher Timeframe candles with SMT and Fair Value Gaps directly on the execution chart.</div>
+          <div class="arch-desc">View up to five Higher Timeframe candles with SMT and Fair Value Gaps directly on your current execution chart.</div>
         </div>
       </div>
 
@@ -2445,7 +2307,7 @@
         </div>
         <div>
           <div class="arch-title">Smart Fractal Alerts</div>
-          <div class="arch-desc">Combines two fractals with smart session filters to generate precise, automated trading notifications without chart noise.</div>
+          <div class="arch-desc">Combine two fractals with smart session filters to receive precise, fully automated trading alerts without chart noise.</div>
         </div>
       </div>
     </div>
@@ -2456,8 +2318,8 @@
 <section id="indicators">
   <div class="inner" style="margin-bottom: 0;">
     <div class="section-label reveal"><i class="fas fa-compass"></i> The Arsenal</div>
-    <h2 class="section-title reveal" style="margin-bottom: 12px;">The Complete Ecosystem.</h2>
-    <p class="section-desc reveal" style="margin-bottom: 20px;">12 institutional algorithms documented in one unified ecosystem.</p>
+    <h2 class="section-title reveal" style="margin-bottom: 12px;">The Complete Suite.</h2>
+    <p class="section-desc reveal" style="margin-bottom: 20px;">12 institutional algorithms orbiting in one unified ecosystem.</p>
   </div>
 
   <div class="arsenal-container reveal" id="arsenalOrbit">
@@ -2465,7 +2327,7 @@
 
     <div class="center-hub">
       <h3>RTC Hero Club</h3>
-      <p>System Ecosystem</p>
+      <p>Indicator Bundle</p>
     </div>
 
     <div class="orbit-wheel">
@@ -2485,12 +2347,12 @@
   </div>
 </section>
 
-<!-- ── 5. FULL BUNDLE DOCUMENTATION (INFORMATIONAL ONLY) ── -->
+<!-- ── 5. FULL BUNDLE INCLUSION ── -->
 <section id="bundle-inclusion">
   <div class="inner">
-    <div class="section-label reveal"><i class="fas fa-book-open"></i> Technical Documentation</div>
-    <h2 class="section-title reveal">Suite Component Specifications.</h2>
-    <p class="section-desc reveal">Detailed informational breakdown of the 12 core algorithmic tools inside the RTC Hero Club framework.</p>
+    <div class="section-label reveal"><i class="fas fa-box-open"></i> Full Arsenal Access</div>
+    <h2 class="section-title reveal">Everything included in your bundle.</h2>
+    <p class="section-desc reveal">When you unlock access, you don't just get one tool. You get the entire institutional framework directly on your TradingView.</p>
 
     <div class="bundle-grid-premium reveal">
       <div class="bundle-card-pro"><h4><i class="fas fa-layer-group"></i> RTC [PO3 Pro Suite] lite</h4><p>The foundational framework for daily structural mapping and core Po3 detection.</p></div>
@@ -2501,7 +2363,7 @@
       <div class="bundle-card-pro"><h4><i class="fas fa-clock"></i> RTC [Session Pro+]</h4><p>Automated killzone mapping, session sweeps, and daily range visualizations.</p></div>
       <div class="bundle-card-pro"><h4><i class="fas fa-link"></i> RTC [SMT & PSP Sync Pro+]</h4><p>Syncs Precision Swing Points with SMT divergences for ultimate entry confirmation.</p></div>
       <div class="bundle-card-pro"><h4><i class="fas fa-vial"></i> RTC [V-Shape CISD Pro+]</h4><p>Detects rapid, aggressive V-shape market structural shifts with sniper precision.</p></div>
-      <div class="bundle-card-pro"><h4><i class="fas fa-align-left"></i> RTC [iFVG Pro Suite]</h4><p>Inversion Fair Value Gap detection algorithm for continuation and powerful reversal setups.</p></div>
+      <div class="bundle-card-pro"><h4><i class="fas fa-align-left"></i> RTC [iFVG Pro Suite]</h4><p>Inversion Fair Value Gap detection algorithm for continuation and powerful reversal trades.</p></div>
       <div class="bundle-card-pro"><h4><i class="fas fa-rocket"></i> RTC [Advanced CRT Plus]</h4><p>Advanced continuation and precision targeting algorithm engineered for maximum accuracy.</p></div>
       <div class="bundle-card-pro"><h4><i class="fas fa-broom"></i> RTC [Session Sweep & CISD Plus]</h4><p>Detects session stop runs and immediate shifts in structural delivery automatically.</p></div>
       <div class="bundle-card-pro"><h4><i class="fas fa-chart-area"></i> RTC [Fair Value Area] Pro+</h4><p>Dynamically maps out true fair value zones for precise institutional entry and exit targeting.</p></div>
@@ -2509,10 +2371,185 @@
   </div>
 </section>
 
-<!-- ── 6. FULL RISK CALCULATOR ── -->
+<!-- ── 6. MEMBERSHIP PLANS (ALL 5 PRODUCTS ON ONE PAGE, AUTOMATED CRYPTO ONLY) ── -->
+<div class="pricing-wrapper" id="pricing">
+  <div class="inner" style="max-width: 1360px;">
+    <div class="section-label reveal"><i class="fas fa-crown"></i> Membership Access</div>
+    <h2 class="section-title reveal">Choose your membership.</h2>
+    <p class="section-desc reveal">Instant automated access to all 12 institutional indicators, private Discord channels, and ongoing updates.</p>
+
+    <div class="payment-methods-header reveal">
+      <div class="pay-method crypto-exclusive">
+        <div class="pay-icon"><i class="fab fa-bitcoin"></i></div>
+        <div class="pay-text">
+          <h3>Automated Crypto Checkout Only <i class="fas fa-shield-alt" style="color:var(--green); font-size:0.9rem;"></i></h3>
+          <p>More secure, heavily discounted & faster instant activation via Suby.fi (Card & manual transfers disabled)</p>
+        </div>
+        <div class="pay-badge">Instant Access</div>
+      </div>
+    </div>
+
+    <!-- ALL 5 MEMBERSHIP PLANS IN ONE VIEW -->
+    <div class="pricing-grid reveal" id="membership-plans">
+      <!-- 1. Starter ($8 / month) -->
+      <div class="price-card">
+        <div class="price-tier">Starter</div>
+        <div class="price-crossed">$10</div>
+        <div class="price-amount"><span class="price-currency">$</span>8</div>
+        <div class="price-period">/ month</div>
+
+        <div class="discount-wrap">
+          <span class="tv-discount-tag">-20% OFF</span>
+          <span class="price-save">Save $2</span>
+        </div>
+
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] lite</li>
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] Advanced</li>
+          <li><i class="fas fa-check"></i> RTC [Reversal Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [POI Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT & PSP Sync Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [V-Shape CISD Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [iFVG Pro Suite]</li>
+          <li><i class="fas fa-check"></i> RTC [Advanced CRT Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Sweep & CISD Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
+          <li><i class="fas fa-check"></i> Discord Community Access</li>
+          <li><i class="fas fa-check"></i> Cancel anytime</li>
+        </ul>
+        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_qfe85gyp0i724n75azb3lh3v" target="_blank" rel="noopener">Get Membership</a>
+      </div>
+
+      <!-- 2. Advanced ($23 / 3 months) -->
+      <div class="price-card">
+        <div class="price-tier">Advanced</div>
+        <div class="price-crossed">$24.99</div>
+        <div class="price-amount"><span class="price-currency">$</span>23</div>
+        <div class="price-period">/ 3 months</div>
+
+        <div class="discount-wrap">
+          <span class="tv-discount-tag">CRYPTO DEAL</span>
+          <span class="price-save">Save $7</span>
+        </div>
+
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] lite</li>
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] Advanced</li>
+          <li><i class="fas fa-check"></i> RTC [Reversal Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [POI Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT & PSP Sync Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [V-Shape CISD Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [iFVG Pro Suite]</li>
+          <li><i class="fas fa-check"></i> RTC [Advanced CRT Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Sweep & CISD Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
+          <li><i class="fas fa-check"></i> Discord Access + Updates</li>
+        </ul>
+        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_li8m388e9t04ik6j0m3a4nn4" target="_blank" rel="noopener">Get Membership</a>
+      </div>
+
+      <!-- 3. Pro ($45 / 6 months) -->
+      <div class="price-card popular">
+        <div class="price-tier">Pro <span class="popular-badge">Most Popular</span></div>
+        <div class="price-crossed">$50</div>
+        <div class="price-amount"><span class="price-currency">$</span>45</div>
+        <div class="price-period">/ 6 months</div>
+
+        <div class="discount-wrap">
+          <span class="tv-discount-tag">-25% OFF</span>
+          <span class="price-save">Save $15</span>
+        </div>
+
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] lite</li>
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] Advanced</li>
+          <li><i class="fas fa-check"></i> RTC [Reversal Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [POI Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT & PSP Sync Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [V-Shape CISD Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [iFVG Pro Suite]</li>
+          <li><i class="fas fa-check"></i> RTC [Advanced CRT Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Sweep & CISD Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
+          <li><i class="fas fa-check"></i> Priority Support & Videos</li>
+        </ul>
+        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_g67k01idkqajka5ykmkgfvn2" target="_blank" rel="noopener">Get Membership</a>
+      </div>
+
+      <!-- 4. Elite ($89 / 12 months) -->
+      <div class="price-card">
+        <div class="price-tier">Elite</div>
+        <div class="price-crossed">$99</div>
+        <div class="price-amount"><span class="price-currency">$</span>89</div>
+        <div class="price-period">/ 12 months</div>
+
+        <div class="discount-wrap">
+          <span class="tv-discount-tag">-26% OFF</span>
+          <span class="price-save">Save $31</span>
+        </div>
+
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] lite</li>
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] Advanced</li>
+          <li><i class="fas fa-check"></i> RTC [Reversal Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [POI Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT & PSP Sync Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [V-Shape CISD Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [iFVG Pro Suite]</li>
+          <li><i class="fas fa-check"></i> RTC [Advanced CRT Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Sweep & CISD Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
+          <li><i class="fas fa-check"></i> VIP Role + 1-on-1 Session</li>
+        </ul>
+        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_qttkw9o4662d5niuxxo8k4qv" target="_blank" rel="noopener">Get Membership</a>
+      </div>
+
+      <!-- 5. Lifetime ($299 / lifetime) -->
+      <div class="price-card lifetime-highlight">
+        <div class="price-tier">Lifetime <span class="lifetime-badge">Best Value</span></div>
+        <div class="price-crossed">$399</div>
+        <div class="price-amount"><span class="price-currency">$</span>299</div>
+        <div class="price-period">/ lifetime</div>
+
+        <div class="discount-wrap">
+          <span class="tv-discount-tag">-25% OFF</span>
+          <span class="price-save">Save $100</span>
+        </div>
+
+        <ul class="price-features">
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] lite</li>
+          <li><i class="fas fa-check"></i> RTC [PO3 Pro Suite] Advanced</li>
+          <li><i class="fas fa-check"></i> RTC [Reversal Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [POI Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [SMT & PSP Sync Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [V-Shape CISD Pro+]</li>
+          <li><i class="fas fa-check"></i> RTC [iFVG Pro Suite]</li>
+          <li><i class="fas fa-check"></i> RTC [Advanced CRT Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Session Sweep & CISD Plus]</li>
+          <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
+          <li><i class="fas fa-check"></i> VIP Role + 1-on-1 Session</li>
+          <li><i class="fas fa-check"></i> Lifetime Updates Included</li>
+        </ul>
+        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_ttojlaaief3pnnnljv320yxs" target="_blank" rel="noopener">Get Lifetime Access</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 7. FULL RISK CALCULATOR ── -->
 <section id="riskCalc">
   <div class="inner">
-    <div class="section-label reveal"><i class="fas fa-calculator"></i> Free Trading Utility</div>
+    <div class="section-label reveal"><i class="fas fa-calculator"></i> Essential Tool</div>
     <h2 class="section-title reveal">Precision Calculator.</h2>
     <p class="section-desc reveal">Calculate exact position size, risk/reward, and margin across Indices, Metals, and Crypto.</p>
 
@@ -2614,8 +2651,8 @@
 <!-- ── TESTIMONIALS ── -->
 <section id="testimonials">
   <div class="inner reveal">
-    <div class="section-label"><i class="fas fa-comments"></i> Community Feedback Archive</div>
-    <h2 class="section-title">What members experienced.</h2>
+    <div class="section-label"><i class="fas fa-comments"></i> Social Proof</div>
+    <h2 class="section-title">Traders don't lie.</h2>
   </div>
   <div class="testi-marquee-wrap reveal">
     <div class="testi-track track-left" id="testiTrack1"></div>
@@ -2624,15 +2661,15 @@
   </div>
 </section>
 
-<!-- ── DISCORD SUPPORT SECTION ── -->
+<!-- ── DISCORD JOIN SECTION ── -->
 <section id="discord-join">
   <div class="inner reveal">
     <div class="discord-wrapper">
       <i class="fab fa-discord"></i>
-      <h2>Need Personal Assistance from Rashik?</h2>
-      <p>Membership sales closed on October 30, but Rashik is personally available to assist you with any questions, existing member queries, or general support.</p>
-      <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="discord-btn">
-        <i class="fas fa-ticket-alt"></i> Open a Support Ticket Now
+      <h2>Join our server for exclusive perks.</h2>
+      <p>Connect directly with Admin Rashik, access live voice trading rooms, and get exclusive community-only deals.</p>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="discord-btn">
+        Join Discord Now <i class="fas fa-arrow-right"></i>
       </a>
     </div>
   </div>
@@ -2641,16 +2678,16 @@
 <!-- ── COMMUNITY MARQUEE ── -->
 <section id="community">
   <div class="inner reveal">
-    <div class="section-label"><i class="fas fa-globe"></i> Official Channels</div>
-    <h2 class="section-title">Connect with RashikTrades.</h2>
+    <div class="section-label"><i class="fas fa-globe"></i> Join The Network</div>
+    <h2 class="section-title">Connect with Elite Traders.</h2>
   </div>
   <div class="comm-marquee-wrap reveal">
     <div class="comm-track track-left" id="commTrack1">
-      <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="comm-card"><i class="fas fa-ticket-alt comm-icon"></i><div class="comm-name">Support Ticket</div><p class="comm-desc">Open a ticket on Discord to talk directly with Rashik for any help.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
       <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, daily setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
-      <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="comm-card"><i class="fas fa-ticket-alt comm-icon"></i><div class="comm-name">Support Ticket</div><p class="comm-desc">Open a ticket on Discord to talk directly with Rashik for any help.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fab fa-discord comm-icon"></i><div class="comm-name">Discord</div><p class="comm-desc">Live voice trading rooms, real-time alerts, and direct access to Admin Rashik.</p><div class="comm-arrow">→</div></a>
       <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="comm-card"><i class="fab fa-youtube comm-icon"></i><div class="comm-name">YouTube</div><p class="comm-desc">Full indicator masterclass series, market analysis, and live trade breakdowns.</p><div class="comm-arrow">→</div></a>
       <a href="https://twitter.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-x-twitter comm-icon"></i><div class="comm-name">Twitter / X</div><p class="comm-desc">Daily trade setups, market commentary, and rapid-fire analysis updates.</p><div class="comm-arrow">→</div></a>
       <a href="https://t.me/RashikTradesCommunity" target="_blank" class="comm-card"><i class="fab fa-telegram-plane comm-icon"></i><div class="comm-name">Telegram</div><p class="comm-desc">Instant market alerts, daily setups, and lightning-fast community updates.</p><div class="comm-arrow">→</div></a>
@@ -2658,11 +2695,11 @@
 
     <div class="comm-track track-right" id="commTrack2">
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
-      <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Direct Help</div><p class="comm-desc">Reach out to Rashik personally by opening a support ticket on Discord.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
-      <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Direct Help</div><p class="comm-desc">Reach out to Rashik personally by opening a support ticket on Discord.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
       <a href="https://instagram.com/rashiktrades" target="_blank" class="comm-card"><i class="fab fa-instagram comm-icon"></i><div class="comm-name">Instagram</div><p class="comm-desc">Behind-the-scenes trading life, setups, wins, and exclusive content drops.</p><div class="comm-arrow">→</div></a>
-      <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Direct Help</div><p class="comm-desc">Reach out to Rashik personally by opening a support ticket on Discord.</p><div class="comm-arrow">→</div></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank" class="comm-card"><i class="fas fa-headset comm-icon"></i><div class="comm-name">Support Team</div><p class="comm-desc">24/7 dedicated support team ready to help you with setups and onboarding.</p><div class="comm-arrow">→</div></a>
     </div>
   </div>
 </section>
@@ -2670,9 +2707,9 @@
 <!-- ── MASTERCLASS ── -->
 <section id="masterclass">
   <div class="inner">
-    <div class="section-label reveal"><i class="fas fa-play-circle"></i> Educational Masterclass Series</div>
+    <div class="section-label reveal"><i class="fas fa-play-circle"></i> Masterclass Series</div>
     <h2 class="section-title reveal">Indicator Breakdown.</h2>
-    <p class="section-desc reveal">Watch these free educational guides to understand how the RTC Suite works.</p>
+    <p class="section-desc reveal">Watch these visual guides to master the RTC Suite and execute perfectly.</p>
 
     <div class="mc-grid reveal">
       <div class="mc-card" onclick="window.open('https://youtu.be/uL51FufvU6Q', '_blank')">
@@ -2766,7 +2803,7 @@
           <div class="play-overlay"><i class="fas fa-play"></i></div>
         </div>
         <div class="mc-body">
-          <h4 style="font-size: 1.05rem; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 6px;">Indicator Setup Guide</h4>
+          <h4 style="font-size: 1.05rem; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 6px;">Indicator Access Guide</h4>
           <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">Learn to accurately identify true changes in state of delivery vs fakeouts.</p>
         </div>
       </div>
@@ -2803,7 +2840,7 @@
         </div>
         <div class="mc-body">
           <h4 style="font-size: 1.05rem; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 6px;">Indicator Secret Features Revealed</h4>
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">Learn secret settings and pro tips to get the most out of your chart analysis.</p>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">Learn secret settings and pro tips to get the most out of your trades.</p>
         </div>
       </div>
     </div>
@@ -2815,24 +2852,32 @@
   <div class="inner">
     <div class="section-label reveal"><i class="fas fa-question-circle"></i> FAQ</div>
     <h2 class="section-title reveal">Common Questions.</h2>
-    <p class="section-desc reveal">Important information regarding our website status and how to contact Rashik.</p>
+    <p class="section-desc reveal">Everything you need to know before joining the RTC community.</p>
 
     <div class="faq-list reveal">
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Can I still purchase a membership or make a payment on this website?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
-        <div class="faq-a"><br>No. All membership sales were officially closed on <strong>October 30</strong>, and payments are no longer possible through this website. Everything displayed here is strictly for informational and showcase purposes only.<br><br></div>
+        <div class="faq-q" onclick="toggleFaq(this)">Can I trade any market with these indicators?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>Absolutely. The RTC Indicator Suite is universally designed to work flawlessly across <strong>ALL</strong> markets and asset classes. Whether you trade CME futures/indices, metals, global equities, or crypto assets, our algorithms adapt to any price action and time frame seamlessly.<br><br></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How can I contact Rashik for help or inquiries?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
-        <div class="faq-a"><br>Rashik is personally available to assist you with any matter! Simply click on any of the <strong>Support Ticket</strong> buttons on this website to open a direct ticket in our Discord channel (<a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" style="color:var(--whop-orange); text-decoration:underline !important;">Click here to open a Support Ticket</a>).<br><br></div>
+        <div class="faq-q" onclick="toggleFaq(this)">What platform does the RTC Indicator Suite work on?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>The RTC Indicator Suite is built for TradingView. You'll need a TradingView account (free or paid) to access and use the indicators. Once your membership is verified, you'll receive an invite link to add the tools directly to your charts.<br><br></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What markets is the RTC Indicator Suite designed to analyze?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
-        <div class="faq-a"><br>The RTC Indicator Suite is universally designed to analyze <strong>ALL</strong> markets and asset classes on TradingView, including CME futures/indices, metals, global equities, and crypto assets.<br><br></div>
+        <div class="faq-q" onclick="toggleFaq(this)">How do I pay and get access?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>We exclusively use automated crypto checkout via Suby.fi because it is more secure, heavily discounted, and seamless. Simply select your membership plan above, complete the automated crypto checkout, and your access is provisioned automatically within minutes—no manual transfers or card hassles required.<br><br></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Where can I watch the educational tutorials?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
-        <div class="faq-a"><br>Our 10-part masterclass series on YouTube is available for free in the Masterclass section above, covering how the indicators and Smart Money concepts work from scratch.<br><br></div>
+        <div class="faq-q" onclick="toggleFaq(this)">Is there a refund policy?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>Due to the digital nature of the RTC Indicator Suite, all sales are final once access is granted. We cannot offer refunds, exchanges, or cancellations under any circumstances.<br><br></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need to know ICT concepts to use the suite?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>Some familiarity with ICT concepts like FVGs, CISD, and order blocks will help. However, our 10-part masterclass series on YouTube covers everything you need to configure and use the indicators from scratch.<br><br></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Why is payment Crypto-only?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>Automated crypto checkout eliminates high card processing fees, regional declines, and privacy risks—allowing us to pass those savings directly to you with lower membership prices and instant automated verification.<br><br></div>
       </div>
     </div>
   </div>
@@ -2844,18 +2889,10 @@
     Your mind is built for precision and execution,<br>
     <span class="orange-accent">not for chasing every setup.</span>
   </div>
-  <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="support-ticket-btn" style="margin-top: 32px;">
-    <div class="ticket-icon-circle">
-      <i class="fas fa-ticket-alt"></i>
-    </div>
-    <div class="ticket-btn-text">
-      <span class="ticket-btn-sub">Personal Help from Rashik</span>
-      <span class="ticket-btn-main">Open a Support Ticket on Discord <i class="fas fa-arrow-right"></i></span>
-    </div>
-  </a>
+  <a href="#pricing" class="btn-cyber btn-filled hover-scale" style="margin-top: 32px;">Get Access Now <i class="fas fa-arrow-right"></i></a>
 
   <div class="risk-disclaimer-box reveal">
-    <strong>INFORMATIONAL NOTICE & HIGH RISK WARNING:</strong> All membership sales on this website closed on October 30, and no products or subscriptions are currently offered for purchase. All content on this page is strictly for informational and educational showcase purposes. Trading futures, indices, foreign exchange, cryptocurrencies, and other margin-based assets carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results. Nothing on this website should be construed as financial advice or a solicitation to buy or sell any financial instrument or software.
+    <strong>HIGH RISK WARNING:</strong> Trading futures, indices, foreign exchange, cryptocurrencies, and other margin-based assets carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite. There is a possibility that you could sustain a loss of some or all of your initial investment. Past performance is not indicative of future results. The RTC Indicator Suite and all content provided by Rashik Trades is strictly for educational purposes and should not be construed as financial advice.
   </div>
 </div>
 
@@ -2868,29 +2905,30 @@
   <div class="footer-grid">
     <div>
       <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; font-weight: 800; margin-bottom: 14px;"><span class="logo-black">Rashik</span><span class="logo-orange">Trades</span></div>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">Official informational portal for the RTC Indicator Suite ecosystem.</p>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">The ultimate indicator suite engineered for institutional-grade market clarity.</p>
       <div class="footer-socials" style="display:flex; gap:10px;">
-        <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank" class="social-icon-btn" title="Open Support Ticket"><i class="fab fa-discord"></i></a>
+        <a href="https://discord.com/invite/RashikTrades" target="_blank" class="social-icon-btn"><i class="fab fa-discord"></i></a>
         <a href="https://www.youtube.com/@RashikTrades" target="_blank" class="social-icon-btn"><i class="fab fa-youtube"></i></a>
         <a href="https://twitter.com/rashiktrades" target="_blank" class="social-icon-btn"><i class="fab fa-x-twitter"></i></a>
         <a href="https://t.me/RashikTradesCommunity" target="_blank" class="social-icon-btn"><i class="fab fa-telegram-plane"></i></a>
       </div>
     </div>
     <div>
-      <h4 style="font-weight: 700; margin-bottom: 18px; font-family: 'Plus Jakarta Sans', sans-serif;">Navigation</h4>
-      <a href="#sales-closed-notice"><p style="font-size: 0.88rem; color: #ef4444; cursor: pointer; margin-bottom: 10px; font-weight: 600;" class="hover-scale">Sales Closed Notice</p></a>
-      <a href="#indicators"><p style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer; margin-bottom: 10px;" class="hover-scale">Suite Overview</p></a>
+      <h4 style="font-weight: 700; margin-bottom: 18px; font-family: 'Plus Jakarta Sans', sans-serif;">The Suite</h4>
+      <a href="#indicators"><p style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer; margin-bottom: 10px;" class="hover-scale">Pro Indicators</p></a>
+      <a href="#pricing"><p style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer; margin-bottom: 10px;" class="hover-scale">Membership Plans</p></a>
       <a href="#riskCalc"><p style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer; margin-bottom: 10px;" class="hover-scale">Risk Calculator</p></a>
     </div>
     <div>
       <h4 style="font-weight: 700; margin-bottom: 18px; font-family: 'Plus Jakarta Sans', sans-serif;">Support</h4>
-      <a href="https://discord.com/channels/1452548272202711112/1463958782462656522" target="_blank"><p style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer; margin-bottom: 10px;" class="hover-scale"><i class="fas fa-ticket-alt" style="color:var(--whop-orange); margin-right:6px;"></i>Open Support Ticket</p></a>
+      <a href="https://discord.com/invite/RashikTrades" target="_blank"><p style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer; margin-bottom: 10px;" class="hover-scale">Contact via Discord</p></a>
+      <p onclick="openModal('refund')" style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer; margin-bottom: 10px;" class="hover-scale">Refund Policy</p>
       <p onclick="openModal('privacy')" style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer; margin-bottom: 10px;" class="hover-scale">Privacy Policy</p>
     </div>
   </div>
   <div class="footer-bottom">
     <div>Made with <i class="fas fa-heart" style="color: var(--red);"></i> for Rashik Trades Community</div>
-    <div>© 2026 RashikTrades • Informational Showcase</div>
+    <div>© 2026 RashikTrades</div>
   </div>
 </footer>
 
@@ -2905,44 +2943,6 @@
 
 <!-- ── SCRIPTS ── -->
 <script>
-  // ── 5-SECOND DELAY + 5-SECOND AUTO-DISMISS POPUP LOGIC ──
-  let autoCloseTimer = null;
-  let countdownInterval = null;
-
-  function showAutoPopup() {
-    const popup = document.getElementById('autoAlertPopup');
-    const countdownEl = document.getElementById('popupCountdownNum');
-    if (!popup) return;
-
-    popup.classList.add('active');
-    let secondsLeft = 5;
-    if (countdownEl) countdownEl.textContent = secondsLeft;
-
-    countdownInterval = setInterval(() => {
-      secondsLeft -= 1;
-      if (countdownEl && secondsLeft >= 0) {
-        countdownEl.textContent = secondsLeft;
-      }
-    }, 1000);
-
-    autoCloseTimer = setTimeout(() => {
-      closeAutoPopup();
-    }, 5000);
-  }
-
-  function closeAutoPopup() {
-    const popup = document.getElementById('autoAlertPopup');
-    if (popup) popup.classList.remove('active');
-    if (autoCloseTimer) clearTimeout(autoCloseTimer);
-    if (countdownInterval) clearInterval(countdownInterval);
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      showAutoPopup();
-    }, 5000);
-  });
-
   // ── THEME TOGGLE LOGIC ──
   function toggleTheme() {
     const html = document.documentElement;
@@ -3037,8 +3037,13 @@
     const modal = document.getElementById('policyModal');
     const title = document.getElementById('modalTitle');
     const body = document.getElementById('modalBody');
-    title.textContent = 'Privacy & Informational Notice';
-    body.innerHTML = `<p>At <strong>RashikTrades</strong>, we prioritize the security and privacy of our community. As of <strong>October 30</strong>, all membership sales and payment processing on this website have been permanently closed.</p><br><p>This website operates strictly as an informational showcase and free calculator utility. For any personal assistance, please open a support ticket on our official Discord channel.</p>`;
+    if (type === 'refund') {
+      title.textContent = 'Refund Policy';
+      body.innerHTML = `<p>Due to the digital nature of the <strong>RTC Indicator Suite</strong> and immediate access granted to proprietary scripts, indicators, and private community channels, <strong>all sales are strictly final</strong>.</p><br><p>We do not offer refunds, exchanges, or prorated credits once access has been provisioned. For recurring membership plans, you may cancel your billing at any time prior to your next renewal date.</p>`;
+    } else {
+      title.textContent = 'Privacy Policy';
+      body.innerHTML = `<p>At <strong>RashikTrades</strong>, we prioritize the security and privacy of your personal data. We collect only the essential information required to provision your TradingView indicator access and Discord membership.</p><br><p>All payment processing is handled via encrypted automated cryptocurrency checkout (Suby.fi). We never store sensitive financial details or sell user data to third parties.</p>`;
+    }
     modal.classList.add('active');
   }
 
@@ -3103,21 +3108,21 @@
   }
 
   const mainRev1 = [
-    {pnl: "Community Feedback", t: "The Reversal Pro+ has completely changed how I read market structure. Catching reversals using CISD triggers alone made chart analysis so much cleaner.", a: "Marcus K."},
-    {pnl: "SMT Analysis", t: "SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts saved me from bad setups.", a: "Sophie L."},
-    {pnl: "Top Community", t: "Rashik's community is genuinely one of the best trading spaces on the internet. The Discord support and structural analysis are what truly sets this apart.", a: "Amir T."},
-    {pnl: "Precision Mapping", t: "POI Pro+ maps zones I would have missed completely. The automation is insane — I get alerted at the exact key level.", a: "Jamie R."}
+    {pnl: "+$4,200 this week", t: "The Reversal Pro+ has completely changed how I read the market. I caught 3 perfect reversals last week using CISD triggers alone. This suite pays for itself in one trade.", a: "Marcus K."},
+    {pnl: "+18.3% ROI", t: "SMT Pro+ is an absolute weapon. I was manually tracking correlations for hours — now it's automatic. The divergence alerts alone saved me from two bad trades this month.", a: "Sophie L."},
+    {pnl: "Best investment", t: "Rashik's community is genuinely one of the best trading spaces on the internet. The indicators are elite-level, but the Discord support and analysis are what truly sets this apart.", a: "Amir T."},
+    {pnl: "2R avg trade", t: "POI Pro+ maps entries I would have missed completely. The automation is insane — I get alerted at exactly the right level. Went from breakeven to consistently profitable within 3 weeks.", a: "Jamie R."}
   ];
   const mainRev2 = [
-    {pnl: "Prop Firm Trader", t: "Passed my prop firm evaluation using the SMT divergence filter. The setups are extremely clean and remove emotional trading.", a: "Liam D."},
-    {pnl: "PO3 Architecture", t: "I've tried many indicator suites. Nothing comes close to the PO3 Advanced edition. The logic behind these tools is clearly from someone who actually trades.", a: "Daniel W."},
-    {pnl: "Saves 2 Hours", t: "The Session Pro+ draws the exact macro killzones I used to draw manually every morning. It saves me 2 hours a day and the accuracy is spot-on.", a: "Emma R."},
-    {pnl: "Constant Updates", t: "Rashik actually listens to the community, and the indicator ecosystem keeps getting better. Amazing analytical environment.", a: "Yuki N."}
+    {pnl: "Funded $100k", t: "Passed my $100k prop firm challenge using the SMT divergence filter alone. The setups are extremely clean and remove all emotional trading.", a: "Liam D."},
+    {pnl: "+$9,100 month", t: "I've tried 12 indicator suites. Nothing comes close. The PO3 Advanced edition alone is worth 10x the price. The logic behind these tools is clearly from someone who actually trades.", a: "Daniel W."},
+    {pnl: "Saves 2 Hours", t: "The Session Pro+ draws the exact macro killzones I used to draw manually every morning. It saves me 2 hours a day and the accuracy is frightening.", a: "Emma R."},
+    {pnl: "Elite member", t: "The yearly plan was the best decision I made. Constant updates, Rashik actually listens to the community, and the indicator keeps getting better. Zero reasons to leave.", a: "Yuki N."}
   ];
   const mainRev3 = [
-    {pnl: "Swing Structure", t: "The POI Pro+ has become my daily tool for swing analysis. My entry precision and patience have improved so much.", a: "David R."},
-    {pnl: "C1-C2 Sweeps", t: "Finally, an indicator that understands C1-C2 sweeps properly. Absolute game-changer for structural confirmation.", a: "Omar F."},
-    {pnl: "Divergence Clarity", t: "The SMT Pro+ helped me spot divergences across correlated assets effortlessly without switching charts constantly.", a: "Sarah P."},
+    {pnl: "Steady returns", t: "The POI Pro+ on my Elite membership has become my daily weapon for swing trading. My entry precision has improved so much. Over the last three months, I've managed a steady +$1,200/mo.", a: "David R."},
+    {pnl: "Win rate 65%", t: "Finally, an indicator that understands C1-C2 sweeps properly. Took my win rate from 40% to 65% in a single month. Absolute game-changer.", a: "Omar F."},
+    {pnl: "Part-time success", t: "Moving from paper trading to a real account was intimidating. The SMT Pro+ helped me spot divergences easily. Last month was my best yet, pulling in +$650 profit on FX pairs.", a: "Sarah P."},
     {pnl: "Crystal Clear", t: "The charts used to give me a headache with all the noise. RTC strips it all away and highlights exactly where smart money is stepping in.", a: "Chris M."}
   ];
 
