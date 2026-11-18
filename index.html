@@ -1280,7 +1280,7 @@
     line-height: 1.6;
   }
 
-  /* ── PRICING & MEMBERSHIP PLANS (5 PLANS ON ONE PAGE) ── */
+  /* ── PRICING & PLAN SELECTION ── */
   .pricing-wrapper {
     background: var(--bg-sec);
     border-top: 1px solid var(--border);
@@ -1290,76 +1290,82 @@
   .payment-methods-header {
     display: flex;
     justify-content: center;
+    gap: 16px;
     margin-bottom: 44px;
+    flex-wrap: wrap;
   }
-  .pay-method.crypto-exclusive {
+  .pay-method {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 14px;
     background: var(--bg-card);
-    border: 1.5px solid rgba(16, 185, 129, 0.45);
-    padding: 18px 28px;
-    border-radius: 18px;
-    max-width: 680px;
-    width: 100%;
-    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.14);
-    transition: all 0.25s ease;
+    border: 1px solid var(--border);
+    padding: 14px 22px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 280px;
   }
-  .pay-method.crypto-exclusive:hover {
-    transform: translateY(-2px);
-    border-color: var(--green);
-    box-shadow: 0 16px 40px rgba(16, 185, 129, 0.22);
+  .pay-method:hover { transform: translateY(-2px); border-color: var(--whop-orange); }
+
+  .card-method .pay-icon { color: #3b82f6; font-size: 1.5rem; }
+  .card-method .pay-badge {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
   }
-  .crypto-exclusive .pay-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 14px;
-    background: rgba(16, 185, 129, 0.14);
-    border: 1px solid rgba(16, 185, 129, 0.35);
-    color: var(--green);
-    font-size: 1.55rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+
+  .crypto-method .pay-icon { color: #10b981; font-size: 1.5rem; }
+  .crypto-method .pay-badge {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
   }
+
   .pay-text { text-align: left; flex: 1; }
-  .pay-text h3 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .pay-text h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+  .pay-text p { font-size: 0.68rem; color: var(--text-muted); font-weight: 600; }
+
+  .pricing-toggle-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    background: var(--bg-card);
+    padding: 5px;
+    border-radius: 12px;
+    margin: 0 auto 36px auto;
+    border: 1px solid var(--border);
   }
-  .pay-text p {
-    font-size: 0.8rem;
+  .pricing-toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 10px 26px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
     color: var(--text-muted);
-    font-weight: 500;
-    line-height: 1.45;
+    font-size: 0.92rem;
   }
-  .crypto-exclusive .pay-badge {
-    background: rgba(16, 185, 129, 0.16);
-    color: var(--green);
-    border: 1px solid rgba(16, 185, 129, 0.35);
-    font-size: 0.72rem;
-    font-weight: 800;
-    padding: 7px 13px;
-    border-radius: 100px;
-    white-space: nowrap;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  .pricing-toggle-btn.active {
+    background: var(--grad-orange);
+    color: #fff;
+    box-shadow: var(--glow-orange);
   }
 
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
     justify-content: center;
     align-items: stretch;
-    max-width: 1360px;
+    max-width: 1220px;
     margin: 0 auto;
   }
   .price-card {
@@ -1367,7 +1373,7 @@
     background-image: var(--grad-surface);
     border: 1px solid var(--border);
     border-radius: 22px;
-    padding: 28px 20px;
+    padding: 32px 24px;
     transition: all 0.25s ease;
     display: flex;
     flex-direction: column;
@@ -1383,44 +1389,28 @@
     border: 1.5px solid var(--whop-orange);
     box-shadow: var(--glow-orange);
   }
-  .price-card.lifetime-highlight {
-    border: 1.5px solid var(--green);
-    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.18);
-  }
 
   .price-tier {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 6px;
   }
   .popular-badge {
-    font-size: 0.62rem;
+    font-size: 0.65rem;
     background: var(--grad-orange);
     color: #fff;
-    padding: 4px 9px;
+    padding: 4px 10px;
     border-radius: 100px;
     text-transform: uppercase;
     font-weight: 700;
-    white-space: nowrap;
-  }
-  .lifetime-badge {
-    font-size: 0.62rem;
-    background: var(--green);
-    color: #fff;
-    padding: 4px 9px;
-    border-radius: 100px;
-    text-transform: uppercase;
-    font-weight: 700;
-    white-space: nowrap;
   }
   .price-crossed {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     text-decoration: line-through;
     height: 20px;
@@ -1429,7 +1419,7 @@
   }
   .price-amount {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 2.65rem;
+    font-size: 2.85rem;
     font-weight: 800;
     color: var(--text-dark);
     line-height: 1;
@@ -1438,48 +1428,48 @@
     align-items: baseline;
     letter-spacing: -0.04em;
   }
-  .price-currency { font-size: 1.35rem; font-weight: 700; margin-right: 3px; color: var(--whop-orange); }
-  .price-period { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; margin-bottom: 14px; }
+  .price-currency { font-size: 1.4rem; font-weight: 700; margin-right: 3px; color: var(--whop-orange); }
+  .price-period { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-bottom: 14px; }
 
-  .discount-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; height: 26px; flex-wrap: wrap; }
+  .discount-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; height: 26px; }
   .tv-discount-tag {
     background: rgba(255, 85, 20, 0.14);
     color: var(--whop-orange);
     font-family: 'JetBrains Mono', monospace;
     font-weight: 600;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     padding: 4px 8px;
     border-radius: 6px;
   }
-  .price-save { font-size: 0.78rem; color: var(--green); font-weight: 600; }
+  .price-save { font-size: 0.82rem; color: var(--green); font-weight: 600; }
 
   .price-features {
     list-style: none;
     flex: 1;
-    margin-bottom: 24px;
+    margin-bottom: 26px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding-top: 16px;
+    gap: 11px;
+    padding-top: 18px;
     border-top: 1px solid var(--border);
   }
   .price-features li {
     display: flex;
     align-items: flex-start;
-    gap: 9px;
-    font-size: 0.8rem;
+    gap: 10px;
+    font-size: 0.83rem;
     color: var(--text-muted);
-    line-height: 1.38;
+    line-height: 1.4;
   }
-  .price-features li i { color: var(--green); font-size: 0.82rem; margin-top: 2px; }
+  .price-features li i { color: var(--green); font-size: 0.85rem; margin-top: 2px; }
 
   .btn-glowing {
     display: block;
     text-align: center;
-    padding: 13px;
+    padding: 14px;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     width: 100%;
     cursor: pointer;
     background: var(--grad-orange);
@@ -1493,9 +1483,49 @@
     transform: translateY(-2px);
   }
 
+  /* ── DIRECT CRYPTO PAYMENT SECTION ── */
+  #payment { background: var(--bg-main); border-top: 1px solid var(--border); }
+  .crypto-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 720px;
+    margin: 36px auto 0;
+  }
+  .crypto-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 18px 22px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+  .crypto-item:hover { border-color: var(--whop-orange); }
+  .crypto-left { display: flex; flex-direction: column; gap: 4px; text-align: left; overflow: hidden; }
+  .crypto-label { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 10px; }
+  .crypto-addr { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted); word-break: break-all; margin-right: 16px; user-select: all; }
+  .copy-btn {
+    background: var(--icon-bg);
+    border: 1px solid var(--icon-border);
+    color: var(--whop-orange);
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+    flex-shrink: 0;
+  }
+  .copy-btn:hover { background: var(--grad-orange); color: #fff; border-color: transparent; }
+  .copy-btn.copied { background: var(--green); border-color: var(--green); color: #fff; }
+
   /* ── FULL RISK CALCULATOR ── */
   #riskCalc {
-    background: var(--bg-main);
+    background: var(--bg-sec);
     border-top: 1px solid var(--border);
   }
   .calc-wrapper {
@@ -1636,7 +1666,7 @@
 
   /* ── TESTIMONIALS ── */
   #testimonials {
-    background: var(--bg-sec);
+    background: var(--bg-main);
     border-top: 1px solid var(--border);
     padding: 90px 0;
     overflow: hidden;
@@ -1679,7 +1709,7 @@
   .testi-author { font-weight: 600; font-size: 0.84rem; color: var(--text-dark); }
 
   /* ── DISCORD JOIN SECTION ── */
-  #discord-join { background: var(--bg-main); border-top: 1px solid var(--border); }
+  #discord-join { background: var(--bg-sec); border-top: 1px solid var(--border); }
   .discord-wrapper {
     background: linear-gradient(135deg, rgba(88, 101, 242, 0.14) 0%, var(--bg-card) 100%);
     border: 1px solid rgba(88, 101, 242, 0.35);
@@ -1709,7 +1739,7 @@
   .discord-btn:hover { transform: translateY(-2px); background: #4752C4; }
 
   /* ── COMMUNITY MARQUEE ── */
-  #community { background: var(--bg-sec); border-top: 1px solid var(--border); padding: 90px 0; overflow: hidden; }
+  #community { background: var(--bg-main); border-top: 1px solid var(--border); padding: 90px 0; overflow: hidden; }
   .comm-marquee-wrap {
     display: flex;
     flex-direction: column;
@@ -1741,7 +1771,7 @@
   .comm-arrow { font-weight: 700; color: var(--whop-orange); margin-top: auto; }
 
   /* ── MASTERCLASS ── */
-  #masterclass { background: var(--bg-main); border-top: 1px solid var(--border); }
+  #masterclass { background: var(--bg-sec); border-top: 1px solid var(--border); }
   .mc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left; }
   .mc-card {
     background: var(--bg-card-solid);
@@ -1797,7 +1827,7 @@
   }
 
   /* ── FAQ ── */
-  #faq { background: var(--bg-sec); border-top: 1px solid var(--border); }
+  #faq { background: var(--bg-main); border-top: 1px solid var(--border); }
   .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 780px; margin: 0 auto; text-align: left; }
   .faq-item {
     background: var(--bg-card);
@@ -1841,7 +1871,7 @@
   .pre-footer-text {
     padding: 90px 5% 40px;
     text-align: center;
-    background: var(--bg-main);
+    background: var(--bg-sec);
     border-top: 1px solid var(--border);
     display: flex;
     flex-direction: column;
@@ -1959,9 +1989,6 @@
   .modal-body { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 1280px) {
-    .pricing-grid { grid-template-columns: repeat(3, 1fr); max-width: 980px; }
-  }
   @media (max-width: 1100px) {
     .nav-links, .nav-cta { display: none; }
     .mobile-menu-btn { display: inline-flex; }
@@ -1969,9 +1996,11 @@
     .hero-left { align-items: center; }
     .hero-btn-group { justify-content: center; }
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     .pricing-grid { grid-template-columns: repeat(2, 1fr); max-width: 720px; }
     .calc-layout { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (max-width: 900px) {
     .arsenal-container { height: 600px; max-width: 600px; }
     .orbit-guide-ring { width: 440px; height: 440px; }
     .satellite-link { width: 220px; }
@@ -1987,9 +2016,6 @@
     .dotted-globe { width: 320px; height: 320px; }
     .globe-pill { display: none; }
     .pricing-grid { grid-template-columns: 1fr; }
-    .pay-method.crypto-exclusive { flex-direction: column; text-align: center; gap: 12px; }
-    .pay-text { text-align: center; }
-    .pay-text h3 { justify-content: center; }
     .arsenal-container { height: 460px; }
     .orbit-guide-ring { width: 310px; height: 310px; }
     .satellite-link { width: 155px; }
@@ -1999,6 +2025,8 @@
     .satellite-node strong { font-size: 0.66rem; }
     .center-hub { width: 122px; height: 122px; }
     .center-hub h3 { font-size: 1.02rem; }
+    .crypto-item { flex-direction: column; gap: 14px; align-items: flex-start; }
+    .copy-btn { width: 100%; text-align: center; }
     .calc-wrapper { padding: 24px 18px; }
     .pos-left { transform: translateX(-55%) scale(0.78); opacity: 0.25; }
     .pos-right { transform: translateX(55%) scale(0.78); opacity: 0.25; }
@@ -2019,7 +2047,7 @@
     <li><a href="#showcase">Flagship Tool</a></li>
     <li><a href="#architecture">Core Features</a></li>
     <li><a href="#indicators">The Arsenal</a></li>
-    <li><a href="#pricing">Membership</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#riskCalc" class="calc-nav-btn"><i class="fas fa-calculator"></i> Calculator</a></li>
   </ul>
   <div class="nav-actions">
@@ -2036,7 +2064,7 @@
   <a href="#showcase" onclick="toggleMenu()">Flagship Tool</a>
   <a href="#architecture" onclick="toggleMenu()">Core Features</a>
   <a href="#indicators" onclick="toggleMenu()">The Arsenal</a>
-  <a href="#pricing" onclick="toggleMenu()">Membership</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
   <a href="#riskCalc" onclick="toggleMenu()">Calculator</a>
   <a href="#faq" onclick="toggleMenu()">FAQ</a>
 </div>
@@ -2371,36 +2399,48 @@
   </div>
 </section>
 
-<!-- ── 6. MEMBERSHIP PLANS (ALL 5 PRODUCTS ON ONE PAGE, AUTOMATED CRYPTO ONLY) ── -->
+<!-- ── 6. PRICING & PLAN SELECTION ── -->
 <div class="pricing-wrapper" id="pricing">
-  <div class="inner" style="max-width: 1360px;">
-    <div class="section-label reveal"><i class="fas fa-crown"></i> Membership Access</div>
-    <h2 class="section-title reveal">Choose your membership.</h2>
-    <p class="section-desc reveal">Instant automated access to all 12 institutional indicators, private Discord channels, and ongoing updates.</p>
+  <div class="inner">
+    <div class="section-label reveal"><i class="fas fa-crown"></i> Claim Access</div>
+    <h2 class="section-title reveal">Choose your plan.</h2>
+    <p class="section-desc reveal">Instant access to all 12 institutional indicators, private Discord channels, and ongoing updates.</p>
 
-    <div class="payment-methods-header reveal">
-      <div class="pay-method crypto-exclusive">
-        <div class="pay-icon"><i class="fab fa-bitcoin"></i></div>
-        <div class="pay-text">
-          <h3>Automated Crypto Checkout Only <i class="fas fa-shield-alt" style="color:var(--green); font-size:0.9rem;"></i></h3>
-          <p>More secure, heavily discounted & faster instant activation via Suby.fi (Card & manual transfers disabled)</p>
-        </div>
-        <div class="pay-badge">Instant Access</div>
-      </div>
+    <div class="pricing-toggle-wrapper reveal">
+      <button class="pricing-toggle-btn active" id="btn-subscription" onclick="togglePricing('subscription')">Subscription</button>
+      <button class="pricing-toggle-btn" id="btn-lifetime" onclick="togglePricing('lifetime')">Lifetime (One-Time)</button>
     </div>
 
-    <!-- ALL 5 MEMBERSHIP PLANS IN ONE VIEW -->
-    <div class="pricing-grid reveal" id="membership-plans">
-      <!-- 1. Starter ($8 / month) -->
+    <div class="payment-methods-header reveal">
+      <div class="pay-method card-method">
+        <div class="pay-icon"><i class="fas fa-credit-card"></i></div>
+        <div class="pay-text">
+          <h3>Card Payment</h3>
+          <p>-17% OFF (Advanced, Pro & Elite Package)</p>
+        </div>
+        <div class="pay-badge card-badge">Secure Checkout</div>
+      </div>
+
+      <a href="#payment" class="pay-method crypto-method">
+        <div class="pay-icon"><i class="fab fa-bitcoin"></i></div>
+        <div class="pay-text">
+          <h3>Crypto Payment</h3>
+          <p>Direct Transfer</p>
+        </div>
+        <div class="pay-badge crypto-badge">Available</div>
+      </a>
+    </div>
+
+    <!-- SUBSCRIPTION PLANS -->
+    <div class="pricing-grid reveal" id="subscription-plans">
       <div class="price-card">
         <div class="price-tier">Starter</div>
-        <div class="price-crossed">$10</div>
-        <div class="price-amount"><span class="price-currency">$</span>8</div>
+        <div class="price-crossed" style="visibility:hidden;">$0</div>
+        <div class="price-amount"><span class="price-currency">$</span>10</div>
         <div class="price-period">/ month</div>
 
         <div class="discount-wrap">
-          <span class="tv-discount-tag">-20% OFF</span>
-          <span class="price-save">Save $2</span>
+          <div class="price-save" style="color: var(--text-muted);">Standard rate</div>
         </div>
 
         <ul class="price-features">
@@ -2419,19 +2459,18 @@
           <li><i class="fas fa-check"></i> Discord Community Access</li>
           <li><i class="fas fa-check"></i> Cancel anytime</li>
         </ul>
-        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_qfe85gyp0i724n75azb3lh3v" target="_blank" rel="noopener">Get Membership</a>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_UUR01EtlqqdOu">Subscribe Now</a>
       </div>
 
-      <!-- 2. Advanced ($23 / 3 months) -->
       <div class="price-card">
         <div class="price-tier">Advanced</div>
-        <div class="price-crossed">$24.99</div>
-        <div class="price-amount"><span class="price-currency">$</span>23</div>
+        <div class="price-crossed">$30</div>
+        <div class="price-amount"><span class="price-currency">$</span>24.99</div>
         <div class="price-period">/ 3 months</div>
 
         <div class="discount-wrap">
-          <span class="tv-discount-tag">CRYPTO DEAL</span>
-          <span class="price-save">Save $7</span>
+          <span class="tv-discount-tag">-17% OFF</span>
+          <span class="price-save">Save $5.01</span>
         </div>
 
         <ul class="price-features">
@@ -2449,19 +2488,18 @@
           <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
           <li><i class="fas fa-check"></i> Discord Access + Updates</li>
         </ul>
-        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_li8m388e9t04ik6j0m3a4nn4" target="_blank" rel="noopener">Get Membership</a>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_FinpVJduG1Kx4">Subscribe Now</a>
       </div>
 
-      <!-- 3. Pro ($45 / 6 months) -->
       <div class="price-card popular">
         <div class="price-tier">Pro <span class="popular-badge">Most Popular</span></div>
-        <div class="price-crossed">$50</div>
-        <div class="price-amount"><span class="price-currency">$</span>45</div>
+        <div class="price-crossed">$60</div>
+        <div class="price-amount"><span class="price-currency">$</span>50</div>
         <div class="price-period">/ 6 months</div>
 
         <div class="discount-wrap">
-          <span class="tv-discount-tag">-25% OFF</span>
-          <span class="price-save">Save $15</span>
+          <span class="tv-discount-tag">-17% OFF</span>
+          <span class="price-save">Save $10</span>
         </div>
 
         <ul class="price-features">
@@ -2479,19 +2517,18 @@
           <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
           <li><i class="fas fa-check"></i> Priority Support & Videos</li>
         </ul>
-        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_g67k01idkqajka5ykmkgfvn2" target="_blank" rel="noopener">Get Membership</a>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_j7Tbi8ekroGjo">Subscribe Now</a>
       </div>
 
-      <!-- 4. Elite ($89 / 12 months) -->
       <div class="price-card">
         <div class="price-tier">Elite</div>
-        <div class="price-crossed">$99</div>
-        <div class="price-amount"><span class="price-currency">$</span>89</div>
+        <div class="price-crossed">$120</div>
+        <div class="price-amount"><span class="price-currency">$</span>99</div>
         <div class="price-period">/ 12 months</div>
 
         <div class="discount-wrap">
-          <span class="tv-discount-tag">-26% OFF</span>
-          <span class="price-save">Save $31</span>
+          <span class="tv-discount-tag">-17% OFF</span>
+          <span class="price-save">Save $20.01</span>
         </div>
 
         <ul class="price-features">
@@ -2509,19 +2546,21 @@
           <li><i class="fas fa-check"></i> RTC [Fair Value Area] Pro+</li>
           <li><i class="fas fa-check"></i> VIP Role + 1-on-1 Session</li>
         </ul>
-        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_qttkw9o4662d5niuxxo8k4qv" target="_blank" rel="noopener">Get Membership</a>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_XDDbSfEyv0lwx">Subscribe Now</a>
       </div>
+    </div>
 
-      <!-- 5. Lifetime ($299 / lifetime) -->
-      <div class="price-card lifetime-highlight">
-        <div class="price-tier">Lifetime <span class="lifetime-badge">Best Value</span></div>
-        <div class="price-crossed">$399</div>
-        <div class="price-amount"><span class="price-currency">$</span>299</div>
+    <!-- LIFETIME PLAN -->
+    <div class="pricing-grid reveal" id="lifetime-plan" style="display: none; grid-template-columns: 1fr; max-width: 460px; margin: 0 auto;">
+      <div class="price-card popular" style="width: 100%;">
+        <div class="price-tier">Lifetime Access <span class="popular-badge">One-Time Payment</span></div>
+        <div class="price-crossed">$480.72</div>
+        <div class="price-amount"><span class="price-currency">$</span>399</div>
         <div class="price-period">/ lifetime</div>
 
         <div class="discount-wrap">
-          <span class="tv-discount-tag">-25% OFF</span>
-          <span class="price-save">Save $100</span>
+          <span class="tv-discount-tag">-17% OFF</span>
+          <span class="price-save">Save $81.72</span>
         </div>
 
         <ul class="price-features">
@@ -2540,13 +2579,64 @@
           <li><i class="fas fa-check"></i> VIP Role + 1-on-1 Session</li>
           <li><i class="fas fa-check"></i> Lifetime Updates Included</li>
         </ul>
-        <a class="btn-glowing" href="https://checkout.suby.fi/p/pro_ttojlaaief3pnnnljv320yxs" target="_blank" rel="noopener">Get Lifetime Access</a>
+        <a class="btn-glowing" href="https://whop.com/checkout/plan_me0zrhBHa9Exl">Get Lifetime Access</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── 7. FULL RISK CALCULATOR ── -->
+<!-- ── 7. DIRECT CRYPTO PAYMENT SECTION ── -->
+<section id="payment">
+  <div class="inner">
+    <div class="section-label reveal"><i class="fab fa-bitcoin"></i> Checkout & Delivery</div>
+    <h2 class="section-title reveal">Direct Crypto Transfer.</h2>
+    <p class="section-desc reveal">Bypass automated systems with direct crypto transfer. Verified and secure. Send a screenshot to Discord for verification.</p>
+
+    <div class="crypto-container reveal">
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-coins" style="color:var(--green)"></i> Binance Pay</div>
+          <div class="crypto-addr">Pay ID: 133010319</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this,'133010319')">COPY</button>
+      </div>
+
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-chart-pie" style="color:var(--whop-orange)"></i> Bybit</div>
+          <div class="crypto-addr">UID: 107261338</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this,'107261338')">COPY</button>
+      </div>
+
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (BEP-20)</div>
+          <div class="crypto-addr">0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this,'0x319ea5c2a2c9fc979c22fd78d727b3a5f7afa973')">COPY</button>
+      </div>
+
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDT (TRC-20)</div>
+          <div class="crypto-addr">TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this,'TJtJwHy857mFFXGWiy7KUtHVLzWB8zaAB9')">COPY</button>
+      </div>
+
+      <div class="crypto-item">
+        <div class="crypto-left">
+          <div class="crypto-label"><i class="fas fa-dollar-sign" style="color:var(--green)"></i> USDC (SOL)</div>
+          <div class="crypto-addr">FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this,'FCupwNup96Rh4EV4U3G1axsB6txrrmFmhyhJuGMVVTSH')">COPY</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 8. FULL RISK CALCULATOR ── -->
 <section id="riskCalc">
   <div class="inner">
     <div class="section-label reveal"><i class="fas fa-calculator"></i> Essential Tool</div>
@@ -2864,8 +2954,8 @@
         <div class="faq-a"><br>The RTC Indicator Suite is built for TradingView. You'll need a TradingView account (free or paid) to access and use the indicators. Once your membership is verified, you'll receive an invite link to add the tools directly to your charts.<br><br></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How do I pay and get access?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
-        <div class="faq-a"><br>We exclusively use automated crypto checkout via Suby.fi because it is more secure, heavily discounted, and seamless. Simply select your membership plan above, complete the automated crypto checkout, and your access is provisioned automatically within minutes—no manual transfers or card hassles required.<br><br></div>
+        <div class="faq-q" onclick="toggleFaq(this)">How do I get access after payment?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>After payment, access is granted automatically within minutes. For crypto or bank transfers, join our Discord and message Admin Rashik with your proof of payment. Access is typically verified within a few hours.<br><br></div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Is there a refund policy?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
@@ -2876,8 +2966,8 @@
         <div class="faq-a"><br>Some familiarity with ICT concepts like FVGs, CISD, and order blocks will help. However, our 10-part masterclass series on YouTube covers everything you need to configure and use the indicators from scratch.<br><br></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Why is payment Crypto-only?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
-        <div class="faq-a"><br>Automated crypto checkout eliminates high card processing fees, regional declines, and privacy risks—allowing us to pass those savings directly to you with lower membership prices and instant automated verification.<br><br></div>
+        <div class="faq-q" onclick="toggleFaq(this)">Is my payment information secure?<div class="faq-icon"><i class="fas fa-plus"></i></div></div>
+        <div class="faq-a"><br>Absolutely. All payments are securely processed and fully encrypted. For crypto payments, we use standard verification procedures to ensure safety.<br><br></div>
       </div>
     </div>
   </div>
@@ -3039,16 +3129,31 @@
     const body = document.getElementById('modalBody');
     if (type === 'refund') {
       title.textContent = 'Refund Policy';
-      body.innerHTML = `<p>Due to the digital nature of the <strong>RTC Indicator Suite</strong> and immediate access granted to proprietary scripts, indicators, and private community channels, <strong>all sales are strictly final</strong>.</p><br><p>We do not offer refunds, exchanges, or prorated credits once access has been provisioned. For recurring membership plans, you may cancel your billing at any time prior to your next renewal date.</p>`;
+      body.innerHTML = `<p>Due to the digital nature of the <strong>RTC Indicator Suite</strong> and immediate access granted to proprietary scripts, indicators, and private community channels, <strong>all sales are strictly final</strong>.</p><br><p>We do not offer refunds, exchanges, or prorated credits once access has been provisioned. For subscription plans, you may cancel your recurring billing at any time prior to your next renewal date.</p>`;
     } else {
       title.textContent = 'Privacy Policy';
-      body.innerHTML = `<p>At <strong>RashikTrades</strong>, we prioritize the security and privacy of your personal data. We collect only the essential information required to provision your TradingView indicator access and Discord membership.</p><br><p>All payment processing is handled via encrypted automated cryptocurrency checkout (Suby.fi). We never store sensitive financial details or sell user data to third parties.</p>`;
+      body.innerHTML = `<p>At <strong>RashikTrades</strong>, we prioritize the security and privacy of your personal data. We collect only the essential information required to provision your TradingView indicator access and Discord membership.</p><br><p>All payment processing is handled via encrypted third-party gateways (Whop / Crypto networks). We never store your card details or sell user data to third parties.</p>`;
     }
     modal.classList.add('active');
   }
 
   function closeModal() {
     document.getElementById('policyModal').classList.remove('active');
+  }
+
+  // ── PRICING TOGGLE LOGIC ──
+  function togglePricing(type) {
+    if(type === 'subscription') {
+      document.getElementById('btn-subscription').classList.add('active');
+      document.getElementById('btn-lifetime').classList.remove('active');
+      document.getElementById('subscription-plans').style.display = 'grid';
+      document.getElementById('lifetime-plan').style.display = 'none';
+    } else {
+      document.getElementById('btn-lifetime').classList.add('active');
+      document.getElementById('btn-subscription').classList.remove('active');
+      document.getElementById('subscription-plans').style.display = 'none';
+      document.getElementById('lifetime-plan').style.display = 'grid';
+    }
   }
 
   // ── ALERT BADGE & IPHONE CAROUSEL ──
@@ -3097,6 +3202,29 @@
   const tags2 = ['PO3', 'Fractal Alerts', 'AMD', 'CISD', 'True Opens', 'C2 Closure Alert', 'Sweeps', 'IFVG', 'Protraction', '7H Candle', 'Precision Swing Point', 'Inner Circle Trader', 'ICT'];
   document.getElementById('tagTrack1').innerHTML = [...tags1, ...tags1, ...tags1, ...tags1].map(t=>`<div class="feature-tag">${t}</div>`).join('');
   document.getElementById('tagTrack2').innerHTML = [...tags2, ...tags2, ...tags2, ...tags2].map(t=>`<div class="feature-tag">${t}</div>`).join('');
+
+  function copyText(btn, text) {
+    const showCopied = () => {
+      const oldText = btn.innerHTML;
+      btn.innerHTML = 'COPIED ✓';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.innerHTML = oldText; btn.classList.remove('copied'); }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(showCopied).catch(() => fallbackCopy(text, showCopied));
+    } else {
+      fallbackCopy(text, showCopied);
+    }
+  }
+
+  function fallbackCopy(text, callback) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); callback(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
 
   function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
 
